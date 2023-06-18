@@ -32,8 +32,11 @@ const questionSvg = document.querySelector(".question-svg");
 const questionSvgPath = document.getElementById("svgPath");
 
 const star1 = document.querySelector(".star-1");
-const star2 = document.querySelector(".star-2");
 const star3 = document.querySelector(".star-3");
+
+const star2 = document.querySelector(".star-2");
+let timeoutHandle = null;
+let clicks = 0;
 
 const miniLuffy = document.querySelector(".mini-luffy-container");
 const miniLuffyAudio = document.getElementById("miniLuffyAudio");
@@ -150,6 +153,10 @@ function removeBonusAttributes() {
 function startQuiz() {
     removeBonusAttributes();
 
+    clicks = 0;
+    star2.style.setProperty("--vis", "hidden");
+    star2.style.setProperty("--op", 0);
+    
     quizMenu.style.display = "none";
     jollyRogerLuffy.classList.add("block");
     quiz.style.display = "block";
@@ -461,9 +468,13 @@ function exitScoreScreen() {
 }
 
 function toggleInstructionBonus() {
-    const bonus = instructionBtn.getAttribute("data-bonus");
+    clicks = 0;
+    star2.style.setProperty("--vis", "hidden");
+    star2.style.setProperty("--op", 0);
+
     quizMenu.style.display = "none";
 
+    const bonus = instructionBtn.getAttribute("data-bonus");
     bonus == "true" ? startQuizBonus() : quizInstruction.style.display = "flex";
 }
 
@@ -473,6 +484,10 @@ function exitInstructionScreen() {
 }
 
 function showProgressScreen() {
+    clicks = 0;
+    star2.style.setProperty("--vis", "hidden");
+    star2.style.setProperty("--op", 0);
+
     quizMenu.style.display = "none";
     quizProgress.style.display = "block";
 
@@ -553,6 +568,47 @@ function startTimer() {
     }, 1000);
 }
 
+function clickStar2() {
+    clearTimeout(timeoutHandle);
+    clicks++;
+
+    if (clicks === 1) {
+        star2.setAttribute("data-before", "Não tem nada aqui.");
+    } else if (clicks === 2) {
+        star2.setAttribute("data-before", "Não insista!");
+    } else if (clicks === 3) {
+        star2.setAttribute("data-before", "Pare!");
+    } else if (clicks === 4) {
+        star2.setAttribute("data-before", "Você não cansa não?");
+    } else if (clicks === 5) {
+        star2.setAttribute("data-before", "Não entendo...");
+    } else if (clicks === 6) {
+        star2.setAttribute("data-before", "Pra que isso cara?");
+    } else if (clicks === 7) {
+        star2.setAttribute("data-before", "Ok...");
+    } else if (clicks === 8) {
+        star2.setAttribute("data-before", "É uma perda de tempo...");
+    } else if (clicks === 9) {
+        star2.setAttribute("data-before", "Mas vou fazer a contagem...");
+    } else if (clicks > 9 && clicks < 100) {
+        star2.setAttribute("data-before", `x${clicks}`);
+    } else if (clicks === 100) {
+        star2.setAttribute("data-before", "Você é maluco!");
+    } else if (clicks === 101) {
+        star2.setAttribute("data-before", "Eu avisei!");
+    } else if (clicks === 102) {
+        star2.setAttribute("data-before", "Não tem nada aqui!!!");
+    }
+
+    star2.style.setProperty("--vis", "visible");
+    star2.style.setProperty("--op", 1);
+
+    timeoutHandle = setTimeout(() => {
+        star2.style.setProperty("--vis", "hidden");
+        star2.style.setProperty("--op", 0);
+    }, 2000);
+}
+
 if (startBtn) startBtn.addEventListener("click", startQuiz);
 if (instructionBtn) instructionBtn.addEventListener("click", toggleInstructionBonus);
 if (exitInstructionBtn) exitInstructionBtn.addEventListener("click", exitInstructionScreen);
@@ -561,5 +617,6 @@ if (exitProgressBtn) exitProgressBtn.addEventListener("click", exitProgressScree
 if (exitScoreBtn) exitScoreBtn.addEventListener("click", exitScoreScreen);
 if (gameOverBtn) gameOverBtn.addEventListener("click", restartQuiz);
 if (star1) star1.addEventListener("click", activateBonus);
+if (star2) star2.addEventListener("click", clickStar2);
 if (star3) star3.addEventListener("click", () => window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 if (miniLuffy) miniLuffy.addEventListener("click", playMiniLuffyAudio);

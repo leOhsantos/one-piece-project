@@ -190,6 +190,22 @@ button:focus {
     display: none;
 }
 
+.star-2::before {
+    content: attr(data-before);
+    position: absolute;
+    left: -6px;
+    top: -42px;
+    width: 100px;
+    height: 40px;
+    font-family: Brush;
+    transition: .3s;
+    opacity: var(--op, 0);
+    visibility: var(--vis, hidden);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .star-3 {
     background-image: url("../content/img/star.svg");
     background-repeat: no-repeat;
