@@ -384,7 +384,7 @@ function checkAnswer(qNumber, answer) {
     const bonus = instructionBtn.getAttribute("data-bonus");
 
     //active bonus answer
-    if (currentQuestionNumber == 1) {
+    if (currentQuestionNumber == 1 || currentQuestionNumber == 16) {
         questionNumber.style.pointerEvents = "visible";
         questionNumber.addEventListener("mouseover", () => questionSvgPath.setAttribute("fill", "#ccc733"));
         questionNumber.addEventListener("mouseout", () => questionSvgPath.setAttribute("fill", "#3fbadc"));
@@ -561,4 +561,5 @@ if (exitProgressBtn) exitProgressBtn.addEventListener("click", exitProgressScree
 if (exitScoreBtn) exitScoreBtn.addEventListener("click", exitScoreScreen);
 if (gameOverBtn) gameOverBtn.addEventListener("click", restartQuiz);
 if (star1) star1.addEventListener("click", activateBonus);
+if (star3) star3.addEventListener("click", () => window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 if (miniLuffy) miniLuffy.addEventListener("click", playMiniLuffyAudio);
