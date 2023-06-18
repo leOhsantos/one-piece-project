@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/content/img/one-piece-icon.png" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>One Piece Quiz</title>
+</head>
+
+<body>
+
+    <section class="quiz-menu">
+        <img class="quiz-logo" src="assets/content/img/quiz-logo.png" alt="quiz-logo">
+        <div class="btn-list">
+            <button id="startBtn" class="menu-btn">Começar</button>
+            <button data-bonus="false" id="instructionBtn" class="menu-btn">Instruções</button>
+            <button id="exitBtn" class="menu-btn">Sair</button>
+        </div>
+        <div class="footer">
+            <div src="assets/content/img/star.svg" class="star-1"></div>
+            <div src="assets/content/img/star.svg" class="star-2"></div>
+            <div src=" assets/content/img/star.svg" class="star-3"></div>
+            <button id="progressBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+                    viewBox="0 0 24 24" width="24">
+                    <rect fill="none" height="24" width="24" />
+                    <path
+                        d="M19,5h-2V3H7v2H5C3.9,5,3,5.9,3,7v1c0,2.55,1.92,4.63,4.39,4.94c0.63,1.5,1.98,2.63,3.61,2.96V19H7v2h10v-2h-4v-3.1 c1.63-0.33,2.98-1.46,3.61-2.96C19.08,12.63,21,10.55,21,8V7C21,5.9,20.1,5,19,5z M5,8V7h2v3.82C5.84,10.4,5,9.3,5,8z M19,8 c0,1.3-0.84,2.4-2,2.82V7h2V8z" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+
+    <section class="quiz-instruction">
+        <div class="instruction-container">
+            <h1 class="instruction-title">Instruções</h1>
+            <p class="instruction-text">One Piece Quiz é um jogo inspirado em Gênio Quiz.
+                O jogo possui um total de ?? perguntas e pune o jogador caso ele erre uma delas. Caso queira terminá-lo
+                com facilidade, é só não errar. Boa sorte!
+            </p>
+        </div>
+        <button id="exitInstructionBtn">Continuar</button>
+    </section>
+
+
+    <section class="quiz-progress">
+        <div class="quiz-progress-div">
+            <div class="progress-container">
+                <h1 class="progress-title">Estatísticas</h1>
+                <div class="progress-text-container">
+                    <p id="percentProgress" class="progress-text"></p>
+                    <p id="titleProgress" class="progress-text"></p>
+                    <p id="rankProgress" class="progress-text"></p>
+                    <p id="timeProgress" class="progress-text"></p>
+                </div>
+            </div>
+            <button id="exitProgressBtn">Continuar</button>
+        </div>
+    </section>
+
+
+    <section class="quiz">
+        <img id="jollyRogerLuffy" class="jolly-roger" src="assets/content/img/jolly-roger-luffy.png">
+        <img id="jollyRogerTeach" class="jolly-roger" src="assets/content/img/jolly-roger-barbar-negra.png">
+        <div class="question">
+            <div class="question-number-icon">
+                <svg class="question-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path id="svgPath" fill="#3fbadc"
+                        d="M40.2,-66.6C53.9,-61.8,67.9,-54.5,76.3,-43C84.7,-31.5,87.5,-15.8,84.8,-1.5C82.2,12.7,74.1,25.4,66.1,37.6C58.1,49.8,50.2,61.6,39.2,69.5C28.2,77.5,14.1,81.7,0.8,80.4C-12.6,79,-25.2,72.2,-37.6,65.1C-50,57.9,-62.2,50.5,-69.2,39.6C-76.1,28.7,-77.7,14.3,-77.4,0.2C-77.1,-14,-74.8,-27.9,-68.9,-40.5C-62.9,-53.1,-53.3,-64.4,-41.2,-70.1C-29.1,-75.8,-14.6,-76.1,-0.6,-75C13.3,-73.9,26.6,-71.5,40.2,-66.6Z"
+                        transform="translate(100 100)" />
+                </svg>
+                <button id="questionNumber" onclick="checkAnswer(this, this)"></button>
+            </div>
+            <p class="question-text"></p>
+        </div>
+        <div class="answers-container">
+            <div class="answers-line">
+                <button id="A" class="answer" onclick="checkAnswer(this, this)"></button>
+                <button id="B" class="answer" onclick="checkAnswer(this, this)"></button>
+            </div>
+            <div class="answers-line">
+                <button id="C" class="answer" onclick="checkAnswer(this, this)"></button>
+                <button id="D" class="answer" onclick="checkAnswer(this, this)"></button>
+            </div>
+        </div>
+        <div class="quiz-footer">
+            <div class="mini-luffy-container">
+                <audio id="miniLuffyAudio" src="assets/content/audio/monkey-d-luffy-audio.mp3"></audio>
+                <img class="mini-luffy" src="assets/content/img/mini-luffy.png" alt="mini-luffy">
+            </div>
+            <p class="quiz-footer-text">Todos os direitos reservados © Leonardo Santos
+                <button id="text20" onclick="checkAnswer(this, this)">20</button>23
+            </p>
+        </div>
+    </section>
+
+
+    <section class="quiz-score">
+        <div class="quiz-score-container">
+            <div class="quiz-score-result">
+                <h1 class="you-win-text">You Win!</h1>
+                <div class="rank-container">
+                    <div>
+                        <p id="scoreTitle" class="quiz-score-text"></p>
+                        <p id="score" class="quiz-score-text"></p>
+                    </div>
+                    <p class="rank"></p>
+                </div>
+            </div>
+            <button id="exitScoreBtn">Continuar</button>
+        </div>
+        <p class="the-end-text">The End?</p>
+    </section>
+
+
+    <section class="game-over">
+        <div class="game-over-container">
+            <h1 class="game-over-text" data-anime="top">Game <br> Over Easy</h1>
+            <button id="gameOverBtn" data-anime="left">Recomeçar</button>
+        </div>
+    </section>
+
+    <script src="assets/js/questions.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
