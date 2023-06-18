@@ -40,6 +40,7 @@ let clicks = 0;
 
 const miniLuffy = document.querySelector(".mini-luffy-container");
 const miniLuffyAudio = document.getElementById("miniLuffyAudio");
+const onePieceOp = document.getElementById("onePieceOp");
 
 const timeProgress = document.getElementById("timeProgress");
 let sec = 0;
@@ -156,7 +157,7 @@ function startQuiz() {
     clicks = 0;
     star2.style.setProperty("--vis", "hidden");
     star2.style.setProperty("--op", 0);
-    
+
     quizMenu.style.display = "none";
     jollyRogerLuffy.classList.add("block");
     quiz.style.display = "block";
@@ -577,27 +578,29 @@ function clickStar2() {
     } else if (clicks === 2) {
         star2.setAttribute("data-before", "Não insista!");
     } else if (clicks === 3) {
-        star2.setAttribute("data-before", "Pare!");
+        star2.setAttribute("data-before", "Eu já falei...");
     } else if (clicks === 4) {
-        star2.setAttribute("data-before", "Você não cansa não?");
+        star2.setAttribute("data-before", "Não vai acontecer nada!");
     } else if (clicks === 5) {
-        star2.setAttribute("data-before", "Não entendo...");
+        star2.setAttribute("data-before", "Você não cansa não?");
     } else if (clicks === 6) {
-        star2.setAttribute("data-before", "Pra que isso cara?");
+        star2.setAttribute("data-before", "Acha que tem coisa escondida é?");
     } else if (clicks === 7) {
         star2.setAttribute("data-before", "Ok...");
     } else if (clicks === 8) {
-        star2.setAttribute("data-before", "É uma perda de tempo...");
+        star2.setAttribute("data-before", "Você venceu...");
     } else if (clicks === 9) {
-        star2.setAttribute("data-before", "Mas vou fazer a contagem...");
+        star2.setAttribute("data-before", "Dê o seu máximo!");
     } else if (clicks > 9 && clicks < 100) {
         star2.setAttribute("data-before", `x${clicks}`);
     } else if (clicks === 100) {
         star2.setAttribute("data-before", "Você é maluco!");
     } else if (clicks === 101) {
-        star2.setAttribute("data-before", "Eu avisei!");
+        star2.setAttribute("data-before", "Tudo isso atrás de um segredinho?");
     } else if (clicks === 102) {
-        star2.setAttribute("data-before", "Não tem nada aqui!!!");
+        onePieceOp.volume = 0.1;
+        onePieceOp.play();
+        star2.setAttribute("data-before", "Hmm...");
     }
 
     star2.style.setProperty("--vis", "visible");

@@ -193,9 +193,9 @@ button:focus {
 .star-2::before {
     content: attr(data-before);
     position: absolute;
-    left: -6px;
+    left: -26px;
     top: -42px;
-    width: 100px;
+    width: 140px;
     height: 40px;
     font-family: Brush;
     transition: .3s;
