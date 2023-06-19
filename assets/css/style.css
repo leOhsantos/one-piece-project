@@ -463,14 +463,16 @@ button:focus {
     right: 12px;
 }
 
-#text20 {
+#text20,
+#textAll {
     all: unset;
     display: inline-block;
     transition: .2s;
     pointer-events: none;
 }
 
-#text20:hover.active {
+#text20:hover.active,
+#textAll:hover.active {
     transform: scale(1.5);
     cursor: pointer;
 }

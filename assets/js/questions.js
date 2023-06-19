@@ -320,12 +320,12 @@ const q32 = {
 
 const q33 = {
     questionNumber: 33,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual vilão abaixo o Luffy já derrotou?",
+    alt1: "Rob Lucci",
+    alt2: "Doflamingo",
+    alt3: "Crocodile",
+    alt4: "Enel",
+    answer: "Todos"
 }
 
 const q34 = {
@@ -724,7 +724,7 @@ const q73 = {
     alt1: "",
     alt2: "",
     alt3: "",
-    alt4: "", 
+    alt4: "",
     answer: ""
 }
 
@@ -744,7 +744,7 @@ const q75 = {
     alt1: "",
     alt2: "",
     alt3: "",
-    alt4: "", 
+    alt4: "",
     answer: ""
 }
 
