@@ -602,7 +602,7 @@ function clickStar2() {
     } else if (clicks === 8) {
         star2.setAttribute("data-before", "Você venceu...");
     } else if (clicks === 9) {
-        star2.setAttribute("data-before", "Dê o seu máximo!");
+        star2.setAttribute("data-before", "Dê o seu máximo! (Lá ele)");
     } else if (clicks > 9 && clicks < 100) {
         star2.setAttribute("data-before", `x${clicks}`);
     } else if (clicks === 100) {
@@ -612,7 +612,7 @@ function clickStar2() {
     } else if (clicks === 102) {
         onePieceOp.volume = 0.1;
         onePieceOp.play();
-        star2.setAttribute("data-before", "Hmm...");
+        star2.setAttribute("data-before", "Pois bem...");
     }
 
     star2.style.setProperty("--vis", "visible");
