@@ -1,8 +1,8 @@
 const q1 = {
     questionNumber: 1,
-    question: "Qual é o verdadeiro nome da Akuma no Mi de Luffy?",
+    question: "Qual é a Akuma no Mi de Luffy?",
     alt1: "Hito Hito no Mi",
-    alt2: "Goro Goro no Mi",
+    alt2: "Yami Yami no Mi",
     alt3: "Gomu Gomu no Mi",
     alt4: "Bara Bara no Mi",
     answer: "Hito Hito no Mi"
@@ -10,12 +10,12 @@ const q1 = {
 
 const q2 = {
     questionNumber: 2,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Segundo Mugiwara a entrar no bando?",
+    alt1: "Zoro",
+    alt2: "Nami",
+    alt3: "Usopp",
+    alt4: "Sanji",
+    answer: "Usopp"
 }
 
 const q3 = {
@@ -30,12 +30,12 @@ const q3 = {
 
 const q4 = {
     questionNumber: 4,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: 'Intitulado de "O homem mais forte do mundo"',
+    alt1: "Kaido",
+    alt2: "Edward Newgate",
+    alt3: "Marshal D. Teach",
+    alt4: "Garp",
+    answer: "Edward Newgate"
 }
 
 const q5 = {
@@ -60,12 +60,12 @@ const q6 = {
 
 const q7 = {
     questionNumber: 7,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quantos membros necessários para formar os Shichibukais?",
+    alt1: "6",
+    alt2: "8",
+    alt3: "10",
+    alt4: "4",
+    answer: "07."
 }
 
 const q8 = {
@@ -80,12 +80,12 @@ const q8 = {
 
 const q9 = {
     questionNumber: 9,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quantos Road Poneglyphs são necessários para chegar a Laugh Tale?",
+    alt1: "5",
+    alt2: "7",
+    alt3: "2",
+    alt4: "4",
+    answer: "4"
 }
 
 const q10 = {

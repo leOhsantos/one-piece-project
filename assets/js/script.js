@@ -395,7 +395,7 @@ function checkAnswer(qNumber, answer) {
     const bonus = instructionBtn.getAttribute("data-bonus");
 
     //activate secret answer
-    if (currentQuestionNumber == 1 || currentQuestionNumber == 16) {
+    if (currentQuestionNumber == 1 || currentQuestionNumber == 5 || currentQuestionNumber == 16) {
         questionNumber.style.pointerEvents = "visible";
         questionNumber.addEventListener("mouseover", () => questionSvgPath.setAttribute("fill", "#ccc733"));
         questionNumber.addEventListener("mouseout", () => questionSvgPath.setAttribute("fill", "#3fbadc"));
