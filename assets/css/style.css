@@ -1,6 +1,6 @@
 @font-face {
     font-family: Brush;
-    src: url("../content/font/Good\ Brush.ttf");
+    src: url("../font/Good\ Brush.ttf");
 }
 
 * {
@@ -47,7 +47,7 @@ button:focus {
 .quiz-menu {
     width: 80%;
     height: 90%;
-    background-image: url("../content/img/menu-background.jpg");
+    background-image: url("../image/menu-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -59,7 +59,7 @@ button:focus {
 .game-over {
     width: 80%;
     height: 90%;
-    background-image: url("../content/img/game-over-background.jpg");
+    background-image: url("../image/game-over-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -70,7 +70,7 @@ button:focus {
 }
 
 .game-over.bonus {
-    background-image: url("../content/img/game-over-background-bonus.jpg");
+    background-image: url("../image/game-over-background-bonus.jpg");
 }
 
 .game-over-container {
@@ -168,7 +168,7 @@ button:focus {
 }
 
 .star-1 {
-    background-image: url("../content/img/star.svg");
+    background-image: url("../image/star.svg");
     background-repeat: no-repeat;
     width: 80px;
     height: 80px;
@@ -180,7 +180,7 @@ button:focus {
 }
 
 .star-2 {
-    background-image: url("../content/img/star.svg");
+    background-image: url("../image/star.svg");
     background-repeat: no-repeat;
     width: 80px;
     height: 80px;
@@ -207,7 +207,7 @@ button:focus {
 }
 
 .star-3 {
-    background-image: url("../content/img/star.svg");
+    background-image: url("../image/star.svg");
     background-repeat: no-repeat;
     width: 80px;
     height: 80px;
@@ -235,7 +235,7 @@ button:focus {
 .quiz-instruction {
     width: 80%;
     height: 90%;
-    background-image: url("../content/img/menu-background.jpg");
+    background-image: url("../image/menu-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -269,7 +269,7 @@ button:focus {
 .quiz-progress {
     width: 80%;
     height: 90%;
-    background-image: url("../content/img/progress-background.jpg");
+    background-image: url("../image/progress-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -506,7 +506,7 @@ button:focus {
 .quiz-score {
     width: 80%;
     height: 90%;
-    background-image: url("../content/img/score-background.jpg");
+    background-image: url("../image/score-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -517,7 +517,7 @@ button:focus {
 }
 
 .quiz-score.bonus {
-    background-image: url("../content/img/score-background-bonus.jpg");
+    background-image: url("../image/score-background-bonus.jpg");
 }
 
 .quiz-score-container {
