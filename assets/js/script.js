@@ -113,18 +113,22 @@ function updateProgress(qNumber) {
 }
 
 function resetInstructionBtn() {
-    instructionBtn.setAttribute("data-bonus", "false");
-    instructionBtn.style.cssText = "background-color: #9A6601; border-color: #983400;";
-    instructionBtn.textContent = "Instruções";
+    const bonus = instructionBtn.getAttribute("data-bonus");
 
-    instructionBtn.addEventListener("mouseover", () => {
+    if (bonus == "true") {
+        instructionBtn.setAttribute("data-bonus", "false");
         instructionBtn.textContent = "Instruções";
-        instructionBtn.style.cssText = "background-color: #ccc733; border-color: #983400; color: #000000;";
-    });
 
-    instructionBtn.addEventListener("mouseout", () => {
-        instructionBtn.textContent = "Instruções";
-    });
+        instructionBtn.addEventListener("mouseover", () => {
+            instructionBtn.textContent = "Instruções";
+            instructionBtn.style.cssText = "background-color: #ccc733; border-color: #983400; color: #000000;";
+        });
+
+        instructionBtn.addEventListener("mouseout", () => {
+            instructionBtn.textContent = "Instruções";
+            instructionBtn.style.cssText = "background-color: #9A6601; border-color: #983400; color: #000000;";
+        });
+    }
 }
 
 function addBonusAttributes() {
