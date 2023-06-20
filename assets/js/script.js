@@ -278,6 +278,7 @@ function calculateScore() {
         rank.textContent = "S+";
 
         if (rankNumber > recordScore || !recordScore) localStorage.setItem("recordScore", rankNumber);
+        localStorage.setItem("currentScore", rankNumber);
 
     } else if (fail > 0 && fail <= 10) {
         const rankNumber = 5;
@@ -313,9 +314,8 @@ function calculateScore() {
 function calculateScoreBonus() {
     const currentScore = parseInt(localStorage.getItem("currentScore"));
     const recordScore = parseInt(localStorage.getItem("recordScore"));
-    const fail = parseInt(localStorage.getItem("fail"));
 
-    if (fail === 0) {
+    if (currentScore === 6) {
         const rankNumber = 7;
 
         scoreTitle.textContent = "Rei dos piratas";
@@ -348,7 +348,7 @@ function calculateScoreBonus() {
         if (rankNumber > recordScore) localStorage.setItem("recordScore", rankNumber);
     }
 
-    fail === 0 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
+    currentScore === 6 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
 
     localStorage.removeItem("currentScore");
     localStorage.removeItem("fail");
@@ -549,6 +549,7 @@ function showProgressScreen() {
 function exitProgressScreen() {
     quizProgress.style.display = "none";
     quizMenu.style.display = "block";
+    resetInstructionBtn();
 }
 
 function activateBonus() {
