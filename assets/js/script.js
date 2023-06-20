@@ -47,6 +47,8 @@ let sec = 0;
 let min = 0;
 let h = 0;
 
+let bonusProgress = null;
+
 const questionNumber = document.getElementById("questionNumber");
 const questionText = document.querySelector(".question-text");
 const textAll = document.getElementById("textAll");
@@ -101,7 +103,13 @@ document.addEventListener("DOMContentLoaded", () => {
 function updateProgress(qNumber) {
     const currentProgress = questions[qNumber].questionNumber;
     const progress = localStorage.getItem("progress");
-    if (currentProgress > progress) localStorage.setItem("progress", currentProgress - 1);
+
+    if (currentProgress > 50) {
+        bonusProgress += 1.6;
+        if (bonusProgress > progress) localStorage.setItem("progress", Math.round(bonusProgress));
+    } else if (currentProgress > progress) {
+        localStorage.setItem("progress", currentProgress - 1);
+    }
 }
 
 function resetInstructionBtn() {
@@ -182,6 +190,8 @@ function startQuiz() {
 }
 
 function startQuizBonus() {
+    bonusProgress = 50;
+
     addBonusAttributes();
 
     quizMenu.style.display = "none";
@@ -350,7 +360,7 @@ function setFinalProgress() {
 
     if (progress === 49) {
         localStorage.setItem("progress", 50);
-    } else if (progress === 74 && recordScore < 7) {
+    } else if (progress === 88 && recordScore < 7) {
         localStorage.setItem("progress", 90);
     } else if (recordScore === 7) {
         localStorage.setItem("progress", 100);
