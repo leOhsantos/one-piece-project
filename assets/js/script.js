@@ -599,31 +599,37 @@ function clickStar2() {
     if (clicks === 1) {
         star2.setAttribute("data-before", "Não tem nada aqui.");
     } else if (clicks === 2) {
-        star2.setAttribute("data-before", "Não insista!");
+        star2.setAttribute("data-before", "Não insista.");
     } else if (clicks === 3) {
         star2.setAttribute("data-before", "Eu já falei...");
     } else if (clicks === 4) {
-        star2.setAttribute("data-before", "Não vai acontecer nada!");
+        star2.setAttribute("data-before", "Não vai acontecer nada.");
     } else if (clicks === 5) {
         star2.setAttribute("data-before", "Você não cansa não?");
     } else if (clicks === 6) {
         star2.setAttribute("data-before", "Acha que tem coisa escondida é?");
     } else if (clicks === 7) {
-        star2.setAttribute("data-before", "Ok...");
+        star2.setAttribute("data-before", "Vai clicar até quando amigo?");
     } else if (clicks === 8) {
-        star2.setAttribute("data-before", "Você venceu...");
+        star2.setAttribute("data-before", "Que chatisse hein!");
     } else if (clicks === 9) {
-        star2.setAttribute("data-before", "Dê o seu máximo! (Lá ele)");
-    } else if (clicks > 9 && clicks < 100) {
-        star2.setAttribute("data-before", `x${clicks}`);
-    } else if (clicks === 100) {
+        star2.setAttribute("data-before", "Você é insuportável!");
+    } else if (clicks === 10) {
+        star2.setAttribute("data-before", "Rapaz...");
+    } else if (clicks === 11) {
+        star2.setAttribute("data-before", "Não tem o que fazer não?");
+    } else if (clicks === 12) {
+        star2.setAttribute("data-before", "Eu não aguento mais!");
+    } else if (clicks === 13) {
         star2.setAttribute("data-before", "Você é maluco!");
-    } else if (clicks === 101) {
-        star2.setAttribute("data-before", "Tudo isso atrás de um segredinho?");
-    } else if (clicks === 102) {
+    } else if (clicks === 14) {
+        star2.setAttribute("data-before", "Tudo isso atrás de um segredo?");
+    } else if (clicks === 15) {
+        star2.setAttribute("data-before", "...");
+    } else if (clicks === 16) {
         onePieceOp.volume = 0.1;
         onePieceOp.play();
-        star2.setAttribute("data-before", "Pois bem...");
+        star2.setAttribute("data-before", "♪♪♪");
     }
 
     star2.style.setProperty("--vis", "visible");
