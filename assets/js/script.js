@@ -657,6 +657,7 @@ function clickStar3() {
     video.play();
 
     video.addEventListener("ended", () => {
+        video.currentTime = 0;
         videoBackground.style.cssText = "opacity: 0; visibility: hidden";
         video.style.display = "none";
     });
