@@ -32,7 +32,10 @@ const questionSvg = document.querySelector(".question-svg");
 const questionSvgPath = document.getElementById("svgPath");
 
 const star1 = document.querySelector(".star-1");
+
 const star3 = document.querySelector(".star-3");
+const video = document.getElementById("video");
+const videoBackground = document.querySelector(".video-background");
 
 const star2 = document.querySelector(".star-2");
 let timeoutHandle = null;
@@ -630,7 +633,7 @@ function clickStar2() {
         star2.setAttribute("data-before", "Tudo isso atrás de um segredo?");
     } else if (clicks === 15) {
         star2.setAttribute("data-before", "...");
-    } else if (clicks === 16) {
+    } else if (clicks >= 16) {
         onePieceOp.volume = 0.1;
         onePieceOp.play();
         star2.setAttribute("data-before", "♪♪♪");
@@ -645,6 +648,20 @@ function clickStar2() {
     }, 2000);
 }
 
+function clickStar3() {
+    onePieceOp.pause();
+
+    videoBackground.style.cssText = "opacity: 1; visibility: visible";
+    video.style.display = "block";
+    video.volume = 0.1;
+    video.play();
+
+    video.addEventListener("ended", () => {
+        videoBackground.style.cssText = "opacity: 0; visibility: hidden";
+        video.style.display = "none";
+    });
+}
+
 if (startBtn) startBtn.addEventListener("click", startQuiz);
 if (instructionBtn) instructionBtn.addEventListener("click", toggleInstructionBonus);
 if (exitInstructionBtn) exitInstructionBtn.addEventListener("click", exitInstructionScreen);
@@ -654,5 +671,5 @@ if (exitScoreBtn) exitScoreBtn.addEventListener("click", exitScoreScreen);
 if (gameOverBtn) gameOverBtn.addEventListener("click", restartQuiz);
 if (star1) star1.addEventListener("click", activateBonus);
 if (star2) star2.addEventListener("click", clickStar2);
-if (star3) star3.addEventListener("click", () => window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+if (star3) star3.addEventListener("click", clickStar3);
 if (miniLuffy) miniLuffy.addEventListener("click", playMiniLuffyAudio);

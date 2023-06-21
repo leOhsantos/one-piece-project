@@ -217,6 +217,32 @@ button:focus {
     display: none;
 }
 
+.video-background {
+    width: 80%;
+    height: 90%;
+    border-radius: 12px;
+    background-color: #0000006c;
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+#video {
+    height: 445px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    display: none;
+    z-index: 5;
+}
+
 #progressBtn {
     display: flex;
     justify-content: center;
