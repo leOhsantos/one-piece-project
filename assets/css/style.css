@@ -489,6 +489,8 @@ button:focus {
     right: 12px;
 }
 
+#name,
+#text2,
 #text20,
 #textAll {
     all: unset;
@@ -497,6 +499,8 @@ button:focus {
     pointer-events: none;
 }
 
+#name:hover.active,
+#text2:hover.active,
 #text20:hover.active,
 #textAll:hover.active {
     transform: scale(1.5);

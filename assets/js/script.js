@@ -55,6 +55,8 @@ let bonusProgress = null;
 const questionNumber = document.getElementById("questionNumber");
 const questionText = document.querySelector(".question-text");
 const textAll = document.getElementById("textAll");
+const myName = document.getElementById("name");
+const text2 = document.getElementById("text2");
 const text20 = document.getElementById("text20");
 const A = document.getElementById("A");
 const B = document.getElementById("B");
@@ -190,6 +192,8 @@ function startQuiz() {
     D.setAttribute("value", q1.questionNumber - 1);
     questionNumber.setAttribute("value", q1.questionNumber);
     textAll.setAttribute("value", q1.questionNumber);
+    myName.setAttribute("value", q1.questionNumber);
+    text2.setAttribute("value", q1.questionNumber);
     text20.setAttribute("value", q1.questionNumber);
 
     const fail = localStorage.getItem("fail");
@@ -230,6 +234,8 @@ function nextQuestion(qNumber) {
     D.setAttribute("value", questions[qNumber].questionNumber - 1);
     questionNumber.setAttribute("value", questions[qNumber].questionNumber - 1);
     textAll.setAttribute("value", questions[qNumber].questionNumber - 1);
+    myName.setAttribute("value", questions[qNumber].questionNumber - 1);
+    text2.setAttribute("value", questions[qNumber].questionNumber - 1);
     text20.setAttribute("value", questions[qNumber].questionNumber - 1);
     updateProgress(qNumber);
 }
@@ -431,12 +437,30 @@ function checkAnswer(qNumber, answer) {
     }
 
     //activate secret answer
+    if (currentQuestionNumber == 25) {
+        text2.style.pointerEvents = "visible";
+        text2.classList.add("active");
+    } else {
+        text2.style.pointerEvents = "none";
+        text2.classList.remove("active");
+    }
+
+    //activate secret answer
     if (currentQuestionNumber == 31) {
         textAll.style.pointerEvents = "visible";
         textAll.classList.add("active");
     } else {
         textAll.style.pointerEvents = "none";
         textAll.classList.remove("active");
+    }
+
+    //activate secret answer
+    if (currentQuestionNumber == 40) {
+        myName.style.pointerEvents = "visible";
+        myName.classList.add("active");
+    } else {
+        myName.style.pointerEvents = "none";
+        myName.classList.remove("active");
     }
 
     //check if it's the bonus quiz or not

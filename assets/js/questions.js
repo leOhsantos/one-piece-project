@@ -260,12 +260,12 @@ const q26 = {
 
 const q27 = {
     questionNumber: 27,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quantos irmãos Luffy possui?",
+    alt1: "3",
+    alt2: "1",
+    alt3: "4",
+    alt4: "Nenhum",
+    answer: "2"
 }
 
 const q28 = {
@@ -410,12 +410,12 @@ const q41 = {
 
 const q42 = {
     questionNumber: 42,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Comandante da 5º divisão da Frota dos Mugiwaras",
+    alt1: "Sai",
+    alt2: "Bartolomeo",
+    alt3: "Hajrudin",
+    alt4: "Cavendish",
+    answer: "Leo"
 }
 
 const q43 = {
