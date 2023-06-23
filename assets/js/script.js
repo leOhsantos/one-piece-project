@@ -465,7 +465,7 @@ function checkAnswer(qNumber, answer) {
 
     //check if it's the bonus quiz or not
     if (bonus == "false") {
-        if (currentQuestionNumber == 49) {
+        if (currentQuestionNumber == 49 && chosenAnswer === rightAnswer) {
             showScoreScreen();
         } else if (chosenAnswer === rightAnswer) {
             nextQuestion(currentQuestionNumber + 1);
@@ -473,7 +473,7 @@ function checkAnswer(qNumber, answer) {
             showGameOverScreen();
         }
     } else {
-        if (currentQuestionNumber == 74) {
+        if (currentQuestionNumber == 74 && chosenAnswer === rightAnswer) {
             showScoreScreenBonus();
         } else if (chosenAnswer === rightAnswer) {
             nextQuestion(currentQuestionNumber + 1);

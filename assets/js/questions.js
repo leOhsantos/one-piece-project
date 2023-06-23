@@ -10,12 +10,12 @@ const q1 = {
 
 const q2 = {
     questionNumber: 2,
-    question: "Segundo Mugiwara a entrar no bando?",
+    question: "Qual o terceiro Mugiwara a entrar no bando?",
     alt1: "Zoro",
     alt2: "Nami",
     alt3: "Usopp",
     alt4: "Sanji",
-    answer: "Usopp"
+    answer: "Sanji"
 }
 
 const q3 = {
@@ -30,32 +30,32 @@ const q3 = {
 
 const q4 = {
     questionNumber: 4,
-    question: 'Intitulado de "O homem mais forte do mundo"',
-    alt1: "Kaido",
-    alt2: "Edward Newgate",
+    question: 'Intitulado de "O homem mais forte do mundo"?',
+    alt1: "Edward Newgate",
+    alt2: "Gol D. Roger",
     alt3: "Marshal D. Teach",
-    alt4: "Garp",
+    alt4: "Dracule Mihawk",
     answer: "Edward Newgate"
 }
 
 const q5 = {
     questionNumber: 5,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual foi o primeiro barco dos Mugiwaras?",
+    alt1: "Moby Dick",
+    alt2: "Thousand Sunny",
+    alt3: "Going Merry",
+    alt4: "Red Force",
+    answer: "Going Merry"
 }
 
 const q6 = {
     questionNumber: 6,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem é o maior fã dos Mugiwaras?",
+    alt1: "Bartolomeo",
+    alt2: "Cavendish",
+    alt3: "Marco",
+    alt4: "Katakuri",
+    answer: "Bartolomeo"
 }
 
 const q7 = {
@@ -70,12 +70,12 @@ const q7 = {
 
 const q8 = {
     questionNumber: 8,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual é o tipo mais raro de Haki?",
+    alt1: "Kenbunshoku",
+    alt2: "Busoshoku",
+    alt3: "Haoshoku",
+    alt4: "Nenhum",
+    answer: "Haoshoku"
 }
 
 const q9 = {
@@ -90,82 +90,82 @@ const q9 = {
 
 const q10 = {
     questionNumber: 10,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem deu o chapéu de palha para Luffy?",
+    alt1: "Roger",
+    alt2: "Garp",
+    alt3: "Shanks",
+    alt4: "Benn Beckman",
+    answer: "Shanks"
 }
 
 const q11 = {
     questionNumber: 11,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem é o cientista mais inteligente?",
+    alt1: "Caesar",
+    alt2: "Vegapunk",
+    alt3: "Queen",
+    alt4: "Judge",
+    answer: "Vegapunk"
 }
 
 const q12 = {
     questionNumber: 12,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Em que arco Luffy encontra Ivankov pela primeira vez?",
+    alt1: "Marineford",
+    alt2: "Zou",
+    alt3: "Impel Down",
+    alt4: "Dressrosa",
+    answer: "Impel Down"
 }
 
 const q13 = {
     questionNumber: 13,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Vilão principal do arco de Thriller Bark?",
+    alt1: "Gekko Moria",
+    alt2: "Doflamingo",
+    alt3: "Barba Negra",
+    alt4: "Crocodile",
+    answer: "Gekko Moria"
 }
 
 const q14 = {
     questionNumber: 14,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem é o Herói da Marinha?",
+    alt1: "Garp",
+    alt2: "Sengoku",
+    alt3: "Akainu",
+    alt4: "Aokiji",
+    answer: "Garp"
 }
 
 const q15 = {
     questionNumber: 15,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Primeiro usuário da Mera Mera no Mi?",
+    alt1: "Sabo",
+    alt2: "Ace",
+    alt3: "Law",
+    alt4: "Kid",
+    answer: "Ace"
 }
 
 const q16 = {
     questionNumber: 16,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem é o Rei dos Atiradores?",
+    alt1: "Sogeking",
+    alt2: "Yasopp",
+    alt3: "van Augur",
+    alt4: "Benn Beckman",
+    answer: "Sogeking"
 }
 
 const q17 = {
     questionNumber: 17,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual a raça de King?",
+    alt1: "Oni",
+    alt2: "Tritão",
+    alt3: "Lunarian",
+    alt4: "Mink",
+    answer: "Lunarian"
 }
 
 const q18 = {
@@ -180,82 +180,82 @@ const q18 = {
 
 const q19 = {
     questionNumber: 19,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual o nome da irmã da Nami?",
+    alt1: "Rebecca",
+    alt2: "Viola",
+    alt3: "Bell-mère",
+    alt4: "Nojiko",
+    answer: "Nojiko"
 }
 
 const q20 = {
     questionNumber: 20,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quantos filhos a Big Mom tem?",
+    alt1: "90",
+    alt2: "84",
+    alt3: "50",
+    alt4: "68",
+    answer: "84"
 }
 
 const q21 = {
     questionNumber: 21,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Como era chamado o haki da observação em Skypiea?",
+    alt1: "Vision",
+    alt2: "Mantra",
+    alt3: "Kenbunshoku",
+    alt4: "Miru",
+    answer: "Mantra"
 }
 
 const q22 = {
     questionNumber: 22,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual o verdadeiro nome de Corazón?",
+    alt1: "Mjosgard",
+    alt2: "Doffy",
+    alt3: "Rosinante",
+    alt4: "Ace",
+    answer: "Rosinante"
 }
 
 const q23 = {
     questionNumber: 23,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Homem mais procurado do mundo?",
+    alt1: "Dragon",
+    alt2: "Kaido",
+    alt3: "Sabo",
+    alt4: "Teach",
+    answer: "Dragon"
 }
 
 const q24 = {
     questionNumber: 24,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem é o primogênito da Big Mom?",
+    alt1: "Katakuri",
+    alt2: "Perospero",
+    alt3: "Smoothie",
+    alt4: "Brûlée",
+    answer: "Perospero"
 }
 
 const q25 = {
     questionNumber: 25,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Líder do Governo mundial?",
+    alt1: "Sengoku",
+    alt2: "Akainu",
+    alt3: "Garling",
+    alt4: "Imu",
+    answer: "Imu"
 }
 
 const q26 = {
     questionNumber: 26,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Após enfrentarem Bartholomew Kuma, qual Mugiwara sente toda a dor de Luffy?",
+    alt1: "Franky",
+    alt2: "Zoro",
+    alt3: "Sanji",
+    alt4: "Usopp",
+    answer: "Zoro"
 }
 
 const q27 = {
@@ -270,52 +270,52 @@ const q27 = {
 
 const q28 = {
     questionNumber: 28,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual foi o 10º membro dos Mugiwaras?",
+    alt1: "Yamato",
+    alt2: "Jinbe",
+    alt3: "Vivi",
+    alt4: "Carrot",
+    answer: "Jinbe"
 }
 
 const q29 = {
     questionNumber: 29,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Primeiro vilão que Luffy enfrentou?",
+    alt1: "Morgan",
+    alt2: "Buggy",
+    alt3: "Alvida",
+    alt4: "Don Krieg",
+    answer: "Alvida"
 }
 
 const q30 = {
     questionNumber: 30,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quantas cópias Vegapunk fez dele mesmo?",
+    alt1: "5",
+    alt2: "6",
+    alt3: "7",
+    alt4: "8",
+    answer: "6"
 }
 
 const q31 = {
     questionNumber: 31,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Fruta mais valiosa de One Piece?",
+    alt1: "Ope Ope no Mi",
+    alt2: "Yami Yami no Mi",
+    alt3: "Gura Gura no Mi",
+    alt4: "Gomu Gomu no Mi",
+    answer: "Ope Ope no Mi"
 }
 
 const q32 = {
     questionNumber: 32,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual família se recusou a se tornar Tenryubitto?",
+    alt1: "Figarland",
+    alt2: "Nefertari",
+    alt3: "Donquixote",
+    alt4: "Rosward",
+    answer: "Nefertari"
 }
 
 const q33 = {
@@ -330,87 +330,87 @@ const q33 = {
 
 const q34 = {
     questionNumber: 34,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual o modelo da Akuma no Mi de Luffy?",
+    alt1: "Paramecia Especial",
+    alt2: "Zoan Ancestral",
+    alt3: "Zoan Mítica",
+    alt4: "Zoan Artificial",
+    answer: "Zoan Mítica"
 }
 
 const q35 = {
     questionNumber: 35,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: 'Quem disse "O One Piece é real" no final da saga de Marineford?',
+    alt1: "Barba Branca",
+    alt2: "Barba Negra",
+    alt3: "Sengoku",
+    alt4: "Akainu",
+    answer: "Barba Branca"
 }
 
 const q36 = {
     questionNumber: 36,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem é a princesa capaz de controlar os reis dos mares?",
+    alt1: "Vivi",
+    alt2: "Rebecca",
+    alt3: "Shirahoshi",
+    alt4: "Viola",
+    answer: "Shirahoshi"
 }
 
 const q37 = {
     questionNumber: 37,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual das armas ancestrais possuía uma planta?",
+    alt1: "Uranus",
+    alt2: "Pluton",
+    alt3: "Poseidon",
+    alt4: "Nenhuma",
+    answer: "Pluton"
 }
 
 const q38 = {
     questionNumber: 38,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Pirata com a recompensa mais baixa?",
+    alt1: "Chooper",
+    alt2: "Gin",
+    alt3: "Bepo",
+    alt4: "Arlong",
+    answer: "Bepo"
 }
 
 const q39 = {
     questionNumber: 39,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Pirata com a recompensa mais alta abaixo de Roger?",
+    alt1: "Charlotte Linlin",
+    alt2: "Edward Newgate",
+    alt3: "Kaido",
+    alt4: "Shanks",
+    answer: "Edward Newgate"
 }
 
 const q40 = {
     questionNumber: 40,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "A quem pertenceu a espada Shusui?",
+    alt1: "Ryuma",
+    alt2: "Oden",
+    alt3: "Mihawk",
+    alt4: "Vista",
+    answer: "Ryuma"
 }
 
 const q41 = {
     questionNumber: 41,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem treinou Luffy durante o Timeskip?",
+    alt1: "Shanks",
+    alt2: "Kuma",
+    alt3: "Gaban",
+    alt4: "Rayleigh",
+    answer: "Rayleigh"
 }
 
 const q42 = {
     questionNumber: 42,
-    question: "Comandante da 5º divisão da Frota dos Mugiwaras",
+    question: "Comandante da 5º divisão da Frota dos Mugiwaras?",
     alt1: "Sai",
     alt2: "Bartolomeo",
     alt3: "Hajrudin",
@@ -420,82 +420,82 @@ const q42 = {
 
 const q43 = {
     questionNumber: 43,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual ilha desapareceu do mapa após um grande incidente?",
+    alt1: "Amazon Lily",
+    alt2: "God Valley",
+    alt3: "Egg Head",
+    alt4: "Enies Lobby",
+    answer: "God Valley"
 }
 
 const q44 = {
     questionNumber: 44,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "O que usuários de Akuma no Mi não podem fazer?",
+    alt1: "Voar",
+    alt2: "Correr",
+    alt3: "Nadar",
+    alt4: "Pular",
+    answer: "Nadar"
 }
 
 const q45 = {
     questionNumber: 45,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Capitão dos infames piratas Rocks?",
+    alt1: "Roger",
+    alt2: "Teach",
+    alt3: "Shanks",
+    alt4: "Xebec",
+    answer: "Xebec"
 }
 
 const q46 = {
     questionNumber: 46,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Almirante capaz de controlar a gravidade?",
+    alt1: "Aokiji",
+    alt2: "Fujitora",
+    alt3: "Akainu",
+    alt4: "Kizaru",
+    answer: "Fujitora"
 }
 
 const q47 = {
     questionNumber: 47,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual o valor da recompensa do Barba Branca?",
+    alt1: "5.046.000.000",
+    alt2: "5.047.000.000",
+    alt3: "5.050.000.000",
+    alt4: "5.044.000.000",
+    answer: "5.046.000.000"
 }
 
 const q48 = {
     questionNumber: 48,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual é a ilha natal de Luffy?",
+    alt1: "Ilha Dawn",
+    alt2: "Ilha Gecko",
+    alt3: "Ilha Conomi",
+    alt4: "Ilha Kumate",
+    answer: "Ilha Dawn"
 }
 
 const q49 = {
     questionNumber: 49,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem foi o dono das espadas Enma e Ame no Habakiri?",
+    alt1: "Mihawk",
+    alt2: "Oden",
+    alt3: "Ryuma",
+    alt4: "Rayleigh",
+    answer: "Oden"
 }
 
 const q50 = {
     questionNumber: 50,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual pirata abaixo não é um Supernova?",
+    alt1: "Bonney",
+    alt2: "Bege",
+    alt3: "Zoro",
+    alt4: "Teach",
+    answer: "Teach"
 }
 
 const q51 = {
@@ -510,22 +510,22 @@ const q51 = {
 
 const q52 = {
     questionNumber: 52,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual a maior saga de One Piece?",
+    alt1: "Yonkou",
+    alt2: "Water 7",
+    alt3: "Marineford",
+    alt4: "Thriller Bark",
+    answer: "Yonkou"
 }
 
 const q53 = {
     questionNumber: 53,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual é o nome do autor da obra?",
+    alt1: "Eichiro Odda",
+    alt2: "Eiichiro Oda",
+    alt3: "Eiichiro Odda",
+    alt4: "Eichiro Oda",
+    answer: "Eiichiro Oda"
 }
 
 const q54 = {
