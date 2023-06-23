@@ -446,7 +446,7 @@ function checkAnswer(qNumber, answer) {
     }
 
     //activate secret answer
-    if (currentQuestionNumber == 31) {
+    if (currentQuestionNumber == 31 || currentQuestionNumber == 73) {
         textAll.style.pointerEvents = "visible";
         textAll.classList.add("active");
     } else {

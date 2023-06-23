@@ -70,12 +70,12 @@ const q7 = {
 
 const q8 = {
     questionNumber: 8,
-    question: "Qual é o tipo mais raro de Haki?",
+    question: "Qual nome abaixo é o mesmo que Haki de Observação?",
     alt1: "Kenbunshoku",
     alt2: "Busoshoku",
     alt3: "Haoshoku",
     alt4: "Nenhum",
-    answer: "Haoshoku"
+    answer: "Kenbunshoku"
 }
 
 const q9 = {
@@ -100,7 +100,7 @@ const q10 = {
 
 const q11 = {
     questionNumber: 11,
-    question: "Quem é o cientista mais inteligente?",
+    question: "Qual o cientista mais inteligente?",
     alt1: "Caesar",
     alt2: "Vegapunk",
     alt3: "Queen",
@@ -160,12 +160,12 @@ const q16 = {
 
 const q17 = {
     questionNumber: 17,
-    question: "Qual a raça de King?",
+    question: "Qual a raça de Fisher Tiger?",
     alt1: "Oni",
     alt2: "Tritão",
-    alt3: "Lunarian",
+    alt3: "Gigante",
     alt4: "Mink",
-    answer: "Lunarian"
+    answer: "Tritão"
 }
 
 const q18 = {
@@ -510,12 +510,12 @@ const q51 = {
 
 const q52 = {
     questionNumber: 52,
-    question: "Qual a maior saga de One Piece?",
+    question: "Em que saga Luffy declara guerra contra o Governo Mundial?",
     alt1: "Thriller Bark",
-    alt2: "Water 7",
-    alt3: "Yonkou",
+    alt2: "Yonkou",
+    alt3: "Water 7",
     alt4: "Marineford",
-    answer: "Yonkou"
+    answer: "Water 7"
 }
 
 const q53 = {
@@ -570,7 +570,7 @@ const q57 = {
 
 const q58 = {
     questionNumber: 58,
-    question: "E quem está totalmente relacionado a essa ilha?",
+    question: "Quem está por trás desse grande fenômeno?",
     alt1: "Momonosuke",
     alt2: "Zunesha",
     alt3: "Nekomamushi",
@@ -584,15 +584,15 @@ const q59 = {
     alt1: "Oni",
     alt2: "Mink",
     alt3: "Elefante",
-    alt4: "Lunarian",
+    alt4: "Tritão",
     answer: "Elefante"
 }
 
 const q60 = {
     questionNumber: 60,
     question: "Qual o nome daquele que trará o amanhecer ao mundo?",
-    alt1: "Teach",
-    alt2: "Nika",
+    alt1: "Nika",
+    alt2: "Teach",
     alt3: "Imu",
     alt4: "Sogeking",
     answer: "Nika"
@@ -600,26 +600,6 @@ const q60 = {
 
 const q61 = {
     questionNumber: 61,
-    question: '"Barba Branca".',
-    alt1: "Shirohigue",
-    alt2: "Shirohhige",
-    alt3: "Shirohige",
-    alt4: "Shirrohige",
-    answer: "Shirohige"
-}
-
-const q62 = {
-    questionNumber: 62,
-    question: '"O sonho dos homens não tem fim." - ???',
-    alt1: "Monkey D. Luffy",
-    alt2: "Edward Newgate",
-    alt3: "Dracule Mihawk",
-    alt4: "Marshall D. Teach",
-    answer: "Marshall D. Teach"
-}
-
-const q63 = {
-    questionNumber: 63,
     question: "Luffy herdou a vontade de qual pirata?",
     alt1: "Shanks",
     alt2: "Gol D. Roger",
@@ -628,18 +608,18 @@ const q63 = {
     answer: "Gol D. Roger"
 }
 
-const q64 = {
-    questionNumber: 64,
+const q62 = {
+    questionNumber: 62,
     question: "E, aparentemente, Teach herdou a vontade de quem?",
-    alt1: "Scopper Gaban",
-    alt2: "Gol D. Roger",
+    alt1: "Gol D. Roger",
+    alt2: "Scopper Gaban",
     alt3: "Silvers Rayleigh",
     alt4: "Rocks D. Xebec",
     answer: "Rocks D. Xebec"
 }
 
-const q65 = {
-    questionNumber: 65,
+const q63 = {
+    questionNumber: 63,
     question: "Qual a primeira classe que está abaixo de Imu?",
     alt1: "Almirante",
     alt2: "Gorosei",
@@ -648,8 +628,8 @@ const q65 = {
     answer: "Gorosei"
 }
 
-const q66 = {
-    questionNumber: 66,
+const q64 = {
+    questionNumber: 64,
     question: "Qual foi o primeiro nome de um Gorosei que apareceu no mangá?",
     alt1: "Jaygarcia Saturn",
     alt2: "Marcus Mars",
@@ -658,8 +638,8 @@ const q66 = {
     answer: "Jaygarcia Saturn"
 }
 
-const q67 = {
-    questionNumber: 67,
+const q65 = {
+    questionNumber: 65,
     question: "O que Doflamingo era antes de se tornar um pirata?",
     alt1: "Marinheiro",
     alt2: "Tenryuubito",
@@ -668,8 +648,18 @@ const q67 = {
     answer: "Tenryuubito"
 }
 
-const q68 = {
-    questionNumber: 68,
+const q66 = {
+    questionNumber: 66,
+    question: '"O sonho dos homens não tem fim." - ???',
+    alt1: "Monkey D. Luffy",
+    alt2: "Edward Newgate",
+    alt3: "Dracule Mihawk",
+    alt4: "Marshall D. Teach",
+    answer: "Marshall D. Teach"
+}
+
+const q67 = {
+    questionNumber: 67,
     question: "Quem é o líder dos Revolucionários?",
     alt1: "Sabo",
     alt2: "Ivankov",
@@ -678,8 +668,8 @@ const q68 = {
     answer: "Dragon"
 }
 
-const q69 = {
-    questionNumber: 69,
+const q68 = {
+    questionNumber: 68,
     question: "Vegapunk foi setenciado a morte pois:",
     alt1: "Roubou muito",
     alt2: "Matou muito",
@@ -688,11 +678,21 @@ const q69 = {
     answer: "Estudou demais"
 }
 
+const q69 = {
+    questionNumber: 69,
+    question: '"Barba Branca".',
+    alt1: "Shirohigue",
+    alt2: "Shirohhige",
+    alt3: "Shirohige",
+    alt4: "Shirrohige",
+    answer: "Shirohige"
+}
+
 const q70 = {
     questionNumber: 70,
     question: "O que divide os mares em One Piece?",
-    alt1: "Ilhas",
-    alt2: "All Blue",
+    alt1: "Blue Line",
+    alt2: "Yellow Line",
     alt3: "Red Line",
     alt4: "Green Line",
     answer: "Red Line"
@@ -740,12 +740,12 @@ const q74 = {
 
 const q75 = {
     questionNumber: 75,
-    question: "Então o que acontece se alguém tentar aquilo que estava na questão 56?",
-    alt1: "Fama",
-    alt2: "Enriquecimento",
+    question: "Então o que acontece se alguém tentar aquilo descrito na questão 56?",
+    alt1: "Desaparecimento",
+    alt2: "Perseguição",
     alt3: "Morte",
     alt4: "Prisão",
-    answer: "Morte"
+    answer: "Todos"
 }
 
 const questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24, q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69, q70, q71, q72, q73, q74, q75];
