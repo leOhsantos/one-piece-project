@@ -619,7 +619,7 @@ function startTimer() {
                 min = 0;
             }
         }
-        timeProgress.textContent = `Tempo de jogo: ${twoDigits(h)}:${twoDigits(min)}:${twoDigits(sec)}`;
+        timeProgress.textContent = `Tempo total de jogo: ${twoDigits(h)}:${twoDigits(min)}:${twoDigits(sec)}`;
     }, 1000);
 }
 

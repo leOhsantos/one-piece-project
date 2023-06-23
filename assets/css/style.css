@@ -306,7 +306,7 @@ button:focus {
 }
 
 .quiz-progress-div {
-    width: 500px;
+    width: 518px;
     position: absolute;
     top: 50%;
     left: 50px;
@@ -314,7 +314,7 @@ button:focus {
 }
 
 .progress-container {
-    width: 500px;
+    width: 518px;
     padding: 6px 8px 6px 8px;
     background-color: #9A6601;
     border-radius: 6px;
