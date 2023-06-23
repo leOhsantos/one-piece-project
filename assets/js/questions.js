@@ -40,7 +40,7 @@ const q4 = {
 
 const q5 = {
     questionNumber: 5,
-    question: "Qual foi o primeiro barco dos Mugiwaras?",
+    question: "Qual foi o primeiro navio dos Mugiwaras?",
     alt1: "Moby Dick",
     alt2: "Thousand Sunny",
     alt3: "Going Merry",
@@ -511,10 +511,10 @@ const q51 = {
 const q52 = {
     questionNumber: 52,
     question: "Qual a maior saga de One Piece?",
-    alt1: "Yonkou",
+    alt1: "Thriller Bark",
     alt2: "Water 7",
-    alt3: "Marineford",
-    alt4: "Thriller Bark",
+    alt3: "Yonkou",
+    alt4: "Marineford",
     answer: "Yonkou"
 }
 
@@ -530,222 +530,222 @@ const q53 = {
 
 const q54 = {
     questionNumber: 54,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quantas Akumas no Mi, teoricamente, podem ser consumidas por pessoa?",
+    alt1: "1",
+    alt2: "2",
+    alt3: "3",
+    alt4: "4",
+    answer: "1"
 }
 
 const q55 = {
     questionNumber: 55,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "E quem foi que quebrou a regra da questão anterior?",
+    alt1: "Luffy",
+    alt2: "Shanks",
+    alt3: "Ace",
+    alt4: "Teach",
+    answer: "Teach"
 }
 
 const q56 = {
     questionNumber: 56,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "O que ninguém no mundo de One Piece pode estudar sobre?",
+    alt1: "Século Perdido",
+    alt2: "Armas Ancestrais",
+    alt3: "Akuma no Mi",
+    alt4: "Ilhas Perdidas",
+    answer: "Século Perdido"
 }
 
 const q57 = {
     questionNumber: 57,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: 'Qual é a ilha que está em constante movimento, também conhecida como "Ilha Fantasma"?',
+    alt1: "Zou",
+    alt2: "Whole Cake",
+    alt3: "Amazon Lily",
+    alt4: "Jaya",
+    answer: "Zou"
 }
 
 const q58 = {
     questionNumber: 58,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "E quem está totalmente relacionado a essa ilha?",
+    alt1: "Momonosuke",
+    alt2: "Zunesha",
+    alt3: "Nekomamushi",
+    alt4: "Inuarashi",
+    answer: "Zunesha"
 }
 
 const q59 = {
     questionNumber: 59,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "O que Zunesha é?",
+    alt1: "Oni",
+    alt2: "Mink",
+    alt3: "Elefante",
+    alt4: "Lunarian",
+    answer: "Elefante"
 }
 
 const q60 = {
     questionNumber: 60,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual o nome daquele que trará o amanhecer ao mundo?",
+    alt1: "Teach",
+    alt2: "Nika",
+    alt3: "Imu",
+    alt4: "Sogeking",
+    answer: "Nika"
 }
 
 const q61 = {
     questionNumber: 61,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: '"Barba Branca".',
+    alt1: "Shirohigue",
+    alt2: "Shirohhige",
+    alt3: "Shirohige",
+    alt4: "Shirrohige",
+    answer: "Shirohige"
 }
 
 const q62 = {
     questionNumber: 62,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: '"O sonho dos homens não tem fim." - ???',
+    alt1: "Monkey D. Luffy",
+    alt2: "Edward Newgate",
+    alt3: "Dracule Mihawk",
+    alt4: "Marshall D. Teach",
+    answer: "Marshall D. Teach"
 }
 
 const q63 = {
     questionNumber: 63,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Luffy herdou a vontade de qual pirata?",
+    alt1: "Shanks",
+    alt2: "Gol D. Roger",
+    alt3: "Buggy",
+    alt4: "Edward Newgate",
+    answer: "Gol D. Roger"
 }
 
 const q64 = {
     questionNumber: 64,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "E, aparentemente, Teach herdou a vontade de quem?",
+    alt1: "Scopper Gaban",
+    alt2: "Gol D. Roger",
+    alt3: "Silvers Rayleigh",
+    alt4: "Rocks D. Xebec",
+    answer: "Rocks D. Xebec"
 }
 
 const q65 = {
     questionNumber: 65,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual a primeira classe que está abaixo de Imu?",
+    alt1: "Almirante",
+    alt2: "Gorosei",
+    alt3: "Tenryuubito",
+    alt4: "God's Knights",
+    answer: "Gorosei"
 }
 
 const q66 = {
     questionNumber: 66,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual foi o primeiro nome de um Gorosei que apareceu no mangá?",
+    alt1: "Jaygarcia Saturn",
+    alt2: "Marcus Mars",
+    alt3: "Topman Walcury",
+    alt4: "Shepherd Ju Peter",
+    answer: "Jaygarcia Saturn"
 }
 
 const q67 = {
     questionNumber: 67,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "O que Doflamingo era antes de se tornar um pirata?",
+    alt1: "Marinheiro",
+    alt2: "Tenryuubito",
+    alt3: "Almirante",
+    alt4: "Revolucionário",
+    answer: "Tenryuubito"
 }
 
 const q68 = {
     questionNumber: 68,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Quem é o líder dos Revolucionários?",
+    alt1: "Sabo",
+    alt2: "Ivankov",
+    alt3: "Dragon",
+    alt4: "Kuma",
+    answer: "Dragon"
 }
 
 const q69 = {
     questionNumber: 69,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Vegapunk foi setenciado a morte pois:",
+    alt1: "Roubou muito",
+    alt2: "Matou muito",
+    alt3: "Amou demais",
+    alt4: "Estudou demais",
+    answer: "Estudou demais"
 }
 
 const q70 = {
     questionNumber: 70,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "O que divide os mares em One Piece?",
+    alt1: "Ilhas",
+    alt2: "All Blue",
+    alt3: "Red Line",
+    alt4: "Green Line",
+    answer: "Red Line"
 }
 
 const q71 = {
     questionNumber: 71,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual era o mar mais assustador para os piratas do East Blue?",
+    alt1: "Novo Mundo",
+    alt2: "Grand Line",
+    alt3: "Calm Belt",
+    alt4: "All Blue",
+    answer: "Grand Line"
 }
 
 const q72 = {
     questionNumber: 72,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "O que é necessário para atingir usuários de Akuma no Mi intangíveis?",
+    alt1: "Haki",
+    alt2: "Força",
+    alt3: "Perseverança",
+    alt4: "Saquê",
+    answer: "Haki"
 }
 
 const q73 = {
     questionNumber: 73,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Qual tipo de haki o Luffy usava sem querer?",
+    alt1: "Kenbunshoku",
+    alt2: "Haoshoku",
+    alt3: "Busoshoku",
+    alt4: "Nenhum",
+    answer: "Haoshoku"
 }
 
 const q74 = {
     questionNumber: 74,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Você está quase no fim, mas antes de continuar eu gostaria de saber, você tem boa memória?",
+    alt1: "Sim",
+    alt2: "Sim",
+    alt3: "Sim",
+    alt4: "Sim",
+    answer: "Sim"
 }
 
 const q75 = {
     questionNumber: 75,
-    question: "",
-    alt1: "",
-    alt2: "",
-    alt3: "",
-    alt4: "",
-    answer: ""
+    question: "Então o que acontece se alguém tentar aquilo que estava na questão 56?",
+    alt1: "Fama",
+    alt2: "Enriquecimento",
+    alt3: "Morte",
+    alt4: "Prisão",
+    answer: "Morte"
 }
 
 const questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24, q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69, q70, q71, q72, q73, q74, q75];
