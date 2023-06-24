@@ -131,8 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (recordTime.hour) hR = recordTime.hour;
     }
 
-    //set the standard reset counter
     if (!reset) localStorage.setItem("reset", 0);
+    if (reset > 0 && progress > 0) resetProgressBtn.style.display = "flex";
 });
 
 function updateProgress(qNumber) {
@@ -145,6 +145,8 @@ function updateProgress(qNumber) {
     } else if (currentProgress > progress) {
         localStorage.setItem("progress", currentProgress - 1);
     }
+
+    if (currentProgress - 1 >= 1) resetProgressBtn.style.display = "flex";
 }
 
 function resetInstructionBtn() {
