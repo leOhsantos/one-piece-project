@@ -663,6 +663,9 @@ function resetProgress() {
     minR = 0;
     hR = 0;
 
+    onePieceOp.pause();
+    onePieceOp.currentTime = 0;
+
     star1.style.display = "none";
     star2.style.display = "none";
     star3.style.display = "none";
