@@ -38,13 +38,12 @@ const questionSvg = document.querySelector(".question-svg");
 const questionSvgPath = document.getElementById("svgPath");
 
 const star1 = document.querySelector(".star-1");
-
 const star3 = document.querySelector(".star-3");
 const video = document.getElementById("video");
 const videoBackground = document.querySelector(".video-background");
 
 const star2 = document.querySelector(".star-2");
-let timeoutHandle = null;
+let star2TimeoutHandle = null;
 let clicks = 0;
 
 const miniLuffy = document.querySelector(".mini-luffy-container");
@@ -75,15 +74,16 @@ const B = document.getElementById("B");
 const C = document.getElementById("C");
 const D = document.getElementById("D");
 
+document.addEventListener("contextmenu", event => event.preventDefault());
+
 window.addEventListener("beforeunload", () => {
+    //save the timer when the page is refreshed
     localStorage.setItem("timer", JSON.stringify({
         "second": sec,
         "minute": min,
         "hour": h
     }));
 });
-
-document.addEventListener("contextmenu", event => event.preventDefault());
 
 document.addEventListener("DOMContentLoaded", () => {
     const recordScore = parseInt(localStorage.getItem("recordScore"));
@@ -425,9 +425,9 @@ function showScoreScreen() {
     star1.style.pointerEvents = "all";
     localStorage.setItem("bonus", true);
 
+    stopRecordTimer();
     calculateScore();
     setFinalProgress();
-    stopRecordTimer();
 }
 
 function showScoreScreenBonus() {
@@ -445,9 +445,9 @@ function showScoreScreenBonus() {
     star2.style.display = "block";
     localStorage.removeItem("bonus");
 
+    stopRecordTimer();
     calculateScoreBonus();
     setFinalProgress();
-    stopRecordTimer();
 }
 
 function checkAnswer(qNumber, answer) {
@@ -733,7 +733,7 @@ function resetStar2Clicks() {
 }
 
 function clickStar2() {
-    clearTimeout(timeoutHandle);
+    clearTimeout(star2TimeoutHandle);
     clicks++;
 
     if (clicks === 1) {
@@ -775,7 +775,7 @@ function clickStar2() {
     star2.style.setProperty("--vis", "visible");
     star2.style.setProperty("--op", 1);
 
-    timeoutHandle = setTimeout(() => {
+    star2TimeoutHandle = setTimeout(() => {
         star2.style.setProperty("--vis", "hidden");
         star2.style.setProperty("--op", 0);
     }, 2000);
