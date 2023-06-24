@@ -720,7 +720,7 @@ const q72 = {
 
 const q73 = {
     questionNumber: 73,
-    question: "Qual tipo de haki o Luffy usava sem querer?",
+    question: "Qual tipo de haki o Luffy usou sem querer para salvar a vida de Ace?",
     alt1: "Kenbunshoku",
     alt2: "Haoshoku",
     alt3: "Busoshoku",
