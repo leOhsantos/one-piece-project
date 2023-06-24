@@ -636,9 +636,13 @@ function resetProgress() {
     percentProgress.textContent = "Progresso atual: 0%";
     titleProgress.textContent = "Título: ???";
     rankProgress.textContent = "Rank: ???";
-    recordTimeProgress.textContent = "Tempo de speedrun: ???";
     countResetProgress.textContent = `Quantidade de resets: ${resetNumber}`;
     resetProgressBtn.style.display = "none";
+
+    recordTimeProgress.textContent = "Tempo de speedrun: ???";
+    secR = 0;
+    minR = 0;
+    hR = 0;
 
     star1.style.display = "none";
     star2.style.display = "none";
