@@ -1,25 +1,47 @@
+const quizMenu = document.querySelector(".quiz-menu");
+const quizInstruction = document.querySelector(".quiz-instruction");
 const startBtn = document.getElementById("startBtn");
 const instructionBtn = document.getElementById("instructionBtn");
 const exitInstructionBtn = document.getElementById("exitInstructionBtn");
 const progressBtn = document.getElementById("progressBtn");
 const exitProgressBtn = document.getElementById("exitProgressBtn");
 const exitBtn = document.getElementById("exitBtn");
-const gameOverBtn = document.getElementById("gameOverBtn");
-const gameOverText = document.querySelector(".game-over-text");
-const gameOverBackground = document.querySelector(".game-over");
-const quizMenu = document.querySelector(".quiz-menu");
-const quiz = document.querySelector(".quiz");
-const jollyRogerLuffy = document.getElementById("jollyRogerLuffy");
-const jollyRogerTeach = document.getElementById("jollyRogerTeach");
-const answers = document.querySelectorAll(".answer");
-const footerText = document.querySelector(".quiz-footer-text");
-const quizInstruction = document.querySelector(".quiz-instruction");
+
 const quizProgress = document.querySelector(".quiz-progress");
 const percentProgress = document.getElementById("percentProgress");
 const titleProgress = document.getElementById("titleProgress");
 const rankProgress = document.getElementById("rankProgress");
 const gameBeatProgress = document.getElementById("gameBeatProgress");
 const countResetProgress = document.getElementById("countResetProgress");
+const resetProgressBackground = document.querySelector(".reset-progress-background");
+const resetProgressWarning = document.querySelector(".reset-progress-warning");
+const resetProgressBtn = document.getElementById("resetProgressBtn");
+const cancelResetProgressBtn = document.getElementById("cancelResetProgressBtn");
+const confirmResetProgressBtn = document.getElementById("confirmResetProgressBtn");
+
+const quiz = document.querySelector(".quiz");
+const jollyRogerLuffy = document.getElementById("jollyRogerLuffy");
+const jollyRogerTeach = document.getElementById("jollyRogerTeach");
+const answers = document.querySelectorAll(".answer");
+const footerText = document.querySelector(".quiz-footer-text");
+const questionNumberIcon = document.querySelector(".question-number-icon");
+const questionSvg = document.querySelector(".question-svg");
+const questionSvgPath = document.getElementById("svgPath");
+const questionNumber = document.getElementById("questionNumber");
+const questionText = document.querySelector(".question-text");
+const textAll = document.getElementById("textAll");
+const myName = document.getElementById("name");
+const text2 = document.getElementById("text2");
+const text20 = document.getElementById("text20");
+const A = document.getElementById("A");
+const B = document.getElementById("B");
+const C = document.getElementById("C");
+const D = document.getElementById("D");
+
+const gameOverBtn = document.getElementById("gameOverBtn");
+const gameOverText = document.querySelector(".game-over-text");
+const gameOverBackground = document.querySelector(".game-over");
+
 const quizScore = document.querySelector(".quiz-score");
 const quizScoreResult = document.querySelector(".quiz-score-result");
 const youWinText = document.querySelector(".you-win-text");
@@ -27,25 +49,18 @@ const quizScoreText = document.querySelectorAll(".quiz-score-text");
 const scoreTitle = document.getElementById("scoreTitle");
 const score = document.getElementById("score");
 const rank = document.querySelector(".rank");
-const resetProgressBackground = document.querySelector(".reset-progress-background");
-const resetProgressWarning = document.querySelector(".reset-progress-warning");
-const resetProgressBtn = document.getElementById("resetProgressBtn");
-const cancelResetProgressBtn = document.getElementById("cancelResetProgressBtn");
-const confirmResetProgressBtn = document.getElementById("confirmResetProgressBtn");
 const theEndText = document.querySelector(".the-end-text");
 const exitScoreBtn = document.getElementById("exitScoreBtn");
-const questionNumberIcon = document.querySelector(".question-number-icon");
-const questionSvg = document.querySelector(".question-svg");
-const questionSvgPath = document.getElementById("svgPath");
 
 const star1 = document.querySelector(".star-1");
-const star3 = document.querySelector(".star-3");
-const video = document.getElementById("video");
-const videoBackground = document.querySelector(".video-background");
 
 const star2 = document.querySelector(".star-2");
 let star2TimeoutHandle = null;
 let clicks = 0;
+
+const star3 = document.querySelector(".star-3");
+const video = document.getElementById("video");
+const videoBackground = document.querySelector(".video-background");
 
 const miniLuffy = document.querySelector(".mini-luffy-container");
 const miniLuffyAudio = document.getElementById("miniLuffyAudio");
@@ -63,17 +78,6 @@ let minR = 0;
 let hR = 0;
 
 let bonusProgress = null;
-
-const questionNumber = document.getElementById("questionNumber");
-const questionText = document.querySelector(".question-text");
-const textAll = document.getElementById("textAll");
-const myName = document.getElementById("name");
-const text2 = document.getElementById("text2");
-const text20 = document.getElementById("text20");
-const A = document.getElementById("A");
-const B = document.getElementById("B");
-const C = document.getElementById("C");
-const D = document.getElementById("D");
 
 document.addEventListener("contextmenu", event => event.preventDefault());
 
@@ -205,6 +209,50 @@ function removeBonusAttributes() {
         gameOverBackground.classList.remove("bonus");
         resetInstructionBtn();
     }
+}
+
+function twoDigits(time) {
+    return time < 10 ? "0" + time : time;
+}
+
+function stopRecordTimer() {
+    const progress = parseInt(localStorage.getItem("progress"));
+
+    if (progress < 100) {
+        clearTimeout(recordTimerTimeoutHandle);
+
+        localStorage.setItem("recordTime", JSON.stringify({
+            "second": secR,
+            "minute": minR,
+            "hour": hR
+        }));
+    }
+}
+
+function startRecordTimer() {
+    const progress = parseInt(localStorage.getItem("progress"));
+
+    if (progress === 100) {
+        clearTimeout(recordTimerTimeoutHandle)
+    } else {
+        recordTimerTimeoutHandle = setInterval(() => {
+            secR++;
+            if (secR == 60) {
+                minR++;
+                secR = 0;
+                if (minR == 60) {
+                    hR++;
+                    minR = 0;
+                }
+            }
+        }, 1000);
+    }
+}
+
+function resetStar2Clicks() {
+    clicks = 0;
+    star2.style.setProperty("--vis", "hidden");
+    star2.style.setProperty("--op", 0);
 }
 
 function startQuiz() {
@@ -700,10 +748,6 @@ function playMiniLuffyAudio() {
     miniLuffyAudio.play();
 }
 
-function twoDigits(time) {
-    return time < 10 ? "0" + time : time;
-}
-
 function startTimer() {
     setInterval(() => {
         sec++;
@@ -717,46 +761,6 @@ function startTimer() {
         }
         timeProgress.textContent = `Tempo total de jogo: ${twoDigits(h)}:${twoDigits(min)}:${twoDigits(sec)}`;
     }, 1000);
-}
-
-function stopRecordTimer() {
-    const progress = parseInt(localStorage.getItem("progress"));
-
-    if (progress < 100) {
-        clearTimeout(recordTimerTimeoutHandle);
-
-        localStorage.setItem("recordTime", JSON.stringify({
-            "second": secR,
-            "minute": minR,
-            "hour": hR
-        }));
-    }
-}
-
-function startRecordTimer() {
-    const progress = parseInt(localStorage.getItem("progress"));
-
-    if (progress === 100) {
-        clearTimeout(recordTimerTimeoutHandle)
-    } else {
-        recordTimerTimeoutHandle = setInterval(() => {
-            secR++;
-            if (secR == 60) {
-                minR++;
-                secR = 0;
-                if (minR == 60) {
-                    hR++;
-                    minR = 0;
-                }
-            }
-        }, 1000);
-    }
-}
-
-function resetStar2Clicks() {
-    clicks = 0;
-    star2.style.setProperty("--vis", "hidden");
-    star2.style.setProperty("--op", 0);
 }
 
 function clickStar2() {
