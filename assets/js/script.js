@@ -437,11 +437,14 @@ function showScoreScreen() {
 }
 
 function countGameBeat() {
+    const progress = parseInt(localStorage.getItem("progress"));
     const gameBeat = parseInt(localStorage.getItem("gameBeat"));
     const gameBeatNumber = gameBeat + 1;
 
-    localStorage.setItem("gameBeat", gameBeatNumber);
-    gameBeatProgress.textContent = `Número de zeradas: ${gameBeatNumber}`;
+    if (progress < 100) {
+        localStorage.setItem("gameBeat", gameBeatNumber);
+        gameBeatProgress.textContent = `Número de zeradas: ${gameBeatNumber}`;
+    }
 }
 
 function showScoreScreenBonus() {
