@@ -55,6 +55,12 @@ let sec = 0;
 let min = 0;
 let h = 0;
 
+const recordTimeProgress = document.getElementById("recordTimeProgress");
+let recordTimerTimeoutHandle = null;
+let secR = 0;
+let minR = 0;
+let hR = 0;
+
 let bonusProgress = null;
 
 const questionNumber = document.getElementById("questionNumber");
@@ -82,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const progress = parseInt(localStorage.getItem("progress"));
     const isBonusActivated = localStorage.getItem("bonus");
     const timer = JSON.parse(localStorage.getItem("timer"));
+    const recordTime = JSON.parse(localStorage.getItem("recordTime"));
 
     if (progress >= 50 && progress < 90) {
         if (star1) star1.style.display = "block";
@@ -108,6 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (timer.minute) min = timer.minute;
         if (timer.hour) h = timer.hour;
         startTimer();
+    }
+
+    if (recordTime) {
+        if (recordTime.second) secR = recordTime.second;
+        if (recordTime.minute) minR = recordTime.minute;
+        if (recordTime.hour) hR = recordTime.hour;
     }
 });
 
@@ -176,6 +189,7 @@ function removeBonusAttributes() {
 }
 
 function startQuiz() {
+    startRecordTimer();
     removeBonusAttributes();
 
     clicks = 0;
@@ -203,12 +217,16 @@ function startQuiz() {
     text20.setAttribute("value", q1.questionNumber);
 
     const fail = localStorage.getItem("fail");
+    const progress = localStorage.getItem("progress");
+
     if (!fail) localStorage.setItem("fail", 0);
+    if (!progress) localStorage.setItem("progress", 0);
 }
 
 function startQuizBonus() {
     bonusProgress = 50;
 
+    startRecordTimer();
     addBonusAttributes();
 
     quizMenu.style.display = "none";
@@ -267,6 +285,7 @@ function showGameOverScreen() {
     }, 800);
 
     calculateFailuresNumber();
+    stopRecordTimer();
 }
 
 function showGameOverScreenBonus() {
@@ -284,6 +303,8 @@ function showGameOverScreenBonus() {
         gameOverBtn.style.visibility = "visible";
         gameOverBtn.classList.add("animate");
     }, 800);
+
+    stopRecordTimer();
 }
 
 function calculateScore() {
@@ -397,6 +418,7 @@ function showScoreScreen() {
 
     calculateScore();
     setFinalProgress();
+    stopRecordTimer();
 }
 
 function showScoreScreenBonus() {
@@ -416,6 +438,7 @@ function showScoreScreenBonus() {
 
     calculateScoreBonus();
     setFinalProgress();
+    stopRecordTimer();
 }
 
 function checkAnswer(qNumber, answer) {
@@ -554,6 +577,7 @@ function showProgressScreen() {
 
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const progress = parseInt(localStorage.getItem("progress"));
+    const recordTime = JSON.parse(localStorage.getItem("recordTime"));
 
     !progress ? percentProgress.textContent = "Progresso atual: 0%" : percentProgress.textContent = `Progresso atual: ${progress}%`;
 
@@ -582,6 +606,8 @@ function showProgressScreen() {
         titleProgress.textContent = "Título: ???";
         rankProgress.textContent = "Rank: ???";
     }
+
+    progress === 100 ? recordTimeProgress.textContent = `Tempo de speedrun: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo de speedrun: ???";
 }
 
 function exitProgressScreen() {
@@ -602,6 +628,8 @@ function resetProgress() {
     percentProgress.textContent = "Progresso atual: 0%";
     titleProgress.textContent = "Título: ???";
     rankProgress.textContent = "Rank: ???";
+    recordTimeProgress.textContent = "Tempo de speedrun: ???";
+    resetProgressBtn.style.display = "none";
 
     star1.style.display = "none";
     star2.style.display = "none";
@@ -609,6 +637,7 @@ function resetProgress() {
 
     localStorage.removeItem("progress");
     localStorage.removeItem("recordScore");
+    localStorage.removeItem("recordTime");
     localStorage.removeItem("fail");
 
     resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden";
@@ -652,6 +681,40 @@ function startTimer() {
         }
         timeProgress.textContent = `Tempo total de jogo: ${twoDigits(h)}:${twoDigits(min)}:${twoDigits(sec)}`;
     }, 1000);
+}
+
+function stopRecordTimer() {
+    const progress = parseInt(localStorage.getItem("progress"));
+
+    if (progress < 100) {
+        clearTimeout(recordTimerTimeoutHandle);
+
+        localStorage.setItem("recordTime", JSON.stringify({
+            "second": secR,
+            "minute": minR,
+            "hour": hR
+        }));
+    }
+}
+
+function startRecordTimer() {
+    const progress = parseInt(localStorage.getItem("progress"));
+
+    if (progress === 100) {
+        clearTimeout(recordTimerTimeoutHandle)
+    } else {
+        recordTimerTimeoutHandle = setInterval(() => {
+            secR++;
+            if (secR == 60) {
+                minR++;
+                secR = 0;
+                if (minR == 60) {
+                    hR++;
+                    minR = 0;
+                }
+            }
+        }, 1000);
+    }
 }
 
 function clickStar2() {
