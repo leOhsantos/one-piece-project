@@ -18,6 +18,7 @@ const quizProgress = document.querySelector(".quiz-progress");
 const percentProgress = document.getElementById("percentProgress");
 const titleProgress = document.getElementById("titleProgress");
 const rankProgress = document.getElementById("rankProgress");
+const beatGameProgress = document.getElementById("beatGameProgress");
 const countResetProgress = document.getElementById("countResetProgress");
 const quizScore = document.querySelector(".quiz-score");
 const quizScoreResult = document.querySelector(".quiz-score-result");
@@ -91,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isBonusActivated = localStorage.getItem("bonus");
     const timer = JSON.parse(localStorage.getItem("timer"));
     const recordTime = JSON.parse(localStorage.getItem("recordTime"));
+    const beatGame = parseInt(localStorage.getItem("beatGame"));
     const reset = parseInt(localStorage.getItem("reset"));
 
     //show the stars on menu
@@ -131,13 +133,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (recordTime.hour) hR = recordTime.hour;
     }
 
+    if (!progress) localStorage.setItem("progress", 0);
+    if (!beatGame) localStorage.setItem("beatGame", 0);
     if (!reset) localStorage.setItem("reset", 0);
+
     if (reset > 0 && progress > 0) resetProgressBtn.style.display = "flex";
 });
 
 function updateProgress(qNumber) {
     const currentProgress = questions[qNumber].questionNumber;
     const progress = localStorage.getItem("progress");
+    const reset = parseInt(localStorage.getItem("reset"));
 
     if (currentProgress > 50) {
         bonusProgress += 2;
@@ -146,7 +152,7 @@ function updateProgress(qNumber) {
         localStorage.setItem("progress", currentProgress - 1);
     }
 
-    if (currentProgress - 1 >= 1) resetProgressBtn.style.display = "flex";
+    if (currentProgress - 1 >= 1 && reset >= 1) resetProgressBtn.style.display = "flex";
 }
 
 function resetInstructionBtn() {
@@ -227,10 +233,7 @@ function startQuiz() {
     text20.setAttribute("value", q1.questionNumber);
 
     const fail = localStorage.getItem("fail");
-    const progress = localStorage.getItem("progress");
-
     if (!fail) localStorage.setItem("fail", 0);
-    if (!progress) localStorage.setItem("progress", 0);
 }
 
 function startQuizBonus() {
@@ -433,6 +436,14 @@ function showScoreScreen() {
     setFinalProgress();
 }
 
+function countBeatGame() {
+    const beatGame = parseInt(localStorage.getItem("beatGame"));
+    const beatGameNumber = beatGame + 1;
+
+    localStorage.setItem("beatGame", beatGameNumber);
+    beatGameProgress.textContent = `Número de zeradas: ${beatGameNumber}`;
+}
+
 function showScoreScreenBonus() {
     quiz.style.display = "none";
     quizScore.classList.add("bonus");
@@ -448,6 +459,7 @@ function showScoreScreenBonus() {
     star2.style.display = "block";
     localStorage.removeItem("bonus");
 
+    countBeatGame();
     stopRecordTimer();
     calculateScoreBonus();
     setFinalProgress();
@@ -586,6 +598,7 @@ function showProgressScreen() {
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const progress = parseInt(localStorage.getItem("progress"));
     const recordTime = JSON.parse(localStorage.getItem("recordTime"));
+    const beatGame = parseInt(localStorage.getItem("beatGame"));
     const reset = parseInt(localStorage.getItem("reset"));
 
     !progress ? percentProgress.textContent = "Progresso atual: 0%" : percentProgress.textContent = `Progresso atual: ${progress}%`;
@@ -622,7 +635,8 @@ function showProgressScreen() {
         progress === 100 ? recordTimeProgress.textContent = `Tempo de speedrun: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo de speedrun: ???";
     }
 
-    !reset ? countResetProgress.textContent = "Quantidade de resets: ???" : countResetProgress.textContent = `Quantidade de resets: ${reset}`;
+    !beatGame ? beatGameProgress.textContent = "Número de zeradas: ???" : beatGameProgress.textContent = `Número de zeradas: ${beatGame}`;
+    !reset ? countResetProgress.textContent = "" : countResetProgress.textContent = `**Número de resets: ${reset}**`;
 }
 
 function exitProgressScreen() {
@@ -638,7 +652,7 @@ function resetProgress() {
     percentProgress.textContent = "Progresso atual: 0%";
     titleProgress.textContent = "Título: ???";
     rankProgress.textContent = "Rank: ???";
-    countResetProgress.textContent = `Quantidade de resets: ${resetNumber}`;
+    countResetProgress.textContent = `*Número de resets: ${resetNumber}*`;
     resetProgressBtn.style.display = "none";
 
     recordTimeProgress.textContent = "Tempo de speedrun: ???";
