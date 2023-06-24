@@ -411,6 +411,7 @@ function setFinalProgress() {
         localStorage.setItem("progress", 50);
     } else if (progress === 98 && recordScore < 7) {
         localStorage.setItem("progress", 100);
+        resetProgressBtn.style.display = "flex";
     } else if (recordScore === 7) {
         localStorage.setItem("progress", 100);
         star3.style.display = "block";
