@@ -25,6 +25,11 @@ const quizScoreText = document.querySelectorAll(".quiz-score-text");
 const scoreTitle = document.getElementById("scoreTitle");
 const score = document.getElementById("score");
 const rank = document.querySelector(".rank");
+const resetProgressBackground = document.querySelector(".reset-progress-background");
+const resetProgressWarning = document.querySelector(".reset-progress-warning");
+const resetProgressBtn = document.getElementById("resetProgressBtn");
+const cancelResetProgressBtn = document.getElementById("cancelResetProgressBtn");
+const confirmResetProgressBtn = document.getElementById("confirmResetProgressBtn");
 const theEndText = document.querySelector(".the-end-text");
 const exitScoreBtn = document.getElementById("exitScoreBtn");
 const questionNumberIcon = document.querySelector(".question-number-icon");
@@ -87,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (star1) star1.style.display = "block";
         if (star2) star2.style.display = "block";
         if (star3) star3.style.display = "block";
+        resetProgressBtn.style.display = "flex";
     } else if (!progress) {
         if (star1) star1.style.display = "none";
         if (star2) star2.style.display = "none";
@@ -378,6 +384,7 @@ function setFinalProgress() {
     } else if (recordScore === 7) {
         localStorage.setItem("progress", 100);
         star3.style.display = "block";
+        resetProgressBtn.style.display = "flex";
     }
 }
 
@@ -543,7 +550,7 @@ function showProgressScreen() {
     star2.style.setProperty("--op", 0);
 
     quizMenu.style.display = "none";
-    quizProgress.style.display = "block";
+    quizProgress.style.display = "flex";
 
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const progress = parseInt(localStorage.getItem("progress"));
@@ -581,6 +588,30 @@ function exitProgressScreen() {
     quizProgress.style.display = "none";
     quizMenu.style.display = "block";
     resetInstructionBtn();
+}
+
+function showResetProgressWarning() {
+    resetProgressBackground.style.cssText = "opacity: 1; visibility: visible";
+}
+
+function exitResetProgressWarning() {
+    resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden";
+}
+
+function resetProgress() {
+    percentProgress.textContent = "Progresso atual: 0%";
+    titleProgress.textContent = "Título: ???";
+    rankProgress.textContent = "Rank: ???";
+
+    star1.style.display = "none";
+    star2.style.display = "none";
+    star3.style.display = "none";
+
+    localStorage.removeItem("progress");
+    localStorage.removeItem("recordScore");
+    localStorage.removeItem("fail");
+
+    resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden";
 }
 
 function activateBonus() {
@@ -676,14 +707,12 @@ function clickStar3() {
     onePieceOp.pause();
 
     videoBackground.style.cssText = "opacity: 1; visibility: visible";
-    video.style.display = "block";
     video.volume = 0.1;
     video.play();
 
     video.addEventListener("ended", () => {
         video.currentTime = 0;
         videoBackground.style.cssText = "opacity: 0; visibility: hidden";
-        video.style.display = "none";
     });
 }
 
@@ -691,6 +720,9 @@ if (startBtn) startBtn.addEventListener("click", startQuiz);
 if (instructionBtn) instructionBtn.addEventListener("click", toggleInstructionBonus);
 if (exitInstructionBtn) exitInstructionBtn.addEventListener("click", exitInstructionScreen);
 if (progressBtn) progressBtn.addEventListener("click", showProgressScreen);
+if (resetProgressBtn) resetProgressBtn.addEventListener("click", showResetProgressWarning);
+if (cancelResetProgressBtn) cancelResetProgressBtn.addEventListener("click", exitResetProgressWarning);
+if (confirmResetProgressBtn) confirmResetProgressBtn.addEventListener("click", resetProgress);
 if (exitProgressBtn) exitProgressBtn.addEventListener("click", exitProgressScreen);
 if (exitScoreBtn) exitScoreBtn.addEventListener("click", exitScoreScreen);
 if (gameOverBtn) gameOverBtn.addEventListener("click", restartQuiz);

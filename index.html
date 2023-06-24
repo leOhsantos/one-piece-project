@@ -54,17 +54,62 @@
 
     <section class="quiz-progress">
         <div class="quiz-progress-div">
-            <div class="progress-container">
-                <h1 class="progress-title">Estatísticas</h1>
-                <div class="progress-text-container">
-                    <p id="percentProgress" class="progress-text"></p>
-                    <p id="titleProgress" class="progress-text"></p>
-                    <p id="rankProgress" class="progress-text"></p>
-                    <p id="timeProgress" class="progress-text"></p>
+            <div>
+                <div class="progress-container">
+                    <h1 class="progress-title">Suas Estatísticas</h1>
+                    <div class="progress-text-container">
+                        <p id="percentProgress" class="progress-text"></p>
+                        <p id="titleProgress" class="progress-text"></p>
+                        <p id="rankProgress" class="progress-text"></p>
+                        <p id="timeProgress" class="progress-text"></p>
+                    </div>
+                </div>
+                <button id="exitProgressBtn">Continuar</button>
+            </div>
+            <div class="ranking-container">
+                <h1 class="ranking-title">Ranking</h1>
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th class="ranking-position">Posição</th>
+                            <th class="ranking-name">Nome de Usuário</th>
+                            <th class="ranking-rank">Rank</th>
+                            <th class="ranking-time">Tempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ranking-position"></td>
+                            <td class="ranking-name"></td>
+                            <td class="ranking-rank"></td>
+                            <td class="ranking-time"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="reset-progress-background">
+            <div class="reset-progress-warning">
+                <h1 class="reset-progress-title">Resetar Progresso</h1>
+                <p class="reset-progress-warning-text">Tem certeza de que deseja voltar do início? Seu progresso atual,
+                    título, rank e tempo recorde
+                    serão apagados. Possibilitando que você consiga atingir um novo tempo recorde ao fazer o 100% do
+                    jogo.</p>
+                <div class="warning-btn-container">
+                    <button id="cancelResetProgressBtn">Cancelar</button>
+                    <button id="confirmResetProgressBtn">Resetar</button>
                 </div>
             </div>
-            <button id="exitProgressBtn">Continuar</button>
         </div>
+
+        <button id="resetProgressBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                    d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
+            </svg>
+        </button>
     </section>
 
 
