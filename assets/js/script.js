@@ -85,17 +85,19 @@ window.addEventListener("beforeunload", () => {
 document.addEventListener("contextmenu", event => event.preventDefault());
 
 document.addEventListener("DOMContentLoaded", () => {
+    const recordScore = parseInt(localStorage.getItem("recordScore"));
     const progress = parseInt(localStorage.getItem("progress"));
     const isBonusActivated = localStorage.getItem("bonus");
     const timer = JSON.parse(localStorage.getItem("timer"));
     const recordTime = JSON.parse(localStorage.getItem("recordTime"));
 
-    if (progress >= 50 && progress < 90) {
+    if (progress >= 50 && progress < 100) {
         if (star1) star1.style.display = "block";
-    } else if (progress === 90) {
+    } else if (progress === 100 && recordScore < 7) {
         if (star1) star1.style.display = "block";
         if (star2) star2.style.display = "block";
-    } else if (progress === 100) {
+        resetProgressBtn.style.display = "flex";
+    } else if (recordScore === 7) {
         if (star1) star1.style.display = "block";
         if (star2) star2.style.display = "block";
         if (star3) star3.style.display = "block";
@@ -129,8 +131,8 @@ function updateProgress(qNumber) {
     const progress = localStorage.getItem("progress");
 
     if (currentProgress > 50) {
-        bonusProgress += 1.6;
-        if (bonusProgress > progress) localStorage.setItem("progress", Math.round(bonusProgress));
+        bonusProgress += 2;
+        if (bonusProgress > progress) localStorage.setItem("progress", bonusProgress);
     } else if (currentProgress > progress) {
         localStorage.setItem("progress", currentProgress - 1);
     }
@@ -351,6 +353,7 @@ function calculateScore() {
 function calculateScoreBonus() {
     const currentScore = parseInt(localStorage.getItem("currentScore"));
     const recordScore = parseInt(localStorage.getItem("recordScore"));
+    const progress = parseInt(localStorage.getItem("progress"));
 
     if (currentScore === 6) {
         const rankNumber = 7;
@@ -358,7 +361,7 @@ function calculateScoreBonus() {
         scoreTitle.textContent = "Rei dos piratas";
         rank.textContent = "S++";
 
-        if (rankNumber > recordScore) localStorage.setItem("recordScore", rankNumber);
+        if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
 
     } else if (currentScore === 5) {
         const rankNumber = 6;
@@ -366,7 +369,7 @@ function calculateScoreBonus() {
         scoreTitle.textContent = "Yonkou";
         rank.textContent = "S+";
 
-        if (rankNumber > recordScore) localStorage.setItem("recordScore", rankNumber);
+        if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
 
     } else if (currentScore === 3) {
         const rankNumber = 4;
@@ -374,7 +377,7 @@ function calculateScoreBonus() {
         scoreTitle.textContent = "Supernova";
         rank.textContent = "A+";
 
-        if (rankNumber > recordScore) localStorage.setItem("recordScore", rankNumber);
+        if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
 
     } else if (currentScore === 1) {
         const rankNumber = 2;
@@ -382,7 +385,7 @@ function calculateScoreBonus() {
         scoreTitle.textContent = "Pirata Comum";
         rank.textContent = "B+";
 
-        if (rankNumber > recordScore) localStorage.setItem("recordScore", rankNumber);
+        if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
     }
 
     currentScore === 6 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
@@ -397,8 +400,8 @@ function setFinalProgress() {
 
     if (progress === 49) {
         localStorage.setItem("progress", 50);
-    } else if (progress === 88 && recordScore < 7) {
-        localStorage.setItem("progress", 90);
+    } else if (progress === 98 && recordScore < 7) {
+        localStorage.setItem("progress", 100);
     } else if (recordScore === 7) {
         localStorage.setItem("progress", 100);
         star3.style.display = "block";
@@ -600,7 +603,11 @@ function showProgressScreen() {
         rankProgress.textContent = "Rank: ???";
     }
 
-    progress === 100 ? recordTimeProgress.textContent = `Tempo de speedrun: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo de speedrun: ???";
+    if (!recordTime) {
+        recordTimeProgress.textContent = "Tempo de speedrun: ???";
+    } else {
+        progress === 100 ? recordTimeProgress.textContent = `Tempo de speedrun: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo de speedrun: ???";
+    }
 }
 
 function exitProgressScreen() {
