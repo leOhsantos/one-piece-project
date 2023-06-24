@@ -189,12 +189,9 @@ function removeBonusAttributes() {
 }
 
 function startQuiz() {
+    resetStar2Clicks();
     startRecordTimer();
     removeBonusAttributes();
-
-    clicks = 0;
-    star2.style.setProperty("--vis", "hidden");
-    star2.style.setProperty("--op", 0);
 
     quizMenu.style.display = "none";
     jollyRogerLuffy.classList.add("block");
@@ -552,9 +549,7 @@ function exitScoreScreen() {
 }
 
 function toggleInstructionBonus() {
-    clicks = 0;
-    star2.style.setProperty("--vis", "hidden");
-    star2.style.setProperty("--op", 0);
+    resetStar2Clicks();
 
     quizMenu.style.display = "none";
 
@@ -568,9 +563,7 @@ function exitInstructionScreen() {
 }
 
 function showProgressScreen() {
-    clicks = 0;
-    star2.style.setProperty("--vis", "hidden");
-    star2.style.setProperty("--op", 0);
+    resetStar2Clicks();
 
     quizMenu.style.display = "none";
     quizProgress.style.display = "flex";
@@ -614,14 +607,6 @@ function exitProgressScreen() {
     quizProgress.style.display = "none";
     quizMenu.style.display = "block";
     resetInstructionBtn();
-}
-
-function showResetProgressWarning() {
-    resetProgressBackground.style.cssText = "opacity: 1; visibility: visible";
-}
-
-function exitResetProgressWarning() {
-    resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden";
 }
 
 function resetProgress() {
@@ -717,6 +702,12 @@ function startRecordTimer() {
     }
 }
 
+function resetStar2Clicks() {
+    clicks = 0;
+    star2.style.setProperty("--vis", "hidden");
+    star2.style.setProperty("--op", 0);
+}
+
 function clickStar2() {
     clearTimeout(timeoutHandle);
     clicks++;
@@ -783,8 +774,8 @@ if (startBtn) startBtn.addEventListener("click", startQuiz);
 if (instructionBtn) instructionBtn.addEventListener("click", toggleInstructionBonus);
 if (exitInstructionBtn) exitInstructionBtn.addEventListener("click", exitInstructionScreen);
 if (progressBtn) progressBtn.addEventListener("click", showProgressScreen);
-if (resetProgressBtn) resetProgressBtn.addEventListener("click", showResetProgressWarning);
-if (cancelResetProgressBtn) cancelResetProgressBtn.addEventListener("click", exitResetProgressWarning);
+if (resetProgressBtn) resetProgressBtn.addEventListener("click", () => resetProgressBackground.style.cssText = "opacity: 1; visibility: visible");
+if (cancelResetProgressBtn) cancelResetProgressBtn.addEventListener("click", () => resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden");
 if (confirmResetProgressBtn) confirmResetProgressBtn.addEventListener("click", resetProgress);
 if (exitProgressBtn) exitProgressBtn.addEventListener("click", exitProgressScreen);
 if (exitScoreBtn) exitScoreBtn.addEventListener("click", exitScoreScreen);
