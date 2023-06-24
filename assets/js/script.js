@@ -18,6 +18,7 @@ const quizProgress = document.querySelector(".quiz-progress");
 const percentProgress = document.getElementById("percentProgress");
 const titleProgress = document.getElementById("titleProgress");
 const rankProgress = document.getElementById("rankProgress");
+const countResetProgress = document.getElementById("countResetProgress");
 const quizScore = document.querySelector(".quiz-score");
 const quizScoreResult = document.querySelector(".quiz-score-result");
 const youWinText = document.querySelector(".you-win-text");
@@ -90,7 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const isBonusActivated = localStorage.getItem("bonus");
     const timer = JSON.parse(localStorage.getItem("timer"));
     const recordTime = JSON.parse(localStorage.getItem("recordTime"));
+    const reset = parseInt(localStorage.getItem("reset"));
 
+    //show the stars on menu
     if (progress >= 50 && progress < 100) {
         if (star1) star1.style.display = "block";
     } else if (progress === 100 && recordScore < 7) {
@@ -108,8 +111,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (star3) star3.style.display = "none";
     }
 
+    //verify if bonus is activated to activate star 1 secret click
     if (star1) isBonusActivated ? star1.style.pointerEvents = "all" : star1.style.pointerEvents = "none";
 
+    //start the timer when the page is loaded
     if (!timer) {
         startTimer();
     } else {
@@ -119,11 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
         startTimer();
     }
 
+    //get the last record time the player did
     if (recordTime) {
         if (recordTime.second) secR = recordTime.second;
         if (recordTime.minute) minR = recordTime.minute;
         if (recordTime.hour) hR = recordTime.hour;
     }
+
+    //set the standard reset counter
+    if (!reset) localStorage.setItem("reset", 0);
 });
 
 function updateProgress(qNumber) {
@@ -574,6 +583,7 @@ function showProgressScreen() {
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const progress = parseInt(localStorage.getItem("progress"));
     const recordTime = JSON.parse(localStorage.getItem("recordTime"));
+    const reset = parseInt(localStorage.getItem("reset"));
 
     !progress ? percentProgress.textContent = "Progresso atual: 0%" : percentProgress.textContent = `Progresso atual: ${progress}%`;
 
@@ -608,6 +618,8 @@ function showProgressScreen() {
     } else {
         progress === 100 ? recordTimeProgress.textContent = `Tempo de speedrun: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo de speedrun: ???";
     }
+
+    !reset ? countResetProgress.textContent = "Quantidade de resets: ???" : countResetProgress.textContent = `Quantidade de resets: ${reset}`;
 }
 
 function exitProgressScreen() {
@@ -617,22 +629,27 @@ function exitProgressScreen() {
 }
 
 function resetProgress() {
+    const reset = parseInt(localStorage.getItem("reset"));
+    const resetNumber = reset + 1;
+
     percentProgress.textContent = "Progresso atual: 0%";
     titleProgress.textContent = "Título: ???";
     rankProgress.textContent = "Rank: ???";
     recordTimeProgress.textContent = "Tempo de speedrun: ???";
+    countResetProgress.textContent = `Quantidade de resets: ${resetNumber}`;
     resetProgressBtn.style.display = "none";
 
     star1.style.display = "none";
     star2.style.display = "none";
     star3.style.display = "none";
 
+    resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden";
+
     localStorage.removeItem("progress");
     localStorage.removeItem("recordScore");
     localStorage.removeItem("recordTime");
     localStorage.removeItem("fail");
-
-    resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden";
+    localStorage.setItem("reset", resetNumber);
 }
 
 function activateBonus() {
