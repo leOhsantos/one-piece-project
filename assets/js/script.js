@@ -696,9 +696,9 @@ function showProgressScreen() {
     }
 
     if (!recordTime) {
-        recordTimeProgress.textContent = "Tempo de speedrun: ???";
+        recordTimeProgress.textContent = "Tempo decorrido: ???";
     } else {
-        progress === 100 ? recordTimeProgress.textContent = `Tempo de speedrun: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo de speedrun: ???";
+        progress === 100 ? recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo decorrido: ???";
     }
 
     !gameBeat ? gameBeatProgress.textContent = "Total de zeradas: ???" : gameBeatProgress.textContent = `Total de zeradas: ${gameBeat}`;
@@ -726,7 +726,7 @@ function resetProgress() {
     reset === 1 ? resetNumberProgress.textContent = `(Você já resetou ${reset} vez)` : resetNumberProgress.textContent = `(Você já resetou ${reset} vezes)`;
     resetProgressBtn.style.display = "none";
 
-    recordTimeProgress.textContent = "Tempo de speedrun: ???";
+    recordTimeProgress.textContent = "Tempo decorrido: ???";
     secR = 0;
     minR = 0;
     hR = 0;
