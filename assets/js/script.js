@@ -503,7 +503,7 @@ function countGameBeat() {
 
     if (progress < 100) {
         localStorage.setItem("gameBeat", gameBeatNumber);
-        gameBeatProgress.textContent = `Número de zeradas: ${gameBeatNumber}`;
+        gameBeatProgress.textContent = `Total de zeradas: ${gameBeatNumber}`;
     }
 }
 
@@ -701,7 +701,7 @@ function showProgressScreen() {
         progress === 100 ? recordTimeProgress.textContent = `Tempo de speedrun: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo de speedrun: ???";
     }
 
-    !gameBeat ? gameBeatProgress.textContent = "Número de zeradas: ???" : gameBeatProgress.textContent = `Número de zeradas: ${gameBeat}`;
+    !gameBeat ? gameBeatProgress.textContent = "Total de zeradas: ???" : gameBeatProgress.textContent = `Total de zeradas: ${gameBeat}`;
 
     if (!reset) {
         resetNumberProgress.textContent = "";
