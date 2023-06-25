@@ -12,7 +12,7 @@ const percentProgress = document.getElementById("percentProgress");
 const titleProgress = document.getElementById("titleProgress");
 const rankProgress = document.getElementById("rankProgress");
 const gameBeatProgress = document.getElementById("gameBeatProgress");
-const countResetProgress = document.getElementById("countResetProgress");
+const resetNumberProgress = document.getElementById("resetNumberProgress");
 const resetProgressBackground = document.querySelector(".reset-progress-background");
 const resetProgressWarning = document.querySelector(".reset-progress-warning");
 const resetProgressBtn = document.getElementById("resetProgressBtn");
@@ -325,7 +325,7 @@ function nextQuestion(qNumber) {
     updateProgress(qNumber);
 }
 
-function calculateFailuresNumber() {
+function countFailures() {
     const fail = parseInt(localStorage.getItem("fail"));
     const failNumber = fail + 1;
 
@@ -345,7 +345,7 @@ function showGameOverScreen() {
         gameOverBtn.classList.add("animate");
     }, 800);
 
-    calculateFailuresNumber();
+    countFailures();
     stopRecordTimer();
 }
 
@@ -689,9 +689,9 @@ function showProgressScreen() {
     !gameBeat ? gameBeatProgress.textContent = "Número de zeradas: ???" : gameBeatProgress.textContent = `Número de zeradas: ${gameBeat}`;
 
     if (!reset) {
-        countResetProgress.textContent = "";
+        resetNumberProgress.textContent = "";
     } else {
-        reset === 1 ? countResetProgress.textContent = `(Você já resetou ${reset} vez)` : countResetProgress.textContent = `(Você já resetou ${reset} vezes)`;
+        reset === 1 ? resetNumberProgress.textContent = `(Você já resetou ${reset} vez)` : resetNumberProgress.textContent = `(Você já resetou ${reset} vezes)`;
     }
 }
 
@@ -708,7 +708,7 @@ function resetProgress() {
     percentProgress.textContent = "Progresso atual: 0%";
     titleProgress.textContent = "Título: ???";
     rankProgress.textContent = "Rank: ???";
-    reset === 1 ? countResetProgress.textContent = `(Você já resetou ${reset} vez)` : countResetProgress.textContent = `(Você já resetou ${reset} vezes)`;
+    reset === 1 ? resetNumberProgress.textContent = `(Você já resetou ${reset} vez)` : resetNumberProgress.textContent = `(Você já resetou ${reset} vezes)`;
     resetProgressBtn.style.display = "none";
 
     recordTimeProgress.textContent = "Tempo de speedrun: ???";
