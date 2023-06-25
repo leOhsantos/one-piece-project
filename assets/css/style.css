@@ -103,7 +103,7 @@ button:focus {
     margin-top: 75px;
     cursor: pointer;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
     font-family: Brush;
     font-weight: 700;
     font-size: 2rem;
@@ -115,7 +115,7 @@ button:focus {
 
 #gameOverBtn.bonus,
 #exitScoreBtn.bonus {
-    border: 7px solid #1a1a1a;
+    border: 5px solid #1a1a1a;
     color: #1a1a1a;
     background-color: #6a6a6a;
 }
@@ -156,7 +156,7 @@ button:focus {
     margin-top: 50px;
     cursor: pointer;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
     font-family: Brush;
     font-weight: 700;
     font-size: 2rem;
@@ -291,18 +291,18 @@ button:focus {
 }
 
 .instruction-container {
-    width: 700px;
+    width: 660px;
     padding: 6px 8px 6px 8px;
     background-color: #9A6601;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
 }
 
 .instruction-text {
     padding: 24px;
     font-family: Brush;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     letter-spacing: 2px;
     word-spacing: 3px;
     text-align: justify;
@@ -336,7 +336,7 @@ button:focus {
     margin: 0 16px;
     background-color: #9A6601;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
 }
 
 .progress-container {
@@ -345,7 +345,7 @@ button:focus {
     margin: 0 16px;
     background-color: #9A6601;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
 }
 
 .ranking-title,
@@ -362,14 +362,14 @@ button:focus {
 }
 
 .progress-text-container {
-    padding: 20px 24px 12px 24px;
+    padding: 16px 24px 12px 24px;
 }
 
 .progress-text {
     padding: 12px;
     font-family: Brush;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     letter-spacing: 2px;
     word-spacing: 2px;
     text-align: left;
@@ -383,7 +383,7 @@ button:focus {
     margin-top: 24px;
     cursor: pointer;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
     font-family: Brush;
     font-weight: 700;
     font-size: 2rem;
@@ -494,7 +494,7 @@ button:focus {
     margin: 0 84px 0 84px;
     cursor: pointer;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
     font-family: Brush;
     font-weight: 700;
     font-size: 2rem;
@@ -551,7 +551,7 @@ button:focus {
 }
 
 .answer.bonus {
-    border: 7px solid #1a1a1a;
+    border: 5px solid #1a1a1a;
     color: #1a1a1a;
     background-color: #6a6a6a;
 }
@@ -592,12 +592,12 @@ button:focus {
     padding: 6px 8px 6px 8px;
     background-color: #9A6601;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
 }
 
 .quiz-score-result.bonus {
     background-color: #6a6a6a;
-    border: 7px solid #1a1a1a;
+    border: 5px solid #1a1a1a;
 }
 
 .you-win-text {
@@ -689,7 +689,7 @@ button:focus {
 
 .ranking-table {
     width: 100%;
-    height: 352px;
+    height: 360px;
     margin: 24px 0 20px 0;
     font-family: Brush;
     display: flex;
@@ -763,7 +763,7 @@ button:focus {
     margin: 0 16px;
     background-color: #9A6601;
     border-radius: 6px;
-    border: 7px solid #983400;
+    border: 5px solid #983400;
 }
 
 .reset-progress-warning-text {
