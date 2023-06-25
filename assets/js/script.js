@@ -381,7 +381,7 @@ function calculateScore() {
         if (rankNumber > recordScore || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
 
-    } else if (fail > 0 && fail <= 10) {
+    } else if (fail > 0 && fail <= 5) {
         const rankNumber = 5;
 
         scoreTitle.textContent = "Yonkou";
@@ -390,7 +390,7 @@ function calculateScore() {
         if (rankNumber > recordScore || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
 
-    } else if (fail > 10 && fail <= 40) {
+    } else if (fail > 5 && fail <= 15) {
         const rankNumber = 3;
 
         scoreTitle.textContent = "Supernova";
@@ -399,7 +399,7 @@ function calculateScore() {
         if (rankNumber > recordScore || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
 
-    } else if (fail > 40) {
+    } else if (fail > 15) {
         const rankNumber = 1;
 
         scoreTitle.textContent = "Pirata Comum";
