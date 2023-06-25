@@ -47,6 +47,7 @@ const quizScoreResult = document.querySelector(".quiz-score-result");
 const youWinText = document.querySelector(".you-win-text");
 const quizScoreText = document.querySelectorAll(".quiz-score-text");
 const scoreTitle = document.getElementById("scoreTitle");
+const time = document.getElementById("time");
 const score = document.getElementById("score");
 const rank = document.querySelector(".rank");
 const theEndText = document.querySelector(".the-end-text");
@@ -451,6 +452,7 @@ function calculateScoreBonus() {
     }
 
     currentScore === 6 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
+    progress < 100 ? time.textContent = `Tempo: ${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(sec)}` : time.style.display = "none";
 
     localStorage.removeItem("currentScore");
     localStorage.removeItem("fail");
@@ -473,6 +475,7 @@ function setFinalProgress() {
 }
 
 function showScoreScreen() {
+    time.style.display = "none";
     quiz.style.display = "none";
     quizScore.style.display = "block";
     star1.style.display = "block";
@@ -501,6 +504,7 @@ function showScoreScreenBonus() {
     quizScoreResult.classList.add("bonus");
     youWinText.classList.add("bonus");
     quizScoreText.forEach((text) => text.classList.add("bonus"));
+    time.style.display = "block";
     rank.classList.add("bonus");
     exitScoreBtn.classList.add("bonus");
     theEndText.classList.add("bonus");

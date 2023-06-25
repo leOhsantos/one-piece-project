@@ -601,7 +601,7 @@ button:focus {
 }
 
 .you-win-text {
-    padding: 24px;
+    padding: 20px;
     font-family: Brush;
     font-weight: 700;
     font-size: 3rem;
@@ -619,7 +619,7 @@ button:focus {
 
 .rank-container {
     width: 100%;
-    padding-bottom: 24px;
+    padding-bottom: 20px;
     display: flex;
 }
 
