@@ -50,6 +50,7 @@ const scoreTitle = document.getElementById("scoreTitle");
 const time = document.getElementById("time");
 const score = document.getElementById("score");
 const rank = document.querySelector(".rank");
+const warningScoreText = document.querySelector(".warning-score-text");
 const theEndText = document.querySelector(".the-end-text");
 const exitScoreBtn = document.getElementById("exitScoreBtn");
 
@@ -132,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //get the last record time the player did
-    if (recordTime) {
+    if (recordTime && progress < 100) {
         if (recordTime.second) secR = recordTime.second;
         if (recordTime.minute) minR = recordTime.minute;
         if (recordTime.hour) hR = recordTime.hour;
@@ -231,23 +232,19 @@ function stopRecordTimer() {
 }
 
 function startRecordTimer() {
-    const progress = parseInt(localStorage.getItem("progress"));
+    if (secR === 0) secR = 1;
 
-    if (progress === 100) {
-        clearTimeout(recordTimerTimeoutHandle)
-    } else {
-        recordTimerTimeoutHandle = setInterval(() => {
-            secR++;
-            if (secR == 60) {
-                minR++;
-                secR = 0;
-                if (minR == 60) {
-                    hR++;
-                    minR = 0;
-                }
+    recordTimerTimeoutHandle = setInterval(() => {
+        secR++;
+        if (secR == 60) {
+            minR++;
+            secR = 0;
+            if (minR == 60) {
+                hR++;
+                minR = 0;
             }
-        }, 1000);
-    }
+        }
+    }, 1000);
 }
 
 function resetStar2Clicks() {
@@ -420,7 +417,6 @@ function calculateScoreBonus() {
     const currentScore = parseInt(localStorage.getItem("currentScore"));
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const progress = parseInt(localStorage.getItem("progress"));
-    const recordTime = JSON.parse(localStorage.getItem("recordTime"));
 
     if (currentScore === 6) {
         const rankNumber = 7;
@@ -456,11 +452,14 @@ function calculateScoreBonus() {
     }
 
     currentScore === 6 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
-    progress < 100 ? time.textContent = `Tempo: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : time.style.display = "none";
+    time.textContent = `Tempo: ${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(secR)}`;
 
     localStorage.removeItem("bonus");
     localStorage.removeItem("currentScore");
     localStorage.removeItem("fail");
+    secR = 0;
+    minR = 0;
+    hR = 0;
 }
 
 function setFinalProgress() {
@@ -479,6 +478,11 @@ function setFinalProgress() {
     }
 }
 
+function showWarningScoreText() {
+    const progress = parseInt(localStorage.getItem("progress"));
+    progress === 100 ? warningScoreText.style.display = "block" : warningScoreText.style.display = "none";
+}
+
 function showScoreScreen() {
     time.style.display = "none";
     quiz.style.display = "none";
@@ -486,6 +490,7 @@ function showScoreScreen() {
     star1.style.display = "block";
     star1.style.pointerEvents = "all";
 
+    showWarningScoreText();
     stopRecordTimer();
     calculateScore();
     setFinalProgress();
@@ -510,6 +515,7 @@ function showScoreScreenBonus() {
     quizScoreText.forEach((text) => text.classList.add("bonus"));
     time.style.display = "block";
     rank.classList.add("bonus");
+    warningScoreText.classList.add("bonus");
     exitScoreBtn.classList.add("bonus");
     theEndText.classList.add("bonus");
     theEndText.textContent = "The End.";
@@ -517,6 +523,7 @@ function showScoreScreenBonus() {
     star1.style.pointerEvents = "none";
     star2.style.display = "block";
 
+    showWarningScoreText();
     countGameBeat();
     stopRecordTimer();
     calculateScoreBonus();
@@ -626,6 +633,7 @@ function exitScoreScreen() {
         youWinText.classList.remove("bonus");
         quizScoreText.forEach((text) => text.classList.remove("bonus"));
         rank.classList.remove("bonus");
+        warningScoreText.classList.remove("bonus");
         exitScoreBtn.classList.remove("bonus");
         theEndText.classList.remove("bonus");
         theEndText.textContent = "The End?";

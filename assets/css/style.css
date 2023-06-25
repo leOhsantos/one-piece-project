@@ -593,6 +593,7 @@ button:focus {
     background-color: #9A6601;
     border-radius: 6px;
     border: 5px solid #983400;
+    position: relative;
 }
 
 .quiz-score-result.bonus {
@@ -613,7 +614,8 @@ button:focus {
 
 .you-win-text.bonus,
 .rank.bonus,
-.quiz-score-text.bonus {
+.quiz-score-text.bonus,
+.warning-score-text.bonus {
     color: #1a1a1a;
 }
 
@@ -648,6 +650,19 @@ button:focus {
     text-align: center;
     letter-spacing: 2px;
     word-spacing: 1px;
+}
+
+.warning-score-text {
+    font-family: Brush;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 10px;
+    display: none;
 }
 
 .the-end-text {
