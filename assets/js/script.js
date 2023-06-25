@@ -687,7 +687,12 @@ function showProgressScreen() {
     }
 
     !gameBeat ? gameBeatProgress.textContent = "Número de zeradas: ???" : gameBeatProgress.textContent = `Número de zeradas: ${gameBeat}`;
-    !reset ? countResetProgress.textContent = "" : countResetProgress.textContent = `**Número de resets: ${reset}**`;
+
+    if (!reset) {
+        countResetProgress.textContent = "";
+    } else {
+        reset === 1 ? countResetProgress.textContent = `(Você já resetou ${reset} vez)` : countResetProgress.textContent = `(Você já resetou ${reset} vezes)`;
+    }
 }
 
 function exitProgressScreen() {
@@ -703,7 +708,7 @@ function resetProgress() {
     percentProgress.textContent = "Progresso atual: 0%";
     titleProgress.textContent = "Título: ???";
     rankProgress.textContent = "Rank: ???";
-    countResetProgress.textContent = `*Número de resets: ${resetNumber}*`;
+    reset === 1 ? countResetProgress.textContent = `(Você já resetou ${reset} vez)` : countResetProgress.textContent = `(Você já resetou ${reset} vezes)`;
     resetProgressBtn.style.display = "none";
 
     recordTimeProgress.textContent = "Tempo de speedrun: ???";
