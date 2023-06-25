@@ -217,11 +217,11 @@ function twoDigits(time) {
 }
 
 function stopRecordTimer() {
+    clearTimeout(recordTimerTimeoutHandle);
+
     const progress = parseInt(localStorage.getItem("progress"));
 
     if (progress < 100) {
-        clearTimeout(recordTimerTimeoutHandle);
-
         localStorage.setItem("recordTime", JSON.stringify({
             "second": secR,
             "minute": minR,
@@ -370,6 +370,7 @@ function showGameOverScreenBonus() {
 }
 
 function calculateScore() {
+    const progress = parseInt(localStorage.getItem("progress"));
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const fail = parseInt(localStorage.getItem("fail"));
 
@@ -379,7 +380,7 @@ function calculateScore() {
         scoreTitle.textContent = "Yonkou";
         rank.textContent = "S+";
 
-        if (rankNumber > recordScore || !recordScore) localStorage.setItem("recordScore", rankNumber);
+        if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
 
     } else if (fail > 0 && fail <= 5) {
@@ -388,7 +389,7 @@ function calculateScore() {
         scoreTitle.textContent = "Yonkou";
         rank.textContent = "S";
 
-        if (rankNumber > recordScore || !recordScore) localStorage.setItem("recordScore", rankNumber);
+        if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
 
     } else if (fail > 5 && fail <= 15) {
@@ -397,7 +398,7 @@ function calculateScore() {
         scoreTitle.textContent = "Supernova";
         rank.textContent = "A";
 
-        if (rankNumber > recordScore || !recordScore) localStorage.setItem("recordScore", rankNumber);
+        if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
 
     } else if (fail > 15) {
@@ -406,17 +407,20 @@ function calculateScore() {
         scoreTitle.textContent = "Pirata Comum";
         rank.textContent = "B";
 
-        if (rankNumber > recordScore || !recordScore) localStorage.setItem("recordScore", rankNumber);
+        if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
     }
 
     fail === 0 ? score.textContent = "Nenhuma falha" : score.textContent = `Falhas totais: ${fail}`;
+
+    localStorage.setItem("bonus", true);
 }
 
 function calculateScoreBonus() {
     const currentScore = parseInt(localStorage.getItem("currentScore"));
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const progress = parseInt(localStorage.getItem("progress"));
+    const recordTime = JSON.parse(localStorage.getItem("recordTime"));
 
     if (currentScore === 6) {
         const rankNumber = 7;
@@ -452,8 +456,9 @@ function calculateScoreBonus() {
     }
 
     currentScore === 6 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
-    progress < 100 ? time.textContent = `Tempo: ${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(sec)}` : time.style.display = "none";
+    progress < 100 ? time.textContent = `Tempo: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : time.style.display = "none";
 
+    localStorage.removeItem("bonus");
     localStorage.removeItem("currentScore");
     localStorage.removeItem("fail");
 }
@@ -480,7 +485,6 @@ function showScoreScreen() {
     quizScore.style.display = "block";
     star1.style.display = "block";
     star1.style.pointerEvents = "all";
-    localStorage.setItem("bonus", true);
 
     stopRecordTimer();
     calculateScore();
@@ -512,7 +516,6 @@ function showScoreScreenBonus() {
     quizScore.style.display = "block";
     star1.style.pointerEvents = "none";
     star2.style.display = "block";
-    localStorage.removeItem("bonus");
 
     countGameBeat();
     stopRecordTimer();
