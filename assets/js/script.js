@@ -75,6 +75,7 @@ let h = 0;
 
 const recordTimeProgress = document.getElementById("recordTimeProgress");
 let recordTimerTimeoutHandle = null;
+let milR = 0;
 let secR = 0;
 let minR = 0;
 let hR = 0;
@@ -224,6 +225,7 @@ function stopRecordTimer() {
 
     if (progress < 100) {
         localStorage.setItem("recordTime", JSON.stringify({
+            "millesimal": milR,
             "second": secR,
             "minute": minR,
             "hour": hR
@@ -235,16 +237,20 @@ function startRecordTimer() {
     if (secR === 0) secR = 1;
 
     recordTimerTimeoutHandle = setInterval(() => {
-        secR++;
-        if (secR == 60) {
-            minR++;
-            secR = 0;
-            if (minR == 60) {
-                hR++;
-                minR = 0;
+        milR++;
+        if (milR == 99) {
+            secR++;
+            milR = 0;
+            if (secR == 60) {
+                minR++;
+                secR = 0;
+                if (minR == 60) {
+                    hR++;
+                    minR = 0;
+                }
             }
         }
-    }, 1000);
+    }, 10);
 }
 
 function resetStar2Clicks() {
@@ -445,7 +451,16 @@ function calculateScoreBonus() {
     }
 
     rankNumber === 7 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
-    time.textContent = `Tempo: ${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(secR)}`;
+
+    //format time display
+    if (minR < 1) {
+        time.textContent = `Tempo: ${twoDigits(secR)}.${parseInt(milR.toString().substring(0, 1))}`;
+    } else if (minR >= 1 && hR < 1) {
+        time.textContent = `Tempo: ${minR}:${twoDigits(secR)}`;
+    } else if (hR >= 1) {
+        time.textContent = `Tempo: ${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(secR)}`;
+    }
+
     secR = 0;
     minR = 0;
     hR = 0;
@@ -691,7 +706,14 @@ function showProgressScreen() {
     if (!recordTime) {
         recordTimeProgress.textContent = "Tempo decorrido: ???";
     } else {
-        progress === 100 ? recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo decorrido: ???";
+        //format time display
+        if (recordTime.minute < 1) {
+            progress === 100 ? recordTimeProgress.textContent = `Tempo: ${twoDigits(recordTime.second)}.${parseInt(recordTime.millesimal.toString().substring(0, 1))}` : recordTimeProgress.textContent = "Tempo decorrido: ???";
+        } else if (recordTime.minute >= 1 && recordTime.hour < 1) {
+            progress === 100 ? recordTimeProgress.textContent = `Tempo decorrido: ${recordTime.minute}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo decorrido: ???";
+        } else if (recordTime.hour >= 1) {
+            progress === 100 ? recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo decorrido: ???";
+        }
     }
 
     !gameBeat ? gameBeatProgress.textContent = "Total de zeradas: ???" : gameBeatProgress.textContent = `Total de zeradas: ${gameBeat}`;
