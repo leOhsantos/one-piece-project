@@ -370,18 +370,10 @@ function calculateScore() {
     const progress = parseInt(localStorage.getItem("progress"));
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const fail = parseInt(localStorage.getItem("fail"));
+    let rankNumber = 0;
 
-    if (fail === 0) {
-        const rankNumber = 6;
-
-        scoreTitle.textContent = "Yonkou";
-        rank.textContent = "S+";
-
-        if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
-        localStorage.setItem("currentScore", rankNumber);
-
-    } else if (fail > 0 && fail <= 5) {
-        const rankNumber = 5;
+    if (fail >= 0 && fail < 5) {
+        rankNumber = 5;
 
         scoreTitle.textContent = "Yonkou";
         rank.textContent = "S";
@@ -389,8 +381,8 @@ function calculateScore() {
         if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
 
-    } else if (fail > 5 && fail <= 15) {
-        const rankNumber = 3;
+    } else if (fail >= 5 && fail <= 10) {
+        rankNumber = 3;
 
         scoreTitle.textContent = "Supernova";
         rank.textContent = "A";
@@ -398,8 +390,8 @@ function calculateScore() {
         if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
         localStorage.setItem("currentScore", rankNumber);
 
-    } else if (fail > 15) {
-        const rankNumber = 1;
+    } else if (fail > 10) {
+        rankNumber = 1;
 
         scoreTitle.textContent = "Pirata Comum";
         rank.textContent = "B";
@@ -417,17 +409,18 @@ function calculateScoreBonus() {
     const currentScore = parseInt(localStorage.getItem("currentScore"));
     const recordScore = parseInt(localStorage.getItem("recordScore"));
     const progress = parseInt(localStorage.getItem("progress"));
+    let rankNumber = 0;
 
-    if (currentScore === 6) {
-        const rankNumber = 7;
+    if (currentScore === 5 && minR < 1) {
+        rankNumber = 7;
 
         scoreTitle.textContent = "Rei dos piratas";
         rank.textContent = "S++";
 
         if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
 
-    } else if (currentScore === 5) {
-        const rankNumber = 6;
+    } else if (currentScore === 5 && minR >= 1) {
+        rankNumber = 6;
 
         scoreTitle.textContent = "Yonkou";
         rank.textContent = "S+";
@@ -435,7 +428,7 @@ function calculateScoreBonus() {
         if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
 
     } else if (currentScore === 3) {
-        const rankNumber = 4;
+        rankNumber = 4;
 
         scoreTitle.textContent = "Supernova";
         rank.textContent = "A+";
@@ -443,7 +436,7 @@ function calculateScoreBonus() {
         if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
 
     } else if (currentScore === 1) {
-        const rankNumber = 2;
+        rankNumber = 2;
 
         scoreTitle.textContent = "Pirata Comum";
         rank.textContent = "B+";
@@ -451,15 +444,15 @@ function calculateScoreBonus() {
         if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
     }
 
-    currentScore === 6 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
+    rankNumber === 7 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
     time.textContent = `Tempo: ${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(secR)}`;
+    secR = 0;
+    minR = 0;
+    hR = 0;
 
     localStorage.removeItem("bonus");
     localStorage.removeItem("currentScore");
     localStorage.removeItem("fail");
-    secR = 0;
-    minR = 0;
-    hR = 0;
 }
 
 function setFinalProgress() {
