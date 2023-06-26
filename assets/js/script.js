@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //get the last record time the player did
     if (recordTime && progress < 100) {
+        if (recordTime.millesimal) milR = recordTime.millesimal;
         if (recordTime.second) secR = recordTime.second;
         if (recordTime.minute) minR = recordTime.minute;
         if (recordTime.hour) hR = recordTime.hour;
@@ -461,6 +462,8 @@ function calculateScoreBonus() {
         time.textContent = `Tempo: ${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(secR)}`;
     }
 
+    //reset record timer
+    milR = 0;
     secR = 0;
     minR = 0;
     hR = 0;
@@ -742,6 +745,7 @@ function resetProgress() {
     resetProgressBtn.style.display = "none";
 
     recordTimeProgress.textContent = "Tempo decorrido: ???";
+    milR = 0
     secR = 0;
     minR = 0;
     hR = 0;
