@@ -255,6 +255,7 @@ function startRecordTimer() {
 
 function resetStar2Clicks() {
     clicks = 0;
+    secretWord = "";
     star2.style.setProperty("--vis", "hidden");
     star2.style.setProperty("--op", 0);
 }
@@ -749,6 +750,7 @@ function resetProgress() {
     minR = 0;
     hR = 0;
 
+    resetStar2Clicks();
     onePieceOp.pause();
     onePieceOp.currentTime = 0;
 
@@ -878,7 +880,10 @@ function clickStar2() {
 }
 
 function clickStar3() {
+    resetStar2Clicks();
+
     onePieceOp.pause();
+    onePieceOp.currentTime = 0;
 
     videoBackground.style.cssText = "opacity: 1; visibility: visible";
     video.volume = 0.1;
