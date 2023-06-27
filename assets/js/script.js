@@ -842,21 +842,21 @@ function clickStar2() {
             let key = event.key;
 
             if ((key === "O" && secretWord === "") || (key === "o" && secretWord === "")) {
-                secretWord = secretWord + key;
+                secretWord += key;
             } else if ((key === "N" && secretWord.substring(0) === "O") || (key === "n" && secretWord.substring(0) === "o")) {
-                secretWord = secretWord + key;
+                secretWord += key;
             } else if ((key === "E" && secretWord.substring(1) === "N") || (key === "e" && secretWord.substring(1) === "n")) {
-                secretWord = secretWord + key;
+                secretWord += key;
             } else if ((key === "P" && secretWord.substring(2) === "E") || (key === "p" && secretWord.substring(2) === "e")) {
-                secretWord = secretWord + key;
+                secretWord += key;
             } else if ((key === "I" && secretWord.substring(3) === "P") || (key === "i" && secretWord.substring(3) === "p")) {
-                secretWord = secretWord + key;
+                secretWord += key;
             } else if ((key === "E" && secretWord.substring(4) === "I") || (key === "e" && secretWord.substring(4) === "i")) {
-                secretWord = secretWord + key;
+                secretWord += key;
             } else if ((key === "C" && secretWord.substring(5) === "E") || (key === "c" && secretWord.substring(5) === "e")) {
-                secretWord = secretWord + key;
+                secretWord += key;
             } else if ((key === "E" && secretWord.substring(6) === "C") || (key === "e" && secretWord.substring(6) === "c")) {
-                secretWord = secretWord + key;
+                secretWord += key;
             }
 
             if (secretWord === "ONEPIECE" || secretWord === "onepiece") {
