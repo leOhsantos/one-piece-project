@@ -704,16 +704,16 @@ function showProgressScreen() {
         rankProgress.textContent = "Rank: ???";
     }
 
-    if (!recordTime) {
+    if (!recordTime || progress < 100) {
         recordTimeProgress.textContent = "Tempo decorrido: ???";
     } else {
         //format time display
         if (recordTime.minute < 1) {
-            progress === 100 ? recordTimeProgress.textContent = `Tempo: ${twoDigits(recordTime.second)}.${parseInt(recordTime.millesimal.toString().substring(0, 1))}` : recordTimeProgress.textContent = "Tempo decorrido: ???";
+            recordTimeProgress.textContent = `Tempo: ${twoDigits(recordTime.second)}.${parseInt(recordTime.millesimal.toString().substring(0, 1))}`;
         } else if (recordTime.minute >= 1 && recordTime.hour < 1) {
-            progress === 100 ? recordTimeProgress.textContent = `Tempo decorrido: ${recordTime.minute}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo decorrido: ???";
+            recordTimeProgress.textContent = `Tempo decorrido: ${recordTime.minute}:${twoDigits(recordTime.second)}`;
         } else if (recordTime.hour >= 1) {
-            progress === 100 ? recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}` : recordTimeProgress.textContent = "Tempo decorrido: ???";
+            recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}`;
         }
     }
 
