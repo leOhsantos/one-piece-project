@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //get the last record time the player did
     if (recordTime && progress < 100) {
-        if (recordTime.millesimal) milR = recordTime.millesimal;
+        if (recordTime.millisecond) milR = recordTime.millisecond;
         if (recordTime.second) secR = recordTime.second;
         if (recordTime.minute) minR = recordTime.minute;
         if (recordTime.hour) hR = recordTime.hour;
@@ -226,7 +226,7 @@ function stopRecordTimer() {
 
     if (progress < 100 || !progress) {
         localStorage.setItem("recordTime", JSON.stringify({
-            "millesimal": milR,
+            "millisecond": milR,
             "second": secR,
             "minute": minR,
             "hour": hR
@@ -709,7 +709,7 @@ function showProgressScreen() {
     } else {
         //format time display
         if (recordTime.minute < 1) {
-            recordTimeProgress.textContent = `Tempo: ${twoDigits(recordTime.second)}.${parseInt(recordTime.millesimal.toString().substring(0, 1))}`;
+            recordTimeProgress.textContent = `Tempo: ${twoDigits(recordTime.second)}.${parseInt(recordTime.millisecond.toString().substring(0, 1))}`;
         } else if (recordTime.minute >= 1 && recordTime.hour < 1) {
             recordTimeProgress.textContent = `Tempo decorrido: ${recordTime.minute}:${twoDigits(recordTime.second)}`;
         } else if (recordTime.hour >= 1) {
