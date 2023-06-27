@@ -224,7 +224,7 @@ function stopRecordTimer() {
 
     const progress = parseInt(localStorage.getItem("progress"));
 
-    if (progress < 100) {
+    if (progress < 100 || !progress) {
         localStorage.setItem("recordTime", JSON.stringify({
             "millesimal": milR,
             "second": secR,
@@ -235,8 +235,6 @@ function stopRecordTimer() {
 }
 
 function startRecordTimer() {
-    if (secR === 0) secR = 1;
-
     recordTimerTimeoutHandle = setInterval(() => {
         milR++;
         if (milR == 99) {
