@@ -59,6 +59,7 @@ const star1 = document.querySelector(".star-1");
 const star2 = document.querySelector(".star-2");
 let star2TimeoutHandle = null;
 let clicks = 0;
+let secretWord = "";
 
 const star3 = document.querySelector(".star-3");
 const video = document.getElementById("video");
@@ -834,10 +835,37 @@ function clickStar2() {
         star2.setAttribute("data-before", "Tudo isso atrás de um segredo?");
     } else if (clicks === 15) {
         star2.setAttribute("data-before", "...");
-    } else if (clicks >= 16) {
-        onePieceOp.volume = 0.1;
-        onePieceOp.play();
-        star2.setAttribute("data-before", "♪♪♪");
+    } else if (clicks === 16) {
+        star2.setAttribute("data-before", '"onepiece"');
+
+        document.addEventListener("keydown", (event) => {
+            let key = event.key;
+
+            if ((key === "O" && secretWord === "") || (key === "o" && secretWord === "")) {
+                secretWord = secretWord + key;
+            } else if ((key === "N" && secretWord.substring(0) === "O") || (key === "n" && secretWord.substring(0) === "o")) {
+                secretWord = secretWord + key;
+            } else if ((key === "E" && secretWord.substring(1) === "N") || (key === "e" && secretWord.substring(1) === "n")) {
+                secretWord = secretWord + key;
+            } else if ((key === "P" && secretWord.substring(2) === "E") || (key === "p" && secretWord.substring(2) === "e")) {
+                secretWord = secretWord + key;
+            } else if ((key === "I" && secretWord.substring(3) === "P") || (key === "i" && secretWord.substring(3) === "p")) {
+                secretWord = secretWord + key;
+            } else if ((key === "E" && secretWord.substring(4) === "I") || (key === "e" && secretWord.substring(4) === "i")) {
+                secretWord = secretWord + key;
+            } else if ((key === "C" && secretWord.substring(5) === "E") || (key === "c" && secretWord.substring(5) === "e")) {
+                secretWord = secretWord + key;
+            } else if ((key === "E" && secretWord.substring(6) === "C") || (key === "e" && secretWord.substring(6) === "c")) {
+                secretWord = secretWord + key;
+            }
+
+            if (secretWord === "ONEPIECE" || secretWord === "onepiece") {
+                onePieceOp.volume = 0.1;
+                onePieceOp.play();
+            }
+        });
+
+        clicks = 16;
     }
 
     star2.style.setProperty("--vis", "visible");
