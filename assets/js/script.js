@@ -822,7 +822,7 @@ function clickStar2() {
     } else if (clicks === 7) {
         star2.setAttribute("data-before", "Vai clicar até quando amigo?");
     } else if (clicks === 8) {
-        star2.setAttribute("data-before", "Que chatisse hein!");
+        star2.setAttribute("data-before", "Quanta curiosidade...");
     } else if (clicks === 9) {
         star2.setAttribute("data-before", "Você é insuportável!");
     } else if (clicks === 10) {
@@ -830,38 +830,30 @@ function clickStar2() {
     } else if (clicks === 11) {
         star2.setAttribute("data-before", "Não tem o que fazer não?");
     } else if (clicks === 12) {
-        star2.setAttribute("data-before", "Eu não aguento mais!");
+        star2.setAttribute("data-before", "Você não leu o que eu te disse?");
     } else if (clicks === 13) {
-        star2.setAttribute("data-before", "Você é maluco!");
+        star2.setAttribute("data-before", "Totalmente questionável você chegar até aqui.");
     } else if (clicks === 14) {
         star2.setAttribute("data-before", "Tudo isso atrás de um segredo?");
     } else if (clicks === 15) {
         star2.setAttribute("data-before", "...");
     } else if (clicks === 16) {
-        star2.setAttribute("data-before", '"onepiece"');
+        star2.setAttribute("data-before", '"NIKA"');
 
         document.addEventListener("keydown", (event) => {
             let key = event.key;
 
-            if ((key === "O" && secretWord === "") || (key === "o" && secretWord === "")) {
+            if ((key === "N" && secretWord === "") || (key === "n" && secretWord === "")) {
                 secretWord += key;
-            } else if ((key === "N" && secretWord.substring(0) === "O") || (key === "n" && secretWord.substring(0) === "o")) {
+            } else if ((key === "I" && secretWord.substring(0) === "N") || (key === "i" && secretWord.substring(0) === "n")) {
                 secretWord += key;
-            } else if ((key === "E" && secretWord.substring(1) === "N") || (key === "e" && secretWord.substring(1) === "n")) {
+            } else if ((key === "K" && secretWord.substring(1) === "I") || (key === "k" && secretWord.substring(1) === "i")) {
                 secretWord += key;
-            } else if ((key === "P" && secretWord.substring(2) === "E") || (key === "p" && secretWord.substring(2) === "e")) {
-                secretWord += key;
-            } else if ((key === "I" && secretWord.substring(3) === "P") || (key === "i" && secretWord.substring(3) === "p")) {
-                secretWord += key;
-            } else if ((key === "E" && secretWord.substring(4) === "I") || (key === "e" && secretWord.substring(4) === "i")) {
-                secretWord += key;
-            } else if ((key === "C" && secretWord.substring(5) === "E") || (key === "c" && secretWord.substring(5) === "e")) {
-                secretWord += key;
-            } else if ((key === "E" && secretWord.substring(6) === "C") || (key === "e" && secretWord.substring(6) === "c")) {
+            } else if ((key === "A" && secretWord.substring(2) === "K") || (key === "a" && secretWord.substring(2) === "k")) {
                 secretWord += key;
             }
 
-            if (secretWord === "ONEPIECE" || secretWord === "onepiece") {
+            if (secretWord === "NIKA" || secretWord === "nika") {
                 onePieceOp.volume = 0.1;
                 onePieceOp.play();
             }

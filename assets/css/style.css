@@ -210,7 +210,7 @@ button:focus {
     content: attr(data-before);
     position: absolute;
     left: -26px;
-    top: -42px;
+    top: -50px;
     width: 140px;
     height: 40px;
     font-family: Brush;
