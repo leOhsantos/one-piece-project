@@ -170,7 +170,7 @@ const q17 = {
 
 const q18 = {
     questionNumber: 18,
-    question: "Quantos reis fundaram o governo mundial?",
+    question: "Quantas famílias fundaram o governo mundial?",
     alt1: "16",
     alt2: "22",
     alt3: "14",
@@ -340,11 +340,11 @@ const q34 = {
 
 const q35 = {
     questionNumber: 35,
-    question: 'Quem disse "O One Piece é real" no final da saga de Marineford?',
+    question: '"O One Piece é real!" - ???',
     alt1: "Barba Branca",
     alt2: "Barba Negra",
-    alt3: "Sengoku",
-    alt4: "Akainu",
+    alt3: "Kaido",
+    alt4: "Big Mom",
     answer: "Barba Branca"
 }
 
@@ -420,10 +420,10 @@ const q42 = {
 
 const q43 = {
     questionNumber: 43,
-    question: "Qual ilha desapareceu do mapa após um grande incidente?",
+    question: "Qual ilha desapareceu do mapa após um grande incidente que ocorreu antes da Nova Era dos Piratas?",
     alt1: "Amazon Lily",
     alt2: "God Valley",
-    alt3: "Egg Head",
+    alt3: "Lulusia",
     alt4: "Enies Lobby",
     answer: "God Valley"
 }
