@@ -842,18 +842,19 @@ function clickStar2() {
 
         document.addEventListener("keydown", (event) => {
             let key = event.key;
+            let upperCaseKey = key.toUpperCase();
 
-            if ((key === "N" && secretWord === "") || (key === "n" && secretWord === "")) {
-                secretWord += key;
-            } else if ((key === "I" && secretWord.substring(0) === "N") || (key === "i" && secretWord.substring(0) === "n")) {
-                secretWord += key;
-            } else if ((key === "K" && secretWord.substring(1) === "I") || (key === "k" && secretWord.substring(1) === "i")) {
-                secretWord += key;
-            } else if ((key === "A" && secretWord.substring(2) === "K") || (key === "a" && secretWord.substring(2) === "k")) {
-                secretWord += key;
+            if (upperCaseKey === "N" && secretWord === "") {
+                secretWord += upperCaseKey;
+            } else if (upperCaseKey === "I" && secretWord.substring(0) === "N") {
+                secretWord += upperCaseKey;
+            } else if (upperCaseKey === "K" && secretWord.substring(1) === "I") {
+                secretWord += upperCaseKey;
+            } else if (upperCaseKey === "A" && secretWord.substring(2) === "K") {
+                secretWord += upperCaseKey;
             }
 
-            if (secretWord === "NIKA" || secretWord === "nika") {
+            if (secretWord === "NIKA") {
                 onePieceOp.volume = 0.1;
                 onePieceOp.play();
             }
