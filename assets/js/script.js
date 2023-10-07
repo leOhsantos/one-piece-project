@@ -545,7 +545,11 @@ function checkAnswer(qNumber, answer) {
     const currentQuestionNumber = parseInt(qNumber.value);
     const chosenAnswer = answer.textContent;
     const rightAnswer = questions[currentQuestionNumber].answer;
+    const decrypted = CryptoJS.AES.decrypt(rightAnswer, "questionAnswer").toString(CryptoJS.enc.Utf8);
     const bonus = instructionBtn.getAttribute("data-bonus");
+
+    // function to encrypt the string
+    // const encrypted = CryptoJS.AES.encrypt("text", "questionAnswer");
 
     //activate secret answer
     if (currentQuestionNumber == 1 || currentQuestionNumber == 5 || currentQuestionNumber == 16) {
@@ -595,17 +599,17 @@ function checkAnswer(qNumber, answer) {
 
     //check if it's the bonus quiz or not
     if (bonus == "false") {
-        if (currentQuestionNumber == 49 && chosenAnswer === rightAnswer) {
+        if (currentQuestionNumber == 49 && chosenAnswer === decrypted) {
             showScoreScreen();
-        } else if (chosenAnswer === rightAnswer) {
+        } else if (chosenAnswer === decrypted) {
             nextQuestion(currentQuestionNumber + 1);
         } else {
             showGameOverScreen();
         }
     } else {
-        if (currentQuestionNumber == 74 && chosenAnswer === rightAnswer) {
+        if (currentQuestionNumber == 74 && chosenAnswer === decrypted) {
             showScoreScreenBonus();
-        } else if (chosenAnswer === rightAnswer) {
+        } else if (chosenAnswer === decrypted) {
             nextQuestion(currentQuestionNumber + 1);
         } else {
             showGameOverScreenBonus();
