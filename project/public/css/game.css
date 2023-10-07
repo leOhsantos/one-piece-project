@@ -184,7 +184,7 @@ button:focus {
 }
 
 .star-1 {
-    background-image: url("../assets/image/star.svg");
+    background-image: url("../assets/svg/star.svg");
     background-repeat: no-repeat;
     width: 80px;
     height: 80px;
@@ -196,7 +196,7 @@ button:focus {
 }
 
 .star-2 {
-    background-image: url("../assets/image/star.svg");
+    background-image: url("../assets/svg/star.svg");
     background-repeat: no-repeat;
     width: 80px;
     height: 80px;
@@ -223,7 +223,7 @@ button:focus {
 }
 
 .star-3 {
-    background-image: url("../assets/image/star.svg");
+    background-image: url("../assets/svg/star.svg");
     background-repeat: no-repeat;
     width: 80px;
     height: 80px;
