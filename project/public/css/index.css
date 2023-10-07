@@ -2,7 +2,7 @@
 
 :root {
     --primary-color: #4B97D2;
-    --secondary-color: rgb(27, 64, 83);
+    --secondary-color: #1b4053;
     --red-color: #D70000;
 }
 
@@ -114,13 +114,13 @@ a {
     width: 100%;
 }
 
-#home .nav .nav-list button {
+#home .nav .nav-list .sign-in-btn {
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     border: none;
-    padding: 12px 24px;
+    padding: 12px 28px;
     color: #ffffff;
     background-color: var(--primary-color);
     border-radius: 12px;
@@ -129,7 +129,7 @@ a {
     transition: all .4s ease-in-out;
 }
 
-#home .nav .nav-list button:hover,
+#home .nav .nav-list .sign-in-btn:hover,
 #home .container .column-1 div a:hover {
     background-color: #3c78a5;
 }
@@ -205,7 +205,7 @@ a {
     }
 
     50% {
-        transform: translateY(-12px);
+        transform: translateY(-16px);
     }
 
     100% {
