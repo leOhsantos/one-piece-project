@@ -14,6 +14,7 @@
 
 html,
 body {
+    scroll-padding-top: 120px;
     scroll-behavior: smooth;
     font-family: 'Montserrat', sans-serif;
     height: 100%;
