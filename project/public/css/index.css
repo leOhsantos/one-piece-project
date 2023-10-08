@@ -17,7 +17,10 @@ body {
     scroll-behavior: smooth;
     font-family: 'Montserrat', sans-serif;
     height: 100%;
-    background-color: var(--secondary-color);
+    background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 30%;
 }
 
 body::-webkit-scrollbar {
@@ -227,5 +230,14 @@ a {
 }
 
 #aboutOp {
-    background: var(--secondary-color);
+    position: relative;
+}
+
+#aboutOp::before {
+    content: "";
+    background: linear-gradient(0deg, rgba(27, 64, 83, 0.01) 0%, rgba(27, 64, 83, 0.6) 100%);
+    width: 100%;
+    height: 16px;
+    position: absolute;
+    top: 0;
 }
