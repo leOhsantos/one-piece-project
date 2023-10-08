@@ -51,6 +51,7 @@ a {
 #home {
     height: 100%;
     position: relative;
+    overflow-x: hidden;
 }
 
 #home .nav {
@@ -146,21 +147,26 @@ a {
 }
 
 #home .container .column-1 {
+    width: 46%;
+}
+
+#home .container .column-2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    width: 60%;
+    width: 54%;
 }
 
-#home .container .column-1 div {
+#home .container .column-2 div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 24px;
 }
 
-#home .container .column-1 div h1 {
+#home .container .column-2 div h1 {
     color: var(--primary-color);
     font-size: 2.1rem;
     text-transform: uppercase;
@@ -168,13 +174,13 @@ a {
     user-select: none;
 }
 
-#home .container .column-1 div h1 span:nth-child(1),
-#home .container .column-1 div h1 span:nth-child(2),
-#home .container .column-1 div h1 span:nth-child(3) {
+#home .container .column-2 div h1 span:nth-child(1),
+#home .container .column-2 div h1 span:nth-child(2),
+#home .container .column-2 div h1 span:nth-child(3) {
     color: var(--red-color);
 }
 
-#home .container .column-1 div p {
+#home .container .column-2 div p {
     font-size: 1.2rem;
     letter-spacing: 1px;
     text-align: left;
@@ -182,7 +188,7 @@ a {
     margin: 32px 0;
 }
 
-#home .container .column-1 div a {
+#home .container .column-2 div a {
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -197,12 +203,8 @@ a {
     user-select: none;
 }
 
-#home .container .column-1 div a:hover {
+#home .container .column-2 div a:hover {
     padding: 16px 48px;
-}
-
-#home .container .column-2 {
-    width: 40%;
 }
 
 @keyframes arrowTransition {
