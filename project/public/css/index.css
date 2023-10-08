@@ -21,7 +21,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 body::-webkit-scrollbar-track {
@@ -119,19 +119,16 @@ a {
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
-    border: none;
     padding: 12px 28px;
     color: #ffffff;
-    background-color: var(--primary-color);
     border-radius: 12px;
-    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.14);
+    border: 2px solid var(--primary-color);
     cursor: pointer;
     transition: all .4s ease-in-out;
 }
 
-#home .nav .nav-list .sign-in-btn:hover,
-#home .container .column-1 div a:hover {
-    background-color: #3c78a5;
+#home .nav .nav-list .sign-in-btn:hover {
+    background-color: var(--primary-color);
 }
 
 #home .container {
@@ -193,6 +190,10 @@ a {
     cursor: pointer;
     transition: all .4s ease-in-out;
     user-select: none;
+}
+
+#home .container .column-1 div a:hover {
+    padding: 16px 48px;
 }
 
 #home .container .column-2 {
