@@ -82,7 +82,7 @@ a {
     list-style: none;
     display: flex;
     align-items: center;
-    margin-top: -6px;
+    margin-top: -4px;
 }
 
 #home .nav ul li {
@@ -99,7 +99,7 @@ a {
 #home .nav ul li:nth-child(2)::before,
 #home .nav ul li:nth-child(3)::before {
     content: "";
-    width: 24px;
+    width: 20px;
     height: 4px;
     border-top-left-radius: 32px;
     border-bottom-right-radius: 32px;
