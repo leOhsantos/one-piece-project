@@ -101,7 +101,8 @@ a {
     content: "";
     width: 24px;
     height: 4px;
-    border-radius: 24px;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
     background-color: var(--primary-color);
     position: absolute;
     bottom: -6px;
