@@ -4,6 +4,7 @@
     --primary-color: #4B97D2;
     --secondary-color: #1b4053;
     --red-color: #D70000;
+    --yellow-color: #FFCC00;
 }
 
 * {
@@ -191,10 +192,12 @@ a {
     user-select: none;
 }
 
-#home .container .column-2 div h1 span:nth-child(1),
-#home .container .column-2 div h1 span:nth-child(2),
-#home .container .column-2 div h1 span:nth-child(3) {
+#home .container .column-2 div h1 span:nth-child(1) {
     color: var(--red-color);
+}
+
+#home .container .column-2 div h1 span:nth-child(2) {
+    color: var(--yellow-color);
 }
 
 #home .container .column-2 div p {
