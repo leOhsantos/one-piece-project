@@ -1,3 +1,5 @@
+const body = document.getElementsByTagName("body")[0];
+
 const quizMenu = document.querySelector(".quiz-menu");
 const quizInstruction = document.querySelector(".quiz-instruction");
 const startBtn = document.getElementById("startBtn");
@@ -295,6 +297,7 @@ function startQuizBonus() {
     startRecordTimer();
     addBonusAttributes();
 
+    body.style.background = 'linear-gradient(0deg, rgba(39, 46, 50, 0.86) 0%, rgba(39, 46, 50, 0.86) 100%), url("../assets/image/general-background.png")';
     quizMenu.style.display = "none";
     quiz.style.display = "block";
 
@@ -618,6 +621,7 @@ function checkAnswer(qNumber, answer) {
 }
 
 function restartQuiz() {
+    body.style.background = 'linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png")';
     gameOverBackground.style.display = "none";
     quizMenu.style.display = "block";
     gameOverBtn.style.visibility = "hidden";
@@ -636,6 +640,7 @@ function restartQuiz() {
 }
 
 function exitScoreScreen() {
+    body.style.background = 'linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png")';
     quizScore.style.display = "none";
     quizMenu.style.display = "block";
 
