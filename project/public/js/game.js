@@ -297,7 +297,13 @@ function startQuizBonus() {
     startRecordTimer();
     addBonusAttributes();
 
-    body.style.background = 'linear-gradient(0deg, rgba(39, 46, 50, 0.86) 0%, rgba(39, 46, 50, 0.86) 100%), url("../assets/image/general-background.png")';
+    body.style.cssText = `
+    background: linear-gradient(0deg, rgba(39, 46, 50, 0.86) 0%, rgba(39, 46, 50, 0.86) 100%), url("../assets/image/general-background.png");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 30%;
+    `;
+
     quizMenu.style.display = "none";
     quiz.style.display = "block";
 
@@ -621,7 +627,13 @@ function checkAnswer(qNumber, answer) {
 }
 
 function restartQuiz() {
-    body.style.background = 'linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png")';
+    body.style.cssText = `
+    background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png")';
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 30%;
+    `;
+
     gameOverBackground.style.display = "none";
     quizMenu.style.display = "block";
     gameOverBtn.style.visibility = "hidden";
@@ -640,7 +652,13 @@ function restartQuiz() {
 }
 
 function exitScoreScreen() {
-    body.style.background = 'linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png")';
+    body.style.cssText = `
+    background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png")';
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 30%;
+    `;
+
     quizScore.style.display = "none";
     quizMenu.style.display = "block";
 
