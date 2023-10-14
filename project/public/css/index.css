@@ -301,9 +301,11 @@ a {
     user-select: none;
 }
 
-#aboutOp .column-1 h1 span,
+#aboutOp h1 span,
 #timeline h1 span,
-#mugiwaras h1 span {
+#mugiwaras h1 span,
+#game h1 span,
+#game .line-2 .column-2 h2 span {
     color: var(--primary-color);
 }
 
@@ -447,8 +449,8 @@ a {
 }
 
 #timeline .img-container {
-    height: 324px;
-    width: 552px;
+    height: 320px;
+    width: 548px;
     border-radius: 60px;
     border: 2px solid #ffffff;
     display: flex;
@@ -460,17 +462,31 @@ a {
     height: 300px;
     width: 528px;
     border-radius: 50px;
-    border: 2px solid #ffffff;
     user-select: none;
     pointer-events: none;
 }
 
 #timeline h2 {
     font-size: 1.6rem;
-    margin-bottom: 28px;
+    margin-bottom: 36px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 1px 1px 4px #1d1d1d;
+    text-shadow: 1px 1px 2px #1d1d1d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#timeline h2::before {
+    content: "";
+    width: 52px;
+    height: 6px;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -12px;
 }
 
 #timeline p {
@@ -478,14 +494,20 @@ a {
     width: 524px;
 }
 
-#mugiwaras .line-1 {
+#mugiwaras {
+    padding-top: 80px;
+}
+
+#mugiwaras .line-1,
+#game .line-1 {
     display: flex;
     justify-content: center;
-    margin-top: 84px;
 }
 
 #mugiwaras .line-1 .column-1,
-#mugiwaras .line-1 .column-2 {
+#mugiwaras .line-1 .column-2,
+#game .line-1 .column-1,
+#game .line-1 .column-2 {
     width: 43%;
     display: flex;
     justify-content: center;
@@ -541,10 +563,15 @@ a {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 0 2px #1d1d1d6a;
+    transition: all .4s ease-in-out;
+}
+
+#mugiwaras .mugiwara-container:hover {
+    transform: scale(1.04);
 }
 
 #mugiwaras .mugiwara-container img {
-    height: 270px;
+    height: 274px;
     margin-top: -44px;
     user-select: none;
     pointer-events: none;
@@ -552,13 +579,130 @@ a {
 
 #mugiwaras .mugiwara-container h2 {
     font-size: 1.4rem;
-    text-shadow: 1px 1px 4px #1d1d1d;
+    text-shadow: 1px 1px 2px #1d1d1d;
     letter-spacing: 1px;
-    margin: 16px 0;
+    margin: 16px 0 18px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#mugiwaras .mugiwara-container h2:before {
+    content: "";
+    width: 44px;
+    height: 6px;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -12px;
+}
+
+#mugiwaras .mugiwara-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
 }
 
 #mugiwaras .mugiwara-container p {
     font-size: 1.1rem;
+    text-shadow: 1px 1px 2px #1d1d1d;
+}
+
+#game {
+    padding-top: 36px;
+}
+
+#game h1 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 2rem;
     text-shadow: 1px 1px 4px #1d1d1d;
-    margin: 2px 0;
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    margin-bottom: 48px;
+}
+
+#game h1:before {
+    content: "";
+    width: 90px;
+    height: 6px;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    background-color: var(--red-color);
+    position: absolute;
+    top: -10px;
+    right: 4px;
+}
+
+#game h1:after {
+    content: "";
+    width: 90px;
+    height: 6px;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    background-color: var(--yellow-color);
+    position: absolute;
+    bottom: -8px;
+    left: 4px;
+}
+
+#game .line-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game .line-2 .container {
+    background-color: #1b40537a;
+    width: 1100px;
+    height: 450px;
+    padding: 60px 12px;
+    border-top-left-radius: 140px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 140px;
+    box-shadow: 0 0 2px #1d1d1d6a;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    display: flex;
+    user-select: none;
+}
+
+#game .line-2 .container:hover {
+    transform: scale(1.02);
+}
+
+#game .line-2 .column-1,
+#game .line-2 .column-2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#game .line-2 .column-1 img {
+    height: 250px;
+    pointer-events: none;
+}
+
+#game .line-2 .column-2 p {
+    font-size: 1.2rem;
+    width: 496px;
+}
+
+#game .line-2 .column-2 h2 {
+    margin-top: 32px;
+    margin-left: -36px;
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #1d1d1d;
+    width: 500px;
 }
