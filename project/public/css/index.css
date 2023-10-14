@@ -406,11 +406,14 @@ a {
 
 #saga .column-1.line::before {
     content: "";
-    width: 36px;
-    height: 6px;
-    background-color: #ffffff;
+    width: 32px;
+    height: 18px;
+    background-image: url("../assets/image/saga-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 28px;
     position: absolute;
     right: -64px;
+    transform: rotate(180deg);
 }
 
 #saga .column-2 {
@@ -433,9 +436,11 @@ a {
 
 #saga .column-3.line::before {
     content: "";
-    width: 36px;
-    height: 6px;
-    background-color: #ffffff;
+    width: 32px;
+    height: 18px;
+    background-image: url("../assets/image/saga-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 28px;
     position: absolute;
     left: -64px;
 }
