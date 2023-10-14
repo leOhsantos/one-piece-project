@@ -302,7 +302,8 @@ a {
 }
 
 #aboutOp .column-1 h1 span,
-#saga h1 span {
+#timeline h1 span,
+#mugiwaras h1 span {
     color: var(--primary-color);
 }
 
@@ -345,14 +346,14 @@ a {
     transform: rotate(4deg);
 }
 
-#saga {
+#timeline {
     margin-top: 84px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#saga h1 {
+#timeline h1 {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -364,7 +365,7 @@ a {
     margin-bottom: 48px;
 }
 
-#saga h1:before {
+#timeline h1:before {
     content: "";
     width: 100px;
     height: 6px;
@@ -376,7 +377,7 @@ a {
     right: 4px;
 }
 
-#saga h1:after {
+#timeline h1:after {
     content: "";
     width: 100px;
     height: 6px;
@@ -388,13 +389,13 @@ a {
     left: 4px;
 }
 
-#saga .container {
+#timeline .container {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-#saga .column-1 {
+#timeline .column-1 {
     width: 40%;
     text-align: left;
     display: flex;
@@ -404,11 +405,11 @@ a {
     position: relative;
 }
 
-#saga .column-1.line::before {
+#timeline .column-1.line::before {
     content: "";
     width: 32px;
     height: 18px;
-    background-image: url("../assets/image/saga-arrow.png");
+    background-image: url("../assets/image/timeline-arrow.png");
     background-repeat: no-repeat;
     background-size: 28px;
     position: absolute;
@@ -416,7 +417,7 @@ a {
     transform: rotate(180deg);
 }
 
-#saga .column-2 {
+#timeline .column-2 {
     width: 12px;
     height: 240px;
     background-color: #ffffff;
@@ -424,7 +425,7 @@ a {
     transform: rotate(310deg) skew(310deg, 0);
 }
 
-#saga .column-3 {
+#timeline .column-3 {
     width: 40%;
     text-align: left;
     display: flex;
@@ -434,18 +435,18 @@ a {
     position: relative;
 }
 
-#saga .column-3.line::before {
+#timeline .column-3.line::before {
     content: "";
     width: 32px;
     height: 18px;
-    background-image: url("../assets/image/saga-arrow.png");
+    background-image: url("../assets/image/timeline-arrow.png");
     background-repeat: no-repeat;
     background-size: 28px;
     position: absolute;
     left: -64px;
 }
 
-#saga .img-container {
+#timeline .img-container {
     height: 324px;
     width: 552px;
     border-radius: 60px;
@@ -455,7 +456,7 @@ a {
     justify-content: center;
 }
 
-#saga img {
+#timeline img {
     height: 300px;
     width: 528px;
     border-radius: 50px;
@@ -464,7 +465,7 @@ a {
     pointer-events: none;
 }
 
-#saga h2 {
+#timeline h2 {
     font-size: 1.6rem;
     margin-bottom: 28px;
     text-transform: uppercase;
@@ -472,7 +473,92 @@ a {
     text-shadow: 1px 1px 4px #1d1d1d;
 }
 
-#saga p {
+#timeline p {
     font-size: 1.2rem;
     width: 524px;
+}
+
+#mugiwaras .line-1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 84px;
+}
+
+#mugiwaras .line-1 .column-1,
+#mugiwaras .line-1 .column-2 {
+    width: 43%;
+    display: flex;
+    justify-content: center;
+}
+
+#mugiwaras h1 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    text-shadow: 1px 1px 4px #1d1d1d;
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    margin-bottom: 100px;
+}
+
+#mugiwaras h1:before {
+    content: "";
+    width: 110px;
+    height: 6px;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    background-color: var(--red-color);
+    position: absolute;
+    top: -10px;
+    left: 4px;
+}
+
+#mugiwaras h1:after {
+    content: "";
+    width: 110px;
+    height: 6px;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    background-color: var(--yellow-color);
+    position: absolute;
+    bottom: -8px;
+    right: 4px;
+}
+
+#mugiwaras .line {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 80px;
+}
+
+#mugiwaras .mugiwara-container {
+    width: 330px;
+    height: 380px;
+    border-radius: 32px;
+    background-color: #1b40537a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 2px #1d1d1d6a;
+}
+
+#mugiwaras .mugiwara-container img {
+    height: 270px;
+    margin-top: -44px;
+    user-select: none;
+    pointer-events: none;
+}
+
+#mugiwaras .mugiwara-container h2 {
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 4px #1d1d1d;
+    letter-spacing: 1px;
+    margin: 16px 0;
+}
+
+#mugiwaras .mugiwara-container p {
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 4px #1d1d1d;
+    margin: 2px 0;
 }
