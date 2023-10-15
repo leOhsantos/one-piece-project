@@ -818,7 +818,7 @@ a {
 }
 
 #footer .column-1 img {
-    height: 96px;
+    height: 100px;
     user-select: none;
     pointer-events: none;
 }
@@ -835,7 +835,7 @@ a {
     justify-content: center;
     align-items: center;
     width: 30%;
-    margin-right: 24px;
+    margin-right: 32px;
 }
 
 #footer .column-2 div {
