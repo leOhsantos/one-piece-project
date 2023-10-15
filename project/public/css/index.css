@@ -808,16 +808,8 @@ a {
     justify-content: center;
     height: 270px;
     background-color: #1b40537d;
+    box-shadow: 0 2px 8px 0 rgba(48, 48, 48, 0.34);
     position: relative;
-}
-
-#footer::before {
-    content: "";
-    background: linear-gradient(180deg, rgba(27, 64, 83, 0.01) 0%, rgba(27, 64, 83, 0.6) 100%);
-    width: 100%;
-    height: 16px;
-    position: absolute;
-    top: -16px;
 }
 
 #footer .column-1,
