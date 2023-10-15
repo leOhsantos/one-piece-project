@@ -616,6 +616,7 @@ a {
 
 #mugiwaras .mugiwara-container p {
     font-size: 1.1rem;
+    font-weight: 500;
     margin-bottom: 4px;
 }
 
@@ -799,7 +800,7 @@ a {
     margin-top: 80px;
     display: flex;
     justify-content: center;
-    height: 240px;
+    height: 270px;
     background-color: #1b40537d;
     position: relative;
 }
@@ -823,7 +824,7 @@ a {
 }
 
 #footer .column-1 img {
-    height: 100px;
+    height: 110px;
     user-select: none;
     pointer-events: none;
 }
