@@ -304,7 +304,8 @@ a {
 #timeline h1 span,
 #mugiwaras h1 span,
 #game h1 span,
-#game .line-2 .column-2 h2 span {
+#game .line-2 .column-2 h2 span,
+#developer span {
     color: var(--primary-color);
 }
 
@@ -571,6 +572,10 @@ a {
     user-select: none;
 }
 
+#mugiwaras .mugiwara-container.div-to-bottom {
+    margin-top: 24px;
+}
+
 #mugiwaras .mugiwara-container:hover {
     transform: scale(1.04);
 }
@@ -722,7 +727,7 @@ a {
 
 #developer h1:before {
     content: "";
-    width: 110px;
+    width: 120px;
     height: 6px;
     border-top-left-radius: 32px;
     border-bottom-right-radius: 32px;
@@ -734,7 +739,7 @@ a {
 
 #developer h1:after {
     content: "";
-    width: 110px;
+    width: 120px;
     height: 6px;
     border-top-left-radius: 32px;
     border-bottom-right-radius: 32px;
