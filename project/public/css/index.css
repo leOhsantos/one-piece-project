@@ -848,7 +848,7 @@ a {
 #footer .column-2 div a {
     font-size: 1rem;
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     position: relative;
     user-select: none;
 }
@@ -899,7 +899,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
 
 #footer .column-3 .contact-container img {
