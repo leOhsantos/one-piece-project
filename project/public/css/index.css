@@ -58,7 +58,7 @@ a {
 }
 
 #home {
-    height: 100%;
+    height: 98%;
     position: relative;
     overflow-x: hidden;
 }
@@ -560,12 +560,13 @@ a {
 }
 
 #mugiwaras .mugiwara-container {
-    width: 330px;
-    height: 380px;
+    width: 340px;
+    height: 390px;
     border-radius: 32px;
     background-color: #1b40537d;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     box-shadow: 0 0 2px #1d1d1d6a;
     transition: all .4s ease-in-out;
@@ -584,6 +585,11 @@ a {
     height: 274px;
     margin-top: -44px;
     pointer-events: none;
+}
+
+#mugiwaras .mugiwara-container .chopper {
+    height: 200px;
+    margin: 12px 0;
 }
 
 #mugiwaras .mugiwara-container h2 {
