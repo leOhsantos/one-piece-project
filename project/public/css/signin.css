@@ -155,15 +155,16 @@ a {
     background-color: transparent;
     user-select: none;
     width: 100%;
+    transition: all .4s ease-in-out;
 }
 
 #passwordInput {
     padding-right: 36px;
 }
 
-.input:focus,
-#submitBtn:focus {
+.input:focus {
     outline: none;
+    background-color: rgba(27, 64, 83, 0.4);
 }
 
 .input::-webkit-input-placeholder {
@@ -216,6 +217,10 @@ a {
 
 #submitBtn:hover {
     background-color: #6ba4cf;
+}
+
+#submitBtn:focus {
+    outline: none;
 }
 
 .new-account-text {
