@@ -42,11 +42,24 @@ a {
     user-select: none;
 }
 
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .container {
     width: 850px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: slideRight 1.4s ease;
 }
 
 .column-1 {
@@ -58,7 +71,6 @@ a {
 
 .column-1 img {
     height: 80px;
-    margin-bottom: 24px;
     user-select: none;
     pointer-events: none;
     align-self: flex-start;
@@ -69,7 +81,18 @@ a {
     font-weight: 600;
     letter-spacing: 1px;
     text-align: center;
-    text-shadow: 0 0 2px #1d1d1d;
+    margin: 20px 0;
+}
+
+.column-1 a {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 40px;
+    transition: all .2s ease-in-out;
+}
+
+.column-1 a:hover {
+    color: #6ba4cf;
 }
 
 .column-2 {
@@ -172,7 +195,7 @@ a {
 }
 
 .forgot-password-text:hover {
-    color: var(--primary-color);
+    color: #6ba4cf;
 }
 
 #submitBtn {
@@ -206,5 +229,5 @@ a {
 }
 
 .new-account-text a:hover {
-    color: #86bfea;
+    color: #6ba4cf;
 }
