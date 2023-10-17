@@ -1,8 +1,50 @@
 const form = document.getElementById("form");
 const emailInput = document.getElementById("emailInput");
 const passwordInput = document.getElementById("passwordInput");
-const eyeIcon = document.querySelector(".eye-icon");
 const submitBtn = document.getElementById("submitBtn");
+
+const emailIcon = document.querySelector(".email-icon");
+const passwordIcon = document.querySelector(".password-icon");
+const eyeIcon = document.querySelector(".eye-icon");
+const backArrow = document.querySelector(".back-arrow");
+
+function checkInput() {
+    const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+
+    let email = emailInput.value;
+    let password = passwordInput.value;
+
+    let emailTest = emailRegex.test(email);
+
+    if (!emailTest) {
+        emailIcon.classList.add("error");
+        emailInput.classList.add("error");
+    }
+
+    if (password == "") {
+        passwordIcon.classList.add("error");
+        passwordInput.classList.add("error");
+    }
+}
+
+function removeInputError() {
+    const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+
+    let email = emailInput.value;
+    let password = passwordInput.value;
+
+    let emailTest = emailRegex.test(email);
+
+    if (emailTest) {
+        emailIcon.classList.remove("error");
+        emailInput.classList.remove("error");
+    }
+
+    if (password != "") {
+        passwordIcon.classList.remove("error");
+        passwordInput.classList.remove("error");
+    }
+}
 
 function toggleEyePassword() {
     if (passwordInput.type == "password") {
@@ -15,4 +57,8 @@ function toggleEyePassword() {
 }
 
 form.addEventListener("submit", (e) => e.preventDefault());
+emailInput.addEventListener("input", removeInputError);
+passwordInput.addEventListener("input", removeInputError);
+submitBtn.addEventListener("click", checkInput);
 eyeIcon.addEventListener("click", toggleEyePassword);
+backArrow.addEventListener("click", () => window.history.back());
