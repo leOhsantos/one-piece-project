@@ -879,7 +879,7 @@ a {
 }
 
 #footer .column-3 .social-line a {
-    margin-right: 32px;
+    margin-right: 28px;
     transition: all .4s ease-in-out;
 }
 
@@ -907,10 +907,18 @@ a {
 }
 
 #footer .column-3 .contact-container img {
-    height: 16px;
     margin-right: 8px;
     user-select: none;
     pointer-events: none;
+}
+
+#footer .column-3 .contact-container .email-icon,
+#footer .column-3 .contact-container .contact-icon {
+    height: 14px;
+}
+
+#footer .column-3 .contact-container .adress-icon {
+    height: 18px;
 }
 
 #footer .column-3 .contact-container h5 {
