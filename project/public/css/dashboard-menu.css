@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4B97D2;
+    --secondary-color: #1b4053;
+    --red-color: #D70000;
+    --yellow-color: #FFCC00;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 30%;
+    overflow: hidden;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+}
+
+.menu {
+    width: 16%;
+    background-color: #1b40537d;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.menu .line-1 {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu .line-1 img {
+    height: 68px;
+    user-select: none;
+    pointer-events: none;
+}
+
+.menu .line-2 {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 36px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+    transition: all .2s ease-in-out;
+}
+
+.nav-link svg {
+    height: 20px;
+    margin-right: 10px;
+    margin-top: -2px;
+}
+
+.nav-link:hover {
+    background-color: var(--primary-color);
+}
+
+.menu .line-3 {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.avatar {
+    width: 56px;
+    height: 56px !important;
+    border-radius: 50%;
+    margin-right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 2px solid #ffffff;
+}
+
+.avatar img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.menu .container-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu .container-settings {
+    margin-top: 24px;
+}
+
+.menu .container-settings svg {
+    height: 20px;
+    margin: 0 16px;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+}
+
+.menu .container-settings svg:hover {
+    transform: scale(1.1);
+}
+
+.container {
+    width: 84%;
+    padding: 50px;
+}

@@ -917,6 +917,7 @@ function clickStar3() {
 
 if (startBtn) startBtn.addEventListener("click", startQuiz);
 if (instructionBtn) instructionBtn.addEventListener("click", toggleInstructionBonus);
+if (exitBtn) exitBtn.addEventListener("click", () => window.location.href = "home.html");
 if (exitInstructionBtn) exitInstructionBtn.addEventListener("click", exitInstructionScreen);
 if (progressBtn) progressBtn.addEventListener("click", showProgressScreen);
 if (resetProgressBtn) resetProgressBtn.addEventListener("click", () => resetProgressBackground.style.cssText = "opacity: 1; visibility: visible");
