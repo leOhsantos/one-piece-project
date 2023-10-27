@@ -83,7 +83,7 @@ a {
     align-items: center;
     font-size: 1rem;
     font-weight: 500;
-    padding: 36px 0;
+    padding: 44px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     word-spacing: 4px;
@@ -99,7 +99,7 @@ a {
     border-bottom-right-radius: 32px;
     background-color: var(--primary-color);
     position: absolute;
-    bottom: 24px;
+    bottom: 30px;
 }
 
 .nav-link svg {
@@ -173,7 +173,7 @@ a {
     opacity: 0;
     visibility: hidden;
     transition: all .4s ease-in-out;
-    z-index: 2;
+    z-index: 6;
 }
 
 .confirm-logout {
@@ -186,7 +186,7 @@ a {
     height: 210px;
     padding: 28px;
     border-radius: 32px;
-    background-color: #1e495edb;
+    background-color: #24556d;
     box-shadow: 0 0 4px #1d1d1d3c;
     display: flex;
     flex-direction: column;
@@ -196,7 +196,7 @@ a {
     visibility: hidden;
     transition: all .4s ease-in-out;
     user-select: none;
-    z-index: 2;
+    z-index: 6;
 }
 
 .background.active,
@@ -220,7 +220,7 @@ a {
 
 #cancelLogoutBtn {
     padding: 12px 20px;
-    background-color: #474747;
+    background-color: #5d5d5d;
     border: none;
     border-radius: 8px;
     text-transform: uppercase;
@@ -234,7 +234,7 @@ a {
 
 #logoutBtn {
     padding: 12px 20px;
-    background-color: #bb3d3d;
+    background-color: #eb4141;
     border: none;
     border-radius: 8px;
     text-transform: uppercase;
