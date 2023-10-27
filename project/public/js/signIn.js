@@ -27,6 +27,8 @@ function checkInput() {
     }
 }
 
+submitBtn.addEventListener("click", checkInput);
+
 function removeInputError() {
     const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
 
@@ -46,6 +48,9 @@ function removeInputError() {
     }
 }
 
+emailInput.addEventListener("input", removeInputError);
+passwordInput.addEventListener("input", removeInputError);
+
 function toggleEyePassword() {
     if (passwordInput.type == "password") {
         passwordInput.setAttribute("type", "text");
@@ -56,9 +61,7 @@ function toggleEyePassword() {
     }
 }
 
-form.addEventListener("submit", (e) => e.preventDefault());
-emailInput.addEventListener("input", removeInputError);
-passwordInput.addEventListener("input", removeInputError);
-submitBtn.addEventListener("click", checkInput);
 eyeIcon.addEventListener("click", toggleEyePassword);
+
+form.addEventListener("submit", (e) => e.preventDefault());
 backArrow.addEventListener("click", () => window.history.back());

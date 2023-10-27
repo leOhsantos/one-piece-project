@@ -1,4 +1,5 @@
 const body = document.getElementsByTagName("body")[0];
+const menu = document.querySelector(".menu");
 
 const quizMenu = document.querySelector(".quiz-menu");
 const quizInstruction = document.querySelector(".quiz-instruction");
@@ -7,7 +8,7 @@ const instructionBtn = document.getElementById("instructionBtn");
 const exitInstructionBtn = document.getElementById("exitInstructionBtn");
 const progressBtn = document.getElementById("progressBtn");
 const exitProgressBtn = document.getElementById("exitProgressBtn");
-const exitBtn = document.getElementById("exitBtn");
+const creditsBtn = document.getElementById("creditsBtn");
 
 const quizProgress = document.querySelector(".quiz-progress");
 const percentProgress = document.getElementById("percentProgress");
@@ -291,18 +292,17 @@ function startQuiz() {
     if (!fail) localStorage.setItem("fail", 0);
 }
 
+if (startBtn) startBtn.addEventListener("click", startQuiz);
+
 function startQuizBonus() {
     bonusProgress = 50;
 
     startRecordTimer();
     addBonusAttributes();
 
-    body.style.cssText = `
-    background: linear-gradient(0deg, rgba(39, 46, 50, 0.86) 0%, rgba(39, 46, 50, 0.86) 100%), url("../assets/image/general-background.png");
-    background-position: center;
-    background-repeat: repeat;
-    background-size: 30%;
-    `;
+    body.classList.add("active");
+    menu.classList.add("active");
+    confirmLogoutModal.classList.add("gray");
 
     quizMenu.style.display = "none";
     quiz.style.display = "block";
@@ -627,12 +627,9 @@ function checkAnswer(qNumber, answer) {
 }
 
 function restartQuiz() {
-    body.style.cssText = `
-    background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png")';
-    background-position: center;
-    background-repeat: repeat;
-    background-size: 30%;
-    `;
+    body.classList.remove("active");
+    menu.classList.remove("active");
+    confirmLogoutModal.classList.remove("gray");
 
     gameOverBackground.style.display = "none";
     quizMenu.style.display = "block";
@@ -651,13 +648,12 @@ function restartQuiz() {
     };
 }
 
+if (gameOverBtn) gameOverBtn.addEventListener("click", restartQuiz);
+
 function exitScoreScreen() {
-    body.style.cssText = `
-    background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png")';
-    background-position: center;
-    background-repeat: repeat;
-    background-size: 30%;
-    `;
+    body.classList.remove("active");
+    menu.classList.remove("active");
+    confirmLogoutModal.classList.remove("gray");
 
     quizScore.style.display = "none";
     quizMenu.style.display = "block";
@@ -679,6 +675,8 @@ function exitScoreScreen() {
     }
 }
 
+if (exitScoreBtn) exitScoreBtn.addEventListener("click", exitScoreScreen);
+
 function toggleInstructionBonus() {
     resetStar2Clicks();
 
@@ -688,10 +686,14 @@ function toggleInstructionBonus() {
     bonus == "true" ? startQuizBonus() : quizInstruction.style.display = "flex";
 }
 
+if (instructionBtn) instructionBtn.addEventListener("click", toggleInstructionBonus);
+
 function exitInstructionScreen() {
     quizInstruction.style.display = "none";
     quizMenu.style.display = "block";
 }
+
+if (exitInstructionBtn) exitInstructionBtn.addEventListener("click", exitInstructionScreen);
 
 function showProgressScreen() {
     resetStar2Clicks();
@@ -755,11 +757,15 @@ function showProgressScreen() {
     }
 }
 
+if (progressBtn) progressBtn.addEventListener("click", showProgressScreen);
+
 function exitProgressScreen() {
     quizProgress.style.display = "none";
     quizMenu.style.display = "block";
     resetInstructionBtn();
 }
+
+if (exitProgressBtn) exitProgressBtn.addEventListener("click", exitProgressScreen);
 
 function resetProgress() {
     const reset = parseInt(localStorage.getItem("reset"));
@@ -794,6 +800,10 @@ function resetProgress() {
     localStorage.setItem("reset", resetNumber);
 }
 
+if (resetProgressBtn) resetProgressBtn.addEventListener("click", () => resetProgressBackground.style.cssText = "opacity: 1; visibility: visible;");
+if (cancelResetProgressBtn) cancelResetProgressBtn.addEventListener("click", () => resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden");
+if (confirmResetProgressBtn) confirmResetProgressBtn.addEventListener("click", resetProgress);
+
 function activateBonus() {
     instructionBtn.textContent = "???";
     instructionBtn.setAttribute("data-bonus", "true");
@@ -809,11 +819,15 @@ function activateBonus() {
     });
 }
 
+if (star1) star1.addEventListener("click", activateBonus);
+
 function playMiniLuffyAudio() {
     miniLuffyAudio.volume = 0.3;
     miniLuffyAudio.currentTime = 0;
     miniLuffyAudio.play();
 }
+
+if (miniLuffy) miniLuffy.addEventListener("click", playMiniLuffyAudio);
 
 function startTimer() {
     setInterval(() => {
@@ -899,6 +913,8 @@ function clickStar2() {
     }, 2000);
 }
 
+if (star2) star2.addEventListener("click", clickStar2);
+
 function clickStar3() {
     resetStar2Clicks();
 
@@ -915,18 +931,4 @@ function clickStar3() {
     });
 }
 
-if (startBtn) startBtn.addEventListener("click", startQuiz);
-if (instructionBtn) instructionBtn.addEventListener("click", toggleInstructionBonus);
-if (exitBtn) exitBtn.addEventListener("click", () => window.location.href = "home.html");
-if (exitInstructionBtn) exitInstructionBtn.addEventListener("click", exitInstructionScreen);
-if (progressBtn) progressBtn.addEventListener("click", showProgressScreen);
-if (resetProgressBtn) resetProgressBtn.addEventListener("click", () => resetProgressBackground.style.cssText = "opacity: 1; visibility: visible");
-if (cancelResetProgressBtn) cancelResetProgressBtn.addEventListener("click", () => resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden");
-if (confirmResetProgressBtn) confirmResetProgressBtn.addEventListener("click", resetProgress);
-if (exitProgressBtn) exitProgressBtn.addEventListener("click", exitProgressScreen);
-if (exitScoreBtn) exitScoreBtn.addEventListener("click", exitScoreScreen);
-if (gameOverBtn) gameOverBtn.addEventListener("click", restartQuiz);
-if (star1) star1.addEventListener("click", activateBonus);
-if (star2) star2.addEventListener("click", clickStar2);
 if (star3) star3.addEventListener("click", clickStar3);
-if (miniLuffy) miniLuffy.addEventListener("click", playMiniLuffyAudio);

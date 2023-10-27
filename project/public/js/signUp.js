@@ -43,6 +43,8 @@ function checkInput() {
     }
 }
 
+submitBtn.addEventListener("click", checkInput);
+
 function removeInputError() {
     const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
 
@@ -74,6 +76,11 @@ function removeInputError() {
     }
 }
 
+nicknameInput.addEventListener("input", removeInputError);
+emailInput.addEventListener("input", removeInputError);
+passwordInput.addEventListener("input", removeInputError);
+confirmPasswordInput.addEventListener("input", removeInputError);
+
 function toggleEyePassword() {
     if (passwordInput.type == "password") {
         passwordInput.setAttribute("type", "text");
@@ -86,11 +93,7 @@ function toggleEyePassword() {
     }
 }
 
-form.addEventListener("submit", (e) => e.preventDefault());
-nicknameInput.addEventListener("input", removeInputError);
-emailInput.addEventListener("input", removeInputError);
-passwordInput.addEventListener("input", removeInputError);
-confirmPasswordInput.addEventListener("input", removeInputError);
-submitBtn.addEventListener("click", checkInput);
 eyeIcon.forEach((e) => e.addEventListener("click", toggleEyePassword));
+
+form.addEventListener("submit", (e) => e.preventDefault());
 backArrow.addEventListener("click", () => window.history.back());

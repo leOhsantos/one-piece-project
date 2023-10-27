@@ -18,7 +18,6 @@ html {
 body {
     display: flex;
     font-family: 'Montserrat', sans-serif;
-    color: #ffffff;
     height: 100%;
     background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png");
     background-position: center;
@@ -27,12 +26,20 @@ body {
     overflow: hidden;
 }
 
+body.active {
+    background: linear-gradient(0deg, rgba(39, 46, 50, 0.86) 0%, rgba(39, 46, 50, 0.86) 100%), url("../assets/image/general-background.png");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 30%;
+}
+
 a {
     all: unset;
     cursor: pointer;
 }
 
 .menu {
+    color: #ffffff;
     width: 16%;
     background-color: #1b40537d;
     border-top-right-radius: 16px;
@@ -41,6 +48,11 @@ a {
     flex-direction: column;
     justify-content: space-between;
     user-select: none;
+}
+
+.menu.active,
+.confirm-logout.gray {
+    filter: grayscale(100%);
 }
 
 .menu .line-1 {
@@ -157,22 +169,25 @@ a {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #0000005a;
+    background-color: #0000007b;
     opacity: 0;
     visibility: hidden;
     transition: all .4s ease-in-out;
+    z-index: 2;
 }
 
 .confirm-logout {
+    color: #ffffff;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    width: 440px;
-    height: 200px;
-    padding: 24px;
+    transform: translate(-50%, -50%) scale(0.6);
+    width: 450px;
+    height: 210px;
+    padding: 28px;
     border-radius: 32px;
-    background-color: #1b4053b3;
+    background-color: #1e495edb;
+    box-shadow: 0 0 4px #1d1d1d3c;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -180,6 +195,8 @@ a {
     opacity: 0;
     visibility: hidden;
     transition: all .4s ease-in-out;
+    user-select: none;
+    z-index: 2;
 }
 
 .background.active,
@@ -217,7 +234,7 @@ a {
 
 #logoutBtn {
     padding: 12px 20px;
-    background-color: #e73838;
+    background-color: #bb3d3d;
     border: none;
     border-radius: 8px;
     text-transform: uppercase;
@@ -249,11 +266,6 @@ a {
 
 #cancelLogoutBtn:hover::before,
 #logoutBtn:hover::before {
-    background-color: #0000002f;
+    background-color: #00000014;
     z-index: 1;
-}
-
-.container {
-    width: 84%;
-    padding: 50px;
 }

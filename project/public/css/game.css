@@ -3,26 +3,6 @@
     src: url("../assets/font/Good\ Brush.ttf");
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png");
-    background-position: center;
-    background-repeat: repeat;
-    background-size: 30%;
-    user-select: none;
-}
-
 tbody::-webkit-scrollbar {
     width: 3px;
 }
@@ -38,6 +18,15 @@ tbody::-webkit-scrollbar-thumb {
 
 button:focus {
     outline: none;
+}
+
+.container {
+    width: 84%;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
 }
 
 [data-anime] {
@@ -61,8 +50,8 @@ button:focus {
 }
 
 .quiz-menu {
-    width: 80%;
-    height: 90%;
+    width: 96%;
+    height: 100%;
     background-image: url("../assets/image/menu-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -73,8 +62,8 @@ button:focus {
 }
 
 .game-over {
-    width: 80%;
-    height: 90%;
+    width: 96%;
+    height: 100%;
     background-image: url("../assets/image/game-over-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -238,14 +227,14 @@ button:focus {
 
 .video-background,
 .reset-progress-background {
-    width: 80%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     border-radius: 12px;
     background-color: #0000006c;
     opacity: 0;
     visibility: hidden;
     transition: .4s;
-    position: fixed;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -278,8 +267,8 @@ button:focus {
 }
 
 .quiz-instruction {
-    width: 80%;
-    height: 90%;
+    width: 96%;
+    height: 100%;
     background-image: url("../assets/image/menu-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -312,8 +301,8 @@ button:focus {
 }
 
 .quiz-progress {
-    width: 80%;
-    height: 90%;
+    width: 96%;
+    height: 100%;
     background-image: url("../assets/image/progress-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -397,8 +386,8 @@ button:focus {
 }
 
 .quiz {
-    width: 80%;
-    height: 90%;
+    width: 96%;
+    height: 100%;
     background: linear-gradient(to top, #3fbadc 0%, #246fa8 100%);
     text-align: center;
     border-radius: 12px;
@@ -566,8 +555,8 @@ button:focus {
 }
 
 .quiz-score {
-    width: 80%;
-    height: 90%;
+    width: 96%;
+    height: 100%;
     background-image: url("../assets/image/score-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -770,7 +759,7 @@ button:focus {
 }
 
 .reset-progress-warning {
-    position: fixed;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
