@@ -60,7 +60,7 @@ const q6 = {
 
 const q7 = {
     questionNumber: 7,
-    question: "Quantos membros necessários para formar os Shichibukais?",
+    question: "Quantos membros são necessários para formar os Shichibukais?",
     alt1: "6",
     alt2: "8",
     alt3: "10",

@@ -1,4 +1,6 @@
 const background = document.querySelector(".background");
+const gameMenuBtn = document.getElementById("gameMenuBtn");
+const statisticsMenuBtn = document.getElementById("statisticsMenuBtn");
 const confirmLogoutModal = document.querySelector(".confirm-logout");
 const settingsBtn = document.getElementById("settingsBtn");
 const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
@@ -24,3 +26,6 @@ function logoutUser() {
 }
 
 logoutBtn.addEventListener("click", logoutUser);
+
+gameMenuBtn.addEventListener("click", () => window.location.href = "../dashboard/game.html");
+statisticsMenuBtn.addEventListener("click", () => window.location.href = "../dashboard/statistics.html");

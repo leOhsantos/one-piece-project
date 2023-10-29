@@ -33,11 +33,6 @@ body.active {
     background-size: 30%;
 }
 
-a {
-    all: unset;
-    cursor: pointer;
-}
-
 .menu {
     color: #ffffff;
     width: 16%;
@@ -77,6 +72,7 @@ a {
 }
 
 .nav-link {
+    all: unset;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -88,6 +84,7 @@ a {
     letter-spacing: 1px;
     word-spacing: 4px;
     transition: all .2s ease-in-out;
+    cursor: pointer;
     position: relative;
 }
 
@@ -220,9 +217,9 @@ a {
 
 #cancelLogoutBtn {
     padding: 12px 20px;
-    background-color: #5d5d5d;
+    background-color: #707070;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     text-transform: uppercase;
     font-size: 0.9rem;
     font-weight: 600;
@@ -236,7 +233,7 @@ a {
     padding: 12px 20px;
     background-color: #eb4141;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     text-transform: uppercase;
     font-size: 0.9rem;
     font-weight: 600;

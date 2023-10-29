@@ -256,15 +256,15 @@ button:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 40px;
+    width: 46px;
+    height: 42px;
     background-color: #9A6601;
     border-radius: 7px;
     border: 3px solid #983400;
     cursor: pointer;
     position: absolute;
     bottom: 12px;
-    right: 64px;
+    right: 66px;
     transition: .2s;
 }
 
@@ -272,8 +272,8 @@ button:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 40px;
+    width: 46px;
+    height: 42px;
     background-color: #9A6601;
     border-radius: 7px;
     border: 3px solid #983400;
