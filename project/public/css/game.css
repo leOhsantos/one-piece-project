@@ -167,6 +167,8 @@ button:focus {
 #resetProgressBtn:hover,
 #gameOverBtn:hover,
 #exitInstructionBtn:hover,
+#exitFeedbackBtn:hover,
+#rateBtn:hover,
 #exitScoreBtn:hover,
 #exitProgressBtn:hover {
     background-color: #ccc733;
@@ -284,7 +286,8 @@ button:focus {
     transition: .2s;
 }
 
-.quiz-instruction {
+.quiz-instruction,
+.quiz-feedback {
     width: 96%;
     height: 100%;
     background-image: url("../assets/image/menu-background.jpg");
@@ -316,6 +319,52 @@ button:focus {
     letter-spacing: 2px;
     word-spacing: 3px;
     text-align: justify;
+}
+
+.feedback-container {
+    width: 660px;
+    padding: 6px 8px 6px 8px;
+    background-color: #9A6601;
+    border-radius: 6px;
+    border: 5px solid #983400;
+}
+
+.feedback-text {
+    padding: 24px;
+    font-family: Brush;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    text-align: center;
+}
+
+.feedback-stars-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 24px;
+}
+
+.feedback-stars-container img {
+    margin: 0 8px;
+    height: 60px;
+    cursor: pointer;
+}
+
+#rateBtn {
+    width: 260px;
+    padding: 8px;
+    margin: 24px 0 0 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 5px solid #983400;
+    font-family: Brush;
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: #9A6601;
+    transition: .2s;
 }
 
 .quiz-progress {
@@ -360,6 +409,7 @@ button:focus {
 
 .ranking-title,
 .progress-title,
+.feedback-title,
 .reset-progress-title,
 .instruction-title {
     padding: 24px 24px 0 24px;
@@ -385,6 +435,7 @@ button:focus {
     text-align: left;
 }
 
+#exitFeedbackBtn,
 #exitProgressBtn,
 #exitInstructionBtn,
 #exitScoreBtn {
