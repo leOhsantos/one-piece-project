@@ -17,9 +17,11 @@ const feedbackStar2 = document.getElementById("feedbackStar2");
 const feedbackStar3 = document.getElementById("feedbackStar3");
 const feedbackStar4 = document.getElementById("feedbackStar4");
 const feedbackStar5 = document.getElementById("feedbackStar5");
+const feedbackResult = document.querySelector(".feedback-result");
 const rateBtn = document.getElementById("rateBtn");
 const exitFeedbackBtn = document.getElementById("exitFeedbackBtn");
 let starsNumber = 0;
+let isRated = false;
 
 const quizProgress = document.querySelector(".quiz-progress");
 const percentProgress = document.getElementById("percentProgress");
@@ -709,6 +711,12 @@ if (exitInstructionBtn) exitInstructionBtn.addEventListener("click", exitInstruc
 function showFeedbackScreen() {
     quizMenu.style.display = "none";
     quizFeedback.style.display = "flex";
+
+    if (starsNumber > 0) {
+        rateBtn.setAttribute("onclick", "deleteReview()");
+        rateBtn.textContent = "Apagar";
+        rateBtn.style.display = "initial";
+    }
 }
 
 if (feedbackBtn) feedbackBtn.addEventListener("click", showFeedbackScreen);
@@ -716,24 +724,73 @@ if (feedbackBtn) feedbackBtn.addEventListener("click", showFeedbackScreen);
 function exitFeedbackScreen() {
     quizMenu.style.display = "block";
     quizFeedback.style.display = "none";
+}
 
+if (exitFeedbackBtn) exitFeedbackBtn.addEventListener("click", exitFeedbackScreen);
+
+function setStarNumber(star) {
+    const starValue = star.getAttribute("data-value");
+
+    if (!isRated) {
+        if (starValue == 1) {
+            starsNumber = 1;
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/empty-star.png";
+            feedbackStar3.src = "../assets/image/empty-star.png";
+            feedbackStar4.src = "../assets/image/empty-star.png";
+            feedbackStar5.src = "../assets/image/empty-star.png";
+        } else if (starValue == 2) {
+            starsNumber = 2;
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/full-star.png";
+            feedbackStar3.src = "../assets/image/empty-star.png";
+            feedbackStar4.src = "../assets/image/empty-star.png";
+            feedbackStar5.src = "../assets/image/empty-star.png";
+        } else if (starValue == 3) {
+            starsNumber = 3;
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/full-star.png";
+            feedbackStar3.src = "../assets/image/full-star.png";
+            feedbackStar4.src = "../assets/image/empty-star.png";
+            feedbackStar5.src = "../assets/image/empty-star.png";
+        } else if (starValue == 4) {
+            starsNumber = 4;
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/full-star.png";
+            feedbackStar3.src = "../assets/image/full-star.png";
+            feedbackStar4.src = "../assets/image/full-star.png";
+            feedbackStar5.src = "../assets/image/empty-star.png";
+        } else {
+            starsNumber = 5;
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/full-star.png";
+            feedbackStar3.src = "../assets/image/full-star.png";
+            feedbackStar4.src = "../assets/image/full-star.png";
+            feedbackStar5.src = "../assets/image/full-star.png";
+        }
+    }
+}
+
+function rateGame() {
+    if (starsNumber > 0) {
+        rateBtn.style.display = "none";
+        feedbackResult.style.display = "block";
+        isRated = true;
+    }
+}
+
+function deleteReview() {
     starsNumber = 0;
     feedbackStar1.src = "../assets/image/empty-star.png";
     feedbackStar2.src = "../assets/image/empty-star.png";
     feedbackStar3.src = "../assets/image/empty-star.png";
     feedbackStar4.src = "../assets/image/empty-star.png";
     feedbackStar5.src = "../assets/image/empty-star.png";
+    feedbackResult.style.display = "none";
+    rateBtn.textContent = "Avaliar";
+    rateBtn.setAttribute("onclick", "rateGame()");
+    isRated = false;
 }
-
-if (exitFeedbackBtn) exitFeedbackBtn.addEventListener("click", exitFeedbackScreen);
-
-function rateGame() {
-    if (starsNumber > 0) {
-        rateBtn.style.display = "none";
-    }
-}
-
-if (rateBtn) rateBtn.addEventListener("click", rateGame);
 
 function showProgressScreen() {
     resetStar2Clicks();
@@ -972,94 +1029,3 @@ function clickStar3() {
 }
 
 if (star3) star3.addEventListener("click", clickStar3);
-
-function setFullStar(star) {
-    const starValue = star.getAttribute("data-value");
-
-    if (starsNumber == 0) {
-
-        if (starValue == 1) {
-            feedbackStar1.src = "../assets/image/full-star.png";
-        } else if (starValue == 2) {
-            feedbackStar1.src = "../assets/image/full-star.png";
-            feedbackStar2.src = "../assets/image/full-star.png";
-        } else if (starValue == 3) {
-            feedbackStar1.src = "../assets/image/full-star.png";
-            feedbackStar2.src = "../assets/image/full-star.png";
-            feedbackStar3.src = "../assets/image/full-star.png";
-        } else if (starValue == 4) {
-            feedbackStar1.src = "../assets/image/full-star.png";
-            feedbackStar2.src = "../assets/image/full-star.png";
-            feedbackStar3.src = "../assets/image/full-star.png";
-            feedbackStar4.src = "../assets/image/full-star.png";
-        } else {
-            feedbackStar1.src = "../assets/image/full-star.png";
-            feedbackStar2.src = "../assets/image/full-star.png";
-            feedbackStar3.src = "../assets/image/full-star.png";
-            feedbackStar4.src = "../assets/image/full-star.png";
-            feedbackStar5.src = "../assets/image/full-star.png";
-        }
-
-    }
-}
-
-function removeFullStar(star) {
-    const starValue = star.getAttribute("data-value");
-
-    if (starsNumber == 0) {
-
-        if (starValue == 1) {
-            feedbackStar1.src = "../assets/image/empty-star.png";
-        } else if (starValue == 2) {
-            feedbackStar1.src = "../assets/image/empty-star.png";
-            feedbackStar2.src = "../assets/image/empty-star.png";
-        } else if (starValue == 3) {
-            feedbackStar1.src = "../assets/image/empty-star.png";
-            feedbackStar2.src = "../assets/image/empty-star.png";
-            feedbackStar3.src = "../assets/image/empty-star.png";
-        } else if (starValue == 4) {
-            feedbackStar1.src = "../assets/image/empty-star.png";
-            feedbackStar2.src = "../assets/image/empty-star.png";
-            feedbackStar3.src = "../assets/image/empty-star.png";
-            feedbackStar4.src = "../assets/image/empty-star.png";
-        } else {
-            feedbackStar1.src = "../assets/image/empty-star.png";
-            feedbackStar2.src = "../assets/image/empty-star.png";
-            feedbackStar3.src = "../assets/image/empty-star.png";
-            feedbackStar4.src = "../assets/image/empty-star.png";
-            feedbackStar5.src = "../assets/image/empty-star.png";
-        }
-
-    }
-}
-
-function setStarNumber(star) {
-    const starValue = star.getAttribute("data-value");
-
-    if (starValue == 1) {
-        starsNumber = 1;
-        feedbackStar1.src = "../assets/image/full-star.png";
-    } else if (starValue == 2) {
-        starsNumber = 2;
-        feedbackStar1.src = "../assets/image/full-star.png";
-        feedbackStar2.src = "../assets/image/full-star.png";
-    } else if (starValue == 3) {
-        starsNumber = 3;
-        feedbackStar1.src = "../assets/image/full-star.png";
-        feedbackStar2.src = "../assets/image/full-star.png";
-        feedbackStar3.src = "../assets/image/full-star.png";
-    } else if (starValue == 4) {
-        starsNumber = 4;
-        feedbackStar1.src = "../assets/image/full-star.png";
-        feedbackStar2.src = "../assets/image/full-star.png";
-        feedbackStar3.src = "../assets/image/full-star.png";
-        feedbackStar4.src = "../assets/image/full-star.png";
-    } else {
-        starsNumber = 5;
-        feedbackStar1.src = "../assets/image/full-star.png";
-        feedbackStar2.src = "../assets/image/full-star.png";
-        feedbackStar3.src = "../assets/image/full-star.png";
-        feedbackStar4.src = "../assets/image/full-star.png";
-        feedbackStar5.src = "../assets/image/full-star.png";
-    }
-}

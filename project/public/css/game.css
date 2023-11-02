@@ -339,6 +339,17 @@ button:focus {
     text-align: center;
 }
 
+.feedback-result {
+    display: none;
+    padding: 24px;
+    font-family: Brush;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    text-align: center;
+}
+
 .feedback-stars-container {
     display: flex;
     justify-content: center;
