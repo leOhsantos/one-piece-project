@@ -724,6 +724,15 @@ if (feedbackBtn) feedbackBtn.addEventListener("click", showFeedbackScreen);
 function exitFeedbackScreen() {
     quizMenu.style.display = "block";
     quizFeedback.style.display = "none";
+
+    if (!isRated) {
+        starsNumber = 0;
+        feedbackStar1.src = "../assets/image/empty-star.png";
+        feedbackStar2.src = "../assets/image/empty-star.png";
+        feedbackStar3.src = "../assets/image/empty-star.png";
+        feedbackStar4.src = "../assets/image/empty-star.png";
+        feedbackStar5.src = "../assets/image/empty-star.png";
+    }
 }
 
 if (exitFeedbackBtn) exitFeedbackBtn.addEventListener("click", exitFeedbackScreen);
