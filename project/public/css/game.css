@@ -330,7 +330,7 @@ button:focus {
 }
 
 .feedback-text {
-    padding: 24px;
+    padding-top: 24px;
     font-family: Brush;
     font-weight: 700;
     font-size: 1.2rem;
@@ -353,7 +353,7 @@ button:focus {
 .feedback-stars-container {
     display: flex;
     justify-content: center;
-    padding-bottom: 24px;
+    padding: 24px 0;
 }
 
 .feedback-stars-container img {

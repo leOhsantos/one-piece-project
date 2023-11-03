@@ -12,12 +12,12 @@ const creditsBtn = document.getElementById("creditsBtn");
 const feedbackBtn = document.getElementById("feedbackBtn");
 
 const quizFeedback = document.querySelector(".quiz-feedback");
+const feedbackText = document.querySelector(".feedback-text");
 const feedbackStar1 = document.getElementById("feedbackStar1");
 const feedbackStar2 = document.getElementById("feedbackStar2");
 const feedbackStar3 = document.getElementById("feedbackStar3");
 const feedbackStar4 = document.getElementById("feedbackStar4");
 const feedbackStar5 = document.getElementById("feedbackStar5");
-const feedbackResult = document.querySelector(".feedback-result");
 const rateBtn = document.getElementById("rateBtn");
 const exitFeedbackBtn = document.getElementById("exitFeedbackBtn");
 let starsNumber = 0;
@@ -713,9 +713,8 @@ function showFeedbackScreen() {
     quizFeedback.style.display = "flex";
 
     if (starsNumber > 0) {
-        rateBtn.setAttribute("onclick", "deleteReview()");
-        rateBtn.textContent = "Apagar";
-        rateBtn.style.display = "initial";
+        feedbackText.textContent = "Jogo avaliado com sucesso!";
+        rateBtn.style.display = "none";
     }
 }
 
@@ -782,23 +781,10 @@ function setStarNumber(star) {
 
 function rateGame() {
     if (starsNumber > 0) {
+        feedbackText.textContent = "Jogo avaliado com sucesso!";
         rateBtn.style.display = "none";
-        feedbackResult.style.display = "block";
         isRated = true;
     }
-}
-
-function deleteReview() {
-    starsNumber = 0;
-    feedbackStar1.src = "../assets/image/empty-star.png";
-    feedbackStar2.src = "../assets/image/empty-star.png";
-    feedbackStar3.src = "../assets/image/empty-star.png";
-    feedbackStar4.src = "../assets/image/empty-star.png";
-    feedbackStar5.src = "../assets/image/empty-star.png";
-    feedbackResult.style.display = "none";
-    rateBtn.textContent = "Avaliar";
-    rateBtn.setAttribute("onclick", "rateGame()");
-    isRated = false;
 }
 
 function showProgressScreen() {
