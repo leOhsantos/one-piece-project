@@ -162,6 +162,7 @@ button:focus {
 .answer:hover,
 #progressBtn:hover,
 #feedbackBtn:hover,
+#exitCreditsBtn:hover,
 #cancelResetProgressBtn:hover,
 #confirmResetProgressBtn:hover,
 #resetProgressBtn:hover,
@@ -287,7 +288,8 @@ button:focus {
 }
 
 .quiz-instruction,
-.quiz-feedback {
+.quiz-feedback,
+.quiz-credits {
     width: 96%;
     height: 100%;
     background-image: url("../assets/image/menu-background.jpg");
@@ -301,6 +303,7 @@ button:focus {
     justify-content: center;
     align-items: center;
     display: none;
+    position: relative;
 }
 
 .instruction-container {
@@ -376,6 +379,48 @@ button:focus {
     letter-spacing: 2px;
     background-color: #9A6601;
     transition: .2s;
+}
+
+@keyframes showCredits {
+    0% {
+        transform: translateY(-820px);
+    }
+
+    100% {
+        transform: translateY(1000px);
+    }
+}
+
+.credits-text-container {
+    width: 200px;
+    text-align: center;
+    animation: showCredits 50s ease infinite;
+}
+
+.credits-text-container p {
+    font-family: Brush;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-top: 48px;
+}
+
+#exitCreditsBtn {
+    width: 260px;
+    padding: 8px;
+    margin: 24px 0 0 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 5px solid #983400;
+    font-family: Brush;
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: #9A6601;
+    transition: .2s;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
 }
 
 .quiz-progress {

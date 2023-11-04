@@ -23,6 +23,9 @@ const exitFeedbackBtn = document.getElementById("exitFeedbackBtn");
 let starsNumber = 0;
 let isRated = false;
 
+const quizCredits = document.querySelector(".quiz-credits");
+const exitCreditsBtn = document.getElementById("exitCreditsBtn");
+
 const quizProgress = document.querySelector(".quiz-progress");
 const percentProgress = document.getElementById("percentProgress");
 const titleProgress = document.getElementById("titleProgress");
@@ -200,6 +203,9 @@ function resetInstructionBtn() {
 }
 
 function addBonusAttributes() {
+    body.classList.add("active");
+    menu.classList.add("active");
+    confirmLogoutModal.classList.add("gray");
     quiz.classList.add("bonus");
     jollyRogerLuffy.classList.remove("block");
     jollyRogerTeach.classList.add("block");
@@ -312,10 +318,6 @@ function startQuizBonus() {
 
     startRecordTimer();
     addBonusAttributes();
-
-    body.classList.add("active");
-    menu.classList.add("active");
-    confirmLogoutModal.classList.add("gray");
 
     quizMenu.style.display = "none";
     quiz.style.display = "block";
@@ -1024,3 +1026,17 @@ function clickStar3() {
 }
 
 if (star3) star3.addEventListener("click", clickStar3);
+
+function showCreditsScreen() {
+    quizMenu.style.display = "none";
+    quizCredits.style.display = "flex";
+}
+
+if (creditsBtn) creditsBtn.addEventListener("click", showCreditsScreen);
+
+function exitCreditsScreen() {
+    quizMenu.style.display = "block";
+    quizCredits.style.display = "none";
+}
+
+if (exitCreditsBtn) exitCreditsBtn.addEventListener("click", exitCreditsScreen);
