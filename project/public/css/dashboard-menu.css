@@ -147,18 +147,18 @@ body.active {
     margin-bottom: 4px;
 }
 
-.menu .container-settings {
+.menu .container-btn {
     margin-top: 16px;
 }
 
-.menu .container-settings svg {
+.menu .container-btn svg {
     height: 20px;
     margin: 0 16px;
     transition: all .4s ease-in-out;
     cursor: pointer;
 }
 
-.menu .container-settings svg:hover {
+.menu .container-btn svg:hover {
     transform: scale(1.1);
 }
 
@@ -171,6 +171,109 @@ body.active {
     visibility: hidden;
     transition: all .4s ease-in-out;
     z-index: 6;
+}
+
+.container-settings {
+    color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.6);
+    width: 700px;
+    height: 500px;
+    padding: 28px;
+    border-radius: 32px;
+    background-color: #24556d;
+    box-shadow: 0 0 4px #1d1d1d3c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s ease-in-out;
+    user-select: none;
+    z-index: 6;
+}
+
+.container-settings .line-1 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 100%;
+    height: 10%;
+}
+
+#closeSettingsBtn {
+    all: unset;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.container-settings .line-2 {
+    display: flex;
+    width: 100%;
+    height: 80%;
+}
+
+.container-settings .line-2 .column-1 {
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+}
+
+.container-settings .line-2 .column-1 button {
+    all: unset;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 24px;
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.container-settings .line-2 .column-1 button:hover {
+    background-color: #4b98d240;
+}
+
+.container-settings .line-2 .column-1 button img {
+    height: 32px;
+    margin-right: 8px;
+}
+
+.container-settings .line-2 .column-2 {
+    width: 12px;
+    height: 240px;
+    background-color: #ffffff;
+    margin: 80px 8px;
+    transform: rotate(310deg) skew(310deg, 0);
+}
+
+.container-settings .line-2 .column-3 {
+    width: 70%;
+}
+
+.container-settings .line-3 {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 10%;
+}
+
+#saveEditionsBtn {
+    all: unset;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    padding: 12px;
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
 .confirm-logout {
@@ -197,11 +300,13 @@ body.active {
 }
 
 .background.active,
+.container-settings.active,
 .confirm-logout.active {
     opacity: 1;
     visibility: visible;
 }
 
+.container-settings.active,
 .confirm-logout.active {
     transform: translate(-50%, -50%) scale(1);
 }

@@ -1,11 +1,30 @@
 const background = document.querySelector(".background");
+
 const gameMenuBtn = document.getElementById("gameMenuBtn");
 const statisticsMenuBtn = document.getElementById("statisticsMenuBtn");
-const confirmLogoutModal = document.querySelector(".confirm-logout");
+
+const containerSettings = document.querySelector(".container-settings");
 const settingsBtn = document.getElementById("settingsBtn");
+const closeSettingsBtn = document.getElementById("closeSettingsBtn");
+
+const confirmLogoutModal = document.querySelector(".confirm-logout");
 const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
 const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
 const logoutBtn = document.getElementById("logoutBtn");
+
+function openContainerSettings() {
+    background.classList.add("active");
+    containerSettings.classList.add("active");
+}
+
+if (settingsBtn) settingsBtn.addEventListener("click", openContainerSettings);
+
+function closeContainerSettings() {
+    background.classList.remove("active");
+    containerSettings.classList.remove("active");
+}
+
+if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeContainerSettings);
 
 function openConfirmLogoutModal() {
     background.classList.add("active");
