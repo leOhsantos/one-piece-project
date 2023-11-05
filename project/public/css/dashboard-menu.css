@@ -236,6 +236,19 @@ body.active {
     border-radius: 12px;
     cursor: pointer;
     transition: all .4s ease-in-out;
+    position: relative;
+}
+
+.settings-container .line-2 .column-1 button.active::before {
+    content: "";
+    width: 32px;
+    height: 4px;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: 14px;
+    left: 58px;
 }
 
 .settings-container .line-2 .column-1 button:hover {
@@ -269,6 +282,7 @@ body.active {
 .avatar-container h3,
 .account-container h3,
 .security-container h3 {
+    font-size: 1.3rem;
     text-transform: uppercase;
     word-spacing: 2px;
     margin-bottom: 40px;
@@ -300,7 +314,13 @@ body.active {
     align-items: center;
 }
 
-
+#editBtn {
+    height: 16px;
+    position: absolute;
+    right: 12px;
+    bottom: 22px;
+    cursor: pointer;
+}
 
 .security-container {
     display: none;
@@ -309,6 +329,7 @@ body.active {
     align-items: center;
 }
 
+.account-container .form,
 .security-container .form {
     width: 60%;
 }
@@ -316,6 +337,7 @@ body.active {
 .input-container {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .input-container label {
@@ -331,7 +353,32 @@ body.active {
     background-color: transparent;
 }
 
-.input-container input:focus {
+.input-container select {
+    margin: 8px 0;
+    padding: 12px;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+    background-color: transparent;
+}
+
+.input-container select option {
+    margin: 8px 0;
+    padding: 12px;
+    color: #ffffff;
+    background-color: #24556d;
+}
+
+.input-container input::selection {
+    background-color: #4B97D2;
+}
+
+.input-container input.disabled {
+    color: #c6c6c6;
+}
+
+.input-container input:focus,
+.input-container select:focus {
     outline: none;
 }
 
@@ -352,9 +399,9 @@ body.active {
     all: unset;
     font-size: 0.9rem;
     text-transform: uppercase;
-    padding: 12px;
+    padding: 12px 14px;
     border: 2px solid #ffffff;
-    border-radius: 12px;
+    border-radius: 50px;
     cursor: pointer;
     transition: all .4s ease-in-out;
 }

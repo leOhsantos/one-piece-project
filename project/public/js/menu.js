@@ -13,12 +13,16 @@ const avatarBtn = document.getElementById("avatarBtn");
 
 const accountContainer = document.querySelector(".account-container");
 const accountBtn = document.getElementById("accountBtn");
+const emailInput = document.getElementById("emailInput");
+const nicknameInput = document.getElementById("nicknameInput");
+const titleSelect = document.getElementById("titleSelect");
+const editBtn = document.getElementById("editBtn");
 
 const securityContainer = document.querySelector(".security-container");
 const securityBtn = document.getElementById("securityBtn");
-const currentPassword = document.getElementById("currentPasswordInput");
-const newPassword = document.getElementById("newPasswordInput");
-const confirmNewPassword = document.getElementById("confirmNewPasswordInput");
+const currentPasswordInput = document.getElementById("currentPasswordInput");
+const newPasswordInput = document.getElementById("newPasswordInput");
+const confirmNewPasswordInput = document.getElementById("confirmNewPasswordInput");
 
 const confirmLogoutModal = document.querySelector(".confirm-logout");
 const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
@@ -26,6 +30,9 @@ const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
 function openAvatarContainer() {
+    avatarBtn.classList.add("active");
+    accountBtn.classList.remove("active");
+    securityBtn.classList.remove("active");
     avatarContainer.classList.add("active");
     accountContainer.classList.remove("active");
     securityContainer.classList.remove("active");
@@ -36,6 +43,9 @@ function openAvatarContainer() {
 if (avatarBtn) avatarBtn.addEventListener("click", openAvatarContainer);
 
 function openAccountContainer() {
+    avatarBtn.classList.remove("active");
+    accountBtn.classList.add("active");
+    securityBtn.classList.remove("active");
     avatarContainer.classList.remove("active");
     accountContainer.classList.add("active");
     securityContainer.classList.remove("active");
@@ -45,20 +55,36 @@ function openAccountContainer() {
 
 if (accountBtn) accountBtn.addEventListener("click", openAccountContainer);
 
+function enableEditNickname() {
+    nicknameInput.removeAttribute("disabled");
+    nicknameInput.classList.remove("disabled");
+    nicknameInput.focus();
+}
+
+if (editBtn) editBtn.addEventListener("click", enableEditNickname);
+
+function disableEditNickname() {
+    nicknameInput.setAttribute("disabled", true);
+    nicknameInput.classList.add("disabled");
+}
+
 function openSecurityContainer() {
+    avatarBtn.classList.remove("active");
+    accountBtn.classList.remove("active");
+    securityBtn.classList.add("active");
     avatarContainer.classList.remove("active");
     accountContainer.classList.remove("active");
     securityContainer.classList.add("active");
     saveEditionBtn.setAttribute("onclick", "saveSecurityEdition()");
-    currentPassword.focus();
+    currentPasswordInput.focus();
 }
 
 if (securityBtn) securityBtn.addEventListener("click", openSecurityContainer);
 
 function cleanSecurityInputs() {
-    currentPassword.value = "";
-    newPassword.value = "";
-    confirmNewPassword.value = "";
+    currentPasswordInput.value = "";
+    newPasswordInput.value = "";
+    confirmNewPasswordInput.value = "";
 }
 
 function saveAvatarEdition() {
@@ -84,6 +110,7 @@ if (settingsBtn) settingsBtn.addEventListener("click", openSettingsContainer);
 function closeSettingsContainer() {
     background.classList.remove("active");
     settingsContainer.classList.remove("active");
+    disableEditNickname();
 }
 
 if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeSettingsContainer);
