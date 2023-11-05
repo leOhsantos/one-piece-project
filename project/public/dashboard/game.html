@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="container-btn">
+            <div class="btn-container">
                 <svg id="settingsBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
@@ -77,7 +77,7 @@
 
     <div class="background">
 
-        <div class="container-settings">
+        <div class="settings-container">
             <div class="line-1">
                 <button id="closeSettingsBtn">
                     <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -92,12 +92,17 @@
             </div>
             <div class="line-2">
                 <div class="column-1">
-                    <button>
+                    <button id="avatarBtn">
                         <img src="../assets/svg/nickname-icon.svg">
-                        Perfil
+                        Avatar
                     </button>
 
-                    <button>
+                    <button id="accountBtn">
+                        <img src="../assets/svg/key-icon.svg">
+                        Conta
+                    </button>
+
+                    <button id="securityBtn">
                         <img src="../assets/svg/password-icon.svg">
                         Segurança
                     </button>
@@ -106,11 +111,57 @@
                 <div class="column-2"></div>
 
                 <div class="column-3">
+                    <div class="avatar-container">
+                        <h3>Personalizar avatar</h3>
+                        <div class="avatar">
+                            <img src="https://i.pinimg.com/736x/0e/b6/5a/0eb65a09ad6a7e7d6da86ab1149ef9da.jpg">
+                        </div>
+                        <div class="select-avatar-container">
+                            <img src="" alt="Avatar Luffy">
+                            <img src="" alt="Avatar Zoro">
+                            <img src="" alt="Avatar Nami">
+                            <img src="" alt="Avatar Usopp">
+                            <img src="" alt="Avatar Sanji">
+                            <img src="" alt="Avatar Chooper">
+                            <br>
+                            <img src="" alt="Avatar Robin">
+                            <img src="" alt="Avatar Franky">
+                            <img src="" alt="Avatar Brook">
+                            <img src="" alt="Avatar Jinbe">
+                            <img src="" alt="Avatar Vivi">
+                            <img src="" alt="Avatar Yamato">
+                        </div>
+                    </div>
 
+                    <div class="account-container">
+                        <h3>Atualizar conta</h3>
+                        <div>
+
+                        </div>
+                    </div>
+
+                    <div class="security-container">
+                        <h3>Alterar senha</h3>
+                        <div class="form">
+                            <div class="input-container">
+                                <label for="currentPasswordInput">Senha Atual</label>
+                                <input type="password" id="currentPasswordInput">
+                            </div>
+                            <div class="input-container">
+                                <label for="newPasswordInput">Nova Senha</label>
+                                <input type="password" id="newPasswordInput">
+                            </div>
+
+                            <div class="input-container">
+                                <label for="confirmNewPasswordInput">Confirmar Nova Senha</label>
+                                <input type="password" id="confirmNewPasswordInput">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="line-3">
-                <button id="saveEditionsBtn">Salvar alterações</button>
+                <button onclick="saveAvatarEdition()" id="saveEditionBtn">Salvar alterações</button>
             </div>
         </div>
 

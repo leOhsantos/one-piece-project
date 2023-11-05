@@ -147,18 +147,18 @@ body.active {
     margin-bottom: 4px;
 }
 
-.menu .container-btn {
+.menu .btn-container {
     margin-top: 16px;
 }
 
-.menu .container-btn svg {
+.menu .btn-container svg {
     height: 20px;
     margin: 0 16px;
     transition: all .4s ease-in-out;
     cursor: pointer;
 }
 
-.menu .container-btn svg:hover {
+.menu .btn-container svg:hover {
     transform: scale(1.1);
 }
 
@@ -173,7 +173,7 @@ body.active {
     z-index: 6;
 }
 
-.container-settings {
+.settings-container {
     color: #ffffff;
     position: absolute;
     top: 50%;
@@ -196,7 +196,7 @@ body.active {
     z-index: 6;
 }
 
-.container-settings .line-1 {
+.settings-container .line-1 {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -211,19 +211,19 @@ body.active {
     cursor: pointer;
 }
 
-.container-settings .line-2 {
+.settings-container .line-2 {
     display: flex;
     width: 100%;
     height: 80%;
 }
 
-.container-settings .line-2 .column-1 {
+.settings-container .line-2 .column-1 {
     display: flex;
     flex-direction: column;
     width: 28%;
 }
 
-.container-settings .line-2 .column-1 button {
+.settings-container .line-2 .column-1 button {
     all: unset;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -238,16 +238,16 @@ body.active {
     transition: all .4s ease-in-out;
 }
 
-.container-settings .line-2 .column-1 button:hover {
+.settings-container .line-2 .column-1 button:hover {
     background-color: #4b98d240;
 }
 
-.container-settings .line-2 .column-1 button img {
+.settings-container .line-2 .column-1 button img {
     height: 32px;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
-.container-settings .line-2 .column-2 {
+.settings-container .line-2 .column-2 {
     width: 12px;
     height: 240px;
     background-color: #ffffff;
@@ -255,18 +255,100 @@ body.active {
     transform: rotate(310deg) skew(310deg, 0);
 }
 
-.container-settings .line-2 .column-3 {
+.settings-container .line-2 .column-3 {
     width: 70%;
 }
 
-.container-settings .line-3 {
+.avatar-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-container h3,
+.account-container h3,
+.security-container h3 {
+    text-transform: uppercase;
+    word-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.column-3 .avatar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.select-avatar-container {
+    margin-top: 32px;
+}
+
+.select-avatar-container img {
+    margin: 12px 8px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.account-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.security-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.security-container .form {
+    width: 60%;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container label {
+    margin: 8px 0 0 12px;
+}
+
+.input-container input {
+    margin: 8px 0;
+    padding: 12px;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+    background-color: transparent;
+}
+
+.input-container input:focus {
+    outline: none;
+}
+
+.avatar-container.active,
+.account-container.active,
+.security-container.active {
+    display: flex;
+}
+
+.settings-container .line-3 {
     display: flex;
     justify-content: flex-end;
     width: 100%;
     height: 10%;
 }
 
-#saveEditionsBtn {
+#saveEditionBtn {
     all: unset;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -274,6 +356,12 @@ body.active {
     border: 2px solid #ffffff;
     border-radius: 12px;
     cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+#saveEditionBtn:hover {
+    color: #24556d;
+    background-color: #ffffff;
 }
 
 .confirm-logout {
@@ -300,13 +388,13 @@ body.active {
 }
 
 .background.active,
-.container-settings.active,
+.settings-container.active,
 .confirm-logout.active {
     opacity: 1;
     visibility: visible;
 }
 
-.container-settings.active,
+.settings-container.active,
 .confirm-logout.active {
     transform: translate(-50%, -50%) scale(1);
 }
