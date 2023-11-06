@@ -1,5 +1,4 @@
 const background = document.querySelector(".background");
-
 const gameMenuBtn = document.getElementById("gameMenuBtn");
 const statisticsMenuBtn = document.getElementById("statisticsMenuBtn");
 
@@ -19,8 +18,8 @@ const menuTitle = document.getElementById("menuTitle");
 const accountBtn = document.getElementById("accountBtn");
 const emailInput = document.getElementById("emailInput");
 const nicknameInput = document.getElementById("nicknameInput");
-const titleSelect = document.getElementById("titleSelect");
 const editBtn = document.getElementById("editBtn");
+const titleSelect = document.getElementById("titleSelect");
 
 const securityContainer = document.querySelector(".security-container");
 const securityBtn = document.getElementById("securityBtn");
@@ -146,6 +145,14 @@ function toggleEyeIcon() {
 
 if (eyeIcon) eyeIcon.forEach((e) => e.addEventListener("click", toggleEyeIcon));
 
+function setEyeIconToStandard() {
+    currentPasswordInput.setAttribute("type", "password");
+    newPasswordInput.setAttribute("type", "password");
+    confirmNewPasswordInput.setAttribute("type", "password");
+    currentPasswordEyeIcon.src = "../assets/svg/invisible-password-icon.svg";
+    eyeIcon.forEach((e) => e.src = "../assets/svg/invisible-password-icon.svg");
+}
+
 function saveSecurityEdition() {
     closeSettingsContainer();
 }
@@ -154,6 +161,8 @@ function openSettingsContainer() {
     background.classList.add("active");
     settingsContainer.classList.add("active");
     openAvatarContainer();
+    disableEditNickname();
+    setEyeIconToStandard();
 }
 
 if (settingsBtn) settingsBtn.addEventListener("click", openSettingsContainer);
@@ -161,7 +170,6 @@ if (settingsBtn) settingsBtn.addEventListener("click", openSettingsContainer);
 function closeSettingsContainer() {
     background.classList.remove("active");
     settingsContainer.classList.remove("active");
-    disableEditNickname();
 }
 
 if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeSettingsContainer);
