@@ -353,6 +353,12 @@ body.active {
     background-color: transparent;
 }
 
+#currentPasswordInput,
+#newPasswordInput,
+#confirmNewPasswordInput {
+    padding-right: 40px;
+}
+
 .input-container select {
     margin: 8px 0;
     padding: 12px;
@@ -360,6 +366,17 @@ body.active {
     border: 2px solid #ffffff;
     border-radius: 12px;
     background-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-down-arrow {
+    height: 14px;
+    position: absolute;
+    right: 14px;
+    bottom: 21px;
+    z-index: -1;
 }
 
 .input-container select option {
@@ -374,12 +391,16 @@ body.active {
 }
 
 .input-container input.disabled {
-    color: #c6c6c6;
+    color: #757575;
 }
 
 .input-container input:focus,
 .input-container select:focus {
     outline: none;
+}
+
+#emailInput {
+    cursor: no-drop;
 }
 
 .avatar-container.active,
@@ -393,6 +414,15 @@ body.active {
     justify-content: flex-end;
     width: 100%;
     height: 10%;
+}
+
+#currentPasswordEyeIcon,
+.eye-icon {
+    height: 20px;
+    position: absolute;
+    right: 12px;
+    bottom: 20px;
+    cursor: pointer;
 }
 
 #saveEditionBtn {

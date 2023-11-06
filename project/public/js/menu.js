@@ -27,6 +27,8 @@ const securityBtn = document.getElementById("securityBtn");
 const currentPasswordInput = document.getElementById("currentPasswordInput");
 const newPasswordInput = document.getElementById("newPasswordInput");
 const confirmNewPasswordInput = document.getElementById("confirmNewPasswordInput");
+const currentPasswordEyeIcon = document.getElementById("currentPasswordEyeIcon");
+const eyeIcon = document.querySelectorAll(".eye-icon");
 
 const confirmLogoutModal = document.querySelector(".confirm-logout");
 const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
@@ -88,6 +90,7 @@ if (editBtn) editBtn.addEventListener("click", enableEditNickname);
 function disableEditNickname() {
     nicknameInput.setAttribute("disabled", true);
     nicknameInput.classList.add("disabled");
+    nicknameInput.value = menuNickname.textContent;
 }
 
 function saveAccountEdition() {
@@ -116,6 +119,32 @@ function cleanSecurityInputs() {
     newPasswordInput.value = "";
     confirmNewPasswordInput.value = "";
 }
+
+function toggleCurrentPasswordIcon() {
+    if (currentPasswordInput.type == "password") {
+        currentPasswordInput.setAttribute("type", "text");
+        currentPasswordEyeIcon.src = "../assets/svg/visible-password-icon.svg";
+    } else {
+        currentPasswordInput.setAttribute("type", "password");
+        currentPasswordEyeIcon.src = "../assets/svg/invisible-password-icon.svg";
+    }
+}
+
+if (currentPasswordEyeIcon) currentPasswordEyeIcon.addEventListener("click", toggleCurrentPasswordIcon);
+
+function toggleEyeIcon() {
+    if (newPasswordInput.type == "password") {
+        newPasswordInput.setAttribute("type", "text");
+        confirmNewPasswordInput.setAttribute("type", "text");
+        eyeIcon.forEach((e) => e.src = "../assets/svg/visible-password-icon.svg");
+    } else {
+        newPasswordInput.setAttribute("type", "password");
+        confirmNewPasswordInput.setAttribute("type", "password");
+        eyeIcon.forEach((e) => e.src = "../assets/svg/invisible-password-icon.svg");
+    }
+}
+
+if (eyeIcon) eyeIcon.forEach((e) => e.addEventListener("click", toggleEyeIcon));
 
 function saveSecurityEdition() {
     closeSettingsContainer();
