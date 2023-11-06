@@ -44,12 +44,12 @@
         <div class="line-3">
             <div class="container-user">
                 <div class="avatar">
-                    <img src="../assets/image/luffy-avatar.jpg">
+                    <img id="menuAvatar" src="../assets/image/luffy-avatar.jpg">
                 </div>
 
                 <div>
-                    <h3>leOh</h3>
-                    <p>Rei dos Piratas</p>
+                    <h3 id="menuNickname">leOh</h3>
+                    <p id="menuTitle">Rei dos Piratas</p>
                 </div>
             </div>
 
@@ -76,7 +76,6 @@
     </div>
 
     <div class="background">
-
         <div class="settings-container">
             <div class="line-1">
                 <button id="closeSettingsBtn">
@@ -111,25 +110,38 @@
                 <div class="column-2"></div>
 
                 <div class="column-3">
+
                     <div class="avatar-container">
                         <h3>Personalizar avatar</h3>
                         <div class="avatar">
-                            <img src="../assets/image/luffy-avatar.jpg">
+                            <img id="settingsAvatar" src="../assets/image/luffy-avatar.jpg">
                         </div>
                         <div class="select-avatar-container">
-                            <img src="../assets/image/luffy-avatar.jpg" alt="Avatar Luffy">
-                            <img src="../assets/image/zoro-avatar.jpg" alt="Avatar Zoro">
-                            <img src="../assets/image/nami-avatar.jpg" alt="Avatar Nami">
-                            <img src="../assets/image/usopp-avatar.jpg" alt="Avatar Usopp">
-                            <img src="../assets/image/sanji-avatar.jpg" alt="Avatar Sanji">
-                            <img src="../assets/image/chopper-avatar.jpg" alt="Avatar Chooper">
+                            <img onclick="setAvatar(this)" data-avatar="luffy-avatar"
+                                src="../assets/image/luffy-avatar.jpg" alt="Avatar Luffy">
+                            <img onclick="setAvatar(this)" data-avatar="zoro-avatar"
+                                src="../assets/image/zoro-avatar.jpg" alt="Avatar Zoro">
+                            <img onclick="setAvatar(this)" data-avatar="nami-avatar"
+                                src="../assets/image/nami-avatar.jpg" alt="Avatar Nami">
+                            <img onclick="setAvatar(this)" data-avatar="usopp-avatar"
+                                src="../assets/image/usopp-avatar.jpg" alt="Avatar Usopp">
+                            <img onclick="setAvatar(this)" data-avatar="sanji-avatar"
+                                src="../assets/image/sanji-avatar.jpg" alt="Avatar Sanji">
+                            <img onclick="setAvatar(this)" data-avatar="chopper-avatar"
+                                src="../assets/image/chopper-avatar.jpg" alt="Avatar Chooper">
                             <br>
-                            <img src="../assets/image/robin-avatar.jpg" alt="Avatar Robin">
-                            <img src="../assets/image/franky-avatar.jpg" alt="Avatar Franky">
-                            <img src="../assets/image/brook-avatar.jpg" alt="Avatar Brook">
-                            <img src="../assets/image/jinbe-avatar.jpg" alt="Avatar Jinbe">
-                            <img src="../assets/image/vivi-avatar.jpg" alt="Avatar Vivi">
-                            <img src="../assets/image/yamato-avatar.jpg" alt="Avatar Yamato">
+                            <img onclick="setAvatar(this)" data-avatar="robin-avatar"
+                                src="../assets/image/robin-avatar.jpg" alt="Avatar Robin">
+                            <img onclick="setAvatar(this)" data-avatar="franky-avatar"
+                                src="../assets/image/franky-avatar.jpg" alt="Avatar Franky">
+                            <img onclick="setAvatar(this)" data-avatar="brook-avatar"
+                                src="../assets/image/brook-avatar.jpg" alt="Avatar Brook">
+                            <img onclick="setAvatar(this)" data-avatar="jinbe-avatar"
+                                src="../assets/image/jinbe-avatar.jpg" alt="Avatar Jinbe">
+                            <img onclick="setAvatar(this)" data-avatar="vivi-avatar"
+                                src="../assets/image/vivi-avatar.jpg" alt="Avatar Vivi">
+                            <img onclick="setAvatar(this)" data-avatar="yamato-avatar"
+                                src="../assets/image/yamato-avatar.jpg" alt="Avatar Yamato">
                         </div>
                     </div>
 
@@ -150,11 +162,11 @@
                             <div class="input-container">
                                 <label for="titleSelect">Título</label>
                                 <select id="titleSelect">
-                                    <option value="1">Figurante</option>
-                                    <option value="2">Pirata Comum</option>
-                                    <option value="3">Supernova</option>
-                                    <option value="4">Yonkou</option>
-                                    <option value="5">Rei dos Piratas</option>
+                                    <option value="Figurante">Figurante</option>
+                                    <option value="Pirata Comum">Pirata Comum</option>
+                                    <option value="Supernova">Supernova</option>
+                                    <option value="Yonkou">Yonkou</option>
+                                    <option value="Rei dos Piratas">Rei dos Piratas</option>
                                 </select>
                             </div>
                         </div>
@@ -178,6 +190,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="line-3">
