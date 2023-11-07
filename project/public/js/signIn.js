@@ -13,9 +13,11 @@ let players = [];
 window.addEventListener("DOMContentLoaded", () => {
     fetch("player/list-all-players")
         .then(res => {
-            res.json().then(res => {
-                players = res;
-            });
+            if (res.status == 200) {
+                res.json().then(res => {
+                    players = res;
+                });
+            }
         }).catch(error => {
             console.log(error);
         });
