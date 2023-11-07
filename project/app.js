@@ -25,6 +25,5 @@ app.use("/question-error", questionErrorRouter);
 app.use("/feedback", feedbackRouter);
 
 app.listen(PORT, function () {
-    console.log(`Servidor rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORT} \n
-    Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO}.`);
+    console.log(`Servidor rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORT}`);
 });

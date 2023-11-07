@@ -5,8 +5,8 @@ function listAllPlayers() {
     return database.execute(instruction);
 }
 
-function listPlayer(fkPlayer) {
-    const instruction = `SELECT * FROM Player WHERE idPlayer = ${fkPlayer};`;
+function listPlayer(idPlayer) {
+    const instruction = `SELECT * FROM Player WHERE idPlayer = ${idPlayer};`;
     return database.execute(instruction);
 }
 
@@ -20,18 +20,23 @@ function savePlayer(nickname, email, password) {
     return database.execute(instruction);
 }
 
-function updateAvatar(avatar, fkPlayer) {
-    const instruction = `UPDATE Player SET avatar = '${avatar}' WHERE fkPlayer = ${fkPlayer}`;
+function updateAvatar(avatar, idPlayer) {
+    const instruction = `UPDATE Player SET avatar = '${avatar}' WHERE idPlayer = ${idPlayer}`;
     return database.execute(instruction);
 }
 
-function updateTitle(title, fkPlayer) {
-    const instruction = `UPDATE Player SET title = '${title}' WHERE fkPlayer = ${fkPlayer}`;
+function updateNickname(nickname, idPlayer) {
+    const instruction = `UPDATE Player SET nickname = '${nickname}' WHERE idPlayer = ${idPlayer}`;
     return database.execute(instruction);
 }
 
-function updatePassword(password, fkPlayer) {
-    const instruction = `UPDATE Player SET password = '${password}' WHERE fkPlayer = ${fkPlayer}`;
+function updateTitle(title, idPlayer) {
+    const instruction = `UPDATE Player SET title = '${title}' WHERE idPlayer = ${idPlayer}`;
+    return database.execute(instruction);
+}
+
+function updatePassword(password, idPlayer) {
+    const instruction = `UPDATE Player SET password = '${password}' WHERE idPlayer = ${idPlayer}`;
     return database.execute(instruction);
 }
 
@@ -41,6 +46,7 @@ module.exports = {
     listPlayerByRank,
     savePlayer,
     updateAvatar,
+    updateNickname,
     updateTitle,
     updatePassword
 };

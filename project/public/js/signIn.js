@@ -8,6 +8,38 @@ const passwordIcon = document.querySelector(".password-icon");
 const eyeIcon = document.querySelector(".eye-icon");
 const backArrow = document.querySelector(".back-arrow");
 
+let players = [];
+
+window.addEventListener("DOMContentLoaded", () => {
+    fetch("player/list-all-players")
+        .then(res => {
+            res.json().then(res => {
+                players = res;
+            });
+        }).catch(error => {
+            console.log(error);
+        });
+});
+
+function signIn(email, password) {
+    let playerNotFound = false;
+
+    for (let i = 0; i < players.length; i++) {
+        if (email == players[i].email && password == players[i].password) {
+            sessionStorage.setItem("idPlayer", players[i].idPlayer);
+            window.location.href = "../dashboard/game.html";
+            playerNotFound = false;
+            break;
+        } else {
+            playerNotFound = true;
+        }
+    }
+
+    if (playerNotFound) {
+        alert("E-mail ou senha incorretos!");
+    }
+}
+
 function checkInput() {
     const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
 
@@ -24,6 +56,10 @@ function checkInput() {
     if (password == "") {
         passwordIcon.classList.add("error");
         passwordInput.classList.add("error");
+    }
+
+    if (emailTest && password != "") {
+        signIn(email, password);
     }
 }
 

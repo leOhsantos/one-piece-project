@@ -70,7 +70,7 @@ function savePlayer(req, res) {
 
 function updateAvatar(req, res) {
     let avatar = req.body.avatar;
-    let idPlayer = req.body.idPlayer;
+    let idPlayer = req.params.idPlayer;
 
     if (avatar == undefined) {
         res.status(400).send("avatar está indefinido!");
@@ -87,9 +87,28 @@ function updateAvatar(req, res) {
     }
 }
 
+function updateNickname(req, res) {
+    let nickname = req.body.nickname;
+    let idPlayer = req.params.idPlayer;
+
+    if (nickname == undefined) {
+        res.status(400).send("nickname está indefinido!");
+    } else if (idPlayer == undefined) {
+        res.status(400).send("idPlayer está indefinido!");
+    } else {
+        playerModel.updateNickname(nickname, idPlayer)
+            .then(result => {
+                res.json(result);
+            }).catch(function (error) {
+                console.log(error);
+                res.status(500).json(error.sqlMessage);
+            });
+    }
+}
+
 function updateTitle(req, res) {
-    let title = req.body.avatar;
-    let idPlayer = req.body.idPlayer;
+    let title = req.body.title;
+    let idPlayer = req.params.idPlayer;
 
     if (title == undefined) {
         res.status(400).send("title está indefinido!");
@@ -108,7 +127,7 @@ function updateTitle(req, res) {
 
 function updatePassword(req, res) {
     let password = req.body.avatar;
-    let idPlayer = req.body.idPlayer;
+    let idPlayer = req.params.idPlayer;
 
     if (password == undefined) {
         res.status(400).send("password está indefinido!");
@@ -131,6 +150,7 @@ module.exports = {
     listPlayerByRank,
     savePlayer,
     updateAvatar,
+    updateNickname,
     updateTitle,
     updatePassword
 }

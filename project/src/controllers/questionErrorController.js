@@ -21,7 +21,7 @@ function listErrorsByQuestion(req, res) {
 
 function saveQuestionError(req, res) {
     let questionNumber = req.body.questionNumber;
-    let idPlayer = req.body.idPlayer;
+    let idPlayer = req.params.idPlayer;
 
     if (questionNumber == undefined) {
         res.status(400).send("questionNumber está indefinido!");

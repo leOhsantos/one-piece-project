@@ -6,8 +6,8 @@ CREATE TABLE Player (
     nickname VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
-    avatar VARCHAR(50),
-    title VARCHAR(50)
+    avatar VARCHAR(50) DEFAULT 'no-avatar',
+    title VARCHAR(50) DEFAULT 'Figurante'
 );
 
 CREATE TABLE Score (

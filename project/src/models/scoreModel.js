@@ -5,8 +5,8 @@ function list() {
     return database.execute(instruction);
 }
 
-function saveScore(rank, speedrunTime, fkPlayer) {
-    const instruction = `INSERT INTO Score (rank, speedrunTime, fkPlayer) VALUES ('${rank}', '${speedrunTime}', ${fkPlayer});`;
+function saveScore(rank, speedrunTime, idPlayer) {
+    const instruction = `INSERT INTO Score (rank, speedrunTime, fkPlayer) VALUES ('${rank}', '${speedrunTime}', ${idPlayer});`;
     return database.execute(instruction);
 }
 

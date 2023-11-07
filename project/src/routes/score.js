@@ -7,7 +7,7 @@ router.get("/list", function (req, res) {
     scoreController.list(req, res);
 })
 
-router.post("/save", function (req, res) {
+router.post("/save/:idPlayer", function (req, res) {
     scoreController.saveScore(req, res);
 });
 

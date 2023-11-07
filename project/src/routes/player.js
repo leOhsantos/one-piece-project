@@ -7,7 +7,7 @@ router.get("/list-all-players", function (req, res) {
   playerController.listAllPlayers(req, res);
 });
 
-router.get("/list-player", function (req, res) {
+router.get("/list-player/:idPlayer", function (req, res) {
   playerController.listPlayer(req, res);
 });
 
@@ -19,15 +19,19 @@ router.post("/save", function (req, res) {
   playerController.savePlayer(req, res);
 });
 
-router.put("/update-avatar", function (req, res) {
+router.put("/update-avatar/:idPlayer", function (req, res) {
   playerController.updateAvatar(req, res);
 });
 
-router.put("/update-title", function (req, res) {
+router.put("/update-nickname/:idPlayer", function (req, res) {
+  playerController.updateNickname(req, res);
+});
+
+router.put("/update-title/:idPlayer", function (req, res) {
   playerController.updateTitle(req, res);
 });
 
-router.put("/update-password", function (req, res) {
+router.put("/update-password/:idPlayer", function (req, res) {
   playerController.updatePassword(req, res);
 });
 

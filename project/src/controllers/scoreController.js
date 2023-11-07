@@ -16,7 +16,7 @@ function list(req, res) {
 function saveScore(req, res) {
   let rank = req.body.rank;
   let speedrunTime = req.body.speedrunTime;
-  let idPlayer = req.body.idPlayer;
+  let idPlayer = req.params.idPlayer;
 
   if (rank == undefined) {
     res.status(400).send("rank está indefinido!");

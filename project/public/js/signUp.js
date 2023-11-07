@@ -12,6 +12,25 @@ const confirmPasswordIcon = document.querySelector(".confirm-password-icon");
 const eyeIcon = document.querySelectorAll(".eye-icon");
 const backArrow = document.querySelector(".back-arrow");
 
+function signUp(nickname, email, password) {
+    fetch("/player/save", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nickname: nickname,
+            email: email,
+            password: password
+        })
+    }).catch(error => {
+        console.log(error);
+    });
+
+    alert("Cadastro realizado com sucesso!");
+    window.location.href = "../signin.html";
+}
+
 function checkInput() {
     const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
 
@@ -40,6 +59,10 @@ function checkInput() {
     if (confirmPassword != password || confirmPassword == "") {
         confirmPasswordIcon.classList.add("error");
         confirmPasswordInput.classList.add("error");
+    }
+
+    if (nickname != "" && emailTest && password == confirmPassword && password != "" && confirmPassword != "") {
+        signUp(nickname, email, password);
     }
 }
 

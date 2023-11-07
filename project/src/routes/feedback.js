@@ -3,11 +3,11 @@ const router = express.Router();
 
 const feedbackController = require("../controllers/feedbackController");
 
-router.get("/list-by-stars", function (req, res) {
+router.get("/list-by-stars/:stars", function (req, res) {
     feedbackController.listByStars(req, res);
 });
 
-router.post("/save", function (req, res) {
+router.post("/save/:idPlayer", function (req, res) {
     feedbackController.saveFeedback(req, res);
 });
 

@@ -5,8 +5,8 @@ function listByStars(stars) {
   return database.execute(instruction);
 }
 
-function saveFeedback(stars, fkPlayer) {
-  const instruction = `INSERT INTO Feedback (stars, fkPlayer) VALUES ('${stars}, ${fkPlayer});`;
+function saveFeedback(stars, idPlayer) {
+  const instruction = `INSERT INTO Feedback (stars, fkPlayer) VALUES ('${stars}, ${idPlayer});`;
   return database.execute(instruction);
 }
 

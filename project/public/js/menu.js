@@ -34,6 +34,25 @@ const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
 const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
+const idPlayer = sessionStorage.getItem("idPlayer");
+
+window.addEventListener("DOMContentLoaded", () => {
+    if (!idPlayer) {
+        window.location.href = "../index.html";
+    } else {
+        fetch(`/player/list-player/${idPlayer}`)
+            .then(res => {
+                res.json().then(res => {
+                    menuAvatar.src = `../assets/image/${res[0].avatar}.jpg`;
+                    menuNickname.textContent = res[0].nickname;
+                    menuTitle.textContent = res[0].title;
+                });
+            }).catch(error => {
+                console.log(error);
+            });
+    }
+});
+
 function openAvatarContainer() {
     avatarBtn.classList.add("active");
     accountBtn.classList.remove("active");
@@ -58,6 +77,19 @@ function setAvatar(e) {
 
 function saveAvatarEdition() {
     let avatar = settingsAvatar.getAttribute("data-avatar");
+
+    fetch(`/player/update-avatar/${idPlayer}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            avatar: avatar
+        })
+    }).catch(error => {
+        console.log(error);
+    });
+
     menuAvatar.src = `../assets/image/${avatar}.jpg`;
     closeSettingsContainer();
 }
@@ -93,8 +125,35 @@ function disableEditNickname() {
 }
 
 function saveAccountEdition() {
-    menuNickname.textContent = nicknameInput.value;
-    menuTitle.textContent = titleSelect.value;
+    let nickname = nicknameInput.value;
+    let title = titleSelect.value;
+
+    fetch(`/player/update-nickname/${idPlayer}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nickname: nickname
+        })
+    }).catch(error => {
+        console.log(error);
+    });
+
+    fetch(`/player/update-title/${idPlayer}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: title
+        })
+    }).catch(error => {
+        console.log(error);
+    });
+
+    menuNickname.textContent = nickname;
+    menuTitle.textContent = title;
     closeSettingsContainer();
 }
 
@@ -189,6 +248,7 @@ function closeConfirmLogoutModal() {
 cancelLogoutBtn.addEventListener("click", closeConfirmLogoutModal);
 
 function logoutUser() {
+    sessionStorage.removeItem("idPlayer");
     window.location.href = "../index.html";
 }
 

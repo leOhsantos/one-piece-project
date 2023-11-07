@@ -21,7 +21,7 @@ function listByStars(req, res) {
 
 function saveFeedback(req, res) {
     let stars = req.body.stars;
-    let idPlayer = req.body.idPlayer;
+    let idPlayer = req.params.idPlayer;
 
     if (stars == undefined) {
         res.status(400).send("stars está indefinido!");

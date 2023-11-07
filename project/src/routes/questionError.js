@@ -3,11 +3,11 @@ const router = express.Router();
 
 const questionErrorController = require("../controllers/questionErrorController");
 
-router.get("/list-errors-by-question", function (req, res) {
+router.get("/list-errors-by-question/:idPlayer", function (req, res) {
     questionErrorController.listErrorsByQuestion(req, res);
 });
 
-router.get("/save", function (req, res) {
+router.get("/save/:idPlayer", function (req, res) {
     questionErrorController.saveQuestionError(req, res);
 })
 
