@@ -36,13 +36,14 @@ const logoutBtn = document.getElementById("logoutBtn");
 
 const idPlayer = sessionStorage.getItem("idPlayer");
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
     if (!idPlayer) {
         window.location.href = "../index.html";
     } else {
         fetch(`/player/list-player/${idPlayer}`)
             .then(res => {
                 res.json().then(res => {
+                    emailInput.value = res[0].email;
                     menuAvatar.src = `../assets/image/${res[0].avatar}.jpg`;
                     menuNickname.textContent = res[0].nickname;
                     menuTitle.textContent = res[0].title;

@@ -51,7 +51,7 @@ function execute(instruction) {
                 if (error) {
                     reject(error);
                 }
-                console.log(results);
+                // console.log(results);
                 resolve(results);
             });
             connection.on('error', function (error) {

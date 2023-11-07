@@ -10,7 +10,7 @@ const backArrow = document.querySelector(".back-arrow");
 
 let players = [];
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
     fetch("player/list-all-players")
         .then(res => {
             if (res.status == 200) {
