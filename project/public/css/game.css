@@ -307,7 +307,7 @@ button:focus {
 }
 
 .instruction-container {
-    width: 660px;
+    width: 648px;
     padding: 6px 8px 6px 8px;
     background-color: #9A6601;
     border-radius: 6px;
@@ -891,7 +891,7 @@ button:focus {
     border-radius: 12px;
     z-index: 5;
     width: 518px;
-    height: 310px;
+    height: 270px;
     padding: 6px 8px 6px 8px;
     margin: 0 16px;
     background-color: #9A6601;

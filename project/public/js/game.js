@@ -30,8 +30,6 @@ const quizProgress = document.querySelector(".quiz-progress");
 const percentProgress = document.getElementById("percentProgress");
 const titleProgress = document.getElementById("titleProgress");
 const rankProgress = document.getElementById("rankProgress");
-const gameBeatProgress = document.getElementById("gameBeatProgress");
-const resetNumberProgress = document.getElementById("resetNumberProgress");
 const resetProgressBackground = document.querySelector(".reset-progress-background");
 const resetProgressWarning = document.querySelector(".reset-progress-warning");
 const resetProgressBtn = document.getElementById("resetProgressBtn");
@@ -69,7 +67,6 @@ const scoreTitle = document.getElementById("scoreTitle");
 const time = document.getElementById("time");
 const score = document.getElementById("score");
 const rank = document.querySelector(".rank");
-const warningScoreText = document.querySelector(".warning-score-text");
 const theEndText = document.querySelector(".the-end-text");
 const exitScoreBtn = document.getElementById("exitScoreBtn");
 
@@ -88,11 +85,6 @@ const miniLuffy = document.querySelector(".mini-luffy-container");
 const miniLuffyAudio = document.getElementById("miniLuffyAudio");
 const onePieceOp = document.getElementById("onePieceOp");
 
-const timeProgress = document.getElementById("timeProgress");
-let sec = 0;
-let min = 0;
-let h = 0;
-
 const recordTimeProgress = document.getElementById("recordTimeProgress");
 let recordTimerTimeoutHandle = null;
 let milR = 0;
@@ -104,23 +96,12 @@ let bonusProgress = null;
 
 document.addEventListener("contextmenu", event => event.preventDefault());
 
-window.addEventListener("beforeunload", () => {
-    //save the timer when the page is refreshed
-    localStorage.setItem("timer", JSON.stringify({
-        "second": sec,
-        "minute": min,
-        "hour": h
-    }));
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-    const recordScore = parseInt(localStorage.getItem("recordScore"));
-    const progress = parseInt(localStorage.getItem("progress"));
-    const isBonusActivated = localStorage.getItem("bonus");
-    const timer = JSON.parse(localStorage.getItem("timer"));
-    const recordTime = JSON.parse(localStorage.getItem("recordTime"));
-    const gameBeat = parseInt(localStorage.getItem("gameBeat"));
-    const reset = parseInt(localStorage.getItem("reset"));
+    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
+    const progress = parseInt(sessionStorage.getItem("progress"));
+    const fail = sessionStorage.getItem("fail");
+    const isBonusActivated = sessionStorage.getItem("bonus");
+    const recordTime = JSON.parse(sessionStorage.getItem("recordTime"));
 
     //show the stars on menu
     if (progress >= 50 && progress < 100) {
@@ -140,18 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (star3) star3.style.display = "none";
     }
 
+    //blocks the player if he tries to start a new game
+    if (progress == 100) {
+        startBtn.removeEventListener("click", startQuiz);
+        startBtn.style.cursor = "no-drop";
+    }
+
     //verify if bonus is activated to activate star 1 secret click
     if (star1) isBonusActivated ? star1.style.pointerEvents = "all" : star1.style.pointerEvents = "none";
-
-    //start the timer when the page is loaded
-    if (!timer) {
-        startTimer();
-    } else {
-        if (timer.second) sec = timer.second;
-        if (timer.minute) min = timer.minute;
-        if (timer.hour) h = timer.hour;
-        startTimer();
-    }
 
     //get the last record time the player did
     if (recordTime && progress < 100) {
@@ -161,26 +138,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (recordTime.hour) hR = recordTime.hour;
     }
 
-    if (!progress) localStorage.setItem("progress", 0);
-    if (!gameBeat) localStorage.setItem("gameBeat", 0);
-    if (!reset) localStorage.setItem("reset", 0);
-
-    if (reset > 0 && progress > 0) resetProgressBtn.style.display = "flex";
+    if (!progress) sessionStorage.setItem("progress", 0);
+    if (!fail) sessionStorage.setItem("fail", 0);
+    if (progress > 0) resetProgressBtn.style.display = "flex";
 });
 
 function updateProgress(qNumber) {
     const currentProgress = questions[qNumber].questionNumber;
-    const progress = localStorage.getItem("progress");
-    const reset = parseInt(localStorage.getItem("reset"));
+    const progress = sessionStorage.getItem("progress");
 
     if (currentProgress > 50) {
         bonusProgress += 2;
-        if (bonusProgress > progress) localStorage.setItem("progress", bonusProgress);
+        if (bonusProgress > progress) sessionStorage.setItem("progress", bonusProgress);
     } else if (currentProgress > progress) {
-        localStorage.setItem("progress", currentProgress - 1);
+        sessionStorage.setItem("progress", currentProgress - 1);
     }
 
-    if (currentProgress - 1 >= 1 && reset >= 1) resetProgressBtn.style.display = "flex";
+    if (currentProgress - 1 >= 1) resetProgressBtn.style.display = "flex";
 }
 
 function resetInstructionBtn() {
@@ -245,10 +219,10 @@ function twoDigits(time) {
 function stopRecordTimer() {
     clearTimeout(recordTimerTimeoutHandle);
 
-    const progress = parseInt(localStorage.getItem("progress"));
+    const progress = parseInt(sessionStorage.getItem("progress"));
 
     if (progress < 100 || !progress) {
-        localStorage.setItem("recordTime", JSON.stringify({
+        sessionStorage.setItem("recordTime", JSON.stringify({
             "millisecond": milR,
             "second": secR,
             "minute": minR,
@@ -306,9 +280,6 @@ function startQuiz() {
     myName.setAttribute("value", q1.questionNumber);
     text2.setAttribute("value", q1.questionNumber);
     text20.setAttribute("value", q1.questionNumber);
-
-    const fail = localStorage.getItem("fail");
-    if (!fail) localStorage.setItem("fail", 0);
 }
 
 if (startBtn) startBtn.addEventListener("click", startQuiz);
@@ -355,10 +326,10 @@ function nextQuestion(qNumber) {
 }
 
 function countFailures() {
-    const fail = parseInt(localStorage.getItem("fail"));
+    const fail = parseInt(sessionStorage.getItem("fail"));
     const failNumber = fail + 1;
 
-    localStorage.setItem("fail", failNumber);
+    sessionStorage.setItem("fail", failNumber);
 }
 
 function showGameOverScreen() {
@@ -398,9 +369,9 @@ function showGameOverScreenBonus() {
 }
 
 function calculateScore() {
-    const progress = parseInt(localStorage.getItem("progress"));
-    const recordScore = parseInt(localStorage.getItem("recordScore"));
-    const fail = parseInt(localStorage.getItem("fail"));
+    const progress = parseInt(sessionStorage.getItem("progress"));
+    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
+    const fail = parseInt(sessionStorage.getItem("fail"));
     let rankNumber = 0;
 
     if (fail >= 0 && fail < 5) {
@@ -409,8 +380,8 @@ function calculateScore() {
         scoreTitle.textContent = "Yonkou";
         rank.textContent = "S";
 
-        if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
-        localStorage.setItem("currentScore", rankNumber);
+        if ((rankNumber > recordScore && progress < 100) || !recordScore) sessionStorage.setItem("recordScore", rankNumber);
+        sessionStorage.setItem("currentScore", rankNumber);
 
     } else if (fail >= 5 && fail <= 10) {
         rankNumber = 3;
@@ -418,8 +389,8 @@ function calculateScore() {
         scoreTitle.textContent = "Supernova";
         rank.textContent = "A";
 
-        if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
-        localStorage.setItem("currentScore", rankNumber);
+        if ((rankNumber > recordScore && progress < 100) || !recordScore) sessionStorage.setItem("recordScore", rankNumber);
+        sessionStorage.setItem("currentScore", rankNumber);
 
     } else if (fail > 10) {
         rankNumber = 1;
@@ -427,19 +398,19 @@ function calculateScore() {
         scoreTitle.textContent = "Pirata Comum";
         rank.textContent = "B";
 
-        if ((rankNumber > recordScore && progress < 100) || !recordScore) localStorage.setItem("recordScore", rankNumber);
-        localStorage.setItem("currentScore", rankNumber);
+        if ((rankNumber > recordScore && progress < 100) || !recordScore) sessionStorage.setItem("recordScore", rankNumber);
+        sessionStorage.setItem("currentScore", rankNumber);
     }
 
     fail === 0 ? score.textContent = "Nenhuma falha" : score.textContent = `Falhas totais: ${fail}`;
 
-    localStorage.setItem("bonus", true);
+    sessionStorage.setItem("bonus", true);
 }
 
 function calculateScoreBonus() {
-    const currentScore = parseInt(localStorage.getItem("currentScore"));
-    const recordScore = parseInt(localStorage.getItem("recordScore"));
-    const progress = parseInt(localStorage.getItem("progress"));
+    const currentScore = parseInt(sessionStorage.getItem("currentScore"));
+    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
+    const progress = parseInt(sessionStorage.getItem("progress"));
     let rankNumber = 0;
 
     if (currentScore === 5 && minR < 1) {
@@ -448,7 +419,7 @@ function calculateScoreBonus() {
         scoreTitle.textContent = "Rei dos piratas";
         rank.textContent = "S++";
 
-        if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
+        if (rankNumber > recordScore && progress < 100) sessionStorage.setItem("recordScore", rankNumber);
 
     } else if (currentScore === 5 && minR >= 1) {
         rankNumber = 6;
@@ -456,7 +427,7 @@ function calculateScoreBonus() {
         scoreTitle.textContent = "Yonkou";
         rank.textContent = "S+";
 
-        if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
+        if (rankNumber > recordScore && progress < 100) sessionStorage.setItem("recordScore", rankNumber);
 
     } else if (currentScore === 3) {
         rankNumber = 4;
@@ -464,7 +435,7 @@ function calculateScoreBonus() {
         scoreTitle.textContent = "Supernova";
         rank.textContent = "A+";
 
-        if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
+        if (rankNumber > recordScore && progress < 100) sessionStorage.setItem("recordScore", rankNumber);
 
     } else if (currentScore === 1) {
         rankNumber = 2;
@@ -472,7 +443,7 @@ function calculateScoreBonus() {
         scoreTitle.textContent = "Pirata Comum";
         rank.textContent = "B+";
 
-        if (rankNumber > recordScore && progress < 100) localStorage.setItem("recordScore", rankNumber);
+        if (rankNumber > recordScore && progress < 100) sessionStorage.setItem("recordScore", rankNumber);
     }
 
     rankNumber === 7 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
@@ -492,30 +463,25 @@ function calculateScoreBonus() {
     minR = 0;
     hR = 0;
 
-    localStorage.removeItem("bonus");
-    localStorage.removeItem("currentScore");
-    localStorage.removeItem("fail");
+    sessionStorage.removeItem("bonus");
+    sessionStorage.removeItem("currentScore");
+    sessionStorage.removeItem("fail");
 }
 
 function setFinalProgress() {
-    const recordScore = parseInt(localStorage.getItem("recordScore"));
-    const progress = parseInt(localStorage.getItem("progress"));
+    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
+    const progress = parseInt(sessionStorage.getItem("progress"));
 
     if (progress === 49) {
-        localStorage.setItem("progress", 50);
+        sessionStorage.setItem("progress", 50);
     } else if (progress === 98 && recordScore < 7) {
-        localStorage.setItem("progress", 100);
+        sessionStorage.setItem("progress", 100);
         resetProgressBtn.style.display = "flex";
     } else if (recordScore === 7) {
-        localStorage.setItem("progress", 100);
+        sessionStorage.setItem("progress", 100);
         star3.style.display = "block";
         resetProgressBtn.style.display = "flex";
     }
-}
-
-function showWarningScoreText() {
-    const progress = parseInt(localStorage.getItem("progress"));
-    progress === 100 ? warningScoreText.style.display = "block" : warningScoreText.style.display = "none";
 }
 
 function showScoreScreen() {
@@ -525,21 +491,9 @@ function showScoreScreen() {
     star1.style.display = "block";
     star1.style.pointerEvents = "all";
 
-    showWarningScoreText();
     stopRecordTimer();
     calculateScore();
     setFinalProgress();
-}
-
-function countGameBeat() {
-    const progress = parseInt(localStorage.getItem("progress"));
-    const gameBeat = parseInt(localStorage.getItem("gameBeat"));
-    const gameBeatNumber = gameBeat + 1;
-
-    if (progress < 100) {
-        localStorage.setItem("gameBeat", gameBeatNumber);
-        gameBeatProgress.textContent = `Total de zeradas: ${gameBeatNumber}`;
-    }
 }
 
 function showScoreScreenBonus() {
@@ -550,16 +504,15 @@ function showScoreScreenBonus() {
     quizScoreText.forEach((text) => text.classList.add("bonus"));
     time.style.display = "block";
     rank.classList.add("bonus");
-    warningScoreText.classList.add("bonus");
     exitScoreBtn.classList.add("bonus");
     theEndText.classList.add("bonus");
     theEndText.textContent = "The End.";
     quizScore.style.display = "block";
     star1.style.pointerEvents = "none";
     star2.style.display = "block";
+    startBtn.style.cursor = "no-drop";
+    startBtn.removeEventListener("click", startQuiz);
 
-    showWarningScoreText();
-    countGameBeat();
     stopRecordTimer();
     calculateScoreBonus();
     setFinalProgress();
@@ -682,7 +635,6 @@ function exitScoreScreen() {
         youWinText.classList.remove("bonus");
         quizScoreText.forEach((text) => text.classList.remove("bonus"));
         rank.classList.remove("bonus");
-        warningScoreText.classList.remove("bonus");
         exitScoreBtn.classList.remove("bonus");
         theEndText.classList.remove("bonus");
         theEndText.textContent = "The End?";
@@ -795,11 +747,9 @@ function showProgressScreen() {
     quizMenu.style.display = "none";
     quizProgress.style.display = "flex";
 
-    const recordScore = parseInt(localStorage.getItem("recordScore"));
-    const progress = parseInt(localStorage.getItem("progress"));
-    const recordTime = JSON.parse(localStorage.getItem("recordTime"));
-    const gameBeat = parseInt(localStorage.getItem("gameBeat"));
-    const reset = parseInt(localStorage.getItem("reset"));
+    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
+    const progress = parseInt(sessionStorage.getItem("progress"));
+    const recordTime = JSON.parse(sessionStorage.getItem("recordTime"));
 
     !progress ? percentProgress.textContent = "Progresso atual: 0%" : percentProgress.textContent = `Progresso atual: ${progress}%`;
 
@@ -829,25 +779,14 @@ function showProgressScreen() {
         rankProgress.textContent = "Rank: ???";
     }
 
-    if (!recordTime || progress < 100) {
+    if (progress < 100) {
         recordTimeProgress.textContent = "Tempo decorrido: ???";
-    } else {
-        //format time display
-        if (recordTime.minute < 1) {
-            recordTimeProgress.textContent = `Tempo: ${twoDigits(recordTime.second)}.${parseInt(recordTime.millisecond.toString().substring(0, 1))}`;
-        } else if (recordTime.minute >= 1 && recordTime.hour < 1) {
-            recordTimeProgress.textContent = `Tempo decorrido: ${recordTime.minute}:${twoDigits(recordTime.second)}`;
-        } else if (recordTime.hour >= 1) {
-            recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}`;
-        }
-    }
-
-    !gameBeat ? gameBeatProgress.textContent = "Total de zeradas: ???" : gameBeatProgress.textContent = `Total de zeradas: ${gameBeat}`;
-
-    if (!reset) {
-        resetNumberProgress.textContent = "";
-    } else {
-        reset === 1 ? resetNumberProgress.textContent = `(Você já resetou ${reset} vez)` : resetNumberProgress.textContent = `(Você já resetou ${reset} vezes)`;
+    } else if (recordTime.minute < 1 && progress == 100) {
+        recordTimeProgress.textContent = `Tempo: ${twoDigits(recordTime.second)}.${parseInt(recordTime.millisecond.toString().substring(0, 1))}`;
+    } else if (recordTime.minute >= 1 && recordTime.hour < 1 && progress == 100) {
+        recordTimeProgress.textContent = `Tempo decorrido: ${recordTime.minute}:${twoDigits(recordTime.second)}`;
+    } else if (recordTime.hour >= 1 && progress == 100) {
+        recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}`;
     }
 }
 
@@ -862,15 +801,10 @@ function exitProgressScreen() {
 if (exitProgressBtn) exitProgressBtn.addEventListener("click", exitProgressScreen);
 
 function resetProgress() {
-    const reset = parseInt(localStorage.getItem("reset"));
-    const resetNumber = reset + 1;
-
     percentProgress.textContent = "Progresso atual: 0%";
     titleProgress.textContent = "Título: ???";
     rankProgress.textContent = "Rank: ???";
-    reset === 1 ? resetNumberProgress.textContent = `(Você já resetou ${reset} vez)` : resetNumberProgress.textContent = `(Você já resetou ${reset} vezes)`;
     resetProgressBtn.style.display = "none";
-
     recordTimeProgress.textContent = "Tempo decorrido: ???";
     milR = 0
     secR = 0;
@@ -881,17 +815,19 @@ function resetProgress() {
     onePieceOp.pause();
     onePieceOp.currentTime = 0;
 
+    startBtn.style.cursor = "pointer";
+    startBtn.addEventListener("click", startQuiz);
+
     star1.style.display = "none";
     star2.style.display = "none";
     star3.style.display = "none";
 
     resetProgressBackground.style.cssText = "opacity: 0; visibility: hidden";
 
-    localStorage.removeItem("progress");
-    localStorage.removeItem("recordScore");
-    localStorage.removeItem("recordTime");
-    localStorage.removeItem("fail");
-    localStorage.setItem("reset", resetNumber);
+    sessionStorage.setItem("progress", 0);
+    sessionStorage.setItem("fail", 0);
+    sessionStorage.removeItem("recordScore");
+    sessionStorage.removeItem("recordTime");
 }
 
 if (resetProgressBtn) resetProgressBtn.addEventListener("click", () => resetProgressBackground.style.cssText = "opacity: 1; visibility: visible;");
@@ -922,21 +858,6 @@ function playMiniLuffyAudio() {
 }
 
 if (miniLuffy) miniLuffy.addEventListener("click", playMiniLuffyAudio);
-
-function startTimer() {
-    setInterval(() => {
-        sec++;
-        if (sec == 60) {
-            min++;
-            sec = 0;
-            if (min == 60) {
-                h++;
-                min = 0;
-            }
-        }
-        timeProgress.textContent = `Tempo total de jogo: ${twoDigits(h)}:${twoDigits(min)}:${twoDigits(sec)}`;
-    }, 1000);
-}
 
 function clickStar2() {
     clearTimeout(star2TimeoutHandle);

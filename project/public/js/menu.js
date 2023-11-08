@@ -250,6 +250,12 @@ cancelLogoutBtn.addEventListener("click", closeConfirmLogoutModal);
 
 function logoutUser() {
     sessionStorage.removeItem("idPlayer");
+    sessionStorage.removeItem("fail");
+    sessionStorage.removeItem("currentScore");
+    sessionStorage.removeItem("recordScore");
+    sessionStorage.removeItem("recordTime");
+    sessionStorage.removeItem("progress");
+    sessionStorage.removeItem("bonus");
     window.location.href = "../index.html";
 }
 
