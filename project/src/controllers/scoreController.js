@@ -13,7 +13,7 @@ function list(req, res) {
   });
 }
 
-function saveScore(req, res) {
+function save(req, res) {
   let rank = req.body.rank;
   let speedrunTime = req.body.speedrunTime;
   let idPlayer = req.params.idPlayer;
@@ -25,7 +25,7 @@ function saveScore(req, res) {
   } else if (idPlayer == undefined) {
     res.status(400).send("idPlayer está indefinido!");
   } else {
-    scoreModel.saveScore(rank, speedrunTime, idPlayer)
+    scoreModel.save(rank, speedrunTime, idPlayer)
       .then(result => {
         res.status(201).json(result);
       }).catch(function (error) {
@@ -37,5 +37,5 @@ function saveScore(req, res) {
 
 module.exports = {
   list,
-  saveScore
+  save
 }

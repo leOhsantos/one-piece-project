@@ -8,7 +8,7 @@ router.get("/list-by-stars/:stars", function (req, res) {
 });
 
 router.post("/save/:idPlayer", function (req, res) {
-    feedbackController.saveFeedback(req, res);
+    feedbackController.save(req, res);
 });
 
 module.exports = router;

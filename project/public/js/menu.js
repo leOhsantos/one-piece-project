@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
     if (!idPlayer) {
         window.location.href = "../index.html";
     } else {
-        fetch(`/player/list-player/${idPlayer}`)
+        fetch(`/player/list/${idPlayer}`)
             .then(res => {
                 res.json().then(res => {
                     emailInput.value = res[0].email;

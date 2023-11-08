@@ -11,7 +11,7 @@ const backArrow = document.querySelector(".back-arrow");
 let players = [];
 
 window.addEventListener("load", () => {
-    fetch("player/list-all-players")
+    fetch("player/list-all")
         .then(res => {
             if (res.status == 200) {
                 res.json().then(res => {

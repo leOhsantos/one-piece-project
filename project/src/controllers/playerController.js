@@ -1,7 +1,7 @@
 const playerModel = require("../models/playerModel");
 
-function listAllPlayers(req, res) {
-    playerModel.listAllPlayers().then(function (result) {
+function listAll(req, res) {
+    playerModel.listAll().then(function (result) {
         if (result.length > 0) {
             res.status(200).json(result);
         } else {
@@ -13,13 +13,13 @@ function listAllPlayers(req, res) {
     });
 }
 
-function listPlayer(req, res) {
+function list(req, res) {
     let idPlayer = req.params.idPlayer;
 
     if (idPlayer == undefined) {
         res.status(400).send("idPlayer está indefinido!");
     } else {
-        playerModel.listPlayer(idPlayer).then(function (result) {
+        playerModel.list(idPlayer).then(function (result) {
             if (result.length > 0) {
                 res.status(200).json(result);
             } else {
@@ -32,8 +32,8 @@ function listPlayer(req, res) {
     }
 }
 
-function listPlayerByRank(req, res) {
-    playerModel.listPlayerByRank().then(function (result) {
+function listByRank(req, res) {
+    playerModel.listByRank().then(function (result) {
         if (result.length > 0) {
             res.status(200).json(result);
         } else {
@@ -46,7 +46,7 @@ function listPlayerByRank(req, res) {
 }
 
 
-function savePlayer(req, res) {
+function save(req, res) {
     let nickname = req.body.nickname;
     let email = req.body.email;
     let password = req.body.password;
@@ -58,7 +58,7 @@ function savePlayer(req, res) {
     } else if (password == undefined) {
         res.status(400).send("password está indefinido!");
     } else {
-        playerModel.savePlayer(nickname, email, password)
+        playerModel.save(nickname, email, password)
             .then(result => {
                 res.status(201).json(result);
             }).catch(function (error) {
@@ -145,10 +145,10 @@ function updatePassword(req, res) {
 }
 
 module.exports = {
-    listAllPlayers,
-    listPlayer,
-    listPlayerByRank,
-    savePlayer,
+    listAll,
+    list,
+    listByRank,
+    save,
     updateAvatar,
     updateNickname,
     updateTitle,

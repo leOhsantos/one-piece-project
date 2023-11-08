@@ -1,21 +1,21 @@
 const database = require("../database/config");
 
-function listAllPlayers() {
+function listAll() {
     const instruction = `SELECT * FROM Player;`;
     return database.execute(instruction);
 }
 
-function listPlayer(idPlayer) {
+function list(idPlayer) {
     const instruction = `SELECT * FROM Player WHERE idPlayer = ${idPlayer};`;
     return database.execute(instruction);
 }
 
-function listPlayerByRank() {
+function listByRank() {
     const instruction = `SELECT * FROM Player AS p JOIN Score AS s ON p.idPlayer = s.fkPlayer ORDER BY speedrunTime DESC;`;
     return database.execute(instruction);
 }
 
-function savePlayer(nickname, email, password) {
+function save(nickname, email, password) {
     const instruction = `INSERT INTO Player (nickname, email, password) VALUES ('${nickname}', '${email}', '${password}');`;
     return database.execute(instruction);
 }
@@ -41,10 +41,10 @@ function updatePassword(password, idPlayer) {
 }
 
 module.exports = {
-    listAllPlayers,
-    listPlayer,
-    listPlayerByRank,
-    savePlayer,
+    listAll,
+    list,
+    listByRank,
+    save,
     updateAvatar,
     updateNickname,
     updateTitle,

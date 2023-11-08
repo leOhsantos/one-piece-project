@@ -8,7 +8,7 @@ router.get("/list", function (req, res) {
 })
 
 router.post("/save/:idPlayer", function (req, res) {
-    scoreController.saveScore(req, res);
+    scoreController.save(req, res);
 });
 
 module.exports = router;

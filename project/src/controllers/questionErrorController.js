@@ -1,12 +1,12 @@
 const questionErrorModel = require("../models/questionErrorModel");
 
-function listErrorsByQuestion(req, res) {
+function listByQuestion(req, res) {
     let idPlayer = req.params.idPlayer;
 
     if (idPlayer == undefined) {
         res.status(400).send("idPlayer está indefinido!");
     } else {
-        questionErrorModel.listErrorsByQuestion(idPlayer).then(function (result) {
+        questionErrorModel.listByQuestion(idPlayer).then(function (result) {
             if (result.length > 0) {
                 res.status(200).json(result);
             } else {
@@ -19,7 +19,7 @@ function listErrorsByQuestion(req, res) {
     }
 }
 
-function saveQuestionError(req, res) {
+function save(req, res) {
     let questionNumber = req.body.questionNumber;
     let idPlayer = req.params.idPlayer;
 
@@ -28,7 +28,7 @@ function saveQuestionError(req, res) {
     } else if (idPlayer == undefined) {
         res.status(400).send("idPlayer está indefinido!");
     } else {
-        questionErrorModel.saveQuestionError(questionNumber, idPlayer)
+        questionErrorModel.save(questionNumber, idPlayer)
             .then(result => {
                 res.status(201).json(result);
             }).catch(function (error) {
@@ -39,6 +39,6 @@ function saveQuestionError(req, res) {
 }
 
 module.exports = {
-    listErrorsByQuestion,
-    saveQuestionError
+    listByQuestion,
+    save
 }

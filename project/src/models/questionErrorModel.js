@@ -1,16 +1,16 @@
 const database = require("../database/config");
 
-function listErrorsByQuestion(idPlayer) {
+function listByQuestion(idPlayer) {
     const instruction = `SELECT COUNT(idQuestionError) AS Errors FROM QuestionError WHERE fkPlayer = ${idPlayer};`;
     return database.execute(instruction);
 }
 
-function saveQuestionError(questionNumber, idPlayer) {
+function save(questionNumber, idPlayer) {
     const instruction = `INSERT INTO QuestionError (questionNumber, fkPlayer) VALUES ('${questionNumber}', ${idPlayer});`;
     return database.execute(instruction);
 }
 
 module.exports = {
-    listErrorsByQuestion,
-    saveQuestionError
+    listByQuestion,
+    save
 }

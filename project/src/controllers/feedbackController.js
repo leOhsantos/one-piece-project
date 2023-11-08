@@ -19,7 +19,7 @@ function listByStars(req, res) {
     }
 }
 
-function saveFeedback(req, res) {
+function save(req, res) {
     let stars = req.body.stars;
     let idPlayer = req.params.idPlayer;
 
@@ -28,7 +28,7 @@ function saveFeedback(req, res) {
     } else if (idPlayer == undefined) {
         res.status(400).send("idPlayer está indefinido!");
     } else {
-        feedbackModel.saveFeedback(stars, idPlayer)
+        feedbackModel.save(stars, idPlayer)
             .then(result => {
                 res.status(201).json(result);
             }).catch(function (error) {
@@ -40,5 +40,5 @@ function saveFeedback(req, res) {
 
 module.exports = {
     listByStars,
-    saveFeedback
+    save
 }

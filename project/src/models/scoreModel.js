@@ -5,12 +5,12 @@ function list() {
     return database.execute(instruction);
 }
 
-function saveScore(rank, speedrunTime, idPlayer) {
+function save(rank, speedrunTime, idPlayer) {
     const instruction = `INSERT INTO Score (rank, speedrunTime, fkPlayer) VALUES ('${rank}', '${speedrunTime}', ${idPlayer});`;
     return database.execute(instruction);
 }
 
 module.exports = {
     list,
-    saveScore
+    save
 }
