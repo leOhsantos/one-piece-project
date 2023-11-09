@@ -137,6 +137,15 @@ function saveAccountEdition() {
         body: JSON.stringify({
             nickname: nickname
         })
+    }).then(res => {
+        if (res.status == 200) {
+            menuNickname.textContent = nickname;
+            closeSettingsContainer();
+        } else {
+            res.text().then(text => {
+                console.error(text);
+            });
+        }
     }).catch(error => {
         console.log(error);
     });
@@ -153,9 +162,7 @@ function saveAccountEdition() {
         console.log(error);
     });
 
-    menuNickname.textContent = nickname;
     menuTitle.textContent = title;
-    closeSettingsContainer();
 }
 
 function openSecurityContainer() {

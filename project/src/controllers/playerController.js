@@ -86,7 +86,7 @@ function save(req, res) {
             }
 
             for (let i = 0; i < player.length; i++) {
-                if (email == player[i].email) {
+                if (email.toUpperCase() == (player[i].email).toUpperCase()) {
                     isEmailRepeated = true;
                     break;
                 }
@@ -130,20 +130,29 @@ function updateAvatar(req, res) {
 function updateNickname(req, res) {
     let nickname = req.body.nickname;
     let idPlayer = req.params.idPlayer;
+    let isNicknameRepeated = false;
 
-    if (nickname == undefined) {
-        res.status(400).send("nickname está indefinido!");
-    } else if (idPlayer == undefined) {
-        res.status(400).send("idPlayer está indefinido!");
-    } else {
-        playerModel.updateNickname(nickname, idPlayer)
-            .then(result => {
-                res.json(result);
-            }).catch(function (error) {
-                console.log(error);
-                res.status(500).json(error.sqlMessage);
-            });
-    }
+    playerModel.listAll()
+        .then(player => {
+            for (let i = 0; i < player.length; i++) {
+                if (nickname == player[i].nickname && idPlayer != player[i].idPlayer) {
+                    isNicknameRepeated = true;
+                    break;
+                }
+            }
+
+            if (isNicknameRepeated) {
+                res.status(403).send("Esse nickname já existe!");
+            } else {
+                playerModel.updateNickname(nickname, idPlayer)
+                    .then(result => {
+                        res.json(result);
+                    }).catch(function (error) {
+                        console.log(error);
+                        res.status(500).json(error.sqlMessage);
+                    });
+            }
+        });
 }
 
 function updateTitle(req, res) {
