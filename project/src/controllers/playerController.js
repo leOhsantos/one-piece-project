@@ -48,23 +48,20 @@ function listByRank(req, res) {
 function authenticate(req, res) {
     let email = req.body.email;
     let password = req.body.password;
-    let login = false;
-    let playerPosition = 0;
 
-    playerModel.listAll()
-        .then(player => {
-            for (let i = 0; i < player.length; i++) {
-                if (email == player[i].email && password == player[i].password) {
-                    login = true;
-                    playerPosition = i;
-                    break;
-                }
-            }
-
-            if (login) {
-                res.status(200).json(player[playerPosition].idPlayer);
+    playerModel.checkEmailExists(email)
+        .then(emailRes => {
+            if (emailRes.length == 0) {
+                res.status(403).send("Esse e-mail não existe!");
             } else {
-                res.status(403).send("E-mail ou senha inválidos!");
+                playerModel.authenticate(email, password)
+                    .then(playerRes => {
+                        if (playerRes.length == 0) {
+                            res.status(403).send("E-mail ou senha inválidos!");
+                        } else {
+                            res.status(200).json(playerRes[0].idPlayer);
+                        }
+                    });
             }
         });
 }
@@ -77,16 +74,16 @@ function save(req, res) {
     let isEmailRepeated = false;
 
     playerModel.listAll()
-        .then(player => {
-            for (let i = 0; i < player.length; i++) {
-                if (nickname == player[i].nickname) {
+        .then(playerRes => {
+            for (let i = 0; i < playerRes.length; i++) {
+                if (nickname == playerRes[i].nickname) {
                     isNicknameRepeated = true;
                     break;
                 }
             }
 
-            for (let i = 0; i < player.length; i++) {
-                if (email.toUpperCase() == (player[i].email).toUpperCase()) {
+            for (let i = 0; i < playerRes.length; i++) {
+                if (email.toUpperCase() == (playerRes[i].email).toUpperCase()) {
                     isEmailRepeated = true;
                     break;
                 }
@@ -133,9 +130,9 @@ function updateNickname(req, res) {
     let isNicknameRepeated = false;
 
     playerModel.listAll()
-        .then(player => {
-            for (let i = 0; i < player.length; i++) {
-                if (nickname == player[i].nickname && idPlayer != player[i].idPlayer) {
+        .then(playerRes => {
+            for (let i = 0; i < playerRes.length; i++) {
+                if (nickname == playerRes[i].nickname && idPlayer != playerRes[i].idPlayer) {
                     isNicknameRepeated = true;
                     break;
                 }
@@ -180,8 +177,8 @@ function updatePassword(req, res) {
     let idPlayer = req.params.idPlayer;
 
     playerModel.list(idPlayer)
-        .then(player => {
-            if (password != player[0].password) {
+        .then(playerRes => {
+            if (password != playerRes[0].password) {
                 res.status(403).send("Senha atual incorreta!");
             } else {
                 playerModel.updatePassword(newPassword, idPlayer)

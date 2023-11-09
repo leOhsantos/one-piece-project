@@ -15,6 +15,16 @@ function listByRank() {
     return database.execute(instruction);
 }
 
+function authenticate(email, password) {
+    const instruction = `SELECT * FROM Player WHERE email = '${email}' AND password = '${password}'`;
+    return database.execute(instruction);
+}
+
+function checkEmailExists(email) {
+    const instruction = `SELECT * FROM Player WHERE email = '${email}'`;
+    return database.execute(instruction);
+}
+
 function save(nickname, email, password) {
     const instruction = `INSERT INTO Player (nickname, email, password) VALUES ('${nickname}', '${email}', '${password}');`;
     return database.execute(instruction);
@@ -44,6 +54,8 @@ module.exports = {
     listAll,
     list,
     listByRank,
+    authenticate,
+    checkEmailExists,
     save,
     updateAvatar,
     updateNickname,
