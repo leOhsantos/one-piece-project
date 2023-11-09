@@ -14,7 +14,6 @@ CREATE TABLE Score (
 	idScore INT NOT NULL AUTO_INCREMENT,
     rankUser INT NOT NULL,
     speedrunTime TIME NOT NULL,
-    scoreDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fkPlayer INT NOT NULL,
     FOREIGN KEY (fkPlayer) REFERENCES Player(idPlayer),
     PRIMARY KEY (idScore, fkPlayer)

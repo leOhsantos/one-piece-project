@@ -23,12 +23,18 @@ function signUp(nickname, email, password) {
             email: email,
             password: password
         })
+    }).then(res => {
+        if (res.status == 201) {
+            alert("Cadastro realizado com sucesso!");
+            window.location.href = "../signin.html";
+        } else {
+            res.text().then(text => {
+                console.error(text);
+            });
+        }
     }).catch(error => {
         console.log(error);
     });
-
-    alert("Cadastro realizado com sucesso!");
-    window.location.href = "../signin.html";
 }
 
 function checkInput() {

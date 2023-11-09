@@ -8,38 +8,30 @@ const passwordIcon = document.querySelector(".password-icon");
 const eyeIcon = document.querySelector(".eye-icon");
 const backArrow = document.querySelector(".back-arrow");
 
-let players = [];
-
-window.addEventListener("load", () => {
-    fetch("player/list-all")
-        .then(res => {
-            if (res.status == 200) {
-                res.json().then(res => {
-                    players = res;
-                });
-            }
-        }).catch(error => {
-            console.log(error);
-        });
-});
-
 function signIn(email, password) {
-    let playerNotFound = false;
-
-    for (let i = 0; i < players.length; i++) {
-        if (email == players[i].email && password == players[i].password) {
-            sessionStorage.setItem("idPlayer", players[i].idPlayer);
-            window.location.href = "../dashboard/game.html";
-            playerNotFound = false;
-            break;
+    fetch("player/authenticate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    }).then(res => {
+        if (res.status == 200) {
+            res.json().then(res => {
+                sessionStorage.setItem("idPlayer", res);
+                window.location.href = "../dashboard/game.html";
+            });
         } else {
-            playerNotFound = true;
+            res.text().then(text => {
+                console.error(text);
+            });
         }
-    }
-
-    if (playerNotFound) {
-        alert("E-mail ou senha incorretos!");
-    }
+    }).catch(error => {
+        console.log(error);
+    });
 }
 
 function checkInput() {

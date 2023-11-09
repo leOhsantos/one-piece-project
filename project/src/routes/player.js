@@ -15,6 +15,10 @@ router.get("/list-by-rank", function (req, res) {
   playerController.listByRank(req, res);
 });
 
+router.post("/authenticate", function (req, res) {
+  playerController.authenticate(req, res);
+});
+
 router.post("/save", function (req, res) {
   playerController.save(req, res);
 });

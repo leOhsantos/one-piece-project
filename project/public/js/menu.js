@@ -214,7 +214,28 @@ function setEyeIconToStandard() {
 }
 
 function saveSecurityEdition() {
-    closeSettingsContainer();
+    if (newPasswordInput.value == confirmNewPasswordInput.value && newPasswordInput.value.length > 0) {
+        fetch(`/player/update-password/${idPlayer}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                password: currentPasswordInput.value,
+                newPassword: newPasswordInput.value
+            })
+        }).then(res => {
+            if (res.status == 200) {
+                closeSettingsContainer();
+            } else {
+                res.text().then(text => {
+                    console.error(text);
+                });
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
 }
 
 function openSettingsContainer() {
