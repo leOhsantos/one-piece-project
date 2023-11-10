@@ -332,6 +332,20 @@ function countFailures() {
     sessionStorage.setItem("fail", failNumber);
 }
 
+function saveQuestionError(questionNumber) {
+    fetch(`/question-error/save/${idPlayer}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            questionNumber: questionNumber
+        })
+    }).catch(error => {
+        console.log(error);
+    });
+}
+
 function showGameOverScreen() {
     quiz.style.display = "none";
     gameOverBackground.style.display = "block";
@@ -347,6 +361,7 @@ function showGameOverScreen() {
 
     countFailures();
     stopRecordTimer();
+    saveQuestionError(questionNumber.value > 1 ? Number(questionNumber.value) + 1 : Number(questionNumber.value));
 }
 
 function showGameOverScreenBonus() {
@@ -366,6 +381,22 @@ function showGameOverScreenBonus() {
     }, 800);
 
     stopRecordTimer();
+    saveQuestionError(questionNumber.value > 1 ? Number(questionNumber.value) + 1 : Number(questionNumber.value));
+}
+
+function saveScore(rank, speedrunTime) {
+    fetch(`/score/save/${idPlayer}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            rank: rank,
+            speedrunTime: speedrunTime
+        })
+    }).catch(error => {
+        console.log(error);
+    });
 }
 
 function calculateScore() {
@@ -405,6 +436,8 @@ function calculateScore() {
     fail === 0 ? score.textContent = "Nenhuma falha" : score.textContent = `Falhas totais: ${fail}`;
 
     sessionStorage.setItem("bonus", true);
+
+    saveScore(rankNumber, 0);
 }
 
 function calculateScoreBonus() {
@@ -412,6 +445,7 @@ function calculateScoreBonus() {
     const recordScore = parseInt(sessionStorage.getItem("recordScore"));
     const progress = parseInt(sessionStorage.getItem("progress"));
     let rankNumber = 0;
+    let speedrunTime = `${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(secR)}.${parseInt(milR.toString().substring(0, 1))}`;
 
     if (currentScore === 5 && minR < 1) {
         rankNumber = 7;
@@ -466,6 +500,8 @@ function calculateScoreBonus() {
     sessionStorage.removeItem("bonus");
     sessionStorage.removeItem("currentScore");
     sessionStorage.removeItem("fail");
+
+    saveScore(rankNumber, speedrunTime);
 }
 
 function setFinalProgress() {

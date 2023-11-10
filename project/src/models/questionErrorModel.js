@@ -6,7 +6,7 @@ function listByQuestion(idPlayer) {
 }
 
 function save(questionNumber, idPlayer) {
-    const instruction = `INSERT INTO QuestionError (questionNumber, fkPlayer) VALUES ('${questionNumber}', ${idPlayer});`;
+    const instruction = `INSERT INTO QuestionError (questionNumber, fkPlayer) VALUES (${questionNumber}, ${idPlayer});`;
     return database.execute(instruction);
 }
 

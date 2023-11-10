@@ -7,7 +7,7 @@ router.get("/list-by-question/:idPlayer", function (req, res) {
     questionErrorController.listByQuestion(req, res);
 });
 
-router.get("/save/:idPlayer", function (req, res) {
+router.post("/save/:idPlayer", function (req, res) {
     questionErrorController.save(req, res);
 });
 

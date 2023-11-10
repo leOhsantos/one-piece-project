@@ -10,18 +10,8 @@ function list(idPlayer) {
     return database.execute(instruction);
 }
 
-function listByRank() {
-    const instruction = `SELECT * FROM Player AS p JOIN Score AS s ON p.idPlayer = s.fkPlayer ORDER BY speedrunTime DESC;`;
-    return database.execute(instruction);
-}
-
 function authenticate(email, password) {
     const instruction = `SELECT * FROM Player WHERE email = '${email}' AND password = '${password}'`;
-    return database.execute(instruction);
-}
-
-function checkEmailExists(email) {
-    const instruction = `SELECT * FROM Player WHERE email = '${email}'`;
     return database.execute(instruction);
 }
 
@@ -53,9 +43,7 @@ function updatePassword(password, idPlayer) {
 module.exports = {
     listAll,
     list,
-    listByRank,
     authenticate,
-    checkEmailExists,
     save,
     updateAvatar,
     updateNickname,

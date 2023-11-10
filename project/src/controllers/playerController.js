@@ -2,11 +2,7 @@ const playerModel = require("../models/playerModel");
 
 function listAll(req, res) {
     playerModel.listAll().then(function (result) {
-        if (result.length > 0) {
-            res.status(200).json(result);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!");
-        }
+        res.status(200).json(result);
     }).catch(function (error) {
         console.log(error);
         res.status(500).json(error.sqlMessage);
@@ -16,29 +12,17 @@ function listAll(req, res) {
 function list(req, res) {
     let idPlayer = req.params.idPlayer;
 
-    if (idPlayer == undefined) {
-        res.status(400).send("idPlayer está indefinido!");
-    } else {
-        playerModel.list(idPlayer).then(function (result) {
-            if (result.length > 0) {
-                res.status(200).json(result);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!");
-            }
-        }).catch(function (error) {
-            console.log(error);
-            res.status(500).json(error.sqlMessage);
-        });
-    }
+    playerModel.list(idPlayer).then(function (result) {
+        res.status(200).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json(error.sqlMessage);
+    });
 }
 
 function listByRank(req, res) {
     playerModel.listByRank().then(function (result) {
-        if (result.length > 0) {
-            res.status(200).json(result);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!");
-        }
+        res.status(200).json(result);
     }).catch(function (error) {
         console.log(error);
         res.status(500).json(error.sqlMessage);
@@ -49,19 +33,12 @@ function authenticate(req, res) {
     let email = req.body.email;
     let password = req.body.password;
 
-    playerModel.checkEmailExists(email)
-        .then(emailRes => {
-            if (emailRes.length == 0) {
-                res.status(403).send("Esse e-mail não existe!");
+    playerModel.authenticate(email, password)
+        .then(playerRes => {
+            if (playerRes.length == 0) {
+                res.status(403).send("E-mail ou senha inválidos!");
             } else {
-                playerModel.authenticate(email, password)
-                    .then(playerRes => {
-                        if (playerRes.length == 0) {
-                            res.status(403).send("E-mail ou senha inválidos!");
-                        } else {
-                            res.status(200).json(playerRes[0].idPlayer);
-                        }
-                    });
+                res.status(200).json(playerRes[0].idPlayer);
             }
         });
 }
@@ -109,19 +86,13 @@ function updateAvatar(req, res) {
     let avatar = req.body.avatar;
     let idPlayer = req.params.idPlayer;
 
-    if (avatar == undefined) {
-        res.status(400).send("avatar está indefinido!");
-    } else if (idPlayer == undefined) {
-        res.status(400).send("idPlayer está indefinido!");
-    } else {
-        playerModel.updateAvatar(avatar, idPlayer)
-            .then(result => {
-                res.json(result);
-            }).catch(function (error) {
-                console.log(error);
-                res.status(500).json(error.sqlMessage);
-            });
-    }
+    playerModel.updateAvatar(avatar, idPlayer)
+        .then(result => {
+            res.json(result);
+        }).catch(function (error) {
+            console.log(error);
+            res.status(500).json(error.sqlMessage);
+        });
 }
 
 function updateNickname(req, res) {
@@ -156,19 +127,13 @@ function updateTitle(req, res) {
     let title = req.body.title;
     let idPlayer = req.params.idPlayer;
 
-    if (title == undefined) {
-        res.status(400).send("title está indefinido!");
-    } else if (idPlayer == undefined) {
-        res.status(400).send("idPlayer está indefinido!");
-    } else {
-        playerModel.updateTitle(title, idPlayer)
-            .then(result => {
-                res.json(result);
-            }).catch(function (error) {
-                console.log(error);
-                res.status(500).json(error.sqlMessage);
-            });
-    }
+    playerModel.updateTitle(title, idPlayer)
+        .then(result => {
+            res.json(result);
+        }).catch(function (error) {
+            console.log(error);
+            res.status(500).json(error.sqlMessage);
+        });
 }
 
 function updatePassword(req, res) {
