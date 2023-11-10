@@ -12,7 +12,7 @@ CREATE TABLE Player (
 
 CREATE TABLE Score (
 	idScore INT NOT NULL AUTO_INCREMENT,
-    rankUser INT NOT NULL,
+    rankPlayer INT NOT NULL,
     speedrunTime TIME(1) NOT NULL,
     fkPlayer INT NOT NULL,
     FOREIGN KEY (fkPlayer) REFERENCES Player(idPlayer),

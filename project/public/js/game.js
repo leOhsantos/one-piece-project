@@ -944,7 +944,7 @@ function showProgressScreen() {
             <tr>
             <td class="ranking-position">${i + 1}°</td>
             <td class="ranking-name">${rankingList[i].nickname}</td>
-            <td class="ranking-rank">${checkPlayerRank(rankingList[i].rankUser)}</td>
+            <td class="ranking-rank">${checkPlayerRank(rankingList[i].rankPlayer)}</td>
             <td class="ranking-time">${rankingList[i].speedrunTime}</td>
             </tr>
             `;
@@ -955,7 +955,7 @@ function showProgressScreen() {
         playerRank.innerHTML = `
         <span class="ranking-position">${playerPosition}º</span>
         <span class="ranking-name">${playerRanking[0].nickname}</span>
-        <span class="ranking-rank">${checkPlayerRank(playerRanking[0].rankUser)}</span>
+        <span class="ranking-rank">${checkPlayerRank(playerRanking[0].rankPlayer)}</span>
         <span class="ranking-time">${playerRanking[0].speedrunTime}</span>
     `;
     } else {

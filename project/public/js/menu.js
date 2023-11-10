@@ -35,6 +35,7 @@ const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
 const idPlayer = sessionStorage.getItem("idPlayer");
+let player = [];
 
 window.addEventListener("load", () => {
     if (!idPlayer) {
@@ -51,8 +52,53 @@ window.addEventListener("load", () => {
             }).catch(error => {
                 console.log(error);
             });
+
+        fetch(`/score/list-by-player/${idPlayer}`)
+            .then(res => {
+                res.json().then(res => {
+                    player = res[0];
+                });
+            }).catch(error => {
+                console.log(error);
+            });
     }
 });
+
+function showTitles() {
+    if (!player) {
+        titleSelect.innerHTML = `
+        <option value="Figurante">Figurante</option>
+        `;
+    } else {
+        if (player.rankPlayer <= 2) {
+            titleSelect.innerHTML = `
+        <option value="Figurante">Figurante</option>
+        <option value="Pirata Comum">Pirata Comum</option>
+        `;
+        } else if (player.rankPlayer <= 4) {
+            titleSelect.innerHTML = `
+        <option value="Figurante">Figurante</option>
+        <option value="Pirata Comum">Pirata Comum</option>
+        <option value="Supernova">Supernova</option>
+        `;
+        } else if (player.rankPlayer <= 6) {
+            titleSelect.innerHTML = `
+        <option value="Figurante">Figurante</option>
+        <option value="Pirata Comum">Pirata Comum</option>
+        <option value="Supernova">Supernova</option>
+        <option value="Yonkou">Yonkou</option>
+        `;
+        } else {
+            titleSelect.innerHTML = `
+        <option value="Figurante">Figurante</option>
+        <option value="Pirata Comum">Pirata Comum</option>
+        <option value="Supernova">Supernova</option>
+        <option value="Yonkou">Yonkou</option>
+        <option value="Rei dos Piratas">Rei dos Piratas</option>
+        `;
+        }
+    }
+}
 
 function openAvatarContainer() {
     avatarBtn.classList.add("active");
@@ -104,7 +150,9 @@ function openAccountContainer() {
     accountContainer.classList.add("active");
     securityContainer.classList.remove("active");
 
+    showTitles();
     titleSelect.value = menuTitle.textContent;
+
     saveEditionBtn.setAttribute("onclick", "saveAccountEdition()");
     cleanSecurityInputs();
 }
