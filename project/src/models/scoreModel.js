@@ -1,7 +1,7 @@
 const database = require("../database/config");
 
 function list() {
-    const instruction = `SELECT * FROM Score AS s JOIN Player AS p ON p.idPlayer = s.fkPlayer ORDER BY speedrunTime;`;
+    const instruction = `SELECT * FROM Score AS s JOIN Player AS p ON p.idPlayer = s.fkPlayer ORDER BY rankUser DESC, speedrunTime;`;
     return database.execute(instruction);
 }
 
