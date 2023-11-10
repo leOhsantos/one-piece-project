@@ -7,6 +7,10 @@ router.get("/list", function (req, res) {
     scoreController.list(req, res);
 })
 
+router.get("/list-by-player/:idPlayer", function (req, res) {
+    scoreController.listByPlayer(req, res);
+})
+
 router.post("/save/:idPlayer", function (req, res) {
     scoreController.save(req, res);
 });

@@ -11,6 +11,17 @@ function listByStars(req, res) {
     });
 }
 
+function listByPlayer(req, res) {
+    let idPlayer = req.params.idPlayer;
+
+    feedbackModel.listByPlayer(idPlayer).then(function (result) {
+        res.status(200).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json(error.sqlMessage);
+    });
+}
+
 function save(req, res) {
     let stars = req.body.stars;
     let idPlayer = req.params.idPlayer;
@@ -26,5 +37,6 @@ function save(req, res) {
 
 module.exports = {
     listByStars,
+    listByPlayer,
     save
 }

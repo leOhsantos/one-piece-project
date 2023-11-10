@@ -9,6 +9,17 @@ function list(req, res) {
     });
 }
 
+function listByPlayer(req, res) {
+    let idPlayer = req.params.idPlayer;
+
+    scoreModel.listByPlayer(idPlayer).then(function (result) {
+        res.status(200).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json(error.sqlMessage);
+    });
+}
+
 function save(req, res) {
     let rank = req.body.rank;
     let speedrunTime = req.body.speedrunTime;
@@ -34,5 +45,6 @@ function save(req, res) {
 
 module.exports = {
     list,
+    listByPlayer,
     save
 }

@@ -1,12 +1,12 @@
 const database = require("../database/config");
 
 function list() {
-    const instruction = `SELECT * FROM Score AS s JOIN Player AS p ON p.idPlayer = s.fkPlayer ORDER BY speedrunTime DESC;`;
+    const instruction = `SELECT * FROM Score AS s JOIN Player AS p ON p.idPlayer = s.fkPlayer ORDER BY speedrunTime;`;
     return database.execute(instruction);
 }
 
 function listByPlayer(idPlayer) {
-    const instruction = `SELECT * FROM Score WHERE fkPlayer = ${idPlayer}`;
+    const instruction = `SELECT * FROM Score AS s JOIN Player AS p ON p.idPlayer = s.fkPlayer WHERE fkPlayer = ${idPlayer}`;
     return database.execute(instruction);
 }
 

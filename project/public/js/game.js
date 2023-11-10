@@ -35,6 +35,10 @@ const resetProgressWarning = document.querySelector(".reset-progress-warning");
 const resetProgressBtn = document.getElementById("resetProgressBtn");
 const cancelResetProgressBtn = document.getElementById("cancelResetProgressBtn");
 const confirmResetProgressBtn = document.getElementById("confirmResetProgressBtn");
+const rankingListTbody = document.getElementById("rankingListTbody");
+const playerRank = document.querySelector(".player-rank");
+let rankingList = [];
+let playerRanking = [];
 
 const quiz = document.querySelector(".quiz");
 const jollyRogerLuffy = document.getElementById("jollyRogerLuffy");
@@ -102,6 +106,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const fail = sessionStorage.getItem("fail");
     const isBonusActivated = sessionStorage.getItem("bonus");
     const recordTime = JSON.parse(sessionStorage.getItem("recordTime"));
+
+    //get the player feedback stars
+    fetch(`/feedback/list-by-player/${idPlayer}`)
+        .then(res => {
+            res.json().then(res => {
+                if (res.length > 0) {
+                    starsNumber = res[0].stars;
+                }
+            })
+        }).catch(error => {
+            console.log(error);
+        });
+
+    //get player ranking list
+    fetch(`/score/list`)
+        .then(res => {
+            res.json().then(res => {
+                if (res.length > 0) {
+                    rankingList = res;
+                }
+            })
+        }).catch(error => {
+            console.log(error);
+        });
+
+    //get only ranking player
+    fetch(`/score/list-by-player/${idPlayer}`)
+        .then(res => {
+            res.json().then(res => {
+                if (res.length > 0) {
+                    playerRanking = res;
+                }
+            })
+        }).catch(error => {
+            console.log(error);
+        });
 
     //show the stars on menu
     if (progress >= 50 && progress < 100) {
@@ -703,8 +743,46 @@ function showFeedbackScreen() {
     quizFeedback.style.display = "flex";
 
     if (starsNumber > 0) {
+        feedbackStar1.style.pointerEvents = "none";
+        feedbackStar2.style.pointerEvents = "none";
+        feedbackStar3.style.pointerEvents = "none";
+        feedbackStar4.style.pointerEvents = "none";
+        feedbackStar5.style.pointerEvents = "none";
         feedbackText.textContent = "Jogo avaliado com sucesso!";
         rateBtn.style.display = "none";
+        isRated = true;
+
+        if (starsNumber == 1) {
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/empty-star.png";
+            feedbackStar3.src = "../assets/image/empty-star.png";
+            feedbackStar4.src = "../assets/image/empty-star.png";
+            feedbackStar5.src = "../assets/image/empty-star.png";
+        } else if (starsNumber == 2) {
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/full-star.png";
+            feedbackStar3.src = "../assets/image/empty-star.png";
+            feedbackStar4.src = "../assets/image/empty-star.png";
+            feedbackStar5.src = "../assets/image/empty-star.png";
+        } else if (starsNumber == 3) {
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/full-star.png";
+            feedbackStar3.src = "../assets/image/full-star.png";
+            feedbackStar4.src = "../assets/image/empty-star.png";
+            feedbackStar5.src = "../assets/image/empty-star.png";
+        } else if (starsNumber == 4) {
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/full-star.png";
+            feedbackStar3.src = "../assets/image/full-star.png";
+            feedbackStar4.src = "../assets/image/full-star.png";
+            feedbackStar5.src = "../assets/image/empty-star.png";
+        } else {
+            feedbackStar1.src = "../assets/image/full-star.png";
+            feedbackStar2.src = "../assets/image/full-star.png";
+            feedbackStar3.src = "../assets/image/full-star.png";
+            feedbackStar4.src = "../assets/image/full-star.png";
+            feedbackStar5.src = "../assets/image/full-star.png";
+        }
     }
 }
 
@@ -769,11 +847,44 @@ function setStarNumber(star) {
     }
 }
 
+function saveFeedback(stars) {
+    fetch(`/feedback/save/${idPlayer}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            stars: stars
+        })
+    }).catch(error => {
+        console.log(error);
+    });
+}
+
 function rateGame() {
     if (starsNumber > 0) {
         feedbackText.textContent = "Jogo avaliado com sucesso!";
         rateBtn.style.display = "none";
         isRated = true;
+        saveFeedback(starsNumber);
+    }
+}
+
+function checkPlayerRank(rank) {
+    if (rank == 7) {
+        return "S++";
+    } else if (rank == 6) {
+        return "S+";
+    } else if (rank == 5) {
+        return "S";
+    } else if (rank == 4) {
+        return "A+";
+    } else if (rank == 3) {
+        return "A";
+    } else if (rank == 2) {
+        return "B+";
+    } else if (rank == 1) {
+        return "B";
     }
 }
 
@@ -782,12 +893,14 @@ function showProgressScreen() {
 
     quizMenu.style.display = "none";
     quizProgress.style.display = "flex";
+    rankingListTbody.innerHTML = "";
 
     const recordScore = parseInt(sessionStorage.getItem("recordScore"));
     const progress = parseInt(sessionStorage.getItem("progress"));
     const recordTime = JSON.parse(sessionStorage.getItem("recordTime"));
+    let playerPosition = 0;
 
-    !progress ? percentProgress.textContent = "Progresso atual: 0%" : percentProgress.textContent = `Progresso atual: ${progress}%`;
+    percentProgress.textContent = `Progresso atual: ${progress}%`;
 
     if (recordScore === 7) {
         titleProgress.textContent = "Título: Rei dos Piratas";
@@ -817,14 +930,44 @@ function showProgressScreen() {
 
     if (progress < 100) {
         recordTimeProgress.textContent = "Tempo decorrido: ???";
-    } else if (recordTime.minute < 1 && progress == 100) {
-        recordTimeProgress.textContent = `Tempo: ${twoDigits(recordTime.second)}.${parseInt(recordTime.millisecond.toString().substring(0, 1))}`;
-    } else if (recordTime.minute >= 1 && recordTime.hour < 1 && progress == 100) {
-        recordTimeProgress.textContent = `Tempo decorrido: ${recordTime.minute}:${twoDigits(recordTime.second)}`;
-    } else if (recordTime.hour >= 1 && progress == 100) {
-        recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}`;
+    } else {
+        recordTimeProgress.textContent = `Tempo decorrido: ${twoDigits(recordTime.hour)}:${twoDigits(recordTime.minute)}:${twoDigits(recordTime.second)}.${parseInt(recordTime.millisecond.toString().substring(0, 1))}`;
+    }
+
+    for (let i = 0; i < rankingList.length; i++) {
+        if (rankingList[i].fkPlayer == idPlayer) {
+            playerPosition = i + 1;
+        }
+
+        if (rankingList[i].speedrunTime != "00:00:00.0") {
+            rankingListTbody.innerHTML += `
+            <tr>
+            <td class="ranking-position">${i + 1}°</td>
+            <td class="ranking-name">${rankingList[i].nickname}</td>
+            <td class="ranking-rank">${checkPlayerRank(rankingList[i].rankUser)}</td>
+            <td class="ranking-time">${rankingList[i].speedrunTime}</td>
+            </tr>
+            `;
+        }
+    }
+
+    if (playerRanking.length > 0 && playerRanking[0].speedrunTime != "00:00:00.0") {
+        playerRank.innerHTML = `
+        <span class="ranking-position">${playerPosition}º</span>
+        <span class="ranking-name">${playerRanking[0].nickname}</span>
+        <span class="ranking-rank">${checkPlayerRank(playerRanking[0].rankUser)}</span>
+        <span class="ranking-time">${playerRanking[0].speedrunTime}</span>
+    `;
+    } else {
+        playerRank.innerHTML = `
+        <span class="ranking-position">???º</span>
+        <span class="ranking-name">???</span>
+        <span class="ranking-rank">???</span>
+        <span class="ranking-time">???</span>
+    `;
     }
 }
+
 
 if (progressBtn) progressBtn.addEventListener("click", showProgressScreen);
 
