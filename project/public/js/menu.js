@@ -30,6 +30,13 @@ const confirmNewPasswordInput = document.getElementById("confirmNewPasswordInput
 const currentPasswordEyeIcon = document.getElementById("currentPasswordEyeIcon");
 const eyeIcon = document.querySelectorAll(".eye-icon");
 
+const popupBackground = document.querySelector(".popup-background");
+const popup = document.querySelector(".popup");
+const popupImg = document.getElementById("popupImg");
+const popupTitle = document.querySelector(".popup-title");
+const popupDescription = document.querySelector(".popup-description");
+const closePopupBtn = document.getElementById("closePopupBtn");
+
 const confirmLogoutModal = document.querySelector(".confirm-logout");
 const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
 const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
@@ -137,18 +144,20 @@ function setAvatar(e) {
 function saveAvatarEdition() {
     let avatar = settingsAvatar.getAttribute("data-avatar");
 
-    fetch(`/player/update-avatar/${idPlayer}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            avatar: avatar
-        })
-    });
+    if (avatar) {
+        fetch(`/player/update-avatar/${idPlayer}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                avatar: avatar
+            })
+        });
 
-    menuAvatar.src = `../assets/image/${avatar}.jpg`;
-    closeSettingsContainer();
+        menuAvatar.src = `../assets/image/${avatar}.jpg`;
+        closeSettingsContainer();
+    }
 }
 
 function openAccountContainer() {
@@ -202,7 +211,7 @@ function saveAccountEdition() {
             closeSettingsContainer();
         } else {
             res.text().then(text => {
-                console.error(text);
+                openPopup("error", "Ooooops!", text, "error", "Tentar Novamente", false);
             });
         }
     });
@@ -277,27 +286,25 @@ function setEyeIconToStandard() {
 }
 
 function saveSecurityEdition() {
-    if (newPasswordInput.value == confirmNewPasswordInput.value && newPasswordInput.value.length > 0) {
-        fetch(`/player/update-password/${idPlayer}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                password: currentPasswordInput.value,
-                newPassword: newPasswordInput.value,
-                confirmPassword: confirmNewPasswordInput.value
-            })
-        }).then(res => {
-            if (res.status == 200) {
-                closeSettingsContainer();
-            } else {
-                res.text().then(text => {
-                    console.error(text);
-                });
-            }
-        });
-    }
+    fetch(`/player/update-password/${idPlayer}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            password: currentPasswordInput.value,
+            newPassword: newPasswordInput.value,
+            confirmNewPassword: confirmNewPasswordInput.value
+        })
+    }).then(res => {
+        if (res.status == 200) {
+            openPopup("success", "Sucesso!", "Senha alterada com sucesso!", "success", "Continuar", true);
+        } else {
+            res.text().then(text => {
+                openPopup("error", "Ooooops!", text, "error", "Tentar Novamente", false);
+            });
+        }
+    });
 }
 
 function openSettingsContainer() {
@@ -333,6 +340,32 @@ function closeConfirmLogoutModal() {
 }
 
 cancelLogoutBtn.addEventListener("click", closeConfirmLogoutModal);
+
+function openPopup(image, title, description, btnType, btnText, isPasswordUpdated) {
+    popupBackground.classList.add("active");
+    popup.classList.add("active");
+    popupImg.src = `../assets/image/${image}-icon.png`;
+    popupTitle.textContent = title;
+    popupDescription.textContent = description;
+    closePopupBtn.classList.add(btnType);
+    closePopupBtn.textContent = btnText;
+
+    if (isPasswordUpdated) {
+        closePopupBtn.classList.remove("error");
+        closePopupBtn.setAttribute("onclick", "closeAllModals()");
+    }
+}
+
+function closePopup() {
+    popupBackground.classList.remove("active");
+    popup.classList.remove("active");
+    closePopupBtn.setAttribute("onclick", "closePopup()");
+}
+
+function closeAllModals() {
+    closePopup();
+    closeSettingsContainer();
+}
 
 function logoutUser() {
     sessionStorage.removeItem("idPlayer");

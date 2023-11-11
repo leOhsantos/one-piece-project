@@ -113,7 +113,7 @@
                     <div class="avatar-container">
                         <h3>Personalizar avatar</h3>
                         <div class="avatar">
-                            <img id="settingsAvatar" src="../assets/image/luffy-avatar.jpg">
+                            <img id="settingsAvatar">
                         </div>
                         <div class="select-avatar-container">
                             <img onclick="setAvatar(this)" data-avatar="luffy-avatar"
@@ -192,6 +192,21 @@
             </div>
             <div class="line-3">
                 <button onclick="saveAvatarEdition()" id="saveEditionBtn"></button>
+            </div>
+        </div>
+
+        <div class="popup-background">
+            <div class="popup">
+                <div class="line-1">
+                    <img id="popupImg">
+                </div>
+                <div class="line-2">
+                    <h3 class="popup-title"></h3>
+                    <p class="popup-description"></p>
+                </div>
+                <div class="line-3">
+                    <button onclick="closePopup()" id="closePopupBtn"></button>
+                </div>
             </div>
         </div>
 
