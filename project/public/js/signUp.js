@@ -32,8 +32,6 @@ function signUp(nickname, email, password) {
                 console.error(text);
             });
         }
-    }).catch(error => {
-        console.log(error);
     });
 }
 

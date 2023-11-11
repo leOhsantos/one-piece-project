@@ -383,7 +383,7 @@ button:focus {
 
 @keyframes showCredits {
     0% {
-        transform: translateY(-780px);
+        transform: translateY(-800px);
     }
 
     100% {

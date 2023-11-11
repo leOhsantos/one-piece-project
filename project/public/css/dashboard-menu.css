@@ -128,6 +128,7 @@ body.active {
     overflow: hidden;
     border: 2px solid #ffffff;
     margin-top: -2px;
+    cursor: pointer;
 }
 
 .avatar img {

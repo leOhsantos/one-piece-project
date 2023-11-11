@@ -29,8 +29,6 @@ function signIn(email, password) {
                 console.error(text);
             });
         }
-    }).catch(error => {
-        console.log(error);
     });
 }
 

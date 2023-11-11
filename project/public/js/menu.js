@@ -3,6 +3,7 @@ const gameMenuBtn = document.getElementById("gameMenuBtn");
 const statisticsMenuBtn = document.getElementById("statisticsMenuBtn");
 
 const settingsContainer = document.querySelector(".settings-container");
+const avatar = document.querySelector(".avatar");
 const settingsBtn = document.getElementById("settingsBtn");
 const closeSettingsBtn = document.getElementById("closeSettingsBtn");
 const saveEditionBtn = document.getElementById("saveEditionBtn");
@@ -35,7 +36,8 @@ const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
 const idPlayer = sessionStorage.getItem("idPlayer");
-let player = [];
+let playerList = [];
+let rankingList = [];
 
 window.addEventListener("load", () => {
     if (!idPlayer) {
@@ -49,39 +51,48 @@ window.addEventListener("load", () => {
                     menuNickname.textContent = res[0].nickname;
                     menuTitle.textContent = res[0].title;
                 });
-            }).catch(error => {
-                console.log(error);
-            });
-
-        fetch(`/score/list-by-player/${idPlayer}`)
-            .then(res => {
-                res.json().then(res => {
-                    player = res[0];
-                });
-            }).catch(error => {
-                console.log(error);
             });
     }
+
+    getScore();
 });
 
+function getScore() {
+    fetch(`/score/list-by-player/${idPlayer}`)
+        .then(res => {
+            res.json().then(res => {
+                playerList = res[0];
+            });
+        });
+
+    fetch(`/score/list`)
+        .then(res => {
+            res.json().then(res => {
+                if (res.length > 0) {
+                    rankingList = res;
+                }
+            });
+        });
+}
+
 function showTitles() {
-    if (!player) {
+    if (!playerList) {
         titleSelect.innerHTML = `
         <option value="Figurante">Figurante</option>
         `;
     } else {
-        if (player.rankPlayer <= 2) {
+        if (playerList.rankPlayer <= 2) {
             titleSelect.innerHTML = `
         <option value="Figurante">Figurante</option>
         <option value="Pirata Comum">Pirata Comum</option>
         `;
-        } else if (player.rankPlayer <= 4) {
+        } else if (playerList.rankPlayer <= 4) {
             titleSelect.innerHTML = `
         <option value="Figurante">Figurante</option>
         <option value="Pirata Comum">Pirata Comum</option>
         <option value="Supernova">Supernova</option>
         `;
-        } else if (player.rankPlayer <= 6) {
+        } else if (playerList.rankPlayer <= 6) {
             titleSelect.innerHTML = `
         <option value="Figurante">Figurante</option>
         <option value="Pirata Comum">Pirata Comum</option>
@@ -133,8 +144,6 @@ function saveAvatarEdition() {
         body: JSON.stringify({
             avatar: avatar
         })
-    }).catch(error => {
-        console.log(error);
     });
 
     menuAvatar.src = `../assets/image/${avatar}.jpg`;
@@ -194,8 +203,6 @@ function saveAccountEdition() {
                 console.error(text);
             });
         }
-    }).catch(error => {
-        console.log(error);
     });
 
     fetch(`/player/update-title/${idPlayer}`, {
@@ -206,8 +213,6 @@ function saveAccountEdition() {
         body: JSON.stringify({
             title: title
         })
-    }).catch(error => {
-        console.log(error);
     });
 
     menuTitle.textContent = title;
@@ -287,8 +292,6 @@ function saveSecurityEdition() {
                     console.error(text);
                 });
             }
-        }).catch(error => {
-            console.log(error);
         });
     }
 }
@@ -301,7 +304,10 @@ function openSettingsContainer() {
     setEyeIconToStandard();
 }
 
-if (settingsBtn) settingsBtn.addEventListener("click", openSettingsContainer);
+if (settingsBtn) {
+    settingsBtn.addEventListener("click", openSettingsContainer);
+    avatar.addEventListener("click", openSettingsContainer);
+}
 
 function closeSettingsContainer() {
     background.classList.remove("active");

@@ -37,8 +37,6 @@ const cancelResetProgressBtn = document.getElementById("cancelResetProgressBtn")
 const confirmResetProgressBtn = document.getElementById("confirmResetProgressBtn");
 const rankingListTbody = document.getElementById("rankingListTbody");
 const playerRank = document.querySelector(".player-rank");
-let rankingList = [];
-let playerRanking = [];
 
 const quiz = document.querySelector(".quiz");
 const jollyRogerLuffy = document.getElementById("jollyRogerLuffy");
@@ -114,33 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (res.length > 0) {
                     starsNumber = res[0].stars;
                 }
-            })
-        }).catch(error => {
-            console.log(error);
-        });
-
-    //get player ranking list
-    fetch(`/score/list`)
-        .then(res => {
-            res.json().then(res => {
-                if (res.length > 0) {
-                    rankingList = res;
-                }
-            })
-        }).catch(error => {
-            console.log(error);
-        });
-
-    //get only ranking player
-    fetch(`/score/list-by-player/${idPlayer}`)
-        .then(res => {
-            res.json().then(res => {
-                if (res.length > 0) {
-                    playerRanking = res;
-                }
-            })
-        }).catch(error => {
-            console.log(error);
+            });
         });
 
     //show the stars on menu
@@ -381,8 +353,6 @@ function saveQuestionError(questionNumber) {
         body: JSON.stringify({
             questionNumber: questionNumber
         })
-    }).catch(error => {
-        console.log(error);
     });
 }
 
@@ -434,8 +404,6 @@ function saveScore(rank, speedrunTime) {
             rank: rank,
             speedrunTime: speedrunTime
         })
-    }).catch(error => {
-        console.log(error);
     });
 }
 
@@ -570,6 +538,7 @@ function showScoreScreen() {
     stopRecordTimer();
     calculateScore();
     setFinalProgress();
+    setTimeout(() => getScore(), 1000);
 }
 
 function showScoreScreenBonus() {
@@ -592,6 +561,7 @@ function showScoreScreenBonus() {
     stopRecordTimer();
     calculateScoreBonus();
     setFinalProgress();
+    setTimeout(() => getScore(), 1000);
 }
 
 function checkAnswer(qNumber, answer) {
@@ -748,7 +718,7 @@ function showFeedbackScreen() {
         feedbackStar3.style.pointerEvents = "none";
         feedbackStar4.style.pointerEvents = "none";
         feedbackStar5.style.pointerEvents = "none";
-        feedbackText.textContent = "Jogo avaliado com sucesso!";
+        feedbackText.textContent = "Jogo já avaliado!";
         rateBtn.style.display = "none";
         isRated = true;
 
@@ -856,8 +826,6 @@ function saveFeedback(stars) {
         body: JSON.stringify({
             stars: stars
         })
-    }).catch(error => {
-        console.log(error);
     });
 }
 
@@ -951,12 +919,12 @@ function showProgressScreen() {
         }
     }
 
-    if (playerRanking.length > 0 && playerRanking[0].speedrunTime != "00:00:00.0") {
+    if (playerList && playerList.speedrunTime != "00:00:00.0") {
         playerRank.innerHTML = `
         <span class="ranking-position">${playerPosition}º</span>
-        <span class="ranking-name">${playerRanking[0].nickname}</span>
-        <span class="ranking-rank">${checkPlayerRank(playerRanking[0].rankPlayer)}</span>
-        <span class="ranking-time">${playerRanking[0].speedrunTime}</span>
+        <span class="ranking-name">${playerList.nickname}</span>
+        <span class="ranking-rank">${checkPlayerRank(playerList.rankPlayer)}</span>
+        <span class="ranking-time">${playerList.speedrunTime}</span>
     `;
     } else {
         playerRank.innerHTML = `
