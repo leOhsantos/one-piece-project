@@ -118,11 +118,11 @@ document.addEventListener("DOMContentLoaded", () => {
     //show the stars on menu
     if (progress >= 50 && progress < 100) {
         if (star1) star1.style.display = "block";
-    } else if (progress === 100 && recordScore < 7) {
+    } else if (progress == 100 && recordScore < 7) {
         if (star1) star1.style.display = "block";
         if (star2) star2.style.display = "block";
         resetProgressBtn.style.display = "flex";
-    } else if (recordScore === 7) {
+    } else if (recordScore == 7) {
         if (star1) star1.style.display = "block";
         if (star2) star2.style.display = "block";
         if (star3) star3.style.display = "block";
@@ -441,7 +441,7 @@ function calculateScore() {
         sessionStorage.setItem("currentScore", rankNumber);
     }
 
-    fail === 0 ? score.textContent = "Nenhuma falha" : score.textContent = `Falhas totais: ${fail}`;
+    fail == 0 ? score.textContent = "Nenhuma falha" : score.textContent = `Falhas totais: ${fail}`;
 
     sessionStorage.setItem("bonus", true);
 
@@ -452,10 +452,11 @@ function calculateScoreBonus() {
     const currentScore = parseInt(sessionStorage.getItem("currentScore"));
     const recordScore = parseInt(sessionStorage.getItem("recordScore"));
     const progress = parseInt(sessionStorage.getItem("progress"));
+    const fail = parseInt(sessionStorage.getItem("fail"));
     let rankNumber = 0;
     let speedrunTime = `${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(secR)}.${parseInt(milR.toString().substring(0, 1))}`;
 
-    if (currentScore === 5 && minR < 1) {
+    if (currentScore == 5 && minR < 1 && fail == 0) {
         rankNumber = 7;
 
         scoreTitle.textContent = "Rei dos piratas";
@@ -463,7 +464,7 @@ function calculateScoreBonus() {
 
         if (rankNumber > recordScore && progress < 100) sessionStorage.setItem("recordScore", rankNumber);
 
-    } else if (currentScore === 5 && minR >= 1) {
+    } else if (currentScore == 5) {
         rankNumber = 6;
 
         scoreTitle.textContent = "Yonkou";
@@ -471,7 +472,7 @@ function calculateScoreBonus() {
 
         if (rankNumber > recordScore && progress < 100) sessionStorage.setItem("recordScore", rankNumber);
 
-    } else if (currentScore === 3) {
+    } else if (currentScore == 3) {
         rankNumber = 4;
 
         scoreTitle.textContent = "Supernova";
@@ -479,7 +480,7 @@ function calculateScoreBonus() {
 
         if (rankNumber > recordScore && progress < 100) sessionStorage.setItem("recordScore", rankNumber);
 
-    } else if (currentScore === 1) {
+    } else if (currentScore == 1) {
         rankNumber = 2;
 
         scoreTitle.textContent = "Pirata Comum";
@@ -488,7 +489,7 @@ function calculateScoreBonus() {
         if (rankNumber > recordScore && progress < 100) sessionStorage.setItem("recordScore", rankNumber);
     }
 
-    rankNumber === 7 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
+    rankNumber == 7 ? score.innerHTML = "Bônus Máximo" + "<br>" + "Adquirido" : score.textContent = "Bônus Adquirido";
 
     //format time display
     if (minR < 1) {
@@ -516,12 +517,12 @@ function setFinalProgress() {
     const recordScore = parseInt(sessionStorage.getItem("recordScore"));
     const progress = parseInt(sessionStorage.getItem("progress"));
 
-    if (progress === 49) {
+    if (progress == 49) {
         sessionStorage.setItem("progress", 50);
-    } else if (progress === 98 && recordScore < 7) {
+    } else if (progress == 98 && recordScore < 7) {
         sessionStorage.setItem("progress", 100);
         resetProgressBtn.style.display = "flex";
-    } else if (recordScore === 7) {
+    } else if (recordScore == 7) {
         sessionStorage.setItem("progress", 100);
         star3.style.display = "block";
         resetProgressBtn.style.display = "flex";
@@ -622,17 +623,17 @@ function checkAnswer(qNumber, answer) {
 
     //check if it's the bonus quiz or not
     if (bonus == "false") {
-        if (currentQuestionNumber == 49 && chosenAnswer === decrypted) {
+        if (currentQuestionNumber == 49 && chosenAnswer == decrypted) {
             showScoreScreen();
-        } else if (chosenAnswer === decrypted) {
+        } else if (chosenAnswer == decrypted) {
             nextQuestion(currentQuestionNumber + 1);
         } else {
             showGameOverScreen();
         }
     } else {
-        if (currentQuestionNumber == 74 && chosenAnswer === decrypted) {
+        if (currentQuestionNumber == 74 && chosenAnswer == decrypted) {
             showScoreScreenBonus();
-        } else if (chosenAnswer === decrypted) {
+        } else if (chosenAnswer == decrypted) {
             nextQuestion(currentQuestionNumber + 1);
         } else {
             showGameOverScreenBonus();
@@ -870,25 +871,25 @@ function showProgressScreen() {
 
     percentProgress.textContent = `Progresso atual: ${progress}%`;
 
-    if (recordScore === 7) {
+    if (recordScore == 7) {
         titleProgress.textContent = "Título: Rei dos Piratas";
         rankProgress.textContent = "Rank: S++";
-    } else if (recordScore === 6) {
+    } else if (recordScore == 6) {
         titleProgress.textContent = "Título: Yonkou";
         rankProgress.textContent = "Rank: S+";
-    } else if (recordScore === 5) {
+    } else if (recordScore == 5) {
         titleProgress.textContent = "Título: Yonkou";
         rankProgress.textContent = "Rank: S";
-    } else if (recordScore === 4) {
+    } else if (recordScore == 4) {
         titleProgress.textContent = "Título: Supernova";
         rankProgress.textContent = "Rank: A+";
-    } else if (recordScore === 3) {
+    } else if (recordScore == 3) {
         titleProgress.textContent = "Título: Supernova";
         rankProgress.textContent = "Rank: A";
-    } else if (recordScore === 2) {
+    } else if (recordScore == 2) {
         titleProgress.textContent = "Título: Pirata Comum";
         rankProgress.textContent = "Rank: B+";
-    } else if (recordScore === 1) {
+    } else if (recordScore == 1) {
         titleProgress.textContent = "Título: Pirata Comum";
         rankProgress.textContent = "Rank: B";
     } else {
@@ -1010,54 +1011,54 @@ function clickStar2() {
     clearTimeout(star2TimeoutHandle);
     clicks++;
 
-    if (clicks === 1) {
+    if (clicks == 1) {
         star2.setAttribute("data-before", "Não tem nada aqui.");
-    } else if (clicks === 2) {
+    } else if (clicks == 2) {
         star2.setAttribute("data-before", "Não insista.");
-    } else if (clicks === 3) {
+    } else if (clicks == 3) {
         star2.setAttribute("data-before", "Eu já falei...");
-    } else if (clicks === 4) {
+    } else if (clicks == 4) {
         star2.setAttribute("data-before", "Não vai acontecer nada.");
-    } else if (clicks === 5) {
+    } else if (clicks == 5) {
         star2.setAttribute("data-before", "Você não cansa não?");
-    } else if (clicks === 6) {
+    } else if (clicks == 6) {
         star2.setAttribute("data-before", "Acha que tem coisa escondida é?");
-    } else if (clicks === 7) {
+    } else if (clicks == 7) {
         star2.setAttribute("data-before", "Vai clicar até quando amigo?");
-    } else if (clicks === 8) {
+    } else if (clicks == 8) {
         star2.setAttribute("data-before", "Quanta curiosidade...");
-    } else if (clicks === 9) {
+    } else if (clicks == 9) {
         star2.setAttribute("data-before", "Você é insuportável!");
-    } else if (clicks === 10) {
+    } else if (clicks == 10) {
         star2.setAttribute("data-before", "Rapaz...");
-    } else if (clicks === 11) {
+    } else if (clicks == 11) {
         star2.setAttribute("data-before", "Não tem o que fazer não?");
-    } else if (clicks === 12) {
+    } else if (clicks == 12) {
         star2.setAttribute("data-before", "Você não leu o que eu te disse?");
-    } else if (clicks === 13) {
+    } else if (clicks == 13) {
         star2.setAttribute("data-before", "Totalmente questionável você chegar até aqui.");
-    } else if (clicks === 14) {
+    } else if (clicks == 14) {
         star2.setAttribute("data-before", "Tudo isso atrás de um segredo?");
-    } else if (clicks === 15) {
+    } else if (clicks == 15) {
         star2.setAttribute("data-before", "...");
-    } else if (clicks === 16) {
+    } else if (clicks == 16) {
         star2.setAttribute("data-before", '"NIKA"');
 
         document.addEventListener("keydown", (event) => {
             let key = event.key;
             let upperCaseKey = key.toUpperCase();
 
-            if (upperCaseKey === "N" && secretWord === "") {
+            if (upperCaseKey == "N" && secretWord == "") {
                 secretWord += upperCaseKey;
-            } else if (upperCaseKey === "I" && secretWord.substring(0) === "N") {
+            } else if (upperCaseKey == "I" && secretWord.substring(0) == "N") {
                 secretWord += upperCaseKey;
-            } else if (upperCaseKey === "K" && secretWord.substring(1) === "I") {
+            } else if (upperCaseKey == "K" && secretWord.substring(1) == "I") {
                 secretWord += upperCaseKey;
-            } else if (upperCaseKey === "A" && secretWord.substring(2) === "K") {
+            } else if (upperCaseKey == "A" && secretWord.substring(2) == "K") {
                 secretWord += upperCaseKey;
             }
 
-            if (secretWord === "NIKA") {
+            if (secretWord == "NIKA") {
                 onePieceOp.volume = 0.1;
                 onePieceOp.play();
             }
