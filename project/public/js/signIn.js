@@ -8,6 +8,13 @@ const passwordIcon = document.querySelector(".password-icon");
 const eyeIcon = document.querySelector(".eye-icon");
 const backArrow = document.querySelector(".back-arrow");
 
+const popupBackground = document.querySelector(".popup-background");
+const popup = document.querySelector(".popup");
+const popupImg = document.getElementById("popupImg");
+const popupTitle = document.querySelector(".popup-title");
+const popupDescription = document.querySelector(".popup-description");
+const closePopupBtn = document.getElementById("closePopupBtn");
+
 function signIn(email, password) {
     fetch("player/authenticate", {
         method: "POST",
@@ -26,38 +33,21 @@ function signIn(email, password) {
             });
         } else {
             res.text().then(text => {
-                console.error(text);
+                openPopup("error", "Ooooops!", text, "error", "Tentar Novamente");
             });
         }
     });
 }
 
 function checkInput() {
-    const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
-
     let email = emailInput.value;
     let password = passwordInput.value;
-
-    let emailTest = emailRegex.test(email);
-
-    if (!emailTest) {
-        emailIcon.classList.add("error");
-        emailInput.classList.add("error");
-    }
-
-    if (password == "") {
-        passwordIcon.classList.add("error");
-        passwordInput.classList.add("error");
-    }
-
-    if (emailTest && password != "") {
-        signIn(email, password);
-    }
+    signIn(email, password);
 }
 
 submitBtn.addEventListener("click", checkInput);
 
-function removeInputError() {
+function enableSignInButton() {
     const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
 
     let email = emailInput.value;
@@ -65,19 +55,15 @@ function removeInputError() {
 
     let emailTest = emailRegex.test(email);
 
-    if (emailTest) {
-        emailIcon.classList.remove("error");
-        emailInput.classList.remove("error");
-    }
-
-    if (password != "") {
-        passwordIcon.classList.remove("error");
-        passwordInput.classList.remove("error");
+    if (emailTest && password != "") {
+        submitBtn.removeAttribute("disabled");
+    } else {
+        submitBtn.setAttribute("disabled", true);
     }
 }
 
-emailInput.addEventListener("input", removeInputError);
-passwordInput.addEventListener("input", removeInputError);
+emailInput.addEventListener("input", enableSignInButton);
+passwordInput.addEventListener("input", enableSignInButton);
 
 function toggleEyePassword() {
     if (passwordInput.type == "password") {
@@ -90,6 +76,21 @@ function toggleEyePassword() {
 }
 
 eyeIcon.addEventListener("click", toggleEyePassword);
+
+function openPopup(image, title, description, btnType, btnText) {
+    popupBackground.classList.add("active");
+    popup.classList.add("active");
+    popupImg.src = `assets/image/${image}-icon.png`;
+    popupTitle.textContent = title;
+    popupDescription.textContent = description;
+    closePopupBtn.classList.add(btnType);
+    closePopupBtn.textContent = btnText;
+}
+
+function closePopup() {
+    popupBackground.classList.remove("active");
+    popup.classList.remove("active");
+}
 
 form.addEventListener("submit", (e) => e.preventDefault());
 backArrow.addEventListener("click", () => window.history.back());

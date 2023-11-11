@@ -12,6 +12,13 @@ const confirmPasswordIcon = document.querySelector(".confirm-password-icon");
 const eyeIcon = document.querySelectorAll(".eye-icon");
 const backArrow = document.querySelector(".back-arrow");
 
+const popupBackground = document.querySelector(".popup-background");
+const popup = document.querySelector(".popup");
+const popupImg = document.getElementById("popupImg");
+const popupTitle = document.querySelector(".popup-title");
+const popupDescription = document.querySelector(".popup-description");
+const closePopupBtn = document.getElementById("closePopupBtn");
+
 function signUp(nickname, email, password) {
     fetch("/player/save", {
         method: "POST",
@@ -25,54 +32,25 @@ function signUp(nickname, email, password) {
         })
     }).then(res => {
         if (res.status == 201) {
-            alert("Cadastro realizado com sucesso!");
-            window.location.href = "../signin.html";
+            openPopup("success", "Sucesso!", "Cadastro realizado com sucesso!", "success", "Continuar", true);
         } else {
             res.text().then(text => {
-                console.error(text);
+                openPopup("error", "Ooooops!", text, "error", "Tentar Novamente", false);
             });
         }
     });
 }
 
 function checkInput() {
-    const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
-
     let nickname = nicknameInput.value;
     let email = emailInput.value;
     let password = passwordInput.value;
-    let confirmPassword = confirmPasswordInput.value;
-
-    let emailTest = emailRegex.test(email);
-
-    if (nickname == "") {
-        nicknameIcon.classList.add("error");
-        nicknameInput.classList.add("error");
-    }
-
-    if (!emailTest) {
-        emailIcon.classList.add("error");
-        emailInput.classList.add("error");
-    }
-
-    if (password == "") {
-        passwordIcon.classList.add("error");
-        passwordInput.classList.add("error");
-    }
-
-    if (confirmPassword != password || confirmPassword == "") {
-        confirmPasswordIcon.classList.add("error");
-        confirmPasswordInput.classList.add("error");
-    }
-
-    if (nickname != "" && emailTest && password == confirmPassword && password != "" && confirmPassword != "") {
-        signUp(nickname, email, password);
-    }
+    signUp(nickname, email, password);
 }
 
 submitBtn.addEventListener("click", checkInput);
 
-function removeInputError() {
+function enableSignUpButton() {
     const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
 
     let nickname = nicknameInput.value;
@@ -82,31 +60,17 @@ function removeInputError() {
 
     let emailTest = emailRegex.test(email);
 
-    if (nickname != "") {
-        nicknameIcon.classList.remove("error");
-        nicknameInput.classList.remove("error");
-    }
-
-    if (emailTest) {
-        emailIcon.classList.remove("error");
-        emailInput.classList.remove("error");
-    }
-
-    if (password != "") {
-        passwordIcon.classList.remove("error");
-        passwordInput.classList.remove("error");
-    }
-
-    if (confirmPassword == password && confirmPassword.length >= 1) {
-        confirmPasswordIcon.classList.remove("error");
-        confirmPasswordInput.classList.remove("error");
+    if (nickname != "" && emailTest && password != "" && (confirmPassword == password && confirmPassword.length >= 1)) {
+        submitBtn.removeAttribute("disabled");
+    } else {
+        submitBtn.setAttribute("disabled", true);
     }
 }
 
-nicknameInput.addEventListener("input", removeInputError);
-emailInput.addEventListener("input", removeInputError);
-passwordInput.addEventListener("input", removeInputError);
-confirmPasswordInput.addEventListener("input", removeInputError);
+nicknameInput.addEventListener("input", enableSignUpButton);
+emailInput.addEventListener("input", enableSignUpButton);
+passwordInput.addEventListener("input", enableSignUpButton);
+confirmPasswordInput.addEventListener("input", enableSignUpButton);
 
 function toggleEyePassword() {
     if (passwordInput.type == "password") {
@@ -121,6 +85,30 @@ function toggleEyePassword() {
 }
 
 eyeIcon.forEach((e) => e.addEventListener("click", toggleEyePassword));
+
+function openPopup(image, title, description, btnType, btnText, navigate) {
+    popupBackground.classList.add("active");
+    popup.classList.add("active");
+    popupImg.src = `assets/image/${image}-icon.png`;
+    popupTitle.textContent = title;
+    popupDescription.textContent = description;
+    closePopupBtn.classList.add(btnType);
+    closePopupBtn.textContent = btnText;
+
+    if (navigate) {
+        closePopupBtn.classList.remove("error");
+        closePopupBtn.setAttribute("onclick", "navigateToSignInPage()");
+    }
+}
+
+function closePopup() {
+    popupBackground.classList.remove("active");
+    popup.classList.remove("active");
+}
+
+function navigateToSignInPage() {
+    window.location.href = "../signin.html";
+}
 
 form.addEventListener("submit", (e) => e.preventDefault());
 backArrow.addEventListener("click", () => window.history.back());

@@ -111,6 +111,8 @@ function updateNickname(req, res) {
 
             if (isNicknameRepeated) {
                 res.status(403).send("Esse nickname já existe!");
+            } else if (nickname == undefined) {
+                res.status(403).send("Não é possível registrar um nickname vazio!");
             } else {
                 playerModel.updateNickname(nickname, idPlayer)
                     .then(result => {
@@ -139,12 +141,17 @@ function updateTitle(req, res) {
 function updatePassword(req, res) {
     let password = req.body.password;
     let newPassword = req.body.newPassword;
+    let confirmNewPassword = req.body.confirmNewPassword;
     let idPlayer = req.params.idPlayer;
 
     playerModel.list(idPlayer)
         .then(playerRes => {
             if (password != playerRes[0].password) {
                 res.status(403).send("Senha atual incorreta!");
+            } else if (newPassword != confirmNewPassword) {
+                res.status(403).send("Senhas não coincidem!");
+            } else if (password == undefined || newPassword == undefined || confirmNewPassword == undefined) {
+                res.status(403).send("Preencha todos os campos para prosseguir!");
             } else {
                 playerModel.updatePassword(newPassword, idPlayer)
                     .then(result => {

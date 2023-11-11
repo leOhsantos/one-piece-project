@@ -70,7 +70,7 @@
                     <input type="password" id="confirmPasswordInput" class="input" placeholder="Confirmar senha">
                     <img class="eye-icon" src="assets/svg/invisible-password-icon.svg">
                 </div>
-                <button id="submitBtn">Cadastrar</button>
+                <button disabled id="submitBtn">Cadastrar</button>
                 <p class="account-text">Já possui uma conta? <a href="signin.html">Faça login</a></p>
                 <img class="back-arrow" src="assets/svg/back-arrow-icon.svg">
             </form>
@@ -79,6 +79,21 @@
         <div class="column-2">
             <img src="assets/image/one-piece-full-logo.png" alt="One Piece Logo">
             <h1>Crie uma conta <br> para ter acesso <br> ao jogo</h1>
+        </div>
+    </div>
+
+    <div class="popup-background">
+        <div class="popup">
+            <div class="line-1">
+                <img id="popupImg">
+            </div>
+            <div class="line-2">
+                <h3 class="popup-title"></h3>
+                <p class="popup-description"></p>
+            </div>
+            <div class="line-3">
+                <button onclick="closePopup()" id="closePopupBtn"></button>
+            </div>
         </div>
     </div>
 

@@ -122,6 +122,7 @@ function openAvatarContainer() {
 
     settingsAvatar.src = menuAvatar.src;
     saveEditionBtn.setAttribute("onclick", "saveAvatarEdition()");
+    saveEditionBtn.textContent = "Alterar avatar";
     cleanSecurityInputs();
 }
 
@@ -163,6 +164,7 @@ function openAccountContainer() {
     titleSelect.value = menuTitle.textContent;
 
     saveEditionBtn.setAttribute("onclick", "saveAccountEdition()");
+    saveEditionBtn.textContent = "Atualizar conta";
     cleanSecurityInputs();
 }
 
@@ -228,6 +230,7 @@ function openSecurityContainer() {
     securityContainer.classList.add("active");
 
     saveEditionBtn.setAttribute("onclick", "saveSecurityEdition()");
+    saveEditionBtn.textContent = "Alterar senha";
     currentPasswordInput.focus();
 }
 
@@ -282,7 +285,8 @@ function saveSecurityEdition() {
             },
             body: JSON.stringify({
                 password: currentPasswordInput.value,
-                newPassword: newPasswordInput.value
+                newPassword: newPasswordInput.value,
+                confirmPassword: confirmNewPasswordInput.value
             })
         }).then(res => {
             if (res.status == 200) {
