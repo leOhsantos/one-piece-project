@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="column-1">
-            <form autocomplete="off" id="form">
+            <div class="form">
                 <div class="input-container">
                     <label for="nicknameInput">
                         <svg class="nickname-icon" id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,8 @@
                             </g>
                         </svg>
                     </label>
-                    <input autofocus type="text" id="nicknameInput" class="input" placeholder="Nickname">
+                    <input autocomplete="off" autofocus type="text" id="nicknameInput" class="input"
+                        placeholder="Nickname">
                 </div>
 
                 <div class="input-container">
@@ -38,7 +39,7 @@
                             </g>
                         </svg>
                     </label>
-                    <input autofocus type="text" id="emailInput" class="input" placeholder="E-mail">
+                    <input autocomplete="off" autofocus type="text" id="emailInput" class="input" placeholder="E-mail">
                 </div>
 
                 <div class="input-container">
@@ -52,7 +53,7 @@
                             </g>
                         </svg>
                     </label>
-                    <input type="password" id="passwordInput" class="input" placeholder="Senha">
+                    <input autocomplete="off" type="password" id="passwordInput" class="input" placeholder="Senha">
                     <img class="eye-icon" src="assets/svg/invisible-password-icon.svg">
                 </div>
 
@@ -67,13 +68,14 @@
                             </g>
                         </svg>
                     </label>
-                    <input type="password" id="confirmPasswordInput" class="input" placeholder="Confirmar senha">
+                    <input autocomplete="off" type="password" id="confirmPasswordInput" class="input"
+                        placeholder="Confirmar senha">
                     <img class="eye-icon" src="assets/svg/invisible-password-icon.svg">
                 </div>
                 <button disabled id="submitBtn">Cadastrar</button>
                 <p class="account-text">Já possui uma conta? <a href="signin.html">Faça login</a></p>
                 <img class="back-arrow" src="assets/svg/back-arrow-icon.svg">
-            </form>
+            </div>
         </div>
 
         <div class="column-2">

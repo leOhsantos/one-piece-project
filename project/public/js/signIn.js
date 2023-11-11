@@ -1,4 +1,3 @@
-const form = document.getElementById("form");
 const emailInput = document.getElementById("emailInput");
 const passwordInput = document.getElementById("passwordInput");
 const submitBtn = document.getElementById("submitBtn");
@@ -14,6 +13,7 @@ const popupImg = document.getElementById("popupImg");
 const popupTitle = document.querySelector(".popup-title");
 const popupDescription = document.querySelector(".popup-description");
 const closePopupBtn = document.getElementById("closePopupBtn");
+let isPopupActive = false;
 
 function signIn(email, password) {
     fetch("player/authenticate", {
@@ -85,12 +85,26 @@ function openPopup(image, title, description, btnType, btnText) {
     popupDescription.textContent = description;
     closePopupBtn.classList.add(btnType);
     closePopupBtn.textContent = btnText;
+
+    isPopupActive = true;
+    submitBtn.blur();
 }
 
 function closePopup() {
     popupBackground.classList.remove("active");
     popup.classList.remove("active");
+    isPopupActive = false;
 }
 
-form.addEventListener("submit", (e) => e.preventDefault());
+function clickByEnter(e) {
+    if (e.key == "Enter") {
+        if (isPopupActive) {
+            closePopupBtn.click();
+        } else {
+            submitBtn.click();
+        }
+    }
+}
+
+document.addEventListener("keypress", clickByEnter);
 backArrow.addEventListener("click", () => window.history.back());

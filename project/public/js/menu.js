@@ -7,6 +7,7 @@ const avatar = document.querySelector(".avatar");
 const settingsBtn = document.getElementById("settingsBtn");
 const closeSettingsBtn = document.getElementById("closeSettingsBtn");
 const saveEditionBtn = document.getElementById("saveEditionBtn");
+let isSettingsActive = false;
 
 const avatarContainer = document.querySelector(".avatar-container");
 const menuAvatar = document.getElementById("menuAvatar");
@@ -36,6 +37,7 @@ const popupImg = document.getElementById("popupImg");
 const popupTitle = document.querySelector(".popup-title");
 const popupDescription = document.querySelector(".popup-description");
 const closePopupBtn = document.getElementById("closePopupBtn");
+let isPopupActive = false;
 
 const confirmLogoutModal = document.querySelector(".confirm-logout");
 const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
@@ -310,6 +312,7 @@ function saveSecurityEdition() {
 function openSettingsContainer() {
     background.classList.add("active");
     settingsContainer.classList.add("active");
+    isSettingsActive = true;
     openAvatarContainer();
     disableEditNickname();
     setEyeIconToStandard();
@@ -323,6 +326,7 @@ if (settingsBtn) {
 function closeSettingsContainer() {
     background.classList.remove("active");
     settingsContainer.classList.remove("active");
+    isSettingsActive = false;
 }
 
 if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeSettingsContainer);
@@ -350,6 +354,9 @@ function openPopup(image, title, description, btnType, btnText, isPasswordUpdate
     closePopupBtn.classList.add(btnType);
     closePopupBtn.textContent = btnText;
 
+    isPopupActive = true;
+    saveEditionBtn.blur();
+
     if (isPasswordUpdated) {
         closePopupBtn.classList.remove("error");
         closePopupBtn.setAttribute("onclick", "closeAllModals()");
@@ -360,6 +367,7 @@ function closePopup() {
     popupBackground.classList.remove("active");
     popup.classList.remove("active");
     closePopupBtn.setAttribute("onclick", "closePopup()");
+    isPopupActive = false;
 }
 
 function closeAllModals() {
@@ -380,5 +388,16 @@ function logoutUser() {
 
 logoutBtn.addEventListener("click", logoutUser);
 
+function clickByEnter(e) {
+    if (e.key == "Enter") {
+        if (isPopupActive) {
+            closePopupBtn.click();
+        } else if (isSettingsActive) {
+            saveEditionBtn.click();
+        }
+    }
+}
+
+document.addEventListener("keypress", clickByEnter);
 gameMenuBtn.addEventListener("click", () => window.location.href = "../dashboard/game.html");
 statisticsMenuBtn.addEventListener("click", () => window.location.href = "../dashboard/statistics.html");

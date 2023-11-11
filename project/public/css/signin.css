@@ -95,7 +95,7 @@ a {
     padding: 36px 32px;
 }
 
-.column-2 form {
+.column-2 .form {
     display: flex;
     flex-direction: column;
     width: 90%;

@@ -73,7 +73,7 @@ a {
     padding: 36px 32px;
 }
 
-.column-1 form {
+.column-1 .form {
     display: flex;
     flex-direction: column;
     width: 90%;

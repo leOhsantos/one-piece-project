@@ -1,4 +1,3 @@
-const form = document.getElementById("form");
 const nicknameInput = document.getElementById("nicknameInput");
 const emailInput = document.getElementById("emailInput");
 const passwordInput = document.getElementById("passwordInput");
@@ -18,6 +17,7 @@ const popupImg = document.getElementById("popupImg");
 const popupTitle = document.querySelector(".popup-title");
 const popupDescription = document.querySelector(".popup-description");
 const closePopupBtn = document.getElementById("closePopupBtn");
+let isPopupActive = false;
 
 function signUp(nickname, email, password) {
     fetch("/player/save", {
@@ -95,6 +95,9 @@ function openPopup(image, title, description, btnType, btnText, navigate) {
     closePopupBtn.classList.add(btnType);
     closePopupBtn.textContent = btnText;
 
+    isPopupActive = true;
+    submitBtn.blur();
+
     if (navigate) {
         closePopupBtn.classList.remove("error");
         closePopupBtn.setAttribute("onclick", "navigateToSignInPage()");
@@ -104,11 +107,22 @@ function openPopup(image, title, description, btnType, btnText, navigate) {
 function closePopup() {
     popupBackground.classList.remove("active");
     popup.classList.remove("active");
+    isPopupActive = false;
 }
 
 function navigateToSignInPage() {
     window.location.href = "../signin.html";
 }
 
-form.addEventListener("submit", (e) => e.preventDefault());
+function clickByEnter(e) {
+    if (e.key == "Enter") {
+        if (isPopupActive) {
+            closePopupBtn.click();
+        } else {
+            submitBtn.click();
+        }
+    }
+}
+
+document.addEventListener("keypress", clickByEnter);
 backArrow.addEventListener("click", () => window.history.back());
