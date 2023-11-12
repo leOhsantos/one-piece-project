@@ -445,7 +445,7 @@ function calculateScore() {
 
     sessionStorage.setItem("bonus", true);
 
-    saveScore(rankNumber, 0);
+    saveScore(rankNumber, "00:00:00.0");
 }
 
 function calculateScoreBonus() {
@@ -499,12 +499,6 @@ function calculateScoreBonus() {
     } else if (hR >= 1) {
         time.textContent = `Tempo: ${twoDigits(hR)}:${twoDigits(minR)}:${twoDigits(secR)}`;
     }
-
-    //reset record timer
-    milR = 0;
-    secR = 0;
-    minR = 0;
-    hR = 0;
 
     sessionStorage.removeItem("bonus");
     sessionStorage.removeItem("currentScore");

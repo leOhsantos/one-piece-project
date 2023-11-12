@@ -28,7 +28,7 @@ function save(req, res) {
     scoreModel.listByPlayer(idPlayer)
         .then(playerRes => {
             if (playerRes.length > 0) {
-                if (rank >= playerRes[0].rankPlayer || speedrunTime >= playerRes[0].speedrunTime) {
+                if (rank >= playerRes[0].rankPlayer && speedrunTime <= playerRes[0].speedrunTime || playerRes[0].speedrunTime == "00:00:00.0") {
                     scoreModel.edit(rank, speedrunTime, idPlayer)
                         .then(result => {
                             res.status(201).json(result);
