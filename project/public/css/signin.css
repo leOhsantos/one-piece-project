@@ -32,7 +32,8 @@ body {
 
 h1::selection,
 br::selection,
-p::selection {
+p::selection,
+input::selection {
     background-color: var(--primary-color);
 }
 
