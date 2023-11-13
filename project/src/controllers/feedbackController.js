@@ -1,9 +1,7 @@
 const feedbackModel = require("../models/feedbackModel");
 
 function listByStars(req, res) {
-    let stars = req.params.stars;
-
-    feedbackModel.listByStars(stars)
+    feedbackModel.listByStars()
         .then(result => {
             res.status(200).json(result);
         }).catch(error => {

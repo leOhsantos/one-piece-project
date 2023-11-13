@@ -64,59 +64,17 @@ function getRankingQuestionError() {
 }
 
 function getFeedbackStarsCount() {
-    fetch(`/feedback/list-by-stars/${1}`)
+    fetch(`/feedback/list-by-stars`)
         .then(res => {
             res.json().then(res => {
                 if (res.length > 0) {
-                    star1 = Number(res[0].starsCount);
-                }
-            });
-        });
-
-    fetch(`/feedback/list-by-stars/${2}`)
-        .then(res => {
-            res.json().then(res => {
-                if (res.length > 0) {
-                    star2 = Number(res[0].starsCount);
-                }
-            });
-        });
-
-    fetch(`/feedback/list-by-stars/${3}`)
-        .then(res => {
-            res.json().then(res => {
-                if (res.length > 0) {
-                    star3 = Number(res[0].starsCount);
-                }
-            });
-        });
-
-    fetch(`/feedback/list-by-stars/${4}`)
-        .then(res => {
-            res.json().then(res => {
-                if (res.length > 0) {
-                    star4 = Number(res[0].starsCount);
-                }
-            });
-        });
-
-    fetch(`/feedback/list-by-stars/${5}`)
-        .then(res => {
-            res.json().then(res => {
-                if (res.length > 0) {
-                    star5 = Number(res[0].starsCount);
+                    generatePieChart(res[0].star1, res[0].star2, res[0].star3, res[0].star4, res[0].star5);
                 }
             });
         });
 }
 
-window.addEventListener("load", () => {
-    getKpisData();
-    getRankingQuestionError();
-    getFeedbackStarsCount();
-});
-
-setTimeout(() => {
+function generatePieChart(star1, star2, star3, star4, star5) {
     Chart.defaults.color = "#ffffff";
 
     const data = {
@@ -151,6 +109,12 @@ setTimeout(() => {
     };
 
     new Chart(pieChart, config);
-}, 100);
+}
+
+window.addEventListener("load", () => {
+    getKpisData();
+    getRankingQuestionError();
+    getFeedbackStarsCount();
+});
 
 document.addEventListener("contextmenu", event => event.preventDefault());

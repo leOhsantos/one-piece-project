@@ -1,7 +1,12 @@
 const database = require("../database/config");
 
-function listByStars(stars) {
-    const instruction = `SELECT COUNT(idFeedback) AS starsCount FROM Feedback WHERE stars = ${stars};`;
+function listByStars() {
+    const instruction = `SELECT COUNT(idFeedback) AS star5, 
+        (SELECT COUNT(idFeedback) FROM Feedback WHERE stars = 4) AS star4, 
+        (SELECT COUNT(idFeedback) FROM Feedback WHERE stars = 3) AS star3, 
+        (SELECT COUNT(idFeedback) FROM Feedback WHERE stars = 2) AS star2, 
+        (SELECT COUNT(idFeedback) FROM Feedback WHERE stars = 1) AS star1 
+        FROM Feedback WHERE stars = 5;`;
     return database.execute(instruction);
 }
 

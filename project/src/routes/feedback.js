@@ -3,7 +3,7 @@ const router = express.Router();
 
 const feedbackController = require("../controllers/feedbackController");
 
-router.get("/list-by-stars/:stars", (req, res) => {
+router.get("/list-by-stars", (req, res) => {
     feedbackController.listByStars(req, res);
 });
 
