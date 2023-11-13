@@ -20,6 +20,33 @@ function listByPlayer(req, res) {
     });
 }
 
+function countScore100(req, res) {
+    scoreModel.countScore100().then(function (result) {
+        res.status(200).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json(error.sqlMessage);
+    });
+}
+
+function countSpeedrunTime(req, res) {
+    scoreModel.countSpeedrunTime().then(function (result) {
+        res.status(200).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json(error.sqlMessage);
+    });
+}
+
+function countScoreS(req, res) {
+    scoreModel.countScoreS().then(function (result) {
+        res.status(200).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json(error.sqlMessage);
+    });
+}
+
 function save(req, res) {
     let rank = req.body.rank;
     let speedrunTime = req.body.speedrunTime;
@@ -46,5 +73,8 @@ function save(req, res) {
 module.exports = {
     list,
     listByPlayer,
+    countScore100,
+    countSpeedrunTime,
+    countScoreS,
     save
 }

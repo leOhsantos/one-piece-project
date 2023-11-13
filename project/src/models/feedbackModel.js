@@ -1,7 +1,7 @@
 const database = require("../database/config");
 
 function listByStars(stars) {
-  const instruction = `SELECT COUNT(idFeedback) FROM Feedback WHERE stars = ${stars};`;
+  const instruction = `SELECT COUNT(idFeedback) AS starsCount FROM Feedback WHERE stars = ${stars};`;
   return database.execute(instruction);
 }
 

@@ -221,10 +221,53 @@
     </div>
 
     <div class="container">
+        <div class="title-line">
+            <h1>Estatísticas gerais dos jogadores</h1>
+        </div>
+        <div class="statistics-line">
+            <div class="column-1">
+                <div class="line-1">
+                    <div class="kpi">
+                        <h4>Atingiram 100%</h4>
+                        <span id="kpi100"></span>
+                        <div></div>
+                    </div>
 
+                    <div class="kpi">
+                        <h4>Terminaram em <br> até 1 min</h4>
+                        <span id="kpiSpeedrunTime"></span>
+                        <div></div>
+                    </div>
+
+                    <div class="kpi">
+                        <h4>Atingiram o S++</h4>
+                        <span id="kpiS"></span>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="line-2">
+                    <div class="top-questions-container">
+                        <h4>Ranking de questões mais erradas</h4>
+                        <table>
+                            <tbody id="questionErrorTbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-2">
+                <div class="chart-container">
+                    <h4>Avaliações do jogo</h4>
+                    <div class="chart">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="../js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/statistics.js"></script>
 </body>
 

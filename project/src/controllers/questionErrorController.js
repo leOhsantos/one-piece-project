@@ -1,5 +1,14 @@
 const questionErrorModel = require("../models/questionErrorModel");
 
+function list(req, res) {
+    questionErrorModel.list().then(function (result) {
+        res.status(200).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(500).json(error.sqlMessage);
+    });
+}
+
 function listByQuestion(req, res) {
     let idPlayer = req.params.idPlayer;
 
@@ -25,6 +34,7 @@ function save(req, res) {
 }
 
 module.exports = {
+    list,
     listByQuestion,
     save
 }

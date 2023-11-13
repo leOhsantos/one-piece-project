@@ -1,5 +1,10 @@
 const database = require("../database/config");
 
+function list() {
+    const instruction = `SELECT COUNT(idQuestionError) AS questionCount, questionNumber FROM QuestionError GROUP BY questionNumber ORDER BY questionCount DESC LIMIT 5;`;
+    return database.execute(instruction);
+}
+
 function listByQuestion(idPlayer) {
     const instruction = `SELECT COUNT(idQuestionError) AS Errors FROM QuestionError WHERE fkPlayer = ${idPlayer};`;
     return database.execute(instruction);
@@ -11,6 +16,7 @@ function save(questionNumber, idPlayer) {
 }
 
 module.exports = {
+    list,
     listByQuestion,
     save
 }

@@ -96,8 +96,6 @@ let hR = 0;
 
 let bonusProgress = null;
 
-document.addEventListener("contextmenu", event => event.preventDefault());
-
 document.addEventListener("DOMContentLoaded", () => {
     const recordScore = parseInt(sessionStorage.getItem("recordScore"));
     const progress = parseInt(sessionStorage.getItem("progress"));
@@ -991,7 +989,7 @@ function activateBonus() {
     });
 }
 
-if (star1) star1.addEventListener("click", activateBonus);
+if (star1) star1.addEventListener("dblclick", activateBonus);
 
 function playMiniLuffyAudio() {
     miniLuffyAudio.volume = 0.3;
@@ -1103,3 +1101,5 @@ function exitCreditsScreen() {
 }
 
 if (exitCreditsBtn) exitCreditsBtn.addEventListener("click", exitCreditsScreen);
+
+document.addEventListener("contextmenu", event => event.preventDefault());
