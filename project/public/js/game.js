@@ -712,9 +712,24 @@ function showFeedbackScreen() {
         feedbackStar4.style.pointerEvents = "none";
         feedbackStar5.style.pointerEvents = "none";
         feedbackText.textContent = "Jogo já avaliado!";
-        rateBtn.style.display = "none";
+        rateBtn.textContent = "Apagar";
+        rateBtn.style.display = "inline-block";
+        rateBtn.setAttribute("onclick", "deleteFeedback()");
         isRated = true;
+    } else {
+        feedbackStar1.style.pointerEvents = "all";
+        feedbackStar2.style.pointerEvents = "all";
+        feedbackStar3.style.pointerEvents = "all";
+        feedbackStar4.style.pointerEvents = "all";
+        feedbackStar5.style.pointerEvents = "all";
+        feedbackText.textContent = "Dê uma nota para esse jogo!";
+        rateBtn.textContent = "Avaliar";
+        rateBtn.style.display = "inline-block";
+        rateBtn.setAttribute("onclick", "saveFeedback()");
+        isRated = false;
+    }
 
+    if (starsNumber > 0) {
         if (starsNumber == 1) {
             feedbackStar1.src = "../assets/image/full-star.png";
             feedbackStar2.src = "../assets/image/empty-star.png";
@@ -810,24 +825,41 @@ function setStarNumber(star) {
     }
 }
 
-function saveFeedback(stars) {
-    fetch(`/feedback/save/${idPlayer}`, {
-        method: "POST",
+function deleteFeedback() {
+    fetch(`/feedback/delete/${idPlayer}`, {
+        method: "DELETE",
         headers: {
             "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            stars: stars
-        })
+        }
     });
+
+    feedbackStar1.src = "../assets/image/empty-star.png";
+    feedbackStar2.src = "../assets/image/empty-star.png";
+    feedbackStar3.src = "../assets/image/empty-star.png";
+    feedbackStar4.src = "../assets/image/empty-star.png";
+    feedbackStar5.src = "../assets/image/empty-star.png";
+
+    feedbackText.textContent = "Avaliação apagada com sucesso!";
+    rateBtn.style.display = "none";
+    rateBtn.setAttribute("onclick", "saveFeedback()");
+    isRated = false;
 }
 
-function rateGame() {
+function saveFeedback() {
     if (starsNumber > 0) {
         feedbackText.textContent = "Jogo avaliado com sucesso!";
         rateBtn.style.display = "none";
         isRated = true;
-        saveFeedback(starsNumber);
+
+        fetch(`/feedback/save/${idPlayer}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                stars: starsNumber
+            })
+        });
     }
 }
 

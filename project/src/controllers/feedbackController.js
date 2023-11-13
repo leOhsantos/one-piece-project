@@ -3,23 +3,23 @@ const feedbackModel = require("../models/feedbackModel");
 function listByStars(req, res) {
     let stars = req.params.stars;
 
-    feedbackModel.listByStars(stars).then(function (result) {
-        res.status(200).json(result);
-    }).catch(function (error) {
-        console.log(error);
-        res.status(500).json(error.sqlMessage);
-    });
+    feedbackModel.listByStars(stars)
+        .then(result => {
+            res.status(200).json(result);
+        }).catch(error => {
+            res.status(500).json(error.sqlMessage);
+        });
 }
 
 function listByPlayer(req, res) {
     let idPlayer = req.params.idPlayer;
 
-    feedbackModel.listByPlayer(idPlayer).then(function (result) {
-        res.status(200).json(result);
-    }).catch(function (error) {
-        console.log(error);
-        res.status(500).json(error.sqlMessage);
-    });
+    feedbackModel.listByPlayer(idPlayer)
+        .then(result => {
+            res.status(200).json(result);
+        }).catch(error => {
+            res.status(500).json(error.sqlMessage);
+        });
 }
 
 function save(req, res) {
@@ -29,8 +29,18 @@ function save(req, res) {
     feedbackModel.save(stars, idPlayer)
         .then(result => {
             res.status(201).json(result);
-        }).catch(function (error) {
-            console.log(error);
+        }).catch(error => {
+            res.status(500).json(error.sqlMessage);
+        });
+}
+
+function deleteFeedback(req, res) {
+    let idPlayer = req.params.idPlayer;
+
+    feedbackModel.deleteFeedback(idPlayer)
+        .then(result => {
+            res.status(201).json(result);
+        }).catch(error => {
             res.status(500).json(error.sqlMessage);
         });
 }
@@ -38,5 +48,6 @@ function save(req, res) {
 module.exports = {
     listByStars,
     listByPlayer,
-    save
+    save,
+    deleteFeedback
 }

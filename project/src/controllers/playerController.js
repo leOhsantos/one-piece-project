@@ -1,32 +1,14 @@
 const playerModel = require("../models/playerModel");
 
-function listAll(req, res) {
-    playerModel.listAll().then(function (result) {
-        res.status(200).json(result);
-    }).catch(function (error) {
-        console.log(error);
-        res.status(500).json(error.sqlMessage);
-    });
-}
-
 function list(req, res) {
     let idPlayer = req.params.idPlayer;
 
-    playerModel.list(idPlayer).then(function (result) {
-        res.status(200).json(result);
-    }).catch(function (error) {
-        console.log(error);
-        res.status(500).json(error.sqlMessage);
-    });
-}
-
-function listByRank(req, res) {
-    playerModel.listByRank().then(function (result) {
-        res.status(200).json(result);
-    }).catch(function (error) {
-        console.log(error);
-        res.status(500).json(error.sqlMessage);
-    });
+    playerModel.list(idPlayer)
+        .then(result => {
+            res.status(200).json(result);
+        }).catch(error => {
+            res.status(500).json(error.sqlMessage);
+        });
 }
 
 function authenticate(req, res) {
@@ -74,8 +56,7 @@ function save(req, res) {
                 playerModel.save(nickname, email, password)
                     .then(result => {
                         res.status(201).json(result);
-                    }).catch(function (error) {
-                        console.log(error);
+                    }).catch(error => {
                         res.status(500).json(error.sqlMessage);
                     });
             }
@@ -89,8 +70,7 @@ function updateAvatar(req, res) {
     playerModel.updateAvatar(avatar, idPlayer)
         .then(result => {
             res.json(result);
-        }).catch(function (error) {
-            console.log(error);
+        }).catch(error => {
             res.status(500).json(error.sqlMessage);
         });
 }
@@ -117,8 +97,7 @@ function updateNickname(req, res) {
                 playerModel.updateNickname(nickname, idPlayer)
                     .then(result => {
                         res.json(result);
-                    }).catch(function (error) {
-                        console.log(error);
+                    }).catch(error => {
                         res.status(500).json(error.sqlMessage);
                     });
             }
@@ -132,8 +111,7 @@ function updateTitle(req, res) {
     playerModel.updateTitle(title, idPlayer)
         .then(result => {
             res.json(result);
-        }).catch(function (error) {
-            console.log(error);
+        }).catch(error => {
             res.status(500).json(error.sqlMessage);
         });
 }
@@ -156,8 +134,7 @@ function updatePassword(req, res) {
                 playerModel.updatePassword(newPassword, idPlayer)
                     .then(result => {
                         res.status(200).json(result);
-                    }).catch(function (error) {
-                        console.log(error);
+                    }).catch(error => {
                         res.status(500).json(error.sqlMessage);
                     });
             }
@@ -165,9 +142,7 @@ function updatePassword(req, res) {
 }
 
 module.exports = {
-    listAll,
     list,
-    listByRank,
     authenticate,
     save,
     updateAvatar,
