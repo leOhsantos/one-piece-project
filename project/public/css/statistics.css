@@ -80,7 +80,7 @@
 }
 
 .kpi span {
-    height: 36%;
+    height: 38%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +90,7 @@
 }
 
 .kpi div {
-    height: 30%;
+    height: 29%;
 }
 
 .column-1 .line-2 {
@@ -159,6 +159,7 @@ tbody tr td:nth-child(3) {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    position: relative;
 }
 
 .column-2 h4 {
@@ -167,4 +168,15 @@ tbody tr td:nth-child(3) {
 
 .chart {
     height: 80%;
+    z-index: 1;
+}
+
+.chart-container img {
+    height: 90px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    margin-top: -2px;
 }
