@@ -43,6 +43,7 @@ const confirmLogoutModal = document.querySelector(".confirm-logout");
 const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
 const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
 const logoutBtn = document.getElementById("logoutBtn");
+let isLogoutActive = false;
 
 const idPlayer = sessionStorage.getItem("idPlayer");
 let playerList = [];
@@ -334,6 +335,7 @@ if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeSettingsCo
 function openConfirmLogoutModal() {
     background.classList.add("active");
     confirmLogoutModal.classList.add("active");
+    isLogoutActive = true;
 }
 
 confirmLogoutBtn.addEventListener("click", openConfirmLogoutModal);
@@ -341,6 +343,7 @@ confirmLogoutBtn.addEventListener("click", openConfirmLogoutModal);
 function closeConfirmLogoutModal() {
     background.classList.remove("active");
     confirmLogoutModal.classList.remove("active");
+    isLogoutActive = false;
 }
 
 cancelLogoutBtn.addEventListener("click", closeConfirmLogoutModal);
@@ -395,6 +398,10 @@ function clickByEnter(e) {
         } else if (isSettingsActive) {
             saveEditionBtn.click();
         }
+
+        if (isLogoutActive) {
+            logoutBtn.click();
+        }
     }
 }
 
@@ -408,6 +415,10 @@ function closeByEsc(e) {
 
         if (isPopupActive) {
             closePopupBtn.click();
+        }
+
+        if (isLogoutActive) {
+            cancelLogoutBtn.click();
         }
     }
 }
