@@ -393,7 +393,7 @@ a {
 }
 
 .loading-background img {
-    height: 96px;
+    height: 100px;
 }
 
 .spinner,
@@ -407,7 +407,7 @@ a {
 .circle-border {
     width: 180px;
     height: 180px;
-    padding: 4px;
+    padding: 6px;
     border-radius: 50%;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 33%, #ffffff 100%);
     animation: spin .8s linear infinite;
