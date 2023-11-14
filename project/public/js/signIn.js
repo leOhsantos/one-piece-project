@@ -15,6 +15,17 @@ const popupDescription = document.querySelector(".popup-description");
 const closePopupBtn = document.getElementById("closePopupBtn");
 let isPopupActive = false;
 
+const loadingBackground = document.querySelector(".loading-background");
+
+function showLoadingScreen() {
+    loadingBackground.classList.add("active");
+
+    setTimeout(() => {
+        loadingBackground.classList.remove("active");
+        window.location.href = "../dashboard/game.html";
+    }, 1500);
+}
+
 function signIn(email, password) {
     fetch("player/authenticate", {
         method: "POST",
@@ -29,7 +40,7 @@ function signIn(email, password) {
         if (res.status == 200) {
             res.json().then(res => {
                 sessionStorage.setItem("idPlayer", res);
-                window.location.href = "../dashboard/game.html";
+                showLoadingScreen();
             });
         } else {
             res.text().then(text => {
