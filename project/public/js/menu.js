@@ -399,5 +399,20 @@ function clickByEnter(e) {
 }
 
 document.addEventListener("keypress", clickByEnter);
+
+function closeByEsc(e) {
+    if (e.keyCode == 27) {
+        if (isSettingsActive) {
+            closeSettingsBtn.click();
+        }
+
+        if (isPopupActive) {
+            closePopupBtn.click();
+        }
+    }
+}
+
+document.addEventListener("keydown", closeByEsc);
+
 gameMenuBtn.addEventListener("click", () => window.location.href = "../dashboard/game.html");
 statisticsMenuBtn.addEventListener("click", () => window.location.href = "../dashboard/statistics.html");
