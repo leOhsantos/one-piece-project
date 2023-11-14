@@ -27,7 +27,7 @@
 
 .title-line h1::before {
     content: "";
-    width: 110px;
+    width: 140px;
     height: 6px;
     border-top-left-radius: 32px;
     border-bottom-right-radius: 32px;
@@ -49,16 +49,10 @@
 }
 
 .statistics-line .column-1 .line-1 {
-    height: 43%;
-    display: flex;
-    align-items: flex-end;
-}
-
-.statistics-line .column-1 .line-1 {
-    height: 50%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 58px;
 }
 
 .kpi {
@@ -94,10 +88,10 @@
 }
 
 .column-1 .line-2 {
-    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 24px;
 }
 
 .top-questions-container {

@@ -487,9 +487,9 @@ body.active {
 }
 
 #cancelLogoutBtn {
-    padding: 14px 24px;
-    background-color: #707070;
-    border: none;
+    padding: 12px 24px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
     border-radius: 12px;
     text-transform: uppercase;
     font-size: 1rem;
@@ -501,9 +501,9 @@ body.active {
 }
 
 #logoutBtn {
-    padding: 14px 24px;
+    padding: 12px 24px;
     background-color: #eb4141;
-    border: none;
+    border: 2px solid #eb4141;
     border-radius: 12px;
     text-transform: uppercase;
     font-size: 1rem;

@@ -75,6 +75,7 @@ function getFeedbackStarsCount() {
 }
 
 function generatePieChart(star1, star2, star3, star4, star5) {
+    Chart.defaults.font.size = 16;
     Chart.defaults.color = "#ffffff";
 
     const data = {
@@ -86,7 +87,7 @@ function generatePieChart(star1, star2, star3, star4, star5) {
             '5 ★'
         ],
         datasets: [{
-            label: 'Estrelas',
+            label: 'Avaliações',
             data: [star1, star2, star3, star4, star5],
             backgroundColor: [
                 '#AE6427',
