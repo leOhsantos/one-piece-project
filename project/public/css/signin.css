@@ -380,7 +380,7 @@ a {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #1b4053;
+    background-color: #1f4f67;
     opacity: 0;
     visibility: hidden;
     transition: all .4s ease-in-out;
@@ -394,6 +394,7 @@ a {
 
 .loading-background img {
     height: 100px;
+    margin-top: -1px;
 }
 
 .spinner,
@@ -416,7 +417,7 @@ a {
 .circle-core {
     width: 100%;
     height: 100%;
-    background-color: #1b4053;
+    background-color: #1f4f67;
     border-radius: 50%;
 }
 

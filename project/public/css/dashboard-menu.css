@@ -26,7 +26,7 @@ body {
     overflow: hidden;
 }
 
-body.active {
+body.gray {
     background: linear-gradient(0deg, rgba(39, 46, 50, 0.86) 0%, rgba(39, 46, 50, 0.86) 100%), url("../assets/image/general-background.png");
     background-position: center;
     background-repeat: repeat;
@@ -45,8 +45,9 @@ body.active {
     user-select: none;
 }
 
-.menu.active,
-.confirm-logout.gray {
+.menu.gray,
+.confirm-logout.gray,
+.settings-container.gray {
     filter: grayscale(100%);
 }
 

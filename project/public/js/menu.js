@@ -1,4 +1,5 @@
 const background = document.querySelector(".background");
+const menu = document.querySelector(".menu");
 const gameMenuBtn = document.getElementById("gameMenuBtn");
 const statisticsMenuBtn = document.getElementById("statisticsMenuBtn");
 

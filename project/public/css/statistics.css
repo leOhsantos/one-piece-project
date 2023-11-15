@@ -27,7 +27,7 @@
 
 .title-line h1::before {
     content: "";
-    width: 140px;
+    width: 110px;
     height: 6px;
     border-top-left-radius: 32px;
     border-bottom-right-radius: 32px;
