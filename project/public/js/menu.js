@@ -231,6 +231,7 @@ function saveAccountEdition() {
     });
 
     menuTitle.textContent = title;
+    setTimeout(() => getScore(), 1000);
 }
 
 function openSecurityContainer() {
