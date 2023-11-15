@@ -872,6 +872,7 @@ button:focus {
 .player-rank {
     font-family: Brush;
     display: flex;
+    justify-content: space-between;
     height: 50px;
     align-items: center;
     border: 3px dashed #983400;
