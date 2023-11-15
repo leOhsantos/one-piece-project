@@ -118,6 +118,7 @@ table {
     width: 100%;
     height: 82%;
     padding-bottom: 8px;
+    font-weight: 500;
 }
 
 tbody tr td {

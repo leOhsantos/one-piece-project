@@ -3,11 +3,11 @@ USE bdOnePieceQuiz;
 
 CREATE TABLE Player (
 	idPlayer INT PRIMARY KEY AUTO_INCREMENT,
-    nickname VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    avatar VARCHAR(50) DEFAULT 'no-avatar',
-    title VARCHAR(50) DEFAULT 'Figurante'
+    nickname VARCHAR(20) NOT NULL,
+    email VARCHAR(45) NOT NULL,
+    password VARCHAR(45) NOT NULL,
+    avatar VARCHAR(45) DEFAULT 'no-avatar',
+    title VARCHAR(45) DEFAULT 'Figurante'
 );
 
 CREATE TABLE Score (

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -145,14 +147,19 @@ body.gray {
     width: 200px;
 }
 
-.menu .container-user .container-text{
+.menu .container-user .container-text {
     overflow: hidden;
 }
 
 .menu .container-user h3 {
+    font-weight: 600;
     margin-bottom: 4px;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.menu .container-user p {
+    font-weight: 500;
 }
 
 .menu .btn-container {
@@ -234,6 +241,7 @@ body.gray {
 .settings-container .line-2 .column-1 button {
     all: unset;
     font-size: 0.9rem;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: flex;
@@ -314,7 +322,7 @@ body.gray {
 }
 
 .select-avatar-container {
-    margin-top: 24px;
+    margin-top: 22px;
 }
 
 .select-avatar-container div {
@@ -345,7 +353,7 @@ body.gray {
     height: 16px;
     position: absolute;
     right: 12px;
-    bottom: 22px;
+    bottom: 24px;
     cursor: pointer;
 }
 
@@ -369,11 +377,12 @@ body.gray {
 
 .input-container label {
     margin: 8px 0 0 12px;
+    font-weight: 500;
 }
 
 .input-container input {
     margin: 8px 0;
-    padding: 12px;
+    padding: 14px;
     color: #ffffff;
     border: 2px solid #ffffff;
     border-radius: 12px;
@@ -389,7 +398,7 @@ body.gray {
 
 .input-container select {
     margin: 8px 0;
-    padding: 12px;
+    padding: 14px;
     color: #ffffff;
     border: 2px solid #ffffff;
     border-radius: 12px;
@@ -403,7 +412,7 @@ body.gray {
     height: 14px;
     position: absolute;
     right: 14px;
-    bottom: 21px;
+    bottom: 23px;
     z-index: -1;
 }
 
@@ -449,13 +458,14 @@ body.gray {
     height: 20px;
     position: absolute;
     right: 12px;
-    bottom: 20px;
+    bottom: 22px;
     cursor: pointer;
 }
 
 #saveEditionBtn {
     all: unset;
     font-size: 0.9rem;
+    font-weight: 500;
     text-transform: uppercase;
     padding: 12px 14px;
     border: 2px solid #ffffff;
@@ -475,7 +485,7 @@ body.gray {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.6);
-    width: 450px;
+    width: 480px;
     height: 210px;
     padding: 28px;
     border-radius: 32px;
@@ -507,10 +517,6 @@ body.gray {
 .confirm-logout h1 {
     text-transform: uppercase;
     font-size: 1.4rem;
-}
-
-.confirm-logout p {
-    font-size: 1.1rem;
 }
 
 #cancelLogoutBtn {
@@ -635,8 +641,10 @@ body.gray {
     font-size: 1.4rem;
 }
 
-.popup-description {
+.popup-description,
+.confirm-logout p {
     font-size: 1.1rem;
+    text-align: center;
 }
 
 .popup .line-3 {
