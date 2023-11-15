@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@font-face {
+    font-family: Montserrat;
+    src: url("../assets/font/Montserrat.ttf");
+}
 
 * {
     margin: 0;
@@ -19,7 +22,7 @@ html {
 
 body {
     display: flex;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat;
     height: 100%;
     background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png");
     background-position: center;
@@ -464,6 +467,7 @@ body.gray {
 
 #saveEditionBtn {
     all: unset;
+    font-family: Montserrat;
     font-size: 0.9rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -520,6 +524,7 @@ body.gray {
 }
 
 #cancelLogoutBtn {
+    font-family: Montserrat;
     padding: 12px 24px;
     background-color: transparent;
     border: 2px solid #ffffff;
@@ -534,6 +539,7 @@ body.gray {
 }
 
 #logoutBtn {
+    font-family: Montserrat;
     padding: 12px 24px;
     background-color: #eb4141;
     border: 2px solid #eb4141;
@@ -655,6 +661,7 @@ body.gray {
 }
 
 #closePopupBtn {
+    font-family: Montserrat;
     padding: 14px 24px;
     border: none;
     border-radius: 12px;

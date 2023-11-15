@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@font-face {
+    font-family: Montserrat;
+    src: url("../assets/font/Montserrat.ttf");
+}
 
 :root {
     --primary-color: #4B97D2;
@@ -17,7 +20,7 @@ html,
 body {
     scroll-padding-top: 120px;
     scroll-behavior: smooth;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat;
     color: #ffffff;
     height: 100%;
     background: linear-gradient(0deg, rgba(27, 64, 83, 0.86) 0%, rgba(27, 64, 83, 0.86) 100%), url("../assets/image/general-background.png");
@@ -141,7 +144,7 @@ a {
 }
 
 #home .nav .nav-list .sign-in-btn {
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat;
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
