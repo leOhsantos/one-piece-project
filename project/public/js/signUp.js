@@ -19,7 +19,7 @@ const popupDescription = document.querySelector(".popup-description");
 const closePopupBtn = document.getElementById("closePopupBtn");
 let isPopupActive = false;
 
-function signUp(nickname, email, password) {
+function signUp(nickname, email, password, confirmPassword) {
     fetch("/player/save", {
         method: "POST",
         headers: {
@@ -28,7 +28,8 @@ function signUp(nickname, email, password) {
         body: JSON.stringify({
             nickname: nickname,
             email: email,
-            password: password
+            password: password,
+            confirmPassword: confirmPassword
         })
     }).then(res => {
         if (res.status == 201) {
@@ -45,22 +46,19 @@ function checkInput() {
     let nickname = nicknameInput.value;
     let email = emailInput.value;
     let password = passwordInput.value;
-    signUp(nickname, email, password);
+    let confirmPassword = confirmPasswordInput.value;
+    signUp(nickname, email, password, confirmPassword);
 }
 
 submitBtn.addEventListener("click", checkInput);
 
 function enableSignUpButton() {
-    const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
-
     let nickname = nicknameInput.value;
     let email = emailInput.value;
     let password = passwordInput.value;
     let confirmPassword = confirmPasswordInput.value;
 
-    let emailTest = emailRegex.test(email);
-
-    if (nickname != "" && emailTest && password != "" && (confirmPassword == password && confirmPassword.length >= 1)) {
+    if (nickname != "" && email != "" && password != "" && confirmPassword != "") {
         submitBtn.removeAttribute("disabled");
     } else {
         submitBtn.setAttribute("disabled", true);

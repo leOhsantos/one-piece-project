@@ -59,14 +59,10 @@ function checkInput() {
 submitBtn.addEventListener("click", checkInput);
 
 function enableSignInButton() {
-    const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
-
     let email = emailInput.value;
     let password = passwordInput.value;
 
-    let emailTest = emailRegex.test(email);
-
-    if (emailTest && password != "") {
+    if (email != "" && password != "") {
         submitBtn.removeAttribute("disabled");
     } else {
         submitBtn.setAttribute("disabled", true);
