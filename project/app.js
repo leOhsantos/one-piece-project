@@ -1,9 +1,7 @@
-process.env.AMBIENTE_PROCESSO = "development";
-
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const PORT = process.env.AMBIENTE_PROCESSO == "development" ? 3333 : 8080;
+const PORT = 3333;
 
 const app = express();
 
@@ -16,6 +14,7 @@ const feedbackRouter = require("./src/routes/feedback");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
 app.use(cors());
 
 app.use("/", indexRouter);
@@ -24,6 +23,6 @@ app.use("/score", scoreRouter);
 app.use("/question-error", questionErrorRouter);
 app.use("/feedback", feedbackRouter);
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
     console.log(`Servidor rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORT}`);
 });
