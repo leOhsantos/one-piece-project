@@ -50,24 +50,6 @@ const idPlayer = sessionStorage.getItem("idPlayer");
 let playerList = [];
 let rankingList = [];
 
-window.addEventListener("load", () => {
-    if (!idPlayer) {
-        window.location.href = "../index.html";
-    } else {
-        fetch(`/player/list/${idPlayer}`)
-            .then(res => {
-                res.json().then(res => {
-                    emailInput.value = res[0].email;
-                    menuAvatar.src = `../assets/image/${res[0].avatar}.jpg`;
-                    menuNickname.textContent = res[0].nickname;
-                    menuTitle.textContent = res[0].title;
-                });
-            });
-    }
-
-    getScore();
-});
-
 function getScore() {
     fetch(`/score/list-by-player/${idPlayer}`)
         .then(res => {
@@ -85,6 +67,24 @@ function getScore() {
             });
         });
 }
+
+window.addEventListener("load", () => {
+    if (!idPlayer) {
+        window.location.href = "../index.html";
+    } else {
+        fetch(`/player/list/${idPlayer}`)
+            .then(res => {
+                res.json().then(res => {
+                    emailInput.value = res[0].email;
+                    menuAvatar.src = `../assets/image/${res[0].avatar}.jpg`;
+                    menuNickname.textContent = res[0].nickname;
+                    menuTitle.textContent = res[0].title;
+                });
+            });
+    }
+
+    getScore();
+});
 
 function showTitles() {
     if (!playerList) {
@@ -120,6 +120,20 @@ function showTitles() {
         `;
         }
     }
+}
+
+function closeSettingsContainer() {
+    background.classList.remove("active");
+    settingsContainer.classList.remove("active");
+    isSettingsActive = false;
+}
+
+if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeSettingsContainer);
+
+function cleanSecurityInputs() {
+    currentPasswordInput.value = "";
+    newPasswordInput.value = "";
+    confirmNewPasswordInput.value = "";
 }
 
 function openAvatarContainer() {
@@ -197,6 +211,24 @@ function disableEditNickname() {
     nicknameInput.value = menuNickname.textContent;
 }
 
+function openPopup(image, title, description, btnType, btnText, isPasswordUpdated) {
+    popupBackground.classList.add("active");
+    popup.classList.add("active");
+    popupImg.src = `../assets/image/${image}-icon.png`;
+    popupTitle.textContent = title;
+    popupDescription.textContent = description;
+    closePopupBtn.classList.add(btnType);
+    closePopupBtn.textContent = btnText;
+
+    isPopupActive = true;
+    saveEditionBtn.blur();
+
+    if (isPasswordUpdated) {
+        closePopupBtn.classList.remove("error");
+        closePopupBtn.setAttribute("onclick", "closeAllModals()");
+    }
+}
+
 function saveAccountEdition() {
     let nickname = nicknameInput.value;
     let title = titleSelect.value;
@@ -249,12 +281,6 @@ function openSecurityContainer() {
 }
 
 if (securityBtn) securityBtn.addEventListener("click", openSecurityContainer);
-
-function cleanSecurityInputs() {
-    currentPasswordInput.value = "";
-    newPasswordInput.value = "";
-    confirmNewPasswordInput.value = "";
-}
 
 function toggleCurrentPasswordIcon() {
     if (currentPasswordInput.type == "password") {
@@ -326,14 +352,6 @@ if (settingsBtn) {
     avatar.addEventListener("click", openSettingsContainer);
 }
 
-function closeSettingsContainer() {
-    background.classList.remove("active");
-    settingsContainer.classList.remove("active");
-    isSettingsActive = false;
-}
-
-if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeSettingsContainer);
-
 function openConfirmLogoutModal() {
     background.classList.add("active");
     confirmLogoutModal.classList.add("active");
@@ -349,24 +367,6 @@ function closeConfirmLogoutModal() {
 }
 
 cancelLogoutBtn.addEventListener("click", closeConfirmLogoutModal);
-
-function openPopup(image, title, description, btnType, btnText, isPasswordUpdated) {
-    popupBackground.classList.add("active");
-    popup.classList.add("active");
-    popupImg.src = `../assets/image/${image}-icon.png`;
-    popupTitle.textContent = title;
-    popupDescription.textContent = description;
-    closePopupBtn.classList.add(btnType);
-    closePopupBtn.textContent = btnText;
-
-    isPopupActive = true;
-    saveEditionBtn.blur();
-
-    if (isPasswordUpdated) {
-        closePopupBtn.classList.remove("error");
-        closePopupBtn.setAttribute("onclick", "closeAllModals()");
-    }
-}
 
 function closePopup() {
     popupBackground.classList.remove("active");

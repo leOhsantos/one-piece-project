@@ -94,62 +94,24 @@ let secR = 0;
 let minR = 0;
 let hR = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
-    const progress = parseInt(sessionStorage.getItem("progress"));
-    const fail = sessionStorage.getItem("fail");
-    const isBonusActivated = sessionStorage.getItem("bonus");
-    const recordTime = JSON.parse(sessionStorage.getItem("recordTime"));
+function resetInstructionBtn() {
+    const bonus = instructionBtn.getAttribute("data-bonus");
 
-    //get the player feedback stars
-    fetch(`/feedback/list-by-player/${idPlayer}`)
-        .then(res => {
-            res.json().then(res => {
-                if (res.length > 0) {
-                    starsNumber = res[0].stars;
-                }
-            });
+    if (bonus == "true") {
+        instructionBtn.setAttribute("data-bonus", "false");
+        instructionBtn.textContent = "Instruções";
+
+        instructionBtn.addEventListener("mouseover", () => {
+            instructionBtn.textContent = "Instruções";
+            instructionBtn.style.cssText = "background-color: #ccc733; border-color: #983400; color: #000000;";
         });
 
-    //show the stars on menu
-    if (progress >= 50 && progress < 100) {
-        if (star1) star1.style.display = "block";
-    } else if (progress == 100 && recordScore < 7) {
-        if (star1) star1.style.display = "block";
-        if (star2) star2.style.display = "block";
-        resetProgressBtn.style.display = "flex";
-    } else if (recordScore == 7) {
-        if (star1) star1.style.display = "block";
-        if (star2) star2.style.display = "block";
-        if (star3) star3.style.display = "block";
-        resetProgressBtn.style.display = "flex";
-    } else if (!progress) {
-        if (star1) star1.style.display = "none";
-        if (star2) star2.style.display = "none";
-        if (star3) star3.style.display = "none";
+        instructionBtn.addEventListener("mouseout", () => {
+            instructionBtn.textContent = "Instruções";
+            instructionBtn.style.cssText = "background-color: #9A6601; border-color: #983400; color: #000000;";
+        });
     }
-
-    //blocks the player if he tries to start a new game
-    if (progress == 100) {
-        startBtn.removeEventListener("click", startQuiz);
-        startBtn.style.cursor = "no-drop";
-    }
-
-    //verify if bonus is activated to activate star 1 secret click
-    if (star1) isBonusActivated ? star1.style.pointerEvents = "all" : star1.style.pointerEvents = "none";
-
-    //get the last record time the player did
-    if (recordTime && progress < 100) {
-        if (recordTime.millisecond) milR = recordTime.millisecond;
-        if (recordTime.second) secR = recordTime.second;
-        if (recordTime.minute) minR = recordTime.minute;
-        if (recordTime.hour) hR = recordTime.hour;
-    }
-
-    if (!progress) sessionStorage.setItem("progress", 0);
-    if (!fail) sessionStorage.setItem("fail", 0);
-    if (progress > 0) resetProgressBtn.style.display = "flex";
-});
+}
 
 function addBonusAttributes() {
     body.classList.add("gray");
@@ -221,6 +183,13 @@ function stopRecordTimer() {
     }
 }
 
+function resetStar2Clicks() {
+    clicks = 0;
+    secretWord = "";
+    star2.style.setProperty("--vis", "hidden");
+    star2.style.setProperty("--op", 0);
+}
+
 function startQuiz() {
     resetStar2Clicks();
     startRecordTimer();
@@ -249,6 +218,63 @@ function startQuiz() {
 
 if (startBtn) startBtn.addEventListener("click", startQuiz);
 
+window.addEventListener("load", () => {
+    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
+    const progress = parseInt(sessionStorage.getItem("progress"));
+    const fail = sessionStorage.getItem("fail");
+    const isBonusActivated = sessionStorage.getItem("bonus");
+    const recordTime = JSON.parse(sessionStorage.getItem("recordTime"));
+
+    //get the player feedback stars
+    fetch(`/feedback/list-by-player/${idPlayer}`)
+        .then(res => {
+            res.json().then(res => {
+                if (res.length > 0) {
+                    starsNumber = res[0].stars;
+                }
+            });
+        });
+
+    //show the stars on menu
+    if (progress >= 50 && progress < 100) {
+        if (star1) star1.style.display = "block";
+    } else if (progress == 100 && recordScore < 7) {
+        if (star1) star1.style.display = "block";
+        if (star2) star2.style.display = "block";
+        resetProgressBtn.style.display = "flex";
+    } else if (recordScore == 7) {
+        if (star1) star1.style.display = "block";
+        if (star2) star2.style.display = "block";
+        if (star3) star3.style.display = "block";
+        resetProgressBtn.style.display = "flex";
+    } else if (!progress) {
+        if (star1) star1.style.display = "none";
+        if (star2) star2.style.display = "none";
+        if (star3) star3.style.display = "none";
+    }
+
+    //blocks the player if he tries to start a new game
+    if (progress == 100) {
+        startBtn.removeEventListener("click", startQuiz);
+        startBtn.style.cursor = "no-drop";
+    }
+
+    //verify if bonus is activated to activate star 1 secret click
+    if (star1) isBonusActivated ? star1.style.pointerEvents = "all" : star1.style.pointerEvents = "none";
+
+    //get the last record time the player did
+    if (recordTime && progress < 100) {
+        if (recordTime.millisecond) milR = recordTime.millisecond;
+        if (recordTime.second) secR = recordTime.second;
+        if (recordTime.minute) minR = recordTime.minute;
+        if (recordTime.hour) hR = recordTime.hour;
+    }
+
+    if (!progress) sessionStorage.setItem("progress", 0);
+    if (!fail) sessionStorage.setItem("fail", 0);
+    if (progress > 0) resetProgressBtn.style.display = "flex";
+});
+
 function startQuizBonus() {
     bonusProgress = 50;
 
@@ -271,6 +297,20 @@ function startQuizBonus() {
     questionNumber.setAttribute("value", q51.questionNumber - 1);
 }
 
+function updateProgress(qNumber) {
+    const currentProgress = questions[qNumber].questionNumber;
+    const progress = sessionStorage.getItem("progress");
+
+    if (currentProgress > 50) {
+        bonusProgress += 2;
+        if (bonusProgress > progress) sessionStorage.setItem("progress", bonusProgress);
+    } else if (currentProgress > progress) {
+        sessionStorage.setItem("progress", currentProgress - 1);
+    }
+
+    if (currentProgress - 1 >= 1) resetProgressBtn.style.display = "flex";
+}
+
 function nextQuestion(qNumber) {
     questions[qNumber].questionNumber.toString().length == 1 ? questionNumber.textContent = `0${questions[qNumber].questionNumber}.` : questionNumber.textContent = `${questions[qNumber].questionNumber}.`;
     questionText.textContent = questions[qNumber].question;
@@ -290,137 +330,20 @@ function nextQuestion(qNumber) {
     updateProgress(qNumber);
 }
 
-function checkAnswer(qNumber, answer) {
-    const currentQuestionNumber = parseInt(qNumber.value);
-    const chosenAnswer = answer.textContent;
-    const rightAnswer = questions[currentQuestionNumber].answer;
-    const decrypted = CryptoJS.AES.decrypt(rightAnswer, "questionAnswer").toString(CryptoJS.enc.Utf8);
-    const bonus = instructionBtn.getAttribute("data-bonus");
+function setFinalProgress() {
+    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
+    const progress = parseInt(sessionStorage.getItem("progress"));
 
-    // function to encrypt the string
-    // const encrypted = CryptoJS.AES.encrypt("text", "questionAnswer");
-
-    //activate secret answer
-    if (currentQuestionNumber == 1 || currentQuestionNumber == 5 || currentQuestionNumber == 16) {
-        questionNumber.style.pointerEvents = "visible";
-        questionNumber.addEventListener("mouseover", () => questionSvgPath.setAttribute("fill", "#ccc733"));
-        questionNumber.addEventListener("mouseout", () => questionSvgPath.setAttribute("fill", "#3fbadc"));
-    } else {
-        questionNumber.style.pointerEvents = "none";
-        questionSvgPath.setAttribute("fill", "#3fbadc");
+    if (progress == 49) {
+        sessionStorage.setItem("progress", 50);
+    } else if (progress == 98 && recordScore < 7) {
+        sessionStorage.setItem("progress", 100);
+        resetProgressBtn.style.display = "flex";
+    } else if (recordScore == 7) {
+        sessionStorage.setItem("progress", 100);
+        star3.style.display = "block";
+        resetProgressBtn.style.display = "flex";
     }
-
-    //activate secret answer
-    if (currentQuestionNumber == 16) {
-        text20.style.pointerEvents = "visible";
-        text20.classList.add("active");
-    } else {
-        text20.style.pointerEvents = "none";
-        text20.classList.remove("active");
-    }
-
-    //activate secret answer
-    if (currentQuestionNumber == 25) {
-        text2.style.pointerEvents = "visible";
-        text2.classList.add("active");
-    } else {
-        text2.style.pointerEvents = "none";
-        text2.classList.remove("active");
-    }
-
-    //activate secret answer
-    if (currentQuestionNumber == 31 || currentQuestionNumber == 73) {
-        textAll.style.pointerEvents = "visible";
-        textAll.classList.add("active");
-    } else {
-        textAll.style.pointerEvents = "none";
-        textAll.classList.remove("active");
-    }
-
-    //activate secret answer
-    if (currentQuestionNumber == 40) {
-        myName.style.pointerEvents = "visible";
-        myName.classList.add("active");
-    } else {
-        myName.style.pointerEvents = "none";
-        myName.classList.remove("active");
-    }
-
-    //check if it's the bonus quiz or not
-    if (bonus == "false") {
-        if (currentQuestionNumber == 49 && chosenAnswer == decrypted) {
-            showScoreScreen();
-        } else if (chosenAnswer == decrypted) {
-            nextQuestion(currentQuestionNumber + 1);
-        } else {
-            showGameOverScreen();
-        }
-    } else {
-        if (currentQuestionNumber == 74 && chosenAnswer == decrypted) {
-            showScoreScreenBonus();
-        } else if (chosenAnswer == decrypted) {
-            nextQuestion(currentQuestionNumber + 1);
-        } else {
-            showGameOverScreenBonus();
-        }
-    }
-}
-
-function countFailures() {
-    const fail = parseInt(sessionStorage.getItem("fail"));
-    const failNumber = fail + 1;
-
-    sessionStorage.setItem("fail", failNumber);
-}
-
-function saveQuestionError(questionNumber) {
-    fetch(`/question-error/save/${idPlayer}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            questionNumber: questionNumber
-        })
-    });
-}
-
-function showGameOverScreen() {
-    quiz.style.display = "none";
-    gameOverBackground.style.display = "block";
-
-    setTimeout(() => {
-        gameOverText.classList.add("animate");
-    }, 100);
-
-    setTimeout(() => {
-        gameOverBtn.style.visibility = "visible";
-        gameOverBtn.classList.add("animate");
-    }, 800);
-
-    countFailures();
-    stopRecordTimer();
-    saveQuestionError(questionNumber.value > 1 ? Number(questionNumber.value) + 1 : Number(questionNumber.value));
-}
-
-function showGameOverScreenBonus() {
-    quiz.style.display = "none";
-    gameOverText.classList.add("bonus");
-    gameOverBtn.classList.add("bonus");
-    gameOverBackground.classList.add("bonus");
-    gameOverBackground.style.display = "block";
-
-    setTimeout(() => {
-        gameOverText.classList.add("animate");
-    }, 100);
-
-    setTimeout(() => {
-        gameOverBtn.style.visibility = "visible";
-        gameOverBtn.classList.add("animate");
-    }, 800);
-
-    stopRecordTimer();
-    saveQuestionError(questionNumber.value > 1 ? Number(questionNumber.value) + 1 : Number(questionNumber.value));
 }
 
 function saveScore(rank, speedrunTime) {
@@ -540,36 +463,6 @@ function calculateScoreBonus() {
     saveScore(rankNumber, speedrunTime);
 }
 
-function updateProgress(qNumber) {
-    const currentProgress = questions[qNumber].questionNumber;
-    const progress = sessionStorage.getItem("progress");
-
-    if (currentProgress > 50) {
-        bonusProgress += 2;
-        if (bonusProgress > progress) sessionStorage.setItem("progress", bonusProgress);
-    } else if (currentProgress > progress) {
-        sessionStorage.setItem("progress", currentProgress - 1);
-    }
-
-    if (currentProgress - 1 >= 1) resetProgressBtn.style.display = "flex";
-}
-
-function setFinalProgress() {
-    const recordScore = parseInt(sessionStorage.getItem("recordScore"));
-    const progress = parseInt(sessionStorage.getItem("progress"));
-
-    if (progress == 49) {
-        sessionStorage.setItem("progress", 50);
-    } else if (progress == 98 && recordScore < 7) {
-        sessionStorage.setItem("progress", 100);
-        resetProgressBtn.style.display = "flex";
-    } else if (recordScore == 7) {
-        sessionStorage.setItem("progress", 100);
-        star3.style.display = "block";
-        resetProgressBtn.style.display = "flex";
-    }
-}
-
 function showScoreScreen() {
     time.style.display = "none";
     quiz.style.display = "none";
@@ -604,6 +497,136 @@ function showScoreScreenBonus() {
     calculateScoreBonus();
     setFinalProgress();
     setTimeout(() => getScore(), 1000);
+}
+
+function countFailures() {
+    const fail = parseInt(sessionStorage.getItem("fail"));
+    const failNumber = fail + 1;
+
+    sessionStorage.setItem("fail", failNumber);
+}
+
+function saveQuestionError(questionNumber) {
+    fetch(`/question-error/save/${idPlayer}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            questionNumber: questionNumber
+        })
+    });
+}
+
+function showGameOverScreen() {
+    quiz.style.display = "none";
+    gameOverBackground.style.display = "block";
+
+    setTimeout(() => {
+        gameOverText.classList.add("animate");
+    }, 100);
+
+    setTimeout(() => {
+        gameOverBtn.style.visibility = "visible";
+        gameOverBtn.classList.add("animate");
+    }, 800);
+
+    countFailures();
+    stopRecordTimer();
+    saveQuestionError(questionNumber.value > 1 ? Number(questionNumber.value) + 1 : Number(questionNumber.value));
+}
+
+function showGameOverScreenBonus() {
+    quiz.style.display = "none";
+    gameOverText.classList.add("bonus");
+    gameOverBtn.classList.add("bonus");
+    gameOverBackground.classList.add("bonus");
+    gameOverBackground.style.display = "block";
+
+    setTimeout(() => {
+        gameOverText.classList.add("animate");
+    }, 100);
+
+    setTimeout(() => {
+        gameOverBtn.style.visibility = "visible";
+        gameOverBtn.classList.add("animate");
+    }, 800);
+
+    stopRecordTimer();
+    saveQuestionError(questionNumber.value > 1 ? Number(questionNumber.value) + 1 : Number(questionNumber.value));
+}
+
+function checkAnswer(qNumber, answer) {
+    const currentQuestionNumber = parseInt(qNumber.value);
+    const chosenAnswer = answer.textContent;
+    const rightAnswer = questions[currentQuestionNumber].answer;
+    const decrypted = CryptoJS.AES.decrypt(rightAnswer, "questionAnswer").toString(CryptoJS.enc.Utf8);
+    const bonus = instructionBtn.getAttribute("data-bonus");
+
+    //activate secret answer
+    if (currentQuestionNumber == 1 || currentQuestionNumber == 5 || currentQuestionNumber == 16) {
+        questionNumber.style.pointerEvents = "visible";
+        questionNumber.addEventListener("mouseover", () => questionSvgPath.setAttribute("fill", "#ccc733"));
+        questionNumber.addEventListener("mouseout", () => questionSvgPath.setAttribute("fill", "#3fbadc"));
+    } else {
+        questionNumber.style.pointerEvents = "none";
+        questionSvgPath.setAttribute("fill", "#3fbadc");
+    }
+
+    //activate secret answer
+    if (currentQuestionNumber == 16) {
+        text20.style.pointerEvents = "visible";
+        text20.classList.add("active");
+    } else {
+        text20.style.pointerEvents = "none";
+        text20.classList.remove("active");
+    }
+
+    //activate secret answer
+    if (currentQuestionNumber == 25) {
+        text2.style.pointerEvents = "visible";
+        text2.classList.add("active");
+    } else {
+        text2.style.pointerEvents = "none";
+        text2.classList.remove("active");
+    }
+
+    //activate secret answer
+    if (currentQuestionNumber == 31 || currentQuestionNumber == 73) {
+        textAll.style.pointerEvents = "visible";
+        textAll.classList.add("active");
+    } else {
+        textAll.style.pointerEvents = "none";
+        textAll.classList.remove("active");
+    }
+
+    //activate secret answer
+    if (currentQuestionNumber == 40) {
+        myName.style.pointerEvents = "visible";
+        myName.classList.add("active");
+    } else {
+        myName.style.pointerEvents = "none";
+        myName.classList.remove("active");
+    }
+
+    //check if it's the bonus quiz or not
+    if (bonus == "false") {
+        if (currentQuestionNumber == 49 && chosenAnswer == decrypted) {
+            showScoreScreen();
+        } else if (chosenAnswer == decrypted) {
+            nextQuestion(currentQuestionNumber + 1);
+        } else {
+            showGameOverScreen();
+        }
+    } else {
+        if (currentQuestionNumber == 74 && chosenAnswer == decrypted) {
+            showScoreScreenBonus();
+        } else if (chosenAnswer == decrypted) {
+            nextQuestion(currentQuestionNumber + 1);
+        } else {
+            showGameOverScreenBonus();
+        }
+    }
 }
 
 function exitScoreScreen() {
@@ -668,25 +691,6 @@ function toggleInstructionBonus() {
 }
 
 if (instructionBtn) instructionBtn.addEventListener("click", toggleInstructionBonus);
-
-function resetInstructionBtn() {
-    const bonus = instructionBtn.getAttribute("data-bonus");
-
-    if (bonus == "true") {
-        instructionBtn.setAttribute("data-bonus", "false");
-        instructionBtn.textContent = "Instruções";
-
-        instructionBtn.addEventListener("mouseover", () => {
-            instructionBtn.textContent = "Instruções";
-            instructionBtn.style.cssText = "background-color: #ccc733; border-color: #983400; color: #000000;";
-        });
-
-        instructionBtn.addEventListener("mouseout", () => {
-            instructionBtn.textContent = "Instruções";
-            instructionBtn.style.cssText = "background-color: #9A6601; border-color: #983400; color: #000000;";
-        });
-    }
-}
 
 function exitInstructionScreen() {
     quizInstruction.style.display = "none";
@@ -1099,13 +1103,6 @@ function clickStar2() {
 }
 
 if (star2) star2.addEventListener("click", clickStar2);
-
-function resetStar2Clicks() {
-    clicks = 0;
-    secretWord = "";
-    star2.style.setProperty("--vis", "hidden");
-    star2.style.setProperty("--op", 0);
-}
 
 function clickStar3() {
     resetStar2Clicks();

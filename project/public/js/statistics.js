@@ -63,17 +63,6 @@ function getRankingQuestionError() {
         });
 }
 
-function getFeedbackStarsCount() {
-    fetch(`/feedback/list-by-stars`)
-        .then(res => {
-            res.json().then(res => {
-                if (res.length > 0) {
-                    generatePieChart(res[0].star1, res[0].star2, res[0].star3, res[0].star4, res[0].star5);
-                }
-            });
-        });
-}
-
 function generatePieChart(star1, star2, star3, star4, star5) {
     Chart.defaults.font.size = 16;
     Chart.defaults.color = "#ffffff";
@@ -110,6 +99,17 @@ function generatePieChart(star1, star2, star3, star4, star5) {
     };
 
     new Chart(pieChart, config);
+}
+
+function getFeedbackStarsCount() {
+    fetch(`/feedback/list-by-stars`)
+        .then(res => {
+            res.json().then(res => {
+                if (res.length > 0) {
+                    generatePieChart(res[0].star1, res[0].star2, res[0].star3, res[0].star4, res[0].star5);
+                }
+            });
+        });
 }
 
 window.addEventListener("load", () => {

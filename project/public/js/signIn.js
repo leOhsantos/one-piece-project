@@ -26,6 +26,19 @@ function showLoadingScreen() {
     }, 1500);
 }
 
+function openPopup(image, title, description, btnType, btnText) {
+    popupBackground.classList.add("active");
+    popup.classList.add("active");
+    popupImg.src = `assets/image/${image}-icon.png`;
+    popupTitle.textContent = title;
+    popupDescription.textContent = description;
+    closePopupBtn.classList.add(btnType);
+    closePopupBtn.textContent = btnText;
+
+    isPopupActive = true;
+    submitBtn.blur();
+}
+
 function signIn(email, password) {
     fetch("player/authenticate", {
         method: "POST",
@@ -83,19 +96,6 @@ function toggleEyePassword() {
 }
 
 eyeIcon.addEventListener("click", toggleEyePassword);
-
-function openPopup(image, title, description, btnType, btnText) {
-    popupBackground.classList.add("active");
-    popup.classList.add("active");
-    popupImg.src = `assets/image/${image}-icon.png`;
-    popupTitle.textContent = title;
-    popupDescription.textContent = description;
-    closePopupBtn.classList.add(btnType);
-    closePopupBtn.textContent = btnText;
-
-    isPopupActive = true;
-    submitBtn.blur();
-}
 
 function closePopup() {
     popupBackground.classList.remove("active");

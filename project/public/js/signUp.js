@@ -19,6 +19,28 @@ const popupDescription = document.querySelector(".popup-description");
 const closePopupBtn = document.getElementById("closePopupBtn");
 let isPopupActive = false;
 
+function navigateToSignInPage() {
+    window.location.href = "../signin.html";
+}
+
+function openPopup(image, title, description, btnType, btnText, navigate) {
+    popupBackground.classList.add("active");
+    popup.classList.add("active");
+    popupImg.src = `assets/image/${image}-icon.png`;
+    popupTitle.textContent = title;
+    popupDescription.textContent = description;
+    closePopupBtn.classList.add(btnType);
+    closePopupBtn.textContent = btnText;
+
+    isPopupActive = true;
+    submitBtn.blur();
+
+    if (navigate) {
+        closePopupBtn.classList.remove("error");
+        closePopupBtn.setAttribute("onclick", "navigateToSignInPage()");
+    }
+}
+
 function signUp(nickname, email, password, confirmPassword) {
     fetch("/player/save", {
         method: "POST",
@@ -84,32 +106,10 @@ function toggleEyePassword() {
 
 eyeIcon.forEach((e) => e.addEventListener("click", toggleEyePassword));
 
-function openPopup(image, title, description, btnType, btnText, navigate) {
-    popupBackground.classList.add("active");
-    popup.classList.add("active");
-    popupImg.src = `assets/image/${image}-icon.png`;
-    popupTitle.textContent = title;
-    popupDescription.textContent = description;
-    closePopupBtn.classList.add(btnType);
-    closePopupBtn.textContent = btnText;
-
-    isPopupActive = true;
-    submitBtn.blur();
-
-    if (navigate) {
-        closePopupBtn.classList.remove("error");
-        closePopupBtn.setAttribute("onclick", "navigateToSignInPage()");
-    }
-}
-
 function closePopup() {
     popupBackground.classList.remove("active");
     popup.classList.remove("active");
     isPopupActive = false;
-}
-
-function navigateToSignInPage() {
-    window.location.href = "../signin.html";
 }
 
 function clickByEnter(e) {
