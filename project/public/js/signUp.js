@@ -41,7 +41,12 @@ function openPopup(image, title, description, btnType, btnText, navigate) {
     }
 }
 
-function signUp(nickname, email, password, confirmPassword) {
+function signUp() {
+    let nickname = nicknameInput.value;
+    let email = emailInput.value;
+    let password = passwordInput.value;
+    let confirmPassword = confirmPasswordInput.value;
+
     fetch("/player/save", {
         method: "POST",
         headers: {
@@ -64,15 +69,7 @@ function signUp(nickname, email, password, confirmPassword) {
     });
 }
 
-function checkInput() {
-    let nickname = nicknameInput.value;
-    let email = emailInput.value;
-    let password = passwordInput.value;
-    let confirmPassword = confirmPasswordInput.value;
-    signUp(nickname, email, password, confirmPassword);
-}
-
-submitBtn.addEventListener("click", checkInput);
+submitBtn.addEventListener("click", signUp);
 
 function enableSignUpButton() {
     let nickname = nicknameInput.value;

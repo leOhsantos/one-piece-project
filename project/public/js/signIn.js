@@ -39,7 +39,10 @@ function openPopup(image, title, description, btnType, btnText) {
     submitBtn.blur();
 }
 
-function signIn(email, password) {
+function signIn() {
+    let email = emailInput.value;
+    let password = passwordInput.value;
+
     fetch("player/authenticate", {
         method: "POST",
         headers: {
@@ -63,13 +66,7 @@ function signIn(email, password) {
     });
 }
 
-function checkInput() {
-    let email = emailInput.value;
-    let password = passwordInput.value;
-    signIn(email, password);
-}
-
-submitBtn.addEventListener("click", checkInput);
+submitBtn.addEventListener("click", signIn);
 
 function enableSignInButton() {
     let email = emailInput.value;
