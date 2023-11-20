@@ -330,7 +330,8 @@ body.gray {
 
 .select-avatar-container div {
     border-radius: 50%;
-    margin: 12px 8px;
+    margin: 8px 4px;
+    padding: 4px;
     border: 2px solid #ffffff;
     display: inline-flex;
     justify-content: center;
