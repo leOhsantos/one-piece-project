@@ -3,8 +3,8 @@ const mysql = require("mysql2");
 const mySqlConfig = {
     host: "localhost",
     database: "bdOnePieceQuiz",
-    user: "root",
-    password: "1999"
+    user: "root", //Altere para o seu usuário (root é o usuário padrão do mysql)
+    password: "1999" //Altere para a sua senha
 };
 
 function execute(instruction) {
@@ -16,7 +16,6 @@ function execute(instruction) {
             if (error) {
                 reject(error);
             }
-            // console.log(results);
             resolve(results);
         });
         connection.on('error', function (error) {
