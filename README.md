@@ -4,7 +4,7 @@
 
 <br>
 
-Um projeto baseado em One Piece, uma obra incrível que vem crescendo significantemente durante os últimos tempos e que é de extrema importância para mim. Aqui você conhecerá um pouco sobre o vasto mundo de One Piece, e poderá se divertir (ou não) com um jogo de perguntas e respostas que desenvolvi para os maiores fãs da obra e também para aqueles que estão começando a conhecer e se aventurar nesse mundo espetacular de One Piece.
+Um projeto totalmente baseado em One Piece, uma obra incrível de extrema importância para mim que vem crescendo significantemente durante os últimos tempos. Aqui você conhecerá um pouco sobre o vasto mundo de One Piece, e poderá se divertir (ou não) com um jogo de perguntas e respostas que desenvolvi para os maiores fãs da obra e também para aqueles que estão começando a conhecer e se aventurar nesse mundo espetacular de One Piece.
 
 <br>
 
@@ -60,9 +60,9 @@ Um projeto baseado em One Piece, uma obra incrível que vem crescendo significan
 
 ### Para a criação do banco de dados:
 
-Crie o banco de dados no seu servidor local com esse <a href="project/src/database/one-piece-project-script.sql">script</a>.
+- Crie o banco de dados no seu servidor local com esse <a href="project/src/database/one-piece-project-script.sql">script</a>.
 
-Faça as devidas modificações em <a href="project/src/database/config.js">config.js</a> para que a conexão com o banco de dados seja estabelecida.
+- Faça as devidas modificações em <a href="project/src/database/config.js">config.js</a> para que a conexão com o banco de dados seja estabelecida.
 
 ### Instale as dependências do projeto:
 ```bash
@@ -74,4 +74,6 @@ npm i
 npm start
 ```
 
-### Por fim, acesse: http://localhost:3333
+### Por fim, para abrir o projeto:
+
+- Acesse a seguinte URL: http://localhost:3333
