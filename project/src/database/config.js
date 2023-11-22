@@ -2,9 +2,9 @@ const mysql = require("mysql2");
 
 const mySqlConfig = {
     host: "localhost",
-    database: "bdOnePieceQuiz",
-    user: "root", //Altere para o seu usuário (root é o usuário padrão do mysql)
-    password: "1999" //Altere para a sua senha
+    database: "OnePieceQuiz",
+    user: "luffy",
+    password: "nika"
 };
 
 function execute(instruction) {

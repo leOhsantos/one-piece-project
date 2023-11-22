@@ -58,11 +58,9 @@ Um projeto totalmente baseado em One Piece, uma obra incrível de extrema import
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
-### Para a criação do banco de dados:
+### Para a configuração do banco de dados:
 
-- Crie o banco de dados no seu servidor local com esse <a href="project/src/database/one-piece-project-script.sql">script</a>.
-
-- Faça as devidas modificações em <a href="project/src/database/config.js">config.js</a> para que a conexão com o banco de dados seja estabelecida.
+- Execute todo esse <a href="project/src/database/one-piece-quiz-script.sql">script</a> para a configuração do banco de dados.
 
 ### Instale as dependências do projeto:
 ```bash

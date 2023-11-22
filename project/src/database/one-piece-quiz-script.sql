@@ -1,10 +1,14 @@
-CREATE DATABASE bdOnePieceQuiz;
-USE bdOnePieceQuiz;
+CREATE DATABASE OnePieceQuiz;
+USE OnePieceQuiz;
+
+CREATE USER 'luffy'@'localhost' IDENTIFIED BY 'nika';
+GRANT ALL PRIVILEGES ON onepiecequiz.* TO 'luffy'@'localhost';
+FLUSH PRIVILEGES;
 
 CREATE TABLE Player (
 	idPlayer INT PRIMARY KEY AUTO_INCREMENT,
-    nickname VARCHAR(20) NOT NULL,
-    email VARCHAR(45) NOT NULL,
+    nickname VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(45) NOT NULL UNIQUE,
     password VARCHAR(45) NOT NULL,
     avatar VARCHAR(45) DEFAULT 'no-avatar',
     title VARCHAR(45) DEFAULT 'Figurante'
