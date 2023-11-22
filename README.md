@@ -4,7 +4,7 @@
 
 <br>
 
-Um projeto totalmente baseado em One Piece, uma obra incrível de extrema importância para mim que vem crescendo significantemente durante os últimos tempos. Aqui você conhecerá um pouco sobre o vasto mundo de One Piece, e poderá se divertir (ou não) com um jogo de perguntas e respostas que desenvolvi para os maiores fãs da obra e também para aqueles que estão começando a conhecer e se aventurar nesse mundo espetacular de One Piece.
+Um projeto totalmente baseado em One Piece, uma obra de extrema importância para mim que vem crescendo significantemente durante os últimos tempos. Aqui você conhecerá um pouco sobre o vasto mundo de One Piece, e poderá se divertir (ou não) com um jogo de perguntas e respostas que desenvolvi para os maiores fãs da obra e também para aqueles que estão começando a se aventurar nesse mundo espetacular de One Piece.
 
 <br>
 
