@@ -105,7 +105,9 @@ function clickByEnter(e) {
         if (isPopupActive) {
             closePopupBtn.click();
         } else {
-            submitBtn.click();
+            if (document.activeElement != submitBtn) {
+                submitBtn.click();
+            }
         }
     }
 }

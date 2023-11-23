@@ -397,7 +397,7 @@ function clickByEnter(e) {
     if (e.key == "Enter") {
         if (isPopupActive) {
             closePopupBtn.click();
-        } else if (isSettingsActive) {
+        } else if (isSettingsActive && document.activeElement != saveEditionBtn) {
             saveEditionBtn.click();
         }
 
