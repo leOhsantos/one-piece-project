@@ -88,7 +88,7 @@ const miniLuffyAudio = document.getElementById("miniLuffyAudio");
 const onePieceOp = document.getElementById("onePieceOp");
 
 const recordTimeProgress = document.getElementById("recordTimeProgress");
-let recordTimerTimeoutHandle = null;
+let recordTimerIntervalHandle = null;
 let milR = 0;
 let secR = 0;
 let minR = 0;
@@ -151,7 +151,7 @@ function removeBonusAttributes() {
 }
 
 function startRecordTimer() {
-    recordTimerTimeoutHandle = setInterval(() => {
+    recordTimerIntervalHandle = setInterval(() => {
         milR++;
         if (milR == 99) {
             secR++;
@@ -169,7 +169,7 @@ function startRecordTimer() {
 }
 
 function stopRecordTimer() {
-    clearTimeout(recordTimerTimeoutHandle);
+    clearInterval(recordTimerIntervalHandle);
 
     const progress = parseInt(sessionStorage.getItem("progress"));
 
