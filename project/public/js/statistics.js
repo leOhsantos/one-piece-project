@@ -76,7 +76,7 @@ function generatePieChart(star1, star2, star3, star4, star5) {
             '5 ★'
         ],
         datasets: [{
-            label: 'Avaliações',
+            label: 'Porcentagem',
             data: [star1, star2, star3, star4, star5],
             backgroundColor: [
                 '#AE6427',
@@ -106,7 +106,15 @@ function getFeedbackStarsCount() {
         .then(res => {
             res.json().then(res => {
                 if (res.length > 0) {
-                    generatePieChart(res[0].star1, res[0].star2, res[0].star3, res[0].star4, res[0].star5);
+                    let total = Number(res[0].star1) + Number(res[0].star2) + Number(res[0].star3) + Number(res[0].star4) + Number(res[0].star5);
+
+                    let pctStar1 = ((res[0].star1 * 100) / total).toFixed(1);
+                    let pctStar2 = ((res[0].star2 * 100) / total).toFixed(1);
+                    let pctStar3 = ((res[0].star3 * 100) / total).toFixed(1);
+                    let pctStar4 = ((res[0].star4 * 100) / total).toFixed(1);
+                    let pctStar5 = ((res[0].star5 * 100) / total).toFixed(1);
+
+                    generatePieChart(pctStar1, pctStar2, pctStar3, pctStar4, pctStar5);
                 }
             });
         });
