@@ -1,5 +1,5 @@
 <div align="center">
-<img src="project/public/assets/image/quiz-logo.png" width="400em">
+<img src="project/public/assets/image/quiz-logo.png" width="350em">
 </div>
 
 <br>
