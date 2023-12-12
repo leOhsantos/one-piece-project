@@ -43,7 +43,7 @@ function save(req, res) {
     playerModel.listAll()
         .then(playerRes => {
             for (let i = 0; i < playerRes.length; i++) {
-                if (nickname == playerRes[i].nickname) {
+                if (nickname.toUpperCase() == (playerRes[i].nickname).toUpperCase()) {
                     isNicknameRepeated = true;
                     break;
                 }
